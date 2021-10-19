@@ -1,0 +1,149 @@
+.publicHeader {
+  header {
+    background: transparent !important;
+    box-shadow: none;
+    color: $baseTextColor;
+
+    .openMenuBtn {
+      &:focus {
+        outline: none;
+      }
+    }
+
+  }
+
+  .logo {
+    max-width: 30%;
+
+  }
+
+  @media only screen and (min-width: 600px) {
+    .logo {
+      top: -10px;
+      position: relative;
+      max-width: 120px;
+    }
+  }
+
+}
+
+ul.menuList {
+
+  list-style: none;
+
+  li.menuItem {
+    a {
+      text-decoration: none;
+      color: $mainColor;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    &.cta {
+      margin-top: -5px;
+      a {
+        color: white;
+      }
+    }
+  }
+
+  &.smUp {
+    display: inline-flex;
+
+    li {
+      margin-left: 2em;
+    }
+
+  }
+
+  &.smDown {
+    width: 250px;
+    margin-left: 0;
+    padding-left: 1.5em;
+    margin-top: 2em;
+  }
+  &.smDownApp {
+    width: 250px;
+    margin-left: 0;
+    padding: 0;
+    margin-top: 2em;
+  }
+}
+
+.external-payment-header .logo-link img {
+  width: 15vh;
+}
+
+a.subMenuLink {
+  &:hover {
+    text-decoration: none;
+    color: $mainColor;
+    cursor: pointer;
+  }
+}
+
+.submenuBox {
+  [role='document'] {
+    margin-top: 10px;
+    box-shadow: 0px 5px 5px -3px rgba(63, 81, 181, .19), 0px 8px 10px 1px rgba(63, 81, 181, .12), 0px 3px 14px 2px rgba(63, 81, 181, .09);
+  }
+}
+
+.publicMobileMenu {
+  [role='document'] {
+    width: 50vw;
+  }
+}
+
+.colapsedMenuItemMobile {
+  ul {
+    margin-left: 0;
+    padding-left: 0.5rem;
+    list-style: none;
+    font-size: .9rem;
+    li {
+      a {
+        text-decoration: none;
+        color: #4a59d9;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+ul.submenu-list-wrapper {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 1.5rem;
+
+  li.sub-menu-item {
+    padding: 0.3rem;
+    padding-bottom: 0.8rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    a {
+      text-decoration: none;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: $baseTextColor;
+      &:hover {
+        color: $mainColor;
+      }
+
+      .subtext {
+        color: grey;
+        text-transform: none;
+        font-size: 0.8rem;
+        letter-spacing: 0;
+        font-weight: 500 !important;
+      }
+    }
+  }
+}
+
+
+

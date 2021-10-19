@@ -1,0 +1,48 @@
+.add-fund-view {
+
+  .subtitle {
+    line-height: 1.25rem;
+    font-size: .95rem;
+    width: 90%;
+    margin: auto;
+  }
+
+  .option-box-wrapper {
+    &.disable {
+      opacity: 0.6;
+    }
+    .title {
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    .description {
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+    }
+
+    svg {
+      background-color: #4a59d930;
+      color:$mainColor;
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .box-shadow {
+      box-shadow: 3px 3px 30px -10px rgba(29, 25, 87, 0.36);
+    }
+
+    .option-box {
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+
+}
+  
+
+  

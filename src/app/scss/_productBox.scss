@@ -1,0 +1,35 @@
+.product-box-wrapper {
+
+  background-color: white;
+  border-radius: 3%;
+  padding-bottom: 3rem;
+
+  .product-box-img {
+    max-width: 100%;
+  }
+
+  .product-box-body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  a.product-read-more {
+    color:$mainColor;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 15px;
+    &:hover {
+      color: $baseTextColor
+    }
+    svg{
+      position: relative;
+      top: -0.12rem;
+    }
+  }
+}
+  
+
+  

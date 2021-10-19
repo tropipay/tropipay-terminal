@@ -1,0 +1,113 @@
+.public {
+
+  &.voucher {
+
+    h3 {
+      font-size: 21px !important;
+      font-weight: 700 !important;
+      margin-bottom: 1em !important;
+      line-height: 1.5rem;
+    }
+
+    .hero-bg-left {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      z-index: -20;
+      display: block;
+      height: 30vh;
+    }
+
+    .badge {
+      background-color: white;
+      color: $mainColor;
+      border-radius: 1rem;
+      margin-right: 5px;
+      top: -2px;
+      position: relative;
+      font-size: 70%;
+      padding: .15em .33em;
+    }
+
+    .block {
+      margin-top: 2rem;
+    }
+
+    .blue-text {
+      color: $mainColor;
+    }
+
+    .white-text {
+      color: white;
+    }
+
+    .yellow-text{
+      color: $baseYellow;
+    }
+
+    .blue-icon {
+      background-color: $mainColor;
+      border-radius: 100%;
+      color: white;
+      padding: 15px;
+    }
+
+    .info-badge.white-text {
+      background-color: #fbfbfb4d;
+      border-radius: 1rem;
+      font-size: 0.9rem !important;
+      padding: 0.1rem 0.5rem;
+    }
+
+    .overflow-hidden {
+      overflow-x: hidden;
+    }
+
+    img {
+      &.float-image-right {
+        height: 45rem;
+        float: right;
+        margin-right: 2rem;
+      }
+
+      &.float-image-left {
+        float: left;
+        height: 45rem;
+
+        &.main-img {
+          height: 30rem;
+        }
+      }
+
+      &.main-img-m{
+        height: 20rem;
+      }
+
+      &.full-width-m{
+        width: 100%;
+      }
+    }
+
+    .background-image-section {
+      background-size: inherit;
+      background: url("../images/ima-voucher-2-72.png") left;
+      background-repeat: no-repeat;
+    }
+
+    .security {
+      color: $mainColor;
+      font-size: 1rem !important;
+    }
+
+    .background-filled {
+      background-color: #eaeef580
+    }
+
+    .bringFront{
+      z-index: 99;
+      position: relative;
+    }
+
+  }
+
+}

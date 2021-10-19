@@ -1,0 +1,16 @@
+.bottomNavFooter{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+
+  button {
+    outline: none;
+  }
+
+  a:hover {
+    text-decoration: none !important;
+    color: $mainColor;
+  }
+
+}

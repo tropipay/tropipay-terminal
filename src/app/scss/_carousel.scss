@@ -1,0 +1,13 @@
+.carousel{
+  .control {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.10);
+    top: 30%;
+    &.left{
+      left: -100px;
+    }
+    &.right{
+      right: -100px;
+    }
+  }
+}

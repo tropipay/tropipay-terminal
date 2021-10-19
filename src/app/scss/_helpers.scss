@@ -1,0 +1,38 @@
+// Generates all padding and margin helpers
+@for $i from 0 through 20{
+  .pad#{$i}{
+    padding: #{$i}em;
+  }
+  .padT#{$i}{
+    padding-top: #{$i}em;
+  }
+  .padL#{$i}{
+    padding-left: #{$i}em;
+  }
+  .padR#{$i}{
+    padding-right: #{$i}em;
+  }
+  .padB#{$i}{
+    padding-bottom: #{$i}em;
+  }
+  .marginT#{$i}{
+    margin-top: #{$i}em;
+  }
+  .marginL#{$i}{
+    margin-left: #{$i}em;
+  }
+  .marginR#{$i}{
+    margin-right: #{$i}em;
+  }
+  .marginB#{$i}{
+    margin-bottom: #{$i}em;
+  }
+}
+
+.note{
+  background-color: #edce5152;
+}
+
+.font12{
+  font-size: 12px !important;
+}

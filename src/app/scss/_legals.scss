@@ -1,0 +1,24 @@
+.faq-list{
+  h3 {
+    margin-bottom: 0 !important;
+  }
+  .faq-item {
+    box-shadow: none;
+    background-color: transparent;
+    & > div {
+      padding-left: 0 !important;
+    }
+  }
+}
+
+.legal{
+  .subSection {
+    margin-bottom: 2em;
+  }
+  li {
+    padding-bottom: 1em;
+  }
+  .text-italic {
+    font-style: italic;
+  }
+}

@@ -1,0 +1,28 @@
+.joinTelegram {
+  .socialIco {
+    background-color: #2fa3e6;
+    border-radius: 100%;
+    color: white;
+    padding: 3px 5px 3px 3px;
+    margin-right: 0.4rem;
+  }
+
+  .background-ico {
+    background-color: #0000ff14;
+    border-radius: 14px;
+    padding: 5px 15px 6px 1px;
+  }
+
+  .wrapper-icon {
+    font-size: 0.8rem !important;
+  }
+
+  a.linkToPayment {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: $baseTextColorDark;
+    }
+  }
+
+}

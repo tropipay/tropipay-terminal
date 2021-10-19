@@ -1,0 +1,154 @@
+.public {
+
+    &.genericlanding {
+
+      h3 {
+        font-size: 21px !important;
+        font-weight: 700 !important;
+        margin-bottom: 1em !important;
+        line-height: 1.5rem;
+      }
+
+      .hero-bg-left {
+        position: absolute;
+        top: -1px;
+        left: 0;
+        z-index: -20;
+        display: block;
+        height: 30vh;
+      }
+
+      .badge {
+        background-color: $mainColor;
+        color: white;
+        border-radius: 1rem;
+        margin-right: 5px;
+        top: -2px;
+        position: relative;
+        font-size: 70%;
+        padding: .15em .33em;
+      }
+
+      .block {
+        margin-top: 2rem;
+      }
+
+      .blue-text {
+        color: $mainColor;
+      }
+
+      .white-text {
+        color: white;
+      }
+
+      .blue-icon {
+        background-color: $mainColor;
+        border-radius: 100%;
+        color: white;
+        padding: 15px;
+      }
+
+      .grey-icon {
+        background-color: #cfccff52;
+        border-radius: 100%;
+        color: white;
+        padding: 15px;
+      }
+
+      .overflow-hidden {
+        overflow-x: hidden;
+      }
+
+      img {
+        &.float-image-right {
+          height: 45rem;
+          float: right;
+          margin-right: 2rem;
+          position: relative;
+          top: -4rem;
+        }
+
+        &.float-image-left {
+          float: left;
+          height: 45rem;
+
+          &.main-img {
+            height: 30rem;
+          }
+        }
+
+        &.main-img-m{
+          height: 20rem;
+        }
+
+        &.full-width-m{
+          width: 100%;
+        }
+      }
+
+      .background-image-section {
+        background-size: inherit;
+        background: url("../images/img-remesas-20.png") left;
+        background-repeat: no-repeat;
+        background-color: #4d46d2;
+        .security {
+            height: 84px;
+            .vertical-align {
+              vertical-align: middle;
+            }
+            img {
+              padding-right: 4em;
+              height: 14%;
+            }
+            svg {
+              margin-top: -4px;
+            }
+          }
+
+        .s-mobile img {
+          width: 22%;
+          margin-right: 1.5rem;
+        }
+      }
+
+      .productsblock {
+        background: #f4f8fe;
+      }
+
+      .security {
+        color: $mainColor;
+        font-size: 1rem !important;
+      }
+
+      .background-filled {
+        background-color: #eaeef580
+      }
+
+      .background-smoke-white {
+        background-color: #f4f8fe
+      }
+
+      .bringFront{
+        z-index: 99;
+        position: relative;
+      }
+
+      .background-color-container{
+        &.blue{
+          background-color: $mainColor;
+          h2,h3,p,svg {
+            color: white !important;
+          }
+        }
+      }
+
+      .security {
+        svg {
+          margin-top: -4px;
+        }
+      }
+
+    }
+
+  }
+  

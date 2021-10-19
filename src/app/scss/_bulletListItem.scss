@@ -1,0 +1,26 @@
+.bullet-item-list-wrapper {
+  ul {
+    //list-style-image: url('images/listimg.png');
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      svg{
+        display: inline-flex;
+        position: relative;
+        top: -0.3rem;
+        color: $mainColor;
+      }
+      p {
+        display: inline-flex;
+        position: relative;
+        top: -3px;
+        font-weight: 500;
+        padding-left: .2rem;
+      }
+    }
+  }
+}
+  
+
+  

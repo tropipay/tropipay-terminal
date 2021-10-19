@@ -1,0 +1,147 @@
+.public {
+
+  &.remittance {
+
+    h3 {
+      font-size: 21px !important;
+      font-weight: 700 !important;
+      margin-bottom: 1em !important;
+      line-height: 1.5rem;
+    }
+
+    .hero-bg-left {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      z-index: -20;
+      display: block;
+      height: 30vh;
+    }
+
+    .badge {
+      background-color: $mainColor;
+      color: white;
+      border-radius: 1rem;
+      margin-right: 5px;
+      top: -2px;
+      position: relative;
+      font-size: 70%;
+      padding: .15em .33em;
+    }
+
+    .white-text {
+      .badge {
+        background-color: #ffffff36 !important;
+      }
+    }
+
+    .block {
+      margin-top: 2rem;
+    }
+
+    .blue-text {
+      color: $mainColor;
+    }
+
+    .white-text {
+      color: white;
+    }
+
+    .blue-icon {
+      background-color: $mainColor;
+      border-radius: 100%;
+      color: white;
+      padding: 15px;
+    }
+
+    .overflow-hidden {
+      overflow-x: hidden;
+    }
+
+    img {
+      &.float-image-right {
+        height: 45rem;
+        float: right;
+        margin-right: 2rem;
+      }
+
+      &.float-image-left {
+        float: left;
+        height: 45rem;
+
+        &.main-img {
+          height: 30rem;
+        }
+      }
+
+      &.main-img-m {
+        height: 20rem;
+      }
+
+      &.full-width-m {
+        width: 100%;
+      }
+    }
+
+    .background-image-section {
+      background-size: inherit;
+      background: url("../images/img-remesas-20.png") left;
+      background-repeat: no-repeat;
+    }
+
+    .security {
+      color: $mainColor;
+      font-size: 1rem !important;
+    }
+
+    .background-filled {
+      background-color: #eaeef580
+    }
+
+    .background-grey {
+      background-color: #eaeef580
+    }
+
+    .background-filled-main{
+      background-color: $mainColor;
+      color: white !important;
+    }
+
+    .bringFront {
+      z-index: 99;
+      position: relative;
+    }
+
+  }
+
+}
+
+.box-info {
+  background-color: #f4f7fe;
+  position: relative;
+  padding: .75rem 1.25rem;
+
+  border-radius: .25rem;
+  font-size: 0.9rem;
+
+  &.detail{
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+
+  .amount {
+    color: $mainColor;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
+}
+
+.box-border{
+  border: 1px solid #dfe3ecab;
+}
+
+.card-icon-xs {
+  max-height: 2rem;
+  max-width: 2rem;
+}

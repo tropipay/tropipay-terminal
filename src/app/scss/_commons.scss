@@ -1,0 +1,409 @@
+.App {
+  margin-bottom: 80px; //
+
+  .padHeaderApp {
+    padding-top: 56px;
+  }
+}
+
+.colorMainDarkLoadingBar {
+  background-color: $baseYellow !important;
+
+  & > div {
+    background-color: darken($baseYellow, 20) !important;
+  }
+}
+
+.colorYellowLoadingBar {
+  background-color: $darkColor !important;
+
+  & > div {
+    background-color: darken($darkColor, 20) !important;
+  }
+}
+
+body {
+  color: #39365b;
+  background-color: white !important;
+  /*background-image: url("images/fondo.png");*/
+}
+
+a {
+  color: $mainColor;
+}
+
+a.floatBtn:hover {
+  color: white;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.width70 {
+  width: 68%;
+  margin-right: 2% !important;
+}
+
+.width30 {
+  width: 30%;
+}
+
+.width60 {
+  width: 58%;
+  margin-right: 2% !important;
+}
+
+.width40 {
+  width: 40%;
+}
+
+.width95pc {
+  width: 95%;
+}
+
+.width70pc {
+  width: 70%;
+}
+
+.width50pc {
+  width: 50%;
+}
+
+.width600 {
+  width: 600px;
+}
+
+.width900 {
+  width: 900px;
+}
+
+.maxW90 {
+  max-width: 90% !important;
+}
+
+.maxW100 {
+  max-width: 90% !important;
+}
+
+.mt1 {
+  margin-top: 1em;
+}
+
+.mt2 {
+  margin-top: 2em;
+}
+
+.mb1 {
+  margin-bottom: 1em;
+}
+
+.mb2 {
+  margin-bottom: 2em;
+}
+
+.list li {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-top: #00000014 1px solid;
+
+  .listItem {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .actions {
+    right: -10px;
+  }
+
+  .ref p {
+    font-size: 0.8em;
+  }
+
+}
+
+.avatar {
+  color: white;
+
+  &.booking {
+    background-color: #003580;
+  }
+
+  &.expedia {
+    background-color: #ffcc00;
+    color: #003580;
+  }
+
+  &.airbnb {
+    background-color: #EB5B62;
+    color: #FFFFFF;
+  }
+
+  &.tropipay {
+    background-color: $baseYellow;
+    color: $baseTextColor;
+  }
+
+  &.account {
+    background-color: rgba($lightColor, 0.7);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      opacity: .7;
+    }
+  }
+}
+
+.account-list-item {
+  font-size: 0.83em !important;
+}
+
+a[role="button"] {
+  letter-spacing: 1px;
+}
+
+a[role="button"]:hover {
+  color: #fffffffa;
+
+  &.secondary {
+    color: inherit !important;
+  }
+}
+
+.floatBtn {
+  position: fixed !important;
+  bottom: 6em;
+  right: 2em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.btn-full-width {
+  min-width: 100% !important;
+  min-height: 50px !important;
+  letter-spacing: 1px;
+}
+
+.info-to-check li {
+  font-size: .9rem;
+}
+
+.flexGrowth {
+  flex-grow: 1;
+}
+
+.balanceHistory {
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+}
+
+.fees {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+span.danger {
+  background-color: #ff624a;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+span.pending {
+  background-color: #4a58d95c;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+span.paid {
+  background-color: $darkColor;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+span.not-verified {
+  background-color: $darkColor;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-left: .5rem;
+  position: relative;
+  top: -0.1rem;
+}
+
+span.success {
+  background-color: forestgreen;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.btn-txt {
+  cursor: pointer;
+  color: $mainColor;
+}
+
+.lineaConMargen {
+  line-height: 1.2rem !important;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.history-list-item {
+  cursor: pointer;
+
+  &:hover {
+    background: rgba($darkColor, .10);
+  }
+}
+
+.alert {
+  font-family: Roboto, sans-serif;
+  text-align: left;
+
+  &.alert-info {
+    color: #39365b;
+    background-color: #1119643b;
+    border-color: #262a5f30;
+  }
+
+  &.alert-info-yellow {
+    padding: 0.8rem;
+    border-radius: 0.2rem;
+    background-color: rgba(244, 205, 43, 0.16); //rgba(63, 81, 181, 0.13)
+    font-size: 0.8rem;
+  }
+
+  &.alert-info-main {
+    padding: 0.8rem;
+    border-radius: 0.2rem;
+    background-color: rgba(63, 81, 181, 0.13);
+    font-size: 0.8rem;
+  }
+
+  .alert-icon {
+    float: left;
+    margin-right: 0.5rem;
+    position: relative;
+    top: 8px;
+  }
+}
+
+.alertWarning {
+  .alert {
+    &.alert-info-main {
+      background-color: #f4cd2b42;
+    }
+
+    .alert-icon {
+      position: relative;
+      top: -1px;
+      color: #FF9800
+    }
+  }
+}
+
+.market-img {
+  -webkit-box-shadow: 0px 7px 23px -6px rgba(12, 26, 84, 0.4);
+  -moz-box-shadow: 0px 7px 23px -6px rgba(12, 26, 84, 0.4);
+  box-shadow: 0px 7px 23px -6px rgba(12, 26, 84, 0.4);
+}
+
+ul.check-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 0.6rem;
+
+    &.blue {
+      svg {
+        color: $mainColor;
+      }
+    }
+
+    span {
+      margin-left: 1rem;
+    }
+  }
+}
+
+a.whatsapp {
+  background-color: #07BC4C;
+  color: white;
+
+  &:hover {
+    background-color: #048435;
+  }
+}
+
+.mati-btn {
+  width: 300px;
+  text-align: center;
+  margin: auto;
+
+  .mati-button {
+    &.mati-yellow {
+      background-color: $mainColor !important;
+    }
+  }
+}
+
+a.telegram {
+  background-color: #2fa3e6;
+  color: white;
+
+  &:hover {
+    background-color: #2fa3e6;
+  }
+}
+
+.font-weight-500 {
+  font-weight: 500 !important;
+}
+
+.dashed-separator {
+  border-style: dashed;
+}
+
+//Big alert
+.bigMsg svg.mdi-icon {
+  height: 40px;
+}
+
+.text-color-main-blue {
+  color: $mainColor;
+}
+
+.select {
+  svg {
+    margin-right: 0.3rem;
+  }
+}

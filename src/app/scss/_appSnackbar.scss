@@ -1,0 +1,10 @@
+.appSnackbar{
+  div{
+    background-color: $baseTextColor;
+  }
+  &.error{
+    div{
+      background-color: $baseRed;
+    }
+  }
+}

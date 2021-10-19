@@ -1,0 +1,32 @@
+header.appMenuBar {
+  position: fixed !important;
+  background-color: white !important;
+  color: $baseTextColor;
+  box-shadow: 0px 2px 4px -1px rgba(45, 62, 197, 0.12), 0px 4px 5px 0px rgba(45, 62, 197, 0.12), 0px 1px 10px 0px rgba(45, 62, 197, 0.12);
+  background-image: url("../images/logo-b1.png");
+  background-repeat: no-repeat;
+  .logo {
+    height: 25px;
+  }
+}
+
+ul.menuList.smDownApp {
+
+  list-style: none;
+
+  li.menuItem {
+    a {
+      text-decoration: none;
+      color: $baseTextColor;
+      display: inline-flex;
+      padding-left: 1.5em;
+      p {
+        margin-left: 1em;
+        margin-top: 2px;
+      }
+    }
+    &:hover{
+      background: rgba($darkColor,.10);
+    }
+  }
+}
