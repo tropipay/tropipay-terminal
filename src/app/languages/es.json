@@ -1,5 +1,13 @@
 {
-    "login": {
+    "demo": {
         "title": "Hola Mundo {{test}}"
+    },
+    "security":{
+        "login": {
+            "title": "Entrar"
+        },
+        "logout": {
+            "title": "Salir"
+        }
     }
 }

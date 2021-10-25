@@ -2,10 +2,10 @@ import Button from "@mui/material/Button";
 import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, selectCount } from './LoginSlice';
+import { increment, selectCount } from './DemoSlice';
 import { useTranslation } from "react-i18next";
 
-function Login() {
+function Demo() {
   const dispatch = useDispatch();
   const count = useSelector(selectCount);
   const { t } = useTranslation();
@@ -15,12 +15,12 @@ function Login() {
   });
 
   return (
-    <div className="Login">
+    <div className="Demo">
       <Button variant="contained" onClick={() => dispatch(increment())} >
-        {t("login.title", {test: 'TTT'})}
+        {t("demo.title", { test: 'TTT' })}
       </Button>
     </div>
   );
 }
 
-export default Login;
+export default Demo;

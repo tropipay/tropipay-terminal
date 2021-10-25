@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
+
 import {ThemeProvider} from '@material-ui/core/styles';
 import reportWebVitals from './app/services/reportWebVitals';
 import App from './app/App';
@@ -8,11 +8,7 @@ import theme from './app/services/theme';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <React.StrictMode>
-          <App />
-      </React.StrictMode>
-    </BrowserRouter>
+    <App />
   </ThemeProvider>,
   document.getElementById('root')
 );
