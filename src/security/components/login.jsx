@@ -13,8 +13,8 @@ function Login() {
 
     const { from } = location.state || { from: { pathname: "/" } };
     const login = () => {
-        auth.signin(from).then(() => {
-            history.replace(from);
+        return auth.signin(history, from).then((url) => {
+            window.location.href = url;
         });
     };
 

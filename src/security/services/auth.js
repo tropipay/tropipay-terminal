@@ -3,13 +3,14 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import db from './localdb';
 
-
-const url_tropipay = "https://sandbox.tropipay.me";
+const qs = require('qs');
+const url_tropipay = "https://tropipay.com";
 const oauth_authorize = url_tropipay + '/api/v2/access/authorize';
 const oauth_token = url_tropipay + '/api/v2/access/token';
-const client_id = "946cef5ecad81f282e20d9bbb712ec64";
-const client_secret = "e25bbb41a2a2ed365e685e0edbb81162";
+const client_id = "5e55f1bae4a458ea649fb14715a9cd74";
+const client_secret = "fe8e31a4788181d9c9bcae22af857ec6";
 const redirect_uri = "http://localhost:3000/auth/callback";
 const scope = "ALLOW_GET_BALANCE";
 const state = "abcd-1234";
@@ -40,13 +41,20 @@ export function useAuth() {
 export function useProvideAuth() {
   const [user, setUser] = useState(null);
 
-  const signin = from => {
+  const signin = (history, from) => {
+    const param = qs.stringify({
+      response_type: "code",
+      client_id,
+      client_secret,
+      redirect_uri,
+      code_challenge,
+      code_challenge_method,
+      state,
+      scope
+    });
+    const url = oauth_authorize + "?" + param;
     return new Promise((resolve, reject) => {
-    	setTimeout(() => {
-        const user = { name: 'Tieso' };
-        setUser(user);
-        resolve(user);
-      }, 2000);
+      resolve(url);
     });
   };
 
@@ -91,9 +99,43 @@ export function RoutePrivate({ children, ...rest }) {
 
 export function authorizationCode ({ location }){
   const params = new URLSearchParams(location.search);
-  const code = params.get("code");
-  const state = params.get("state");
+  const req_code = params.get("code");
+  const req_state = params.get("state");
+  console.log('AUTH_RES: ', req_code, req_state);
 
+  //... verify the state value
+  if (req_state !== state) {
+      console.log('NOT secure, the state value not match');
+  }
+  //... confifure options for get authorization code
+  const param = {
+      grant_type: "authorization_code",
+      code: req_code,
+      client_id,
+      client_secret,
+      redirect_uri,
+      code_verifier,
+      scope
+  };
+  //... save authorization code
+  console.log('>>>>>>>', oauth_token);
+  fetch(oauth_token, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: JSON.stringify(param), 
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }).then(res => {
+    //const data = res.json();
+    console.log('<<<<<<<<<<<', res);
+    if(res.body){
+      db.set({
 
-  console.log('>>>>>>>', );
+      });
+    }    
+  })
+  .catch(error => console.error('Error:', error))
+  .then(response => console.log('Success:', response));
+
 }
