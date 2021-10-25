@@ -7,14 +7,13 @@ import { useAuth } from '../services/auth';
 
 function Login() {
     const { t } = useTranslation();
-
     const history = useHistory();
     const location = useLocation();
     const auth = useAuth();
 
     const { from } = location.state || { from: { pathname: "/" } };
     const login = () => {
-        auth.signin(() => {
+        auth.signin(from).then(() => {
             history.replace(from);
         });
     };

@@ -4,17 +4,18 @@ import {
   Redirect
 } from "react-router-dom";
 
-const fakeAuth = {
-  isAuthenticated: false,
-  signin(cb) {
-    fakeAuth.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    fakeAuth.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
+
+const url_tropipay = "https://sandbox.tropipay.me";
+const oauth_authorize = url_tropipay + '/api/v2/access/authorize';
+const oauth_token = url_tropipay + '/api/v2/access/token';
+const client_id = "946cef5ecad81f282e20d9bbb712ec64";
+const client_secret = "e25bbb41a2a2ed365e685e0edbb81162";
+const redirect_uri = "http://localhost:3000/auth/callback";
+const scope = "ALLOW_GET_BALANCE";
+const state = "abcd-1234";
+const code_verifier = "1234-abcd-1234";
+const code_challenge = "N2_wPQ7X9iP5bKXcw05rqHw1S7OwFuU4Nqi6ccr_LEs";
+const code_challenge_method = "S256";
 
 /** For more details on
  * `AuthContext`, `ProvideAuth`, `useAuth` and `useProvideAuth`
@@ -35,20 +36,26 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
+// handler login/logout from useAuth
 export function useProvideAuth() {
   const [user, setUser] = useState(null);
 
-  const signin = cb => {
-    return fakeAuth.signin(() => {
-      setUser("user");
-      cb();
+  const signin = from => {
+    return new Promise((resolve, reject) => {
+    	setTimeout(() => {
+        const user = { name: 'Tieso' };
+        setUser(user);
+        resolve(user);
+      }, 2000);
     });
   };
 
-  const signout = cb => {
-    return fakeAuth.signout(() => {
-      setUser(null);
-      cb();
+  const signout = from => {
+    return new Promise((resolve, reject) => {
+    	setTimeout(() => {
+        setUser(null);
+        resolve(null);
+      }, 2000);
     });
   };
 
@@ -80,4 +87,13 @@ export function RoutePrivate({ children, ...rest }) {
       }
     />
   );
+}
+
+export function authorizationCode ({ location }){
+  const params = new URLSearchParams(location.search);
+  const code = params.get("code");
+  const state = params.get("state");
+
+
+  console.log('>>>>>>>', );
 }
