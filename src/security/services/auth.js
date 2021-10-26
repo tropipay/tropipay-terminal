@@ -1,11 +1,8 @@
 import React, { useContext, createContext, useState } from "react";
-import {
-  Route,
-  Redirect
-} from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import db from './localdb';
-
 const qs = require('qs');
+
 const url_terminal = "http://localhost:3002";
 const url_tropipay = "http://localhost:3000";
 const oauth_authorize = url_tropipay + '/api/v2/access/authorize';
