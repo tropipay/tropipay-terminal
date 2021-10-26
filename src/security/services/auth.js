@@ -6,12 +6,13 @@ import {
 import db from './localdb';
 
 const qs = require('qs');
-const url_tropipay = "https://tropipay.com";
+const url_terminal = "http://localhost:3002";
+const url_tropipay = "http://localhost:3000";
 const oauth_authorize = url_tropipay + '/api/v2/access/authorize';
 const oauth_token = url_tropipay + '/api/v2/access/token';
-const client_id = "5e55f1bae4a458ea649fb14715a9cd74";
-const client_secret = "fe8e31a4788181d9c9bcae22af857ec6";
-const redirect_uri = "http://localhost:3000/auth/callback";
+const redirect_uri = url_terminal + "/auth/callback";
+const client_id = "1b125cefa4e6aa5fc044a06190953eac";
+const client_secret = "6fdd1a8b146b22be1057d38f2b672e7d";
 const scope = "ALLOW_GET_BALANCE";
 const state = "abcd-1234";
 const code_verifier = "1234-abcd-1234";
@@ -131,7 +132,7 @@ export function authorizationCode ({ location }){
     console.log('<<<<<<<<<<<', res);
     if(res.body){
       db.set({
-
+        name: 'tisto'
       });
     }    
   })
