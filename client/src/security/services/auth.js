@@ -1,14 +1,11 @@
 import React, { useContext, createContext, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import db from './localdb';
-const qs = require('qs');
-const axios = require('axios');
-
+   
 const url_terminal = "http://localhost:3002";
 const url_tropipay = "http://localhost:3001";
 const url_login = url_terminal + '/api/v1/security/user/connected_view';
 
-const oauth_authorize = url_tropipay + '/api/v2/access/authorize';
 const oauth_token = url_tropipay + '/api/v2/access/token';
 const redirect_uri = url_terminal + "/auth/callback";
 
@@ -17,8 +14,7 @@ const client_secret = "a0a59684bac288ce15a100ee8d84a16b";
 const scope = "ALLOW_GET_BALANCE";
 const state = "abcd-1234";
 const code_verifier = "1234-abcd-1234";
-const code_challenge = "N2_wPQ7X9iP5bKXcw05rqHw1S7OwFuU4Nqi6ccr_LEs";
-const code_challenge_method = "S256";
+
 
 /** For more details on
  * `AuthContext`, `ProvideAuth`, `useAuth` and `useProvideAuth`
@@ -129,19 +125,4 @@ export function authorizationCode ({ location }){
   .catch(error => console.error('Error:', error))
   .then(response => console.log('Success:', response));
 
-  /*axios({
-    method: 'post',
-    url: oauth_token,
-    params: options,
-    mode: 'no-cors',
-    withCredentials: false,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
-
-    }
-  }).then(token => {
-    console.log("**************", token);
-  });*/
 }
