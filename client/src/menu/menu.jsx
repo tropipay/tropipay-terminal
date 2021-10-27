@@ -4,7 +4,7 @@ import { useAuth } from '../security/services/auth';
 
 function Menu() {
     const auth = useAuth();
-    const username = auth.user ? auth.user.name : 'Gest';
+    const username = auth && auth.user ? auth.user.name : 'Gest';
     return (
         <div>
             <h3>Menu:</h3>

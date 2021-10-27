@@ -2,14 +2,18 @@ import React, { useContext, createContext, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
 import db from './localdb';
 const qs = require('qs');
+const axios = require('axios');
 
 const url_terminal = "http://localhost:3002";
-const url_tropipay = "http://localhost:3000";
+const url_tropipay = "http://localhost:3001";
+const url_login = url_terminal + '/api/v1/security/user/connected_view';
+
 const oauth_authorize = url_tropipay + '/api/v2/access/authorize';
 const oauth_token = url_tropipay + '/api/v2/access/token';
 const redirect_uri = url_terminal + "/auth/callback";
-const client_id = "1b125cefa4e6aa5fc044a06190953eac";
-const client_secret = "6fdd1a8b146b22be1057d38f2b672e7d";
+
+const client_id = "5d6fd52d1796bd41632099cb5444b7f6";
+const client_secret = "a0a59684bac288ce15a100ee8d84a16b";
 const scope = "ALLOW_GET_BALANCE";
 const state = "abcd-1234";
 const code_verifier = "1234-abcd-1234";
@@ -40,28 +44,17 @@ export function useProvideAuth() {
   const [user, setUser] = useState(null);
 
   const signin = (history, from) => {
-    const param = qs.stringify({
-      response_type: "code",
-      client_id,
-      client_secret,
-      redirect_uri,
-      code_challenge,
-      code_challenge_method,
-      state,
-      scope
-    });
-    const url = oauth_authorize + "?" + param;
+    db.set('session', JSON.stringify({ from }));
     return new Promise((resolve, reject) => {
-      resolve(url);
+      resolve(url_login);
     });
   };
 
   const signout = from => {
     return new Promise((resolve, reject) => {
-    	setTimeout(() => {
-        setUser(null);
-        resolve(null);
-      }, 2000);
+      db.del('session');
+      setUser(null);
+      resolve(null);
     });
   };
 
@@ -106,7 +99,7 @@ export function authorizationCode ({ location }){
       console.log('NOT secure, the state value not match');
   }
   //... confifure options for get authorization code
-  const param = {
+  const options = {
       grant_type: "authorization_code",
       code: req_code,
       client_id,
@@ -115,12 +108,12 @@ export function authorizationCode ({ location }){
       code_verifier,
       scope
   };
+
   //... save authorization code
-  console.log('>>>>>>>', oauth_token);
   fetch(oauth_token, {
     method: 'POST',
     mode: 'no-cors',
-    body: JSON.stringify(param), 
+    body: JSON.stringify(options), 
     headers:{
       'Content-Type': 'application/json'
     }
@@ -136,4 +129,19 @@ export function authorizationCode ({ location }){
   .catch(error => console.error('Error:', error))
   .then(response => console.log('Success:', response));
 
+  /*axios({
+    method: 'post',
+    url: oauth_token,
+    params: options,
+    mode: 'no-cors',
+    withCredentials: false,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
+
+    }
+  }).then(token => {
+    console.log("**************", token);
+  });*/
 }

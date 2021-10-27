@@ -1,58 +1,30 @@
 {
-  "name": "pos",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
-    "@material-ui/core": "^4.12.3",
-    "@mui/material": "^5.0.4",
-    "@reduxjs/toolkit": "^1.6.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "i18next": "^21.3.3",
-    "i18next-browser-languagedetector": "^6.1.2",
-    "qs": "^6.10.1",
-    "react": "^17.0.2",
-    "react-cookies": "^0.1.1",
-    "react-dom": "^17.0.2",
-    "react-i18next": "^11.12.0",
-    "react-redux": "^7.2.5",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "^4.0.3",
-    "redux": "^4.1.1",
-    "web-vitals": "^1.0.1"
-  },
+  "name": "terminal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build:js": "react-scripts build",
-    "build:css": "sass src:src --no-source-map",
-    "watch:css": "sass src:src --watch --no-source-map",
-    "start:app": "react-scripts start",
-    "start": "npm run build:css && npm run start:app",
-    "build": "npm run build:css && npm run build:js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tropipay/pos.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tropipay/pos/issues"
   },
-  "devDependencies": {
-    "sass": "^1.43.2"
+  "homepage": "https://github.com/tropipay/pos#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "qs": "^6.10.1"
   }
 }
