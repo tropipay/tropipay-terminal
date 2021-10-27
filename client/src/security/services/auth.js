@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import db from './localdb';
 
+const url_terminal = "http://localhost:3002";
+const url_login = url_terminal + '/api/v1/security/user/connected_view';
+
 const AuthContext = createContext();
 
 export function ProvideAuth({ children }) {
@@ -16,11 +19,12 @@ export function ProvideAuth({ children }) {
   );
 }
 
+// Constext Selector
 export function useAuth() {
   return useContext(AuthContext);
 }
 
-// handler login/logout from useAuth
+// Constext Handler used for useAuth
 export function useProvideAuth() {
   const [user, setUser] = useState(null);
 
@@ -69,7 +73,7 @@ export function RoutePrivate({ children, ...rest }) {
   );
 }
 
-export function sessionUpdate (props){
+export function SessionUpdate (props){
   const dispatch = useDispatch();
   dispatch(updateSession());
   const session = useSelector(selectSession);

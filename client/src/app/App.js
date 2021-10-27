@@ -7,7 +7,7 @@ import './services/lang';
 
 import Demo from "../demo/Demo.jsx";
 import store from './stores/AppStore';
-import { ProvideAuth, RoutePrivate, sessionUpdate } from '../security/services/auth';
+import { ProvideAuth, RoutePrivate, SessionUpdate } from '../security/services/auth';
 import Login from '../security/components/login';
 import Menu from '../menu/menu';
 
@@ -27,7 +27,7 @@ function App() {
                   </RoutePrivate>
 
                   <Route exact path="/login"> <Login /> </Route>
-                  <Route exact path='/auth/session' render={sessionUpdate}/>
+                  <Route exact path='/auth/session' render={SessionUpdate}/>
                   <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>
               </Switch>
           </ProvideAuth>
