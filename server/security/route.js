@@ -61,7 +61,7 @@ router.get('/oauth/response', async (req, res, next) => {
             maxAge: 86400000
         });
         console.log('session', ses);
-        const from = ses.from || "";
+        const from = '/auth/session'; // ses.from || "";
         res.redirect(url_terminal + from);
     } catch (error) {
         console.log("Error", error);
