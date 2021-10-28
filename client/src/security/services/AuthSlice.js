@@ -14,30 +14,25 @@ export const slice = createSlice({
     },
     updateSession: (state, action) => {
       if (action.payload) {
-        db.set("session", JSON.stringify(action.payload));
+        db.set(action.payload, "session");
         state.session = action.payload;
       } else {
-        const sessionData = db.get("session");
-        try {
-          state.session = JSON.parse(sessionData);
-        } catch (error) {}
+        state.session = db.get("session");
       }
     },
     updateProfile: (state, action) => {
+      console.log('updateProfile >>>>', action.payload);
       if (action.payload) {
-        db.set("profile", JSON.stringify(action.payload));
-        state.session = action.payload;
+        db.set(action.payload, "profile");
+        state.profile = action.payload;
       } else {
-        const profileData = db.get("profile");
-        try {
-          state.profile = JSON.parse(profileData);
-        } catch (error) {}
+        state.profile = db.get("profile");
       }
     },
   },
 });
 
-export const { updateSession, updateProfile } = slice.actions;
+export const { updateSession, updateProfile, updateError } = slice.actions;
 
 export const selectProfile = (state) => state.auth.profile;
 export const selectSession = (state) => state.auth.session;
@@ -47,19 +42,21 @@ export const selectToken = (state) => state.auth.session.token;
 export default slice.reducer;
 
 
-export const loadProfile = () => async (dispatch) => {
+export const loadProfile = () => (dispatch) => {
+  console.log("AuthSlice", "loadProfile");
   try {
     const data = {};
-    const url = "/api/v1/security/profile";
-    const res = await fetch(url, {
+    const url = "http://localhost:3005" + "/api/v1/security/profile";
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(data), 
       headers: {
         "Content-Type": "application/json",
       }
     })
-    dispatch(updateProfile(res.data));
-    return res.data;
+    .then(response => response.json())
+    .then(data => dispatch(updateProfile(data)));
+
   } catch (e) {
     dispatch(updateError(e.message));
     return console.error(e.message);

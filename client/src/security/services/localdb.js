@@ -4,29 +4,55 @@ import cookie from "react-cookies";
  */
 class LocalDb {
   /**
-   * @description
+   * @description select cookie by name
    * @param {STRING} name
    */
   get(name = "session", path = "/") {
     const data = cookie.load(name);
-    return data;
+    console.log("LocalDb", data);
+    return this.decode(data);
   }
 
   /**
-   * @description
+   * @description insert cookie by name
    * @param {STRING} name
    */
   set(data, name = "session", path = "/") {
+    data = this.encode(data);
     cookie.save(name, data, { path });
     return this;
   }
 
   /**
-   * @description
+   * @description delete cookie by name
    */
   del(name = "session") {
     cookie.remove(name);
     return this;
+  }
+
+  /**
+   * @description save JSON decode
+   */
+  decode(str) {
+    try {
+      return typeof str === 'string' ? JSON.parse(str) : str;
+    }
+    catch(e){
+      return str;
+    }
+  }
+
+  /**
+   * @description save JSON encode
+   */
+  encode(obj){
+    try {
+      return typeof obj !== 'string' ? JSON.stringify(obj) : obj;
+    }
+    catch(e){
+      return obj;
+    }
   }
 }
 // ......................................................................
