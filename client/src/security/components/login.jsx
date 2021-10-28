@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 import { useAuth } from '../services/auth';
-
+import db from "../services/localdb";
 
 function Login() {
     const { t } = useTranslation();
@@ -14,9 +14,11 @@ function Login() {
 
     const { from } = location.state || { from: { pathname: "/" } };
     const login = () => {
-        return auth.signin(history, from).then((url) => {
+        db.set({ from }, "session");
+        window.location.href = "/auth/session";
+        /*return auth.signin(history, from).then((url) => {
             window.location.href = url;
-        });
+        });*/
     };
 
     return (

@@ -1,7 +1,7 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext, useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateSession, selectSession } from "./AuthSlice";
+import { updateSession, selectSession, selectProfile, loadProfile } from "./AuthSlice";
 
 import db from "./localdb";
 
@@ -25,7 +25,7 @@ export function useProvideAuth() {
   const [user, setUser] = useState(null);
 
   const signin = (history, from) => {
-    db.set({ from }, "session");
+    //db.set({ from }, "session");
     return new Promise((resolve, reject) => {
       resolve(url_login);
     });
@@ -49,12 +49,13 @@ export function useProvideAuth() {
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
 export function RoutePrivate({ children, ...rest }) {
-  let auth = useAuth();
+  //let auth = useAuth();
+  const profile = useSelector(selectProfile);
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        auth.user ? (
+        profile ? (
           children
         ) : (
           <Redirect
@@ -71,7 +72,13 @@ export function RoutePrivate({ children, ...rest }) {
 
 export function SessionUpdate(props) {
   const dispatch = useDispatch();
-  dispatch(updateSession());
   const session = useSelector(selectSession);
+
+  useEffect(() => {
+    dispatch(updateSession());
+    dispatch(loadProfile());
+  });
+
   return <Redirect to={session.from} />;
 }
+

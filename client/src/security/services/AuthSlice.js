@@ -50,7 +50,7 @@ export const loadProfile = () => (dispatch) => {
   console.log("AuthSlice", "loadProfile");
   try {
     const data = {};
-    const url = "http://localhost:3005" + "/api/v1/security/profile";
+    const url = "http://localhost:3005/api/v1/security/profile";
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data), 

@@ -9,7 +9,6 @@ class LocalDb {
    */
   get(name = "session", path = "/") {
     const data = cookie.load(name);
-    console.log("LocalDb", data);
     return this.decode(data);
   }
 
