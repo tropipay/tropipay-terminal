@@ -1,22 +1,18 @@
 import React, { useContext, createContext, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { updateSession, selectSession } from './AuthSlice';
-import { useSelector, useDispatch } from 'react-redux';
+import { updateSession, selectSession } from "./AuthSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-import db from './localdb';
+import db from "./localdb";
 
 const url_terminal = "http://localhost:3002";
-const url_login = url_terminal + '/api/v1/security/user/connected_view';
+const url_login = url_terminal + "/api/v1/security/user/connected_view";
 
 const AuthContext = createContext();
 
 export function ProvideAuth({ children }) {
   const auth = useProvideAuth();
-  return (
-    <AuthContext.Provider value={auth}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
 // Constext Selector
@@ -29,15 +25,15 @@ export function useProvideAuth() {
   const [user, setUser] = useState(null);
 
   const signin = (history, from) => {
-    db.set('session', JSON.stringify({ from }));
+    db.set("session", JSON.stringify({ from }));
     return new Promise((resolve, reject) => {
       resolve(url_login);
     });
   };
 
-  const signout = from => {
+  const signout = (from) => {
     return new Promise((resolve, reject) => {
-      db.del('session');
+      db.del("session");
       setUser(null);
       resolve(null);
     });
@@ -46,7 +42,7 @@ export function useProvideAuth() {
   return {
     user,
     signin,
-    signout
+    signout,
   };
 }
 
@@ -64,7 +60,7 @@ export function RoutePrivate({ children, ...rest }) {
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              state: { from: location },
             }}
           />
         )
@@ -73,7 +69,7 @@ export function RoutePrivate({ children, ...rest }) {
   );
 }
 
-export function SessionUpdate (props){
+export function SessionUpdate(props) {
   const dispatch = useDispatch();
   dispatch(updateSession());
   const session = useSelector(selectSession);

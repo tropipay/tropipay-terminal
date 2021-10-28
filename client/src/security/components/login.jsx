@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 import { useAuth } from '../services/auth';
 
+import { loadProfile } from "./AuthSlice";
+
 function Login() {
     const { t } = useTranslation();
     const history = useHistory();

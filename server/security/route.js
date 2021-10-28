@@ -69,4 +69,15 @@ router.get('/oauth/response', async (req, res, next) => {
     }
 });
 
+router.post('/profile', async (req, res, next) => {
+    res.json({
+        "name": "Pedro Picapiedras",
+        "amount": 410,
+        "coin": "EUR",
+        "date": "2021-08-23 18:30",
+        "description": "",
+        "code": "34123"
+    });
+});
+
 module.exports = router;
