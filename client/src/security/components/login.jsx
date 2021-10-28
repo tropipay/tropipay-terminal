@@ -2,15 +2,15 @@ import Button from "@mui/material/Button";
 import React from 'react';
 
 import { useTranslation } from "react-i18next";
-import { useHistory, useLocation } from "react-router-dom";
-import { useAuth } from '../services/auth';
+import { useLocation } from "react-router-dom"; // useHistory, 
+//import { useAuth } from '../services/auth';
 import db from "../services/localdb";
 
 function Login() {
     const { t } = useTranslation();
-    const history = useHistory();
+    /*const history = useHistory();
+    const auth = useAuth();*/
     const location = useLocation();
-    const auth = useAuth();
 
     const { from } = location.state || { from: { pathname: "/" } };
     const login = () => {

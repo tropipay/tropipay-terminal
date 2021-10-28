@@ -1,9 +1,9 @@
 
 
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
-import { updateSession, selectSession, loadProfile } from "../services/AuthSlice";
+import { Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateSession, loadProfile } from "../services/AuthSlice";
 import db from "../services/localdb";
 
 export default function Session(props) {
@@ -11,8 +11,6 @@ export default function Session(props) {
     //const session = useSelector(selectSession);
     const session = db.get('session');
     const from = session && session.from ? session.from.pathname : '/'; 
-
-    console.log("Redirect", from);
   
     useEffect(() => {
       dispatch(updateSession());
