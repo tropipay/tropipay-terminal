@@ -2,8 +2,28 @@
 # TropiPay Terminal
 The point of sale (POS) or point of purchase (POP) is the time and place where a retail transaction is completed. At the point of sale, the merchant calculates the amount owed by the customer, indicates that amount, may prepare an invoice for the customer (which may be a cash register printout), and indicates the options for the customer to make payment. It is also the point at which a customer makes a payment to the merchant in exchange for goods or after provision of a service. After receiving payment, the merchant may issue a receipt for the transaction, which is usually printed but can also be dispensed with or sent electronically.
 
-
 Businesses are increasingly adopting POS systems, and one of the most obvious and compelling reasons is that a POS system does away with the need for price tags. Selling prices are linked to the product code of an item when adding stock, so the cashier merely needs to scan this code to process a sale. If there is a price change, this can also be easily done through the inventory window. Other advantages include the ability to implement various types of discounts, a loyalty scheme for customers, and more efficient stock control, and these features are typical of almost all modern ePOS systems.
+
+### `Install`
+- git clone https://github.com/tropipay/tropipay-terminal.git
+- cd tropipay-terminal/
+- npm install 
+- cd client/
+- npm install 
+
+### `Run Option 1`
+- npm start 
+- cd client/
+- npm start 
+
+### `Run Option 2`
+- npm run build 
+- npm start 
+
+### `Test`
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- npm run test
 
 
 ## Getting Started with Create React App
@@ -21,11 +41,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-#### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 #### `yarn build`
 

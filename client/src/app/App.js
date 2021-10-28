@@ -7,7 +7,7 @@ import './services/lang';
 
 import Demo from "../demo/Demo.jsx";
 import store from './stores/AppStore';
-import { ProvideAuth, RoutePrivate, authorizationCode } from '../security/services/auth';
+import { ProvideAuth, RoutePrivate, SessionUpdate } from '../security/services/auth';
 import Login from '../security/components/login';
 import Menu from '../menu/menu';
 
@@ -26,11 +26,8 @@ function App() {
                       <h3>Private</h3>
                   </RoutePrivate>
 
-                  <Route exact path='/auth/callback' render={authorizationCode}/>
-
-                  <Route exact path="/login">
-                    <Login />
-                  </Route>
+                  <Route exact path="/login"> <Login /> </Route>
+                  <Route exact path='/auth/session' render={SessionUpdate}/>
                   <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>
               </Switch>
           </ProvideAuth>
