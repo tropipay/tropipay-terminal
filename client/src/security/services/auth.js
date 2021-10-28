@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { updateSession, selectSession } from "./AuthSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { updateSession, selectSession } from "./AuthSlice";
 
 import db from "./localdb";
 
@@ -25,7 +25,7 @@ export function useProvideAuth() {
   const [user, setUser] = useState(null);
 
   const signin = (history, from) => {
-    db.set("session", JSON.stringify({ from }));
+    db.set({ from }, "session");
     return new Promise((resolve, reject) => {
       resolve(url_login);
     });

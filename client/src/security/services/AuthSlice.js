@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import db from "./localdb";
 
+// ... Create Slice
 export const slice = createSlice({
   name: "auth",
   initialState: {
@@ -32,16 +33,19 @@ export const slice = createSlice({
   },
 });
 
-export const { updateSession, updateProfile, updateError } = slice.actions;
+// ... Reducer  
+export default slice.reducer;
 
+// ... Selectors  
 export const selectProfile = (state) => state.auth.profile;
 export const selectSession = (state) => state.auth.session;
 export const selectError = (state) => state.auth.error;
 export const selectToken = (state) => state.auth.session.token;
 
-export default slice.reducer;
+// ... Actions  
+export const { updateSession, updateProfile, updateError } = slice.actions;
 
-
+// ... Actions (async)  
 export const loadProfile = () => (dispatch) => {
   console.log("AuthSlice", "loadProfile");
   try {
