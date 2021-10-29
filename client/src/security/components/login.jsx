@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom"; // useHistory, 
 
-import db from "../services/localdb";
+import db from "../services/Localdb";
 
 function Login() {
     const { t } = useTranslation();

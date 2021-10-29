@@ -1,6 +1,6 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Route, Redirect } from "react-router-dom";
 import { selectProfile } from "../services/AuthSlice";
 
 export default function RoutePrivate({ children, ...rest }) {

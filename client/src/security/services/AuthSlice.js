@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import db from "./localdb";
+import db from "./Localdb";
 
 // ... Create Slice
 export const slice = createSlice({
