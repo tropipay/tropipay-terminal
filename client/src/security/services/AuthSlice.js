@@ -23,7 +23,6 @@ export const slice = createSlice({
       }
     },
     updateProfile: (state, action) => {
-      console.log('updateProfile >>>>', action.payload);
       if (action.payload) {
         db.set(action.payload, "profile");
         state.profile = action.payload;
