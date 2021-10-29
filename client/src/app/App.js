@@ -7,10 +7,9 @@ import "./App.scss";
 import './services/lang';
 
 import store from './stores/AppStore';
-import AppRoute from './AppRoute';
+import AppRoute from './components/AppRoute';
 
 function App() {
-
   return (
       <BrowserRouter>
         <Provider store={store}>

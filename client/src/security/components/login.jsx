@@ -3,13 +3,12 @@ import React from 'react';
 
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom"; // useHistory, 
-//import { useAuth } from '../services/auth';
+
 import db from "../services/localdb";
 
 function Login() {
     const { t } = useTranslation();
-    /*const history = useHistory();
-    const auth = useAuth();*/
+    /*const history = useHistory();*/
     const location = useLocation();
 
     const { from } = location.state || { from: { pathname: "/" } };

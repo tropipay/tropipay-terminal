@@ -1,6 +1,6 @@
 import cookie from "react-cookies";
 /**
- * @description
+ * @description Higher order layer for web storage (cookie, web Storage, etc)
  */
 class LocalDb {
   /**
