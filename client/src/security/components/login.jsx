@@ -7,17 +7,14 @@ import { useLocation } from "react-router-dom"; // useHistory,
 import db from "../services/Localdb";
 
 function Login() {
+    const url = "http://localhost:3005";
     const { t } = useTranslation();
-    /*const history = useHistory();*/
     const location = useLocation();
 
     const { from } = location.state || { from: { pathname: "/" } };
     const login = () => {
         db.set({ from }, "session");
-        window.location.href = "/auth/session";
-        /*return auth.signin(history, from).then((url) => {
-            window.location.href = url;
-        });*/
+        window.location.href = url + "/api/v1/security/user/connected_view";
     };
 
     return (

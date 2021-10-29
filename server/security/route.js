@@ -34,7 +34,6 @@ router.get('/user/connected_view', (req, res, next) => {
 });
 //...................................................... ROUTE OAUTH STEP 2
 router.get('/oauth/response', async (req, res, next) => {
-    console.log("/oauth/response");
     try {
         //... verify the state value
         if (req.query['state'] !== state) {
@@ -61,7 +60,7 @@ router.get('/oauth/response', async (req, res, next) => {
             maxAge: 86400000
         });
         console.log('session', ses);
-        const from = '/auth/session'; // ses.from || "";
+        const from = '/auth/session'; 
         res.redirect(url_terminal + from);
     } catch (error) {
         console.log("Error", error);
@@ -70,14 +69,14 @@ router.get('/oauth/response', async (req, res, next) => {
 });
 
 router.post('/profile', async (req, res, next) => {
-    res.json({
-        "name": "Pedro Picapiedras",
-        "amount": 410,
-        "coin": "EUR",
-        "date": "2021-08-23 18:30",
-        "description": "",
-        "code": "34123"
+    const session = req.body;
+
+    const profileData = await axios({
+        headers: {'Authorization': 'Bearer ' + session.access_token},
+        url: url_tropipay + "/api/users/profile"
     });
+
+    res.json(profileData.data);
 });
 
 module.exports = router;

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import db from "./Localdb";
+const URL_TERMINAL = 'http://localhost:3005';
 
 // ... Create Slice
 export const slice = createSlice({
@@ -47,10 +48,9 @@ export const { updateSession, updateProfile, updateError } = slice.actions;
 
 // ... Actions (async)  
 export const loadProfile = () => (dispatch) => {
-  console.log("AuthSlice", "loadProfile");
   try {
-    const data = {};
-    const url = "http://localhost:3005/api/v1/security/profile";
+    const data = db.get("session");
+    const url = URL_TERMINAL + "/api/v1/security/profile";
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data), 
@@ -60,7 +60,6 @@ export const loadProfile = () => (dispatch) => {
     })
     .then(response => response.json())
     .then(data => dispatch(updateProfile(data)));
-
   } catch (e) {
     dispatch(updateError(e.message));
     return console.error(e.message);
