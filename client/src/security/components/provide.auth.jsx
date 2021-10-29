@@ -1,5 +1,5 @@
 import React, { useContext, createContext, useState } from "react";
-import db from "../services/Localdb";
+import db from "../services/localdb";
 
 const AuthContext = createContext();
 

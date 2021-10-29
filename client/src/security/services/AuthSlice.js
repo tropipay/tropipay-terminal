@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import db from "./Localdb";
+import db from "./localdb";
 const URL_TERMINAL = 'http://localhost:3005';
 
 // ... Create Slice
