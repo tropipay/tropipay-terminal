@@ -13,9 +13,6 @@ code {
     monospace;
 }
 
-.logos {
-  background-color: red;
-}
 
 @import "./scss/variables";
 @import "./scss/helpers";
@@ -41,3 +38,5 @@ code {
 @import "./scss/remittance";
 @import "./scss/join_telegram";
 @import "./scss/addFundView";
+@import "./scss/cmpHome";
+@import "./scss/boxLayout";

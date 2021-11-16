@@ -58,24 +58,29 @@ function Home() {
             <Grid container spacing={3}>
             <Grid item xs={12} sm={7}>
                 <div className="row" style={{margin: '2rem'}}>
-                    <Typography variant="h4" component="h4">
+                    <Typography variant="h6" component="h4">
                         {t("home.name")}
                     </Typography>
-                    <Typography variant="subtitle1" component="h4">
-                        {t("home.company")}
-                    </Typography>
+
+                    <div className="box-horizontal" style={{ marginLeft: '3rem' }}>
+                        <Typography style={{ marginRight: '3px', fontSize: '5px'}}>
+                            {t("home.by")}
+                        </Typography>
+                        <Typography style={{ marginRight: '3px', fontSize: '10px'}}>
+                            {t("home.company")}
+                        </Typography>
+                    </div>
                     
-                    <Typography variant="h3" component="h3">
+                    <Typography variant="h4" mt='4rem'>
                         {t("home.title")}
                     </Typography>
-                    <Typography variant="subtitle1" component="h3">
+                    <Typography variant="subtitle1"  mt='1rem'  mb='1rem'>
                         {t("home.subtitle")}
                     </Typography>
 
+                    <Login /> 
 
-                    <Login />
-
-                    <ul className="footerMenu">
+                    <ul className="lstMenu box-horizontal">
                         {links.map((item, i) => (
                             <li key={i} className="menuItem my-2">
                                 <Link to={item.to}>{t(item.label)}</Link>
@@ -83,7 +88,7 @@ function Home() {
                         ))}
                     </ul>
 
-                    <div className="logos">
+                    <div className="logos box-horizontal">
                         <img src={IMG_VISA} alt="Visa"/>
                         <img src={IMG_MASTERCARD} alt="Master Card"/>
                         <img src={IMG_MAESTRO} alt="IMG_MAESTRO"/>
