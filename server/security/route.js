@@ -30,6 +30,7 @@ router.get('/user/connected_view', (req, res, next) => {
         state,
         scope
     });
+    console.log('connected_view', param);
     res.redirect(oauth_authorize + "?" + param);
 });
 //...................................................... ROUTE OAUTH STEP 2

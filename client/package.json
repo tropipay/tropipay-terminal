@@ -15,6 +15,7 @@
     "axios": "^0.24.0",
     "i18next": "^21.3.3",
     "i18next-browser-languagedetector": "^6.1.2",
+    "mdi-react": "^8.2.0",
     "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-cookies": "^0.1.1",

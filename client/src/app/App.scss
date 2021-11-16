@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,6 +12,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 @import "./scss/variables";
 @import "./scss/helpers";
@@ -36,3 +38,5 @@ code {
 @import "./scss/remittance";
 @import "./scss/join_telegram";
 @import "./scss/addFundView";
+@import "./scss/cmpHome";
+@import "./scss/boxLayout";

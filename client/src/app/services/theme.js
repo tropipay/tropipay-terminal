@@ -3,6 +3,9 @@ import {
 } from '@material-ui/core/styles';
 
 const theme = createTheme({
+    root: {
+        width: '98%'
+    },
     palette: {
         primary: {
             light: '#6574e2',

@@ -1,0 +1,22 @@
+.logos {
+    img {
+        max-height: 30px;
+        margin-right: 6px;
+    }
+}
+
+.lstMenu {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 ;
+
+    li a {
+        text-decoration: none;
+        color: #8986A3;
+        padding-right: 2rem;
+
+        &:hover {
+            color: rgba(#8986A3, 0.4);
+        }
+    }
+}

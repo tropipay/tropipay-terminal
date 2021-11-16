@@ -1,6 +1,6 @@
 {
-  "short_name": "TropiPay POS",
-  "name": "TropiPay Point of Sale (POS)",
+  "short_name": "TropiPay Terminal",
+  "name": "TropiPay Terminal",
   "icons": [
     {
       "src": "icon/favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "icon/logo192.png",
+      "src": "icon/android-icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icon/logo512.png",
+      "src": "icon/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
