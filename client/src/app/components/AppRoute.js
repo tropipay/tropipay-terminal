@@ -9,8 +9,8 @@ import RoutePrivate from '../../security/components/route.private';
 import Login from '../../security/components/login';
 import Session from '../../security/components/session';
 
-import Menu from '../../menu/menu';
-import Demo from "../../demo/Demo.jsx";
+//import Menu from '../../menu/menu';
+import Home from "./Home.jsx";
 
 export default function AppRoute() {
   
@@ -23,9 +23,8 @@ export default function AppRoute() {
 
   return (
     <ProvideAuth>
-        <Menu />
         <Switch>
-            <Route exact path='/' render={(props) => (<Demo />)}/>
+            <Route exact path='/' render={(props) => (<Home />)}/>
             <Route exact path="/public">
                 <h3>Public</h3>
             </Route>
