@@ -17,7 +17,6 @@ import FacebookIcon from 'mdi-react/FacebookIcon';
 import InstagramIcon from 'mdi-react/InstagramIcon';
 import Login from '../../security/components/login';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
