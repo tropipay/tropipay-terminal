@@ -1,16 +1,17 @@
-import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import AccountCircleIcon from 'mdi-react/AccountCircleIcon';
+import { useHistory } from "react-router-dom";
 
-import { useTranslation } from 'react-i18next'
-
-import MenuIcon from 'mdi-react/MenuIcon'
+import { useTranslation } from 'react-i18next';
 
 export default function Menu() {
   const { t } = useTranslation()
+  const history = useHistory();
   return (
     <Box sx={{ flexGrow: 1, marginBottom: '0.9rem' }}>
       <AppBar position="static" color="default" >
@@ -20,10 +21,10 @@ export default function Menu() {
           </Typography>
           <IconButton
             aria-haspopup="true"
-            onClick={() => console.log('click menu')}
+            onClick={() => history.push("/profile")}
             color="inherit"
           >
-            <MenuIcon />
+            <AccountCircleIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
