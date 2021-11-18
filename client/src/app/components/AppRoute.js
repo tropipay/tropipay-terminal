@@ -8,8 +8,10 @@ import ProvideAuth from '../../security/components/provide.auth';
 import RoutePrivate from '../../security/components/route.private';
 import Login from '../../security/components/login';
 import Session from '../../security/components/session';
+
 import MovementPage from '../../movement/components/MovementPage';
 import PaymentPage from '../../payment/components/PaymentPage';
+import ProfilePage from '../../profile/components/ProfilePage';
 
 //import Menu from '../../menu/menu';
 import Home from "./Home.jsx";
@@ -39,6 +41,7 @@ export default function AppRoute() {
             
             <Route exact path="/movement"> <MovementPage /> </Route>
             <Route exact path="/payment"> <PaymentPage /> </Route>
+            <Route exact path="/profile"> <ProfilePage /> </Route>
 
             <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>
         </Switch>
