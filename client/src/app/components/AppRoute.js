@@ -14,8 +14,7 @@ import PaymentPage from '../../payment/components/PaymentPage';
 import ProfilePage from '../../profile/components/ProfilePage';
 import HomePage from "./HomePage.jsx";
 import MainPage from "./MainPage.jsx";
-
-//import Menu from '../../menu/menu';
+import Page from "./Page.jsx";
 
 export default function AppRoute() {
   
@@ -35,9 +34,9 @@ export default function AppRoute() {
             <Route exact path="/login"> <Login /> </Route>
             <Route exact path="/auth/session"> <Session /> </Route>
             
-            <Route exact path="/home"> <MainPage /> </Route>
-            <Route exact path="/movement"> <MovementPage /> </Route>
-            <Route exact path="/payment"> <PaymentPage /> </Route>
+            <Route exact path="/home"> <Page>  <MainPage /> </Page> </Route>
+            <Route exact path="/movement"> <Page> <MovementPage />  </Page> </Route>
+            <Route exact path="/payment"> <Page> <PaymentPage /> </Page> </Route>
             <Route exact path="/profile"> <ProfilePage /> </Route>
 
             <Route exact path='/' render={(props) => (<HomePage />)}/>
