@@ -22,5 +22,10 @@
         "logout": {
             "title": "Salir"
         }
+    },
+    "component": {
+        "shareThis": {
+            "label": "Compartir"
+        }
     }
 }
