@@ -27,5 +27,70 @@
         "shareThis": {
             "label": "Compartir"
         }
+    },
+    "payment":{
+        "from": {
+            "advanced": "ver opciones avanzadas",
+            "concept": {
+                "placeholder": "Concepto",
+                "label": "Concepto"
+            },
+            "amount": {
+                "placeholder": "Importe",
+                "label": "Importe"
+            },
+            "description": {
+                "placeholder": "Descripción",
+                "label": "Descripción"
+            },
+            "expirationDays": {
+                "placeholder": "Descripción",
+                "label": "Descripción"
+            }
+        }
+    },
+    "error": {
+        "required": "Este campo es obligatorio",
+        "email": "Este email no es válido",
+        "phone": "Introduce un teléfono válido",
+        "password": "Debe tener más de 8 caracteres con mayúsculas, minuscúlas y números",
+        "passwordMatch": "Las contraseñas no coinciden",
+        "amount": "Introduce un monto válido (ej. 344,50)",
+        "amountmin": "La cantidad especificada debe ser mayor que el mínimo definido para esta operación, que es ",
+        "minCryptoAmount": "Valor mínimo {{min}}",
+        "adult": "Debe tener al menos 18 años",
+        "temporarilyDisabled": "Deshabilitado temporalmente",
+        "uniqueEmail": "Email en uso",
+        "invalidToken": "Código inválido",
+        "invalidSwift": "formato de SWIFT inválido",
+        "uniquePhone": "Teléfono en uso",
+        "connection": "La aplicación no responde, verifique su conexión a internet",
+        "internal": "Error interno del sistema, por favor contacte al administrador",
+        "numeric": "Debe ser un valor numérico",
+        "url": "URL incorrecta",
+        "isSameOrGreaterThanCurrentDate": "Debe ser igual o mayor que la fecha actual",
+        "regEx": "Entrada no válida",
+        "userNotFound": "Usuario no encontrado",
+        "voucherCode": "Código inválido",
+        "credentials": "El usuario y password introducidos no son válidos",
+        "unauthorized": "Usuario no autorizado",
+        "incompleteRegistration": "Registro no completado",
+        "incompleteOperation": "No se pudo completar la operación, inténtalo más tarde",
+        "invalidParameters": "Parámetros inválidos",
+        "PC_001": "Error obteniendo el listado de Links de Pago",
+        "PC_002": "Error obteniendo el detalle del Link de Pago",
+        "PC_003": "Invalid Expiration Date",
+        "PC_004": "El link de Pago no existe",
+        "PC_005": "No se pudo notificar al cliente. Inténtelo de nuevo.",
+        "PC_006": "La fecha de servicio es inválida",
+        "PC_007": "Parámetros inválidos",
+        "AFR_001": "Lo sentimos, con este cobro sobrepasa la cantidad máxima permitida en el día .",
+        "AFR_002": "En estos momentos estamos experimentando una sobrecarga de procesamiento de cobros en la plataforma. Le recomendamos que lo intente de nuevo dentro de unas horas.",
+        "AFR_003": "Lo sentimos, ya ha procesado la cantidad máxima permitida al mes por usuario.",
+        "AFR_004": "En estos momentos estamos experimentando una sobrecarga de procesamiento de cobros en la plataforma. Le recomendamos que lo intente de nuevo dentro de unas horas.",
+        "PR_001": "[Estamos en Mantenimiento] En estos momentos no es posible realizar esta acción.",
+        "LPC_001": "Carta de pago cerrada",
+        "LPC_002": "La carta de pago no existe",
+        "LPC_003": "Error al obtener los detalles de la carta de pago"
     }
 }
