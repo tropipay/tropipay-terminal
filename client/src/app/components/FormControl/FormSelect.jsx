@@ -2,9 +2,13 @@ import React from "react";
 import { MenuItem, Select } from "@material-ui/core";
 import { Controller } from "react-hook-form";
 
-export const FormSelect = ({ name, control, options, className, variant, size, placeholder, rules, type }) => {
+export const FormSelect = ({ name, control, options, className, variant, size, placeholder, rules, type, keys }) => {
 
   options = options || [];
+  keys = keys || {
+    label: 'label',
+    value: 'value'
+  };
   placeholder = placeholder || '';
   rules = rules || {};
   variant = variant || "outlined";
@@ -15,8 +19,8 @@ export const FormSelect = ({ name, control, options, className, variant, size, p
   const generateOptions = () => {
     return options.map((option) => {
       return (
-        <MenuItem key={option.value} value={option.value}>
-          {option.label}
+        <MenuItem key={option[keys.value]} value={option[keys.value]}>
+          {option[keys.label]}
         </MenuItem>
       );
     });
