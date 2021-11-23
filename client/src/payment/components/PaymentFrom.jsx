@@ -38,17 +38,6 @@ function PaymentFrom(props) {
     }
   ];
 
-  const options = [
-    {
-      label: "Checkbox Option 1",
-      value: "1",
-    },
-    {
-      label: "Checkbox Option 2",
-      value: "2",
-    },
-  ];
-
   const onSubmit = (data) => console.log(data)
 
   return (
