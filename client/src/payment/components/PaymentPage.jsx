@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { useTranslation } from "react-i18next";
-import PaymentFrom from './PaymentFrom'
+import PaymentFrom from './PaymentFrom';
+//import { useTranslation } from "react-i18next";
 
 function PaymentPage(props) {
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
 
   return (
     <div className="Demo">

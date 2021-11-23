@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form'
-import { Button, Paper, Typography } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import FormText from '../../app/components/FormControl/FormText';
 import FormSelect from '../../app/components/FormControl/FormSelect';
 
@@ -10,7 +10,7 @@ import FormSelect from '../../app/components/FormControl/FormSelect';
 function PaymentFrom(props) {
   const { t } = useTranslation()
 
-  const { handleSubmit, control, reset, setValue } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       control: "",
       coin: '2'
