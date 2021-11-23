@@ -46,6 +46,10 @@
             "expirationDays": {
                 "placeholder": "Descripción",
                 "label": "Descripción"
+            },
+            "currency": {
+                "placeholder": "Moneda",
+                "label": "Moneda"
             }
         }
     },
