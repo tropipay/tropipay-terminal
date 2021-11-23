@@ -8,7 +8,7 @@ import Input from '@material-ui/core/Input';
 import EyeIcon from 'mdi-react/EyeIcon';
 import EyeOffIcon from 'mdi-react/EyeOffIcon';
 
-const FormText = ({ name, control, label, rules, placeholder, variant, type, size, className, decorator }) => {
+const FormText = ({ name, control, label, rules, placeholder, variant, type, size, className, decorator, multiline }) => {
   placeholder = placeholder || '';
   rules = rules || {};
   variant = variant || "outlined";
@@ -16,6 +16,7 @@ const FormText = ({ name, control, label, rules, placeholder, variant, type, siz
   size = size || "small";
   className = className || "";
   decorator = decorator || "";
+  multiline = multiline || false;
 
   const [showpass, setShowpass] = useState(false);
 
@@ -70,6 +71,7 @@ const FormText = ({ name, control, label, rules, placeholder, variant, type, siz
             value={value}
             type={type}
             className={className}
+            multiline={multiline}
             fullWidth
             variant={variant}
           />

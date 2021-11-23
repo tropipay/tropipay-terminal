@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 import { Button } from "@material-ui/core";
 import FormText from '../../app/components/FormControl/FormText';
 import FormSelect from '../../app/components/FormControl/FormSelect';
 import FromCheckBox from '../../app/components/FormControl/FromCheckBox';
+import FormTextArea from '../../app/components/FormControl/FormTextArea';
+
 
 import Grid from '@material-ui/core/Grid';
 import Lang from '../../app/services/lang';
@@ -15,6 +17,7 @@ function PaymentFrom(props) {
 
   const { handleSubmit, control, setValue } = useForm({
     defaultValues: {
+      description: "",
       amount: "",
       currency: '2',
       concept: "",
@@ -115,6 +118,7 @@ function PaymentFrom(props) {
           <FormText
             control={control}
             name="description"
+            multiline={true}
             label={t("payment.from.description.label")}
             rules={{ required: t("error.required") }}
           />
