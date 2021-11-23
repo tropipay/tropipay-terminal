@@ -6,7 +6,9 @@ import { Button } from "@material-ui/core";
 import FormText from '../../app/components/FormControl/FormText';
 import FormSelect from '../../app/components/FormControl/FormSelect';
 import Grid from '@material-ui/core/Grid';
+import Lang from '../../app/services/lang';
 
+console.log(Lang.getSupported());
 
 function PaymentFrom(props) {
   const { t } = useTranslation()
@@ -15,7 +17,9 @@ function PaymentFrom(props) {
     defaultValues: {
       amount: "",
       currency: '2',
-      concept: ""
+      concept: "",
+      lang: "es",
+      reference: ""
     }
   });
 
@@ -63,6 +67,43 @@ function PaymentFrom(props) {
             control={control}
             name="concept"
             label={t("payment.from.concept.label")}
+            rules={{ required: t("error.required") }}
+          />
+        </Grid>
+
+        <Grid item xs={12} >
+          <FormText
+            control={control}
+            name="reference"
+            label={t("payment.from.reference.label")}
+            rules={{ required: t("error.required") }}
+          />
+        </Grid>
+
+        <Grid item xs={12} >
+          <FormText
+            control={control}
+            name="reason"
+            label={t("payment.from.reason.label")}
+            rules={{ required: t("error.required") }}
+          />
+        </Grid>
+
+        <Grid item xs={12} >
+          <FormSelect
+            control={control}
+            name="lang"
+            value="1"
+            keys={{ label: 'label', value: "lang" }}
+            options={Lang.getSupported()}
+          />
+        </Grid>
+
+        <Grid item xs={12} >
+          <FormText
+            control={control}
+            name="description"
+            label={t("payment.from.description.label")}
             rules={{ required: t("error.required") }}
           />
         </Grid>

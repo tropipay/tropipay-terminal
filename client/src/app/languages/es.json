@@ -50,6 +50,18 @@
             "currency": {
                 "placeholder": "Moneda",
                 "label": "Moneda"
+            },
+            "reference": {
+                "placeholder": "Referencia de Cobro",
+                "label": "Referencia de Cobro"
+            },
+            "reason": {
+                "placeholder": "Motivo",
+                "label": "Motivo"
+            },
+            "lang": {
+                "placeholder": "Idioma",
+                "label": "Idioma"
             }
         }
     },
