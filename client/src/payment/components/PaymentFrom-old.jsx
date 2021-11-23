@@ -18,13 +18,13 @@ import lang from '../../app/services/lang';
 
 function PaymentFrom(props) {
     const { t } = useTranslation();
-
+/*
     const getMinimumAmount = () => {
-        /*let minimumAmount = this.state.service && this.state.service.min ? this.state.service.min / 100 : 16;
+        let minimumAmount = this.state.service && this.state.service.min ? this.state.service.min / 100 : 16;
         if (this.state.currency && this.state.currency === 'USD' && this.props.rate) {
             minimumAmount = Math.ceil(minimumAmount * this.props.rate);
         }
-        return minimumAmount;*/
+        return minimumAmount;
         return 16;
     };
 
@@ -362,6 +362,8 @@ function PaymentFrom(props) {
             </div>
         </div>
     );
+    */
+   return (<div></div>);
 }
 
 export default PaymentFrom;

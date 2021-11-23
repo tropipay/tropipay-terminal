@@ -1,0 +1,38 @@
+import React from "react";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import { useFormContext, Controller } from "react-hook-form";
+
+export const FormSelect = ({ name, control, options, className, variant }) => {
+
+  variant = variant || "outlined";
+  className = className || "";
+  options = options || [];
+
+  const generateOptions = () => {
+    return options.map((option) => {
+      return (
+        <MenuItem key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      );
+    });
+  };
+
+  return <Controller
+    control={control}
+    name={name}
+    render={({ field: { onChange, value } }) => (
+      <Select
+        onChange={onChange}
+        value={value}
+        className={className}
+        variant={variant}
+        fullWidth
+      >
+        {generateOptions()}
+      </Select>
+    )}
+  />
+};
+
+export default FormSelect;

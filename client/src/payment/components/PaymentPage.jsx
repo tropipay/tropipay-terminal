@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useTranslation } from "react-i18next";
-import PaymentFrom from './PaymentFrom-old'
+import PaymentFrom from './PaymentFrom'
 
 function PaymentPage(props) {
   const { t } = useTranslation();

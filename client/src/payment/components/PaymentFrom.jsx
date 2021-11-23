@@ -1,38 +1,55 @@
 import React from 'react'
 
-import { useTranslation } from 'react-i18next'
-import lang from '../../app/services/lang'
-
-import { useForm, Controller } from 'react-hook-form'
+import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form'
 import { Button, Paper, Typography } from "@material-ui/core";
-import FormInputText from '../../app/components/FormControl/FormInputText'
+import FormText from '../../app/components/FormControl/FormText';
+import FormSelect from '../../app/components/FormControl/FormSelect';
+
 
 function PaymentFrom(props) {
   const { t } = useTranslation()
 
-  const formMethods = useForm({
+  const { handleSubmit, control, reset, setValue } = useForm({
     defaultValues: {
-      textValue: '',
-      radioValue: '',
-      checkboxValue: [],
-      dateValue: new Date(),
-      dropdownValue: '',
-      sliderValue: 0,
-    },
-  })
-  const { handleSubmit, reset, control, setValue } = formMethods;
+      control: "",
+      coin: '2'
+    }
+  });
 
   const onSubmit = (data) => console.log(data)
 
   return (
     <div className="Demo">
-      {t('demo.title', { test: 'PaymentFrom' })}
-
       <div>
-        <FormInputText name="textValue" control={control} label="Text Input" />
+        <FormText
+          control={control}
+          name="control"
+          label={t("demo.title")}
+          rules={{ required: t("error.required") }}
+        />
+        <FormSelect
+          control={control}
+          name="coin"
+          value="1"
+          options={[
+            {
+              label: "Dropdown Option 1",
+              value: "1",
+            },
+            {
+              label: "Dropdown Option 2",
+              value: "2",
+            },
+            {
+              label: "Dropdown Option 3",
+              value: "3",
+            }
+          ]}
+        />
         <Button onClick={handleSubmit(onSubmit)} variant={"contained"}>
           SEND
-        </Button>
+          </Button>
       </div>
     </div>
   )
