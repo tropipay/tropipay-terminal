@@ -30,7 +30,7 @@
     },
     "payment":{
         "from": {
-            "advanced": "ver opciones avanzadas",
+            "advanced": "Ver opciones avanzadas",
             "concept": {
                 "placeholder": "Concepto",
                 "label": "Concepto"

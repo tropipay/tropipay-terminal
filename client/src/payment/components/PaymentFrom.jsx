@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form'
 import { Button } from "@material-ui/core";
 import FormText from '../../app/components/FormControl/FormText';
 import FormSelect from '../../app/components/FormControl/FormSelect';
+import FromCheckBox from '../../app/components/FormControl/FromCheckBox';
+
 import Grid from '@material-ui/core/Grid';
 import Lang from '../../app/services/lang';
 
@@ -13,7 +15,7 @@ console.log(Lang.getSupported());
 function PaymentFrom(props) {
   const { t } = useTranslation()
 
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, setValue } = useForm({
     defaultValues: {
       amount: "",
       currency: '2',
@@ -36,6 +38,17 @@ function PaymentFrom(props) {
       label: "Dropdown Option 3",
       value: "3",
     }
+  ];
+
+  const options = [
+    {
+      label: "Checkbox Option 1",
+      value: "1",
+    },
+    {
+      label: "Checkbox Option 2",
+      value: "2",
+    },
   ];
 
   const onSubmit = (data) => console.log(data)
@@ -68,6 +81,18 @@ function PaymentFrom(props) {
             name="concept"
             label={t("payment.from.concept.label")}
             rules={{ required: t("error.required") }}
+          />
+        </Grid>
+
+        <Grid item xs={12} >
+          <FromCheckBox
+            control={control}
+            setValue={setValue}
+            options={[{
+              label: t("payment.from.advanced"),
+              value: "1",
+            }]}
+            name="advanced"
           />
         </Grid>
 
@@ -107,9 +132,10 @@ function PaymentFrom(props) {
             rules={{ required: t("error.required") }}
           />
         </Grid>
+
       </Grid>
 
-      <Button onClick={handleSubmit(onSubmit)} variant={"contained"} fullWidth> 
+      <Button onClick={handleSubmit(onSubmit)} variant={"contained"} fullWidth>
         SEND
       </Button>
     </div>
