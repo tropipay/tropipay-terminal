@@ -10,8 +10,6 @@ import FromCheckBox from '../../app/components/FormControl/FromCheckBox';
 import Grid from '@material-ui/core/Grid';
 import Lang from '../../app/services/lang';
 
-console.log(Lang.getSupported());
-
 function PaymentFrom(props) {
   const { t } = useTranslation()
 
