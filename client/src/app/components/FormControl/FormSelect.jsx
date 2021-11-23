@@ -1,6 +1,6 @@
 import React from "react";
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
-import { useFormContext, Controller } from "react-hook-form";
+import { MenuItem, Select } from "@material-ui/core";
+import { Controller } from "react-hook-form";
 
 export const FormSelect = ({ name, control, options, className, variant }) => {
 
