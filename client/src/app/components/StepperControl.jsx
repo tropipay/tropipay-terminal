@@ -38,7 +38,7 @@ function StepperControl() {
   }
 
   const subscribe = (callback) => state.event = callback;
-  const render = () => state.steps[index] ? state.steps[index] : null;
+  const render = () => state.steps[index] ? state.steps[index]() : null;
   const add = (com) => state.steps.push(com);
   const del = (pos) => delete state.steps[pos];
 
@@ -55,7 +55,8 @@ function StepperControl() {
     del,
     next,
     back,
-    go
+    go,
+    index
   }
 }
 
