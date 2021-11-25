@@ -2,15 +2,15 @@ import React from 'react';
 import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import { Typography } from "@mui/material";
+import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 
 import IMG_VISA from '../images/icon_visa.png';
 import IMG_MASTERCARD from '../images/icon_mastercard.png';
 import IMG_MAESTRO from '../images/icon_maestro.png';
 import IMG_UNIONPLAY from '../images/icon_unionplay.png';
-import IMG_DISCOVER from '../images/icon_discover.png'
+import IMG_DISCOVER from '../images/icon_discover.png';
 
 import TwitterIcon from 'mdi-react/TwitterIcon';
 import FacebookIcon from 'mdi-react/FacebookIcon';

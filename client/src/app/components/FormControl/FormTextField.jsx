@@ -17,7 +17,6 @@ const FormTextField = ({ name, control, label, rules, placeholder, variant, type
   className = className || "";
   decorator = decorator || "";
   multiline = multiline || false;
-  minRows = multiline || 4;
 
   const [showpass, setShowpass] = useState(false);
 
@@ -75,7 +74,6 @@ const FormTextField = ({ name, control, label, rules, placeholder, variant, type
             multiline={multiline}
             fullWidth
             variant={variant}
-            minRows={minRows}
           />
       }
     />

@@ -70,11 +70,10 @@
                 "back": "Cancelar"
             }
         },
-        "resumen": {
+        "resume": {
             "title": "Resumen de cobro",
             "subtitle": "Se generará un enlace de pago a un cobro con las siguientes condiciones",
-            "accept": "Acepto los",
-            "and": "y las",
+            "accept": "Acepto los {{term}} y las {{policy}}",
             "detail": "Detales de la operación",
             "cost": "Coste del servicio",
             "importe": "Importe",

@@ -63,7 +63,7 @@ function PaymentFrom(props) {
         <FormTextField
           control={control}
           name="amount"
-          size="large"
+          size="medium"
           label={t("payment.form.amount.label")}
           rules={{ required: t("error.required") }}
         />
@@ -73,7 +73,7 @@ function PaymentFrom(props) {
         <FormSelect
           control={control}
           name="currency"
-          size="large"
+          size="medium"
           value="1"
           options={coinOptions}
         />
@@ -83,7 +83,7 @@ function PaymentFrom(props) {
         <FormTextField
           control={control}
           name="concept"
-          size="large"
+          size="medium"
           label={t("payment.form.concept.label")}
           rules={{ required: t("error.required") }}
         />
@@ -92,7 +92,7 @@ function PaymentFrom(props) {
       <Grid item xs={12} >
         <FromCheckBox
           name="advanced"
-          size="large"
+          size="medium"
           control={control}
           label={t("payment.form.advanced")}
         />
@@ -102,7 +102,7 @@ function PaymentFrom(props) {
         <FormTextField
           control={control}
           name="reference"
-          size="large"
+          size="medium"
           label={t("payment.form.reference.label")}
           rules={{ required: t("error.required") }}
         />
@@ -111,7 +111,7 @@ function PaymentFrom(props) {
       <Grid item xs={12} >
         <FormTextField
           name="reason"
-          size="large"
+          size="medium"
           control={control}
           label={t("payment.form.reason.label")}
           rules={{ required: t("error.required") }}
@@ -123,7 +123,7 @@ function PaymentFrom(props) {
           control={control}
           name="lang"
           value="1"
-          size="large"
+          size="medium"
           keys={{ label: 'label', value: "lang" }}
           options={Lang.getSupported()}
         />
@@ -134,7 +134,7 @@ function PaymentFrom(props) {
           control={control}
           name="description"
           multiline={true}
-          size="large"
+          size="medium"
           label={t("payment.form.description.label")}
           rules={{ required: t("error.required") }}
         />
@@ -144,7 +144,7 @@ function PaymentFrom(props) {
         <Button
           variant="contained"
           className="btn-full-width"
-          size="large"
+          size="medium"
           color="primary"
           onClick={handleSubmit(submit)}
         >

@@ -15,11 +15,14 @@ function PaymentPage(props) {
   const stepper = StepperControl();
 
   stepper.add(() => <PaymentFrom submit={(payload) => {
-    console.log(">>>>>>>", payload);
+    console.log(" PaymentFrom >>>>>>>", payload);
     stepper.next();
   }} />);
 
-  stepper.add(() => <PaymentResume />);
+  stepper.add(() => <PaymentResume submit={() => {
+    console.log(" PaymentResume >>>>>>>");
+    stepper.next();
+  }} />);
 
   stepper.subscribe((step, dir) => {
     console.log(">> PAGE #", step, dir);
@@ -27,10 +30,10 @@ function PaymentPage(props) {
 
   const renderControls = (t, history) => {
     let page = "";
-    
+
     switch (stepper.index) {
       case 0: page = "form"; break;
-      case 1: page = "resumen"; break;
+      case 1: page = "resume"; break;
       default: page = "show"; break;
     }
 
@@ -39,7 +42,7 @@ function PaymentPage(props) {
         variant="contained"
         className="btn-full-width"
         size="large"
-        style={{marginTop: "1rem"}}
+        style={{ marginTop: "1rem" }}
         onClick={() => history.push('/home')}
         color="secondary"
       >
