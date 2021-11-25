@@ -30,6 +30,8 @@
     },
     "payment":{
         "form": {
+            "title": "Realiza un cobro",
+            "subtitle": "Introduce el monto y la moneda que deseas ingresar",
             "advanced": "Ver opciones avanzadas",
             "concept": {
                 "placeholder": "Concepto",
@@ -69,12 +71,22 @@
             }
         },
         "resumen": {
+            "title": "Resumen de cobro",
+            "subtitle": "Se generará un enlace de pago a un cobro con las siguientes condiciones",
+            "accept": "Acepto los",
+            "and": "y las",
+            "detail": "Detales de la operación",
+            "cost": "Coste del servicio",
+            "importe": "Importe",
+            "selloff": "A liquidar en TropiPay",
             "btn": {
                 "next": "Generar enlace de pago",
                 "back": "Cancelar"
             }
         },
         "show": {
+            "title": "Enlace de pago listo",
+            "subtitle": "a nombre de {{username}} para el cobro de servicios",
             "btn": {
                 "back": "Ir a inicio"
             }
