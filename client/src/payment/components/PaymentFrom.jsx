@@ -56,7 +56,7 @@ function PaymentFrom(props) {
         <ContentHeader
           title={t("payment.form.title")}
           subtitle={t("payment.form.subtitle")}
-          className="text-align-center"
+          className="box-label-center"
         />
       </Grid>
 

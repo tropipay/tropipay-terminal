@@ -34,7 +34,7 @@ function PaymentResume(props) {
                 <ContentHeader
                     title={t("payment.resume.title")}
                     subtitle={t("payment.resume.subtitle")}
-                    className="text-align-center"
+                    className="box-label-center"
                 />
             </Grid>
 
@@ -61,7 +61,7 @@ function PaymentResume(props) {
                             {amount} {currency}
                         </Typography>
                     </div>
-                    <div className="box-horizontal box-align-between box-align-center">
+                    <div className="box-horizontal box-align-between box-align-center box-label-bold">
                         <Typography variant="body2">
                             {t("payment.resume.selloff")}
                         </Typography>
