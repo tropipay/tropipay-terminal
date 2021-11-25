@@ -80,13 +80,9 @@ function PaymentFrom(props) {
 
       <Grid item xs={12} >
         <FromCheckBox
-          control={control}
-          setValue={setValue}
-          options={[{
-            label: t("payment.form.advanced"),
-            value: "1",
-          }]}
           name="advanced"
+          control={control}
+          label={t("payment.form.advanced")}
         />
       </Grid>
 
@@ -101,8 +97,8 @@ function PaymentFrom(props) {
 
       <Grid item xs={12} >
         <FormText
-          control={control}
           name="reason"
+          control={control}
           label={t("payment.form.reason.label")}
           rules={{ required: t("error.required") }}
         />
