@@ -7,6 +7,7 @@ import { Button } from "@material-ui/core";
 import FormTextField from '../../app/components/FormControl/FormTextField';
 import FormSelect from '../../app/components/FormControl/FormSelect';
 import FromCheckBox from '../../app/components/FormControl/FromCheckBox';
+import ContentHeader from '../../app/components/ContentHeader';
 
 import Grid from '@material-ui/core/Grid';
 import Lang from '../../app/services/lang';
@@ -14,7 +15,7 @@ import Lang from '../../app/services/lang';
 function PaymentFrom(props) {
   const { t } = useTranslation();
 
-  const { handleSubmit, control, setValue } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       advanced: false,
       description: "",
@@ -51,10 +52,18 @@ function PaymentFrom(props) {
   return (
     <Grid container spacing={2}>
 
+      <Grid item xs={12} >
+        <ContentHeader
+          title={t("payment.form.title")}
+          subtitle={t("payment.form.subtitle")}
+        />
+      </Grid>
+
       <Grid item xs={12} sm={7}>
         <FormTextField
           control={control}
           name="amount"
+          size="large"
           label={t("payment.form.amount.label")}
           rules={{ required: t("error.required") }}
         />
@@ -64,6 +73,7 @@ function PaymentFrom(props) {
         <FormSelect
           control={control}
           name="currency"
+          size="large"
           value="1"
           options={coinOptions}
         />
@@ -73,6 +83,7 @@ function PaymentFrom(props) {
         <FormTextField
           control={control}
           name="concept"
+          size="large"
           label={t("payment.form.concept.label")}
           rules={{ required: t("error.required") }}
         />
@@ -81,6 +92,7 @@ function PaymentFrom(props) {
       <Grid item xs={12} >
         <FromCheckBox
           name="advanced"
+          size="large"
           control={control}
           label={t("payment.form.advanced")}
         />
@@ -90,6 +102,7 @@ function PaymentFrom(props) {
         <FormTextField
           control={control}
           name="reference"
+          size="large"
           label={t("payment.form.reference.label")}
           rules={{ required: t("error.required") }}
         />
@@ -98,6 +111,7 @@ function PaymentFrom(props) {
       <Grid item xs={12} >
         <FormTextField
           name="reason"
+          size="large"
           control={control}
           label={t("payment.form.reason.label")}
           rules={{ required: t("error.required") }}
@@ -109,6 +123,7 @@ function PaymentFrom(props) {
           control={control}
           name="lang"
           value="1"
+          size="large"
           keys={{ label: 'label', value: "lang" }}
           options={Lang.getSupported()}
         />
