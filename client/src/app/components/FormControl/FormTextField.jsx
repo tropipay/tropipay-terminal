@@ -8,7 +8,7 @@ import Input from '@material-ui/core/Input';
 import EyeIcon from 'mdi-react/EyeIcon';
 import EyeOffIcon from 'mdi-react/EyeOffIcon';
 
-const FormText = ({ name, control, label, rules, placeholder, variant, type, size, className, decorator, multiline }) => {
+const FormTextField = ({ name, control, label, rules, placeholder, variant, type, size, className, decorator, multiline }) => {
   placeholder = placeholder || '';
   rules = rules || {};
   variant = variant || "outlined";
@@ -80,4 +80,4 @@ const FormText = ({ name, control, label, rules, placeholder, variant, type, siz
   );
 };
 
-export default FormText;
+export default FormTextField;

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Button } from "@material-ui/core";
 
-import FormText from '../../app/components/FormControl/FormText';
+import FormTextField from '../../app/components/FormControl/FormTextField';
 import FormSelect from '../../app/components/FormControl/FormSelect';
 import FromCheckBox from '../../app/components/FormControl/FromCheckBox';
 
@@ -52,7 +52,7 @@ function PaymentFrom(props) {
     <Grid container spacing={2}>
 
       <Grid item xs={12} sm={7}>
-        <FormText
+        <FormTextField
           control={control}
           name="amount"
           label={t("payment.form.amount.label")}
@@ -70,7 +70,7 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12} >
-        <FormText
+        <FormTextField
           control={control}
           name="concept"
           label={t("payment.form.concept.label")}
@@ -87,7 +87,7 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12} >
-        <FormText
+        <FormTextField
           control={control}
           name="reference"
           label={t("payment.form.reference.label")}
@@ -96,7 +96,7 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12} >
-        <FormText
+        <FormTextField
           name="reason"
           control={control}
           label={t("payment.form.reason.label")}
@@ -115,7 +115,7 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12} >
-        <FormText
+        <FormTextField
           control={control}
           name="description"
           multiline={true}
