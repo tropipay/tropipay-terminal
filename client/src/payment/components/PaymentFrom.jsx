@@ -11,6 +11,7 @@ import ContentHeader from '../../app/components/ContentHeader';
 
 import Grid from '@material-ui/core/Grid';
 import Lang from '../../app/services/lang';
+import Currency from '../../app/services/currency';
 
 function PaymentFrom(props) {
   const { t } = useTranslation();
@@ -27,21 +28,6 @@ function PaymentFrom(props) {
       reference: ""
     }
   });
-
-  const coinOptions = [
-    {
-      label: "Dropdown Option 1",
-      value: "1",
-    },
-    {
-      label: "Dropdown Option 2",
-      value: "2",
-    },
-    {
-      label: "Dropdown Option 3",
-      value: "3",
-    }
-  ];
 
   const submit = (data) => {
     if (props.submit instanceof Function) {
@@ -76,7 +62,7 @@ function PaymentFrom(props) {
           name="currency"
           size="medium"
           value="1"
-          options={coinOptions}
+          options={Currency.list()}
         />
       </Grid>
 
