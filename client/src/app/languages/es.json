@@ -76,7 +76,7 @@
             "accept": "Acepto los {{term}} y las {{policy}}",
             "detail": "Detales de la operación",
             "cost": "Coste del servicio",
-            "importe": "Importe",
+            "amount": "Importe",
             "selloff": "A liquidar en TropiPay",
             "btn": {
                 "next": "Generar enlace de pago",

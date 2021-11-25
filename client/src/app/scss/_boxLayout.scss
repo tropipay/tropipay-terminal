@@ -1,3 +1,7 @@
+.box {
+    display: flex;
+}
+
 .box-horizontal {
     display: flex;
     flex-direction: row;
@@ -179,6 +183,19 @@
     background-color: white;
 }
 
-.box-marging-right-2 {
-    margin-right: 0.5rem;
+.box-padding-1 {
+    padding: 1rem;
+}
+.box-marging-1 {
+    padding: 1rem;
+}
+.box-padding-2 {
+    padding: 2rem;
+}
+.box-marging-2 {
+    padding: 2rem;
+}
+
+.text-align-center {
+    text-align:center;
 }
