@@ -9,8 +9,12 @@ import RoutePrivate from '../../security/components/route.private';
 import Login from '../../security/components/login';
 import Session from '../../security/components/session';
 
-//import Menu from '../../menu/menu';
-import Home from "./Home.jsx";
+import MovementPage from '../../movement/components/MovementPage';
+import PaymentPage from '../../payment/components/PaymentPage';
+import ProfilePage from '../../profile/components/ProfilePage';
+import HomePage from "./HomePage.jsx";
+import MainPage from "./MainPage.jsx";
+import Page from "./Page.jsx";
 
 export default function AppRoute() {
   
@@ -24,17 +28,18 @@ export default function AppRoute() {
   return (
     <ProvideAuth>
         <Switch>
-            <Route exact path='/' render={(props) => (<Home />)}/>
-            <Route exact path="/public">
-                <h3>Public</h3>
-            </Route>
-            <RoutePrivate exact path="/private">
-                <h3>Private</h3>
-            </RoutePrivate>
+            <Route exact path="/public"> <h3>Public</h3> </Route>
+            <RoutePrivate exact path="/private"> <h3>Private</h3> </RoutePrivate>
 
             <Route exact path="/login"> <Login /> </Route>
             <Route exact path="/auth/session"> <Session /> </Route>
+            
+            <Route exact path="/home"> <Page>  <MainPage /> </Page> </Route>
+            <Route exact path="/movement"> <Page> <MovementPage />  </Page> </Route>
+            <Route exact path="/payment"> <Page> <PaymentPage /> </Page> </Route>
+            <Route exact path="/profile"> <ProfilePage /> </Route>
 
+            <Route exact path='/' render={(props) => (<HomePage />)}/>
             <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>
         </Switch>
     </ProvideAuth>

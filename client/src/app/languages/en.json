@@ -22,5 +22,10 @@
         "logout": {
             "title": "Logout"
         }
+    },
+    "component": {
+        "shareThis": {
+            "label": "Share this"
+        }
     }
 }

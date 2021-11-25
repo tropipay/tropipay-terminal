@@ -1,3 +1,7 @@
+.box {
+    display: flex;
+}
+
 .box-horizontal {
     display: flex;
     flex-direction: row;
@@ -161,6 +165,14 @@
     font-weight: 700;
 }
 
+.box-label-center {
+    text-align:center;
+}
+
+.box-label-bold p {
+    font-weight: bold;
+}
+
 .box-item {
     max-width: 99%;
 }
@@ -179,6 +191,19 @@
     background-color: white;
 }
 
-.box-marging-right-2 {
-    margin-right: 0.5rem;
+.box-padding {
+    padding: 0.5rem;
+}
+.box-padding-1 {
+    padding: 1rem;
+}
+.box-padding-2 {
+    padding: 2rem;
+}
+
+.box-marging-1 {
+    padding: 1rem;
+}
+.box-marging-2 {
+    padding: 2rem;
 }

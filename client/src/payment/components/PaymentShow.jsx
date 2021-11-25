@@ -1,0 +1,94 @@
+import React, { useState } from 'react';
+
+import { useTranslation } from 'react-i18next';
+import { Button, Checkbox, FormControlLabel } from "@material-ui/core";
+import ContentHeader from '../../app/components/ContentHeader';
+
+import Grid from '@material-ui/core/Grid';
+import { Typography } from '@mui/material';
+
+function PaymentShow(props) {
+    const { t } = useTranslation();
+
+    const currency = "EUR";
+    const amount = 123;
+    const selloff = 119.31;
+    const cost = 3.69;
+
+    const [accept, setAccept] = useState(false);
+
+    const handleChange = (event) => {
+        setAccept(event.currentTarget.checked);
+    };
+
+    const submit = () => {
+        if (props.submit instanceof Function) {
+            props.submit();
+        }
+    };
+
+    return (
+        <Grid container spacing={2}>
+
+            <Grid item xs={12} >
+                <ContentHeader
+                    title={t("payment.show.title")}
+                    subtitle={t("payment.show.subtitle")}
+                    className="box-label-center"
+                />
+            </Grid>
+
+            <Grid item xs={12} >
+                <div container spacing={2} className="note-bg note-border box-padding-1">
+                    <Typography variant="body2">
+                        {t("payment.resume.detail")}
+                    </Typography>
+                    <div className="box-horizontal box-align-between box-align-center">
+                        <Typography variant="body2">
+                            {t("payment.resume.cost")}
+                        </Typography>
+
+                        <Typography className="box-align-right">
+                            {cost} {currency}
+                        </Typography>
+                    </div>
+                    <div className="box-horizontal box-align-between box-align-center">
+                        <Typography variant="body2">
+                            {t("payment.resume.amount")}
+                        </Typography>
+
+                        <Typography className="box-align-right">
+                            {amount} {currency}
+                        </Typography>
+                    </div>
+                    <div className="box-horizontal box-align-between box-align-center box-label-bold">
+                        <Typography variant="body2">
+                            {t("payment.resume.selloff")}
+                        </Typography>
+
+                        <Typography className="box-align-right">
+                            {selloff} {currency}
+                        </Typography>
+                    </div>
+                </div>
+            </Grid>
+
+            <Grid item xs={12} >
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={accept}
+                            onChange={handleChange}
+                            name="checkedB"
+                            color="primary"
+                        />
+                    }
+                    label={t("payment.resume.accept", { term: t("legal.terms"), policy: t("legal.policy") })}
+                />
+            </Grid>
+
+        </Grid>
+    )
+}
+
+export default PaymentShow;
