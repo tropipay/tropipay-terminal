@@ -13,7 +13,7 @@ export const FormSelect = ({ name, control, options, className, variant, size, p
   rules = rules || {};
   variant = variant || "outlined";
   type = type || "text";
-  size = size || "small";
+  size = size || "large";
   className = className || "";
 
   const generateOptions = () => {

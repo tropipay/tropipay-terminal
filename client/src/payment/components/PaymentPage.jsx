@@ -10,8 +10,8 @@ import Button from "@material-ui/core/Button";
 
 function PaymentPage(props) {
 
-  const history = useHistory();
   const { t } = useTranslation();
+  const history = useHistory();
   const stepper = StepperControl();
 
   stepper.add(() => <PaymentFrom submit={(payload) => {
@@ -39,6 +39,7 @@ function PaymentPage(props) {
         variant="contained"
         className="btn-full-width"
         size="large"
+        style={{marginTop: "1rem"}}
         onClick={() => history.push('/home')}
         color="secondary"
       >
@@ -48,7 +49,7 @@ function PaymentPage(props) {
   }
 
   return (
-    <div>
+    <div className="page-margin">
       {stepper.render()}
       {renderControls(t, history)}
     </div>

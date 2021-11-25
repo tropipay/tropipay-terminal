@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Lang from '../../app/services/lang';
 
 function PaymentFrom(props) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const { handleSubmit, control, setValue } = useForm({
     defaultValues: {
@@ -119,6 +119,7 @@ function PaymentFrom(props) {
           control={control}
           name="description"
           multiline={true}
+          size="large"
           label={t("payment.form.description.label")}
           rules={{ required: t("error.required") }}
         />
@@ -140,4 +141,4 @@ function PaymentFrom(props) {
   )
 }
 
-export default PaymentFrom
+export default PaymentFrom;
