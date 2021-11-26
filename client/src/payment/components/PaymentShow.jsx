@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { Button, Checkbox, FormControlLabel } from "@material-ui/core";
+import { Checkbox, FormControlLabel } from "@material-ui/core";
 import ContentHeader from '../../app/components/ContentHeader';
+import QRCode from '../../app/components/QRcode/QRCode';
+import ShareThis from '../../app/components/ShareThis/ShareThis';
 
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@mui/material';
@@ -14,12 +16,13 @@ function PaymentShow(props) {
     const amount = 123;
     const selloff = 119.31;
     const cost = 3.69;
+    const plDate = "12 Julio 2020, 20:20";
+    const plExp = "00:28:48";
 
-    const [accept, setAccept] = useState(false);
+    const paylinkUrl = "http://tppay/2543fd";
 
-    const handleChange = (event) => {
-        setAccept(event.currentTarget.checked);
-    };
+    const [sendSMS, setSendSMS] = useState(false);
+    const [sendEmail, setSendEmail] = useState(false);
 
     const submit = () => {
         if (props.submit instanceof Function) {
@@ -28,7 +31,7 @@ function PaymentShow(props) {
     };
 
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} style={{ width: '100%', marginLeft: '1px' }}  className="box-margin-bottom-2">
 
             <Grid item xs={12} >
                 <ContentHeader
@@ -38,55 +41,68 @@ function PaymentShow(props) {
                 />
             </Grid>
 
-            <Grid item xs={12} >
-                <div container spacing={2} className="note-bg note-border box-padding-1">
-                    <Typography variant="body2">
-                        {t("payment.resume.detail")}
-                    </Typography>
-                    <div className="box-horizontal box-align-between box-align-center">
-                        <Typography variant="body2">
-                            {t("payment.resume.cost")}
-                        </Typography>
+            <Grid item xs={12}>
+                <Grid container spacing={2} className="box-border-curved">
+                    <Grid container spacing={2} className="box-padding-bottom-2 box-padding-top-2">
+                        <Grid item xs={12} sm={6} className="box-vertical box-align-center">
+                            <QRCode url={paylinkUrl} size={200} />
+                        </Grid>
+                        <Grid item xs={12} sm={6} className="box-label-right ">
+                            <Typography variant="body2" className="box-padding-right-2">
+                                {plDate}
+                            </Typography>
+                            <Typography variant="body2" className="box-padding-right-2">
+                                {plExp}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} className="note-bg" style={{ padding: "2rem"}}>
+                        <Grid container spacing={2} >
+                            <Grid item xs={12} >
+                                <Typography variant="body5" className="gray-label box-label-bold"  >
+                                    {t("payment.show.url")}:
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={12} >
 
-                        <Typography className="box-align-right">
-                            {cost} {currency}
-                        </Typography>
-                    </div>
-                    <div className="box-horizontal box-align-between box-align-center">
-                        <Typography variant="body2">
-                            {t("payment.resume.amount")}
-                        </Typography>
+                            </Grid>
 
-                        <Typography className="box-align-right">
-                            {amount} {currency}
-                        </Typography>
-                    </div>
-                    <div className="box-horizontal box-align-between box-align-center box-label-bold">
-                        <Typography variant="body2">
-                            {t("payment.resume.selloff")}
-                        </Typography>
-
-                        <Typography className="box-align-right">
-                            {selloff} {currency}
-                        </Typography>
-                    </div>
-                </div>
+                            <Grid item xs={12} >
+                                <ShareThis
+                                    sharedUrl={paylinkUrl}
+                                    className="gray-label box-label-bold"
+                                />
+                            </Grid>
+                            <Grid item xs={12} >
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={sendSMS}
+                                            onChange={(event) => setSendSMS(event.currentTarget.checked)}
+                                            name="sendSMS"
+                                            color="primary"
+                                        />
+                                    }
+                                    label={t("payment.show.send.sms", { term: t("legal.terms"), policy: t("legal.policy") })}
+                                />
+                            </Grid>
+                            <Grid item xs={12} >
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={sendEmail}
+                                            onChange={(event) => setSendEmail(event.currentTarget.checked)}
+                                            name="sendEmail"
+                                            color="primary"
+                                        />
+                                    }
+                                    label={t("payment.show.send.email", { term: t("legal.terms"), policy: t("legal.policy") })}
+                                />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
-
-            <Grid item xs={12} >
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={accept}
-                            onChange={handleChange}
-                            name="checkedB"
-                            color="primary"
-                        />
-                    }
-                    label={t("payment.resume.accept", { term: t("legal.terms"), policy: t("legal.policy") })}
-                />
-            </Grid>
-
         </Grid>
     )
 }

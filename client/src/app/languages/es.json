@@ -86,6 +86,13 @@
         "show": {
             "title": "Enlace de pago listo",
             "subtitle": "a nombre de {{username}} para el cobro de servicios",
+            "url": "URL para el cobro", 
+            "share": "Compartir", 
+            "send": {
+                "sms": "Enviar SMS",
+                "email": "Enviar vía email",
+                "cost": "costo adicional {{value}}"
+            }, 
             "btn": {
                 "back": "Ir a inicio"
             }

@@ -133,6 +133,7 @@ function PaymentFrom(props) {
           className="btn-full-width"
           size="medium"
           color="primary"
+          style={{ marginTop: "2rem" }}
           onClick={handleSubmit(submit)}
         >
           {t("payment.form.btn.next")}

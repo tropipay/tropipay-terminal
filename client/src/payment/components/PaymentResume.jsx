@@ -93,6 +93,7 @@ function PaymentResume(props) {
                     className="btn-full-width"
                     size="medium"
                     color="primary"
+                    style={{ marginTop: "2rem" }}
                     disabled={!accept}
                     onClick={submit}
                 >
