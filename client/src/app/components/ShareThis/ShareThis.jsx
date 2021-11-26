@@ -74,10 +74,10 @@ export default function ShareThis(props) {
     const _standardFormat = (t, props) => {
         return (
             <div className={props.className}>
-                <div className="ShareLabel">
+                <div className="ShareLabel box-margin-bottom-1">
                     <Typography
-                        variant="subtitle1"
-                        className="text-left mt-1 font-weight-bold gray-label"
+                        variant="body5"
+                        className="text-left mt-1 gray-label box-label-bold"
                     >
                         {t("component.shareThis.label")}:
                     </Typography>
@@ -85,7 +85,7 @@ export default function ShareThis(props) {
                 <Typography variant="subtitle2" noWrap className="text-left mt-1">
                     <TelegramShareButton
                         url={props.sharedUrl}
-                        className="ml-1"
+                        className="box-margin-left-1"
                         beforeOnClick={() => {
                             track("SHARED_TELEGRAM", { event_label: "SHARE_BTN" });
                         }}
@@ -99,6 +99,7 @@ export default function ShareThis(props) {
                     </TelegramShareButton>
                     <WhatsappShareButton
                         url={props.sharedUrl}
+                        className="box-margin-left-1"
                         beforeOnClick={() => {
                             track("SHARED_WHATSAPP", { event_label: "SHARE_BTN" });
                         }}
@@ -112,6 +113,7 @@ export default function ShareThis(props) {
                     </WhatsappShareButton>
                     <FacebookMessengerShareButton
                         url={props.sharedUrl}
+                        className="box-margin-left-1"
                         appId='276151887216053'
                         beforeOnClick={() => {
                             track("SHARED_FACEBOOK", { event_label: "SHARE_BTN" });
