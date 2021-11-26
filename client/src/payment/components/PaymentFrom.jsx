@@ -42,7 +42,7 @@ function PaymentFrom(props) {
         <ContentHeader
           title={t("payment.form.title")}
           subtitle={t("payment.form.subtitle")}
-          className="box-label-center"
+          className="box-label-center box-margin-bottom-2"
         />
       </Grid>
 

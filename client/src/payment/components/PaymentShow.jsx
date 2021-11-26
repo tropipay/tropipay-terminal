@@ -37,7 +37,7 @@ function PaymentShow(props) {
                 <ContentHeader
                     title={t("payment.show.title")}
                     subtitle={t("payment.show.subtitle")}
-                    className="box-label-center"
+                    className="box-label-center box-margin-bottom-2"
                 />
             </Grid>
 
