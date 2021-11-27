@@ -1,0 +1,99 @@
+{
+    "development": {
+        "port": 3005,
+        "host": "localhost",
+        "protocol": "http",
+        "public": "../client/build/",
+        "static": "/",
+        "log": 2,
+        "module": {
+            "load": [
+                "app",
+                "movement",
+                "security"
+            ]
+        },
+        "event": {},
+        "helper": {
+            "error": {
+                "name": "ksmf",
+                "type": "lib",
+                "namespace": "app.Error"
+            },
+            "logger": {
+                "name": "ksmf",
+                "type": "lib",
+                "namespace": "app.Logger"
+            },
+            "logger.class": {
+                "name": "ksmf",
+                "type": "package",
+                "namespace": "app.Logger"
+            }
+        }
+    },
+    "production": {
+        "port": 3006,
+        "host": "localhost",
+        "protocol": "http",
+        "public": "../client/build/",
+        "static": "/",
+        "log": 2,
+        "module": {
+            "load": [
+                "security",
+                "movement"
+            ]
+        },
+        "event": {},
+        "helper": {
+            "error": {
+                "name": "ksmf",
+                "type": "lib",
+                "namespace": "app.Error"
+            },
+            "logger": {
+                "name": "ksmf",
+                "type": "lib",
+                "namespace": "app.Logger"
+            },
+            "logger.class": {
+                "name": "ksmf",
+                "type": "package",
+                "namespace": "app.Logger"
+            }
+        }
+    },
+    "test": {
+        "port": 3007,
+        "host": "localhost",
+        "protocol": "http",
+        "public": "../client/build/",
+        "static": "/",
+        "log": 2,
+        "module": {
+            "load": [
+                "security",
+                "movement"
+            ]
+        },
+        "event": {},
+        "helper": {
+            "error": {
+                "name": "ksmf",
+                "type": "lib",
+                "namespace": "app.Error"
+            },
+            "logger": {
+                "name": "ksmf",
+                "type": "lib",
+                "namespace": "app.Logger"
+            },
+            "logger.class": {
+                "name": "ksmf",
+                "type": "package",
+                "namespace": "app.Logger"
+            }
+        }
+    }
+}
