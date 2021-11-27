@@ -2,7 +2,7 @@ export default {
     required: (t) => t("error.required"),
     string: (t) => {
         return {
-            value: /^[A-Za-z]+$/i,
+            value: /^ *\w+(\s+\w+)* *$/,
             message: t("error.string")
         }
     },
