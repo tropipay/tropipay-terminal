@@ -18,20 +18,20 @@ import InstagramIcon from 'mdi-react/InstagramIcon';
 import Login from '../../security/components/login';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: '98%'
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  layoutLeft: { },
-  layoutRight: {
-    backgroundColor: '#4B59D3',
-    minHeight: '20rem'
-  }
+    root: {
+        flexGrow: 1,
+        width: '98%',
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+    layoutLeft: {},
+    layoutRight: {
+        backgroundColor: '#4B59D3',
+        minHeight: '20rem'
+    }
 }));
 
 const links = [
@@ -42,7 +42,7 @@ const links = [
     {
         label: "legal.policy",
         to: "/privacy"
-    }, 
+    },
     {
         label: "legal.terms",
         to: "/terms"
@@ -53,31 +53,31 @@ function Home() {
     const cls = useStyles();
     const { t } = useTranslation();
     return (
-        <div >
+        <div className="home">
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={7}>
-                    <div className="row" style={{margin: '2rem'}}>
+                    <div className="row" style={{ margin: '2rem' }}>
                         <Typography variant="h6" component="h4">
                             {t("home.name")}
                         </Typography>
 
                         <div className="box-horizontal" style={{ marginLeft: '3rem' }}>
-                            <Typography style={{ marginRight: '3px', fontSize: '5px'}}>
+                            <Typography style={{ marginRight: '3px', fontSize: '5px' }}>
                                 {t("home.by")}
                             </Typography>
-                            <Typography style={{ marginRight: '3px', fontSize: '10px'}}>
+                            <Typography style={{ marginRight: '3px', fontSize: '10px' }}>
                                 {t("home.company")}
                             </Typography>
                         </div>
-                        
+
                         <Typography variant="h4" mt='4rem'>
                             {t("home.title")}
                         </Typography>
-                        <Typography variant="subtitle1"  mt='1rem'  mb='1rem'>
+                        <Typography variant="subtitle1" mt='1rem' mb='1rem'>
                             {t("home.subtitle")}
                         </Typography>
 
-                        <Login /> 
+                        <Login />
 
                         <ul className="lstMenu box-horizontal">
                             {links.map((item, i) => (
@@ -88,11 +88,11 @@ function Home() {
                         </ul>
 
                         <div className="logos box-horizontal">
-                            <img src={IMG_VISA} alt="Visa"/>
-                            <img src={IMG_MASTERCARD} alt="Master Card"/>
-                            <img src={IMG_MAESTRO} alt="IMG_MAESTRO"/>
-                            <img src={IMG_UNIONPLAY} alt="IMG_UNIONPLAY"/>
-                            <img src={IMG_DISCOVER} alt="IMG_DISCOVER"/>
+                            <img src={IMG_VISA} alt="Visa" />
+                            <img src={IMG_MASTERCARD} alt="Master Card" />
+                            <img src={IMG_MAESTRO} alt="IMG_MAESTRO" />
+                            <img src={IMG_UNIONPLAY} alt="IMG_UNIONPLAY" />
+                            <img src={IMG_DISCOVER} alt="IMG_DISCOVER" />
                         </div>
 
                         <div className="socials">
@@ -102,7 +102,7 @@ function Home() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <TwitterIcon/>
+                                <TwitterIcon />
                             </IconButton>
                             <IconButton
                                 title={t('Footer.social.facebook')}
@@ -110,7 +110,7 @@ function Home() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FacebookIcon/>
+                                <FacebookIcon />
                             </IconButton>
                             <IconButton
                                 title={t('Footer.social.instagram')}
@@ -118,7 +118,7 @@ function Home() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <InstagramIcon/>
+                                <InstagramIcon />
                             </IconButton>
                         </div>
                     </div>

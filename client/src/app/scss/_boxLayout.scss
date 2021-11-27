@@ -20,6 +20,7 @@
 .box-align-center {
     align-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .box-align-between {
@@ -166,15 +167,36 @@
 }
 
 .box-label-center {
-    text-align:center;
+    text-align: center;
 }
 
-.box-label-bold p {
+.box-label-right {
+    text-align: right;
+}
+
+.box-label-left {
+    text-align: left;
+}
+
+.box-label-justify {
+    text-align: justify;
+}
+
+.box-label-bold {
     font-weight: bold;
+    p  {
+        font-weight: bold;
+    }
 }
 
 .box-item {
     max-width: 99%;
+}
+
+.box-border-curved {
+    border: 1px solid #DDDCE2;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
 }
 
 .box-panel {
@@ -194,16 +216,48 @@
 .box-padding {
     padding: 0.5rem;
 }
+
 .box-padding-1 {
     padding: 1rem;
 }
+
 .box-padding-2 {
     padding: 2rem;
 }
-
-.box-marging-1 {
-    padding: 1rem;
+.box-padding-top-2 {
+    padding-top: 2rem;
 }
-.box-marging-2 {
-    padding: 2rem;
+.box-padding-bottom-2{
+    padding-bottom: 2rem;
+}
+.box-padding-right-2 {
+    padding-right: 2rem;
+}
+
+.box-margin-1 {
+    margin: 1rem;
+}
+
+.box-margin-2 {
+    margin: 2rem;
+}
+
+.box-margin-right-2 {
+    margin-right: 2rem;
+}
+
+.box-margin-top-1 {
+    margin-top: 1rem;
+}
+.box-margin-bottom-1 {
+    margin-bottom: 1rem;
+}
+.box-margin-bottom-2 {
+    margin-bottom: 2rem;
+}
+.box-margin-left-1 {
+    margin-left: 1rem;
+}
+.box-margin-right-1 {
+    margin-right: 1rem;
 }

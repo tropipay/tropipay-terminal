@@ -86,7 +86,19 @@
         "show": {
             "title": "Enlace de pago listo",
             "subtitle": "a nombre de {{username}} para el cobro de servicios",
+            "url": "URL para el cobro", 
+            "share": "Compartir",
+            "phone": "Teléfono", 
+            "email": "Enviar vía email",
+            "code": "Código de país", 
+            "copyURL": "URL copiada",
+            "send": {
+                "sms": "Enviar SMS",
+                "email": "Enviar vía email",
+                "cost": "costo adicional {{value}}"
+            }, 
             "btn": {
+                "next": "Enviar",
                 "back": "Ir a inicio"
             }
         }
@@ -99,7 +111,8 @@
         "passwordMatch": "Las contraseñas no coinciden",
         "amount": "Introduce un monto válido (ej. 344,50)",
         "amountmin": "La cantidad especificada debe ser mayor que el mínimo definido para esta operación, que es ",
-        "minCryptoAmount": "Valor mínimo {{min}}",
+        "minCryptoAmount": "Valor mínimo {{value}}",
+        "min": "El valor mínimo requerido es de {{value}}",
         "adult": "Debe tener al menos 18 años",
         "temporarilyDisabled": "Deshabilitado temporalmente",
         "uniqueEmail": "Email en uso",
@@ -119,6 +132,9 @@
         "incompleteRegistration": "Registro no completado",
         "incompleteOperation": "No se pudo completar la operación, inténtalo más tarde",
         "invalidParameters": "Parámetros inválidos",
+        "maxStr": "La cantidad máxima de caracteres admitidas es de {{value}}",
+        "string": "Debe ser un valor de tipo texto",
+
         "PC_001": "Error obteniendo el listado de Links de Pago",
         "PC_002": "Error obteniendo el detalle del Link de Pago",
         "PC_003": "Invalid Expiration Date",

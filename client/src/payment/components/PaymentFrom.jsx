@@ -8,6 +8,7 @@ import FormTextField from '../../app/components/FormControl/FormTextField';
 import FormSelect from '../../app/components/FormControl/FormSelect';
 import FromCheckBox from '../../app/components/FormControl/FromCheckBox';
 import ContentHeader from '../../app/components/ContentHeader';
+import Validation from '../../app/services/validation';
 
 import Grid from '@material-ui/core/Grid';
 import Lang from '../../app/services/lang';
@@ -15,6 +16,7 @@ import Currency from '../../app/services/currency';
 
 function PaymentFrom(props) {
   const { t } = useTranslation();
+  const amountMin = 16;
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
@@ -42,7 +44,7 @@ function PaymentFrom(props) {
         <ContentHeader
           title={t("payment.form.title")}
           subtitle={t("payment.form.subtitle")}
-          className="box-label-center"
+          className="box-label-center box-margin-bottom-2"
         />
       </Grid>
 
@@ -52,7 +54,11 @@ function PaymentFrom(props) {
           name="amount"
           size="medium"
           label={t("payment.form.amount.label")}
-          rules={{ required: t("error.required") }}
+          rules={{
+            required: Validation.required(t),
+            min: Validation.min(t, amountMin),
+            pattern: Validation.number(t)
+          }}
         />
       </Grid>
 
@@ -72,7 +78,11 @@ function PaymentFrom(props) {
           name="concept"
           size="medium"
           label={t("payment.form.concept.label")}
-          rules={{ required: t("error.required") }}
+          rules={{
+            required: Validation.required(t),
+            maxLength: Validation.maxStrLength(t),
+            pattern: Validation.string(t)
+          }}
         />
       </Grid>
 
@@ -133,6 +143,7 @@ function PaymentFrom(props) {
           className="btn-full-width"
           size="medium"
           color="primary"
+          style={{ marginTop: "2rem" }}
           onClick={handleSubmit(submit)}
         >
           {t("payment.form.btn.next")}

@@ -16,19 +16,20 @@ function PaymentPage(props) {
   const { t } = useTranslation();
   const history = useHistory();
   const stepper = StepperControl();
-
-  stepper.add(() => <PaymentFrom submit={(payload) => {
-    console.log(" PaymentFrom >>>>>>>", payload);
-    stepper.next();
-  }} />);
-
-  stepper.add(() => <PaymentResume submit={() => {
-    console.log(" PaymentResume >>>>>>>");
-    stepper.next();
-  }} />);
   
-  stepper.add(() => <PaymentShow  />);
+  const steps = [
+    () => <PaymentFrom submit={(payload) => {
+      console.log(" PaymentFrom >>>>>>>", payload);
+      stepper.next();
+    }} />,
+    () => <PaymentResume submit={() => {
+      console.log(" PaymentResume >>>>>>>");
+      stepper.next();
+    }} />,
+    () => <PaymentShow  />
+  ];
 
+  stepper.add(steps);
   stepper.subscribe((step, dir) => {
     console.log(">> PAGE #", step, dir);
   });
@@ -47,7 +48,7 @@ function PaymentPage(props) {
         variant="contained"
         className="btn-full-width"
         size="large"
-        style={{ marginTop: "1rem" }}
+        style={{ marginTop: "2rem" }}
         onClick={() => history.push('/home')}
         color="secondary"
       >

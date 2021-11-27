@@ -39,7 +39,15 @@ function StepperControl() {
 
   const subscribe = (callback) => state.event = callback;
   const render = () => state.steps[index] ? state.steps[index]() : null;
-  const add = (com) => state.steps.push(com);
+  const add = (com) => {
+    if (com instanceof Array) {
+      for (let i of com) {
+        state.steps.push(i);
+      }
+    } else {
+      state.steps.push(com);
+    }
+  };
   const del = (pos) => delete state.steps[pos];
 
   useEffect(() => {
@@ -61,3 +69,9 @@ function StepperControl() {
 }
 
 export default StepperControl;
+
+export function StepperView(props) {
+  const stepper = props.control || StepperControl();
+  stepper.add(props.steps);
+  return stepper.render();
+}

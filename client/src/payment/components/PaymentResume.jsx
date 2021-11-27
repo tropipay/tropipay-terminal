@@ -34,7 +34,7 @@ function PaymentResume(props) {
                 <ContentHeader
                     title={t("payment.resume.title")}
                     subtitle={t("payment.resume.subtitle")}
-                    className="box-label-center"
+                    className="box-label-center box-margin-bottom-2"
                 />
             </Grid>
 
@@ -93,6 +93,7 @@ function PaymentResume(props) {
                     className="btn-full-width"
                     size="medium"
                     color="primary"
+                    style={{ marginTop: "2rem" }}
                     disabled={!accept}
                     onClick={submit}
                 >

@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { Button, Checkbox, FormControlLabel } from "@material-ui/core";
-import ContentHeader from '../../app/components/ContentHeader';
-
+import { Checkbox, FormControlLabel, Button, IconButton } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import ContentDuplicateIcon from 'mdi-react/ContentDuplicateIcon';
+
+import ContentHeader from '../../app/components/ContentHeader';
+import QRCode from '../../app/components/QRcode/QRCode';
+import ShareThis from '../../app/components/ShareThis/ShareThis';
+import FormTextField from '../../app/components/FormControl/FormTextField';
+import { nakedUrl } from '../../app/services/util';
+import Msg from '../../app/components/Message';
 
 function PaymentShow(props) {
     const { t } = useTranslation();
@@ -14,80 +21,177 @@ function PaymentShow(props) {
     const amount = 123;
     const selloff = 119.31;
     const cost = 3.69;
+    const plDate = "12 Julio 2020, 20:20";
+    const plExp = "00:28:48";
+    const paylinkUrl = "http://tppay/2543fd";
 
-    const [accept, setAccept] = useState(false);
 
-    const handleChange = (event) => {
-        setAccept(event.currentTarget.checked);
+    const [sendSMS, setSendSMS] = useState(false);
+    const [sendEmail, setSendEmail] = useState(false);
+    const message = Msg();
+
+    const { handleSubmit, control } = useForm({
+        defaultValues: {
+            email: "",
+            phone: "",
+            code: "",
+        }
+    });
+    const copyURL = (url) => {
+        navigator.clipboard.writeText(url);
+        message.show(t("payment.show.copyURL"));
     };
 
-    const submit = () => {
+    const submit = (data) => {
+        console.log("submit", data);
         if (props.submit instanceof Function) {
-            props.submit();
+            props.submit(data);
         }
     };
 
     return (
-        <Grid container spacing={2}>
+        <div>
+            <Grid container spacing={2} style={{ width: '100%', marginLeft: '1px' }} className="box-margin-bottom-2">
 
-            <Grid item xs={12} >
-                <ContentHeader
-                    title={t("payment.show.title")}
-                    subtitle={t("payment.show.subtitle")}
-                    className="box-label-center"
-                />
+                <Grid item xs={12} >
+                    <ContentHeader
+                        title={t("payment.show.title")}
+                        subtitle={t("payment.show.subtitle")}
+                        className="box-label-center box-margin-bottom-2"
+                    />
+                </Grid>
+
+                <Grid item xs={12}>
+                    <Grid container spacing={2} className="box-border-curved">
+                        <Grid container spacing={2} className="box-padding-bottom-2 box-padding-top-2">
+                            <Grid item xs={12} sm={6} className="box-vertical box-align-center">
+                                <QRCode url={paylinkUrl} size={200} />
+                            </Grid>
+                            <Grid item xs={12} sm={6} className="box-label-right ">
+                                <Typography variant="body2" className="box-padding-right-2">
+                                    {plDate}
+                                </Typography>
+                                <Typography variant="body2" className="box-padding-right-2">
+                                    {plExp}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
+                            <Grid container spacing={2} >
+                                <Grid item xs={12} >
+                                    <Typography variant="body5" className="gray-label box-label-bold"  >
+                                        {t("payment.show.url")}:
+                                </Typography>
+                                </Grid>
+                                <Grid item xs={12} >
+                                    <Typography
+                                        variant="subtitle1"
+                                        noWrap
+                                        className="text-left mt-1"
+                                    >
+                                        <span className="d-inline-block text-truncate mr-2">
+                                            <a target="_blank"
+                                                href={paylinkUrl}
+                                                className="link-blue"
+                                            >
+                                                {nakedUrl(paylinkUrl)}
+                                            </a>
+                                        </span>
+                                        <IconButton
+                                            key="copy"
+                                            aria-label="Copy"
+                                            color="inherit"
+                                            className="gray-label"
+                                            onClick={() =>
+                                                copyURL(paylinkUrl)
+                                            }
+                                        >
+                                            <ContentDuplicateIcon />
+                                        </IconButton>
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={12} >
+                                    <ShareThis
+                                        sharedUrl={paylinkUrl}
+                                        className="gray-label box-label-bold"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} >
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox
+                                                checked={sendSMS}
+                                                onChange={(event) => setSendSMS(event.currentTarget.checked)}
+                                                name="sendSMS"
+                                                color="primary"
+                                            />
+                                        }
+                                        label={t("payment.show.send.sms", { term: t("legal.terms"), policy: t("legal.policy") })}
+                                    />
+                                </Grid>
+                                {sendSMS ? <Grid item xs={12} >
+                                    <FormTextField
+                                        control={control}
+                                        name="code"
+                                        size="medium"
+                                        label={t("payment.show.code") + " *"}
+                                        rules={{ required: t("error.required") }}
+                                    />
+                                </Grid> : null}
+                                {sendSMS ? <Grid item xs={12} >
+                                    <FormTextField
+                                        control={control}
+                                        name="phone"
+                                        size="medium"
+                                        label={t("payment.show.phone") + " *"}
+                                        rules={{ required: t("error.required") }}
+                                    />
+                                </Grid> : null}
+                                <Grid item xs={12} >
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox
+                                                checked={sendEmail}
+                                                onChange={(event) => setSendEmail(event.currentTarget.checked)}
+                                                name="sendEmail"
+                                                color="primary"
+                                            />
+                                        }
+                                        label={t("payment.show.send.email", { term: t("legal.terms"), policy: t("legal.policy") })}
+                                    />
+                                </Grid>
+                                {sendEmail ? <Grid item xs={12} >
+                                    <FormTextField
+                                        control={control}
+                                        name="email"
+                                        size="medium"
+                                        label={t("payment.show.email") + " *"}
+                                        rules={{ required: t("error.required") }}
+                                    />
+                                </Grid> : null}
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Grid>
 
-            <Grid item xs={12} >
-                <div container spacing={2} className="note-bg note-border box-padding-1">
-                    <Typography variant="body2">
-                        {t("payment.resume.detail")}
-                    </Typography>
-                    <div className="box-horizontal box-align-between box-align-center">
-                        <Typography variant="body2">
-                            {t("payment.resume.cost")}
-                        </Typography>
+            {sendSMS || sendEmail ?
+                <Button
+                    variant="contained"
+                    className="btn-full-width"
+                    size="medium"
+                    color="primary"
+                    style={{ marginTop: "2rem" }}
+                    onClick={handleSubmit(submit)}
+                >
+                    {t("payment.show.btn.next")}
+                </Button>
+                : null}
 
-                        <Typography className="box-align-right">
-                            {cost} {currency}
-                        </Typography>
-                    </div>
-                    <div className="box-horizontal box-align-between box-align-center">
-                        <Typography variant="body2">
-                            {t("payment.resume.amount")}
-                        </Typography>
-
-                        <Typography className="box-align-right">
-                            {amount} {currency}
-                        </Typography>
-                    </div>
-                    <div className="box-horizontal box-align-between box-align-center box-label-bold">
-                        <Typography variant="body2">
-                            {t("payment.resume.selloff")}
-                        </Typography>
-
-                        <Typography className="box-align-right">
-                            {selloff} {currency}
-                        </Typography>
-                    </div>
-                </div>
-            </Grid>
-
-            <Grid item xs={12} >
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={accept}
-                            onChange={handleChange}
-                            name="checkedB"
-                            color="primary"
-                        />
-                    }
-                    label={t("payment.resume.accept", { term: t("legal.terms"), policy: t("legal.policy") })}
-                />
-            </Grid>
-
-        </Grid>
+            {message.render()}
+        </div>
     )
 }
 
