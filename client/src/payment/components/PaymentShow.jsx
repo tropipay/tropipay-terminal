@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { Checkbox, FormControlLabel, Button } from "@material-ui/core";
+import { Checkbox, FormControlLabel, Button, IconButton } from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import ContentDuplicateIcon from 'mdi-react/ContentDuplicateIcon';
 
 import ContentHeader from '../../app/components/ContentHeader';
 import QRCode from '../../app/components/QRcode/QRCode';
 import ShareThis from '../../app/components/ShareThis/ShareThis';
 import FormTextField from '../../app/components/FormControl/FormTextField';
+import { nakedUrl } from '../../app/services/util';
+import Msg from '../../app/components/Message';
 
 function PaymentShow(props) {
     const { t } = useTranslation();
@@ -20,19 +23,24 @@ function PaymentShow(props) {
     const cost = 3.69;
     const plDate = "12 Julio 2020, 20:20";
     const plExp = "00:28:48";
-
     const paylinkUrl = "http://tppay/2543fd";
+
 
     const [sendSMS, setSendSMS] = useState(false);
     const [sendEmail, setSendEmail] = useState(false);
+    const message = Msg();
 
     const { handleSubmit, control } = useForm({
         defaultValues: {
-          email: "",
-          phone: "",
-          code: "",
+            email: "",
+            phone: "",
+            code: "",
         }
-      });
+    });
+    const copyURL = (url) => {
+        navigator.clipboard.writeText(url);
+        message.show(t("payment.show.copyURL"));
+    };
 
     const submit = (data) => {
         console.log("submit", data);
@@ -76,7 +84,31 @@ function PaymentShow(props) {
                                 </Typography>
                                 </Grid>
                                 <Grid item xs={12} >
-
+                                    <Typography
+                                        variant="subtitle1"
+                                        noWrap
+                                        className="text-left mt-1"
+                                    >
+                                        <span className="d-inline-block text-truncate mr-2">
+                                            <a target="_blank"
+                                                href={paylinkUrl}
+                                                className="link-blue"
+                                            >
+                                                {nakedUrl(paylinkUrl)}
+                                            </a>
+                                        </span>
+                                        <IconButton
+                                            key="copy"
+                                            aria-label="Copy"
+                                            color="inherit"
+                                            className="gray-label"
+                                            onClick={() =>
+                                                copyURL(paylinkUrl)
+                                            }
+                                        >
+                                            <ContentDuplicateIcon />
+                                        </IconButton>
+                                    </Typography>
                                 </Grid>
 
                                 <Grid item xs={12} >
@@ -157,6 +189,8 @@ function PaymentShow(props) {
                     {t("payment.show.btn.next")}
                 </Button>
                 : null}
+
+            {message.render()}
         </div>
     )
 }

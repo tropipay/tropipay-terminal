@@ -91,6 +91,7 @@
             "phone": "Teléfono", 
             "email": "Enviar vía email",
             "code": "Código de país", 
+            "copyURL": "URL copiada",
             "send": {
                 "sms": "Enviar SMS",
                 "email": "Enviar vía email",
