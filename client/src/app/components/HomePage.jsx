@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from "react-i18next";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from "@mui/material";
 import Grid from '@material-ui/core/Grid';
@@ -16,6 +16,8 @@ import TwitterIcon from 'mdi-react/TwitterIcon';
 import FacebookIcon from 'mdi-react/FacebookIcon';
 import InstagramIcon from 'mdi-react/InstagramIcon';
 import Login from '../../security/components/login';
+
+import session from "../../security/services/session";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,6 +54,15 @@ const links = [
 function Home() {
     const cls = useStyles();
     const { t } = useTranslation();
+    const history = useHistory();
+
+    useEffect(() => {
+        if (session.isValid()) {
+            const from = session.get().from && session.get().from.pathname && session.get().from.pathname != '/' ? session.get().from.pathname : "/home";
+            history.push(from);
+        }
+    });
+
     return (
         <div className="home">
             <Grid container spacing={3}>
