@@ -1,26 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
-import { selectProfile } from "../services/AuthSlice";
+import session from "../services/session";
 
 export default function RoutePrivate({ children, ...rest }) {
-    const profile = useSelector(selectProfile);
-    return (
-      <Route
-        {...rest}
-        render={({ location }) =>
-          profile ? (
-            children
-          ) : (
+  const loginPath = "/";
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        session.isValid() ? (
+          children
+        ) : (
             <Redirect
               to={{
-                pathname: "/login",
+                pathname: loginPath,
                 state: { from: location },
               }}
             />
           )
-        }
-      />
-    );
-  }
-  
+      }
+    />
+  );
+}
