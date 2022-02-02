@@ -12,15 +12,15 @@ import QRCode from '../../app/components/QRcode/QRCode';
 import ShareThis from '../../app/components/ShareThis/ShareThis';
 import FormTextField from '../../app/components/FormControl/FormTextField';
 import { nakedUrl } from '../../app/services/util';
-import Msg from '../../app/components/Message';
+import Msg from '../../app/components/Message/Message';
 
 function PaymentShow(props) {
     const { t } = useTranslation();
 
-    const currency = "EUR";
+    /*const currency = "EUR";
     const amount = 123;
     const selloff = 119.31;
-    const cost = 3.69;
+    const cost = 3.69;*/
     const plDate = "12 Julio 2020, 20:20";
     const plExp = "00:28:48";
     const paylinkUrl = "http://tppay/2543fd";
@@ -79,7 +79,7 @@ function PaymentShow(props) {
                         <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
                             <Grid container spacing={2} >
                                 <Grid item xs={12} >
-                                    <Typography variant="body5" className="gray-label box-label-bold"  >
+                                    <Typography variant="body2" className="gray-label box-label-bold"  >
                                         {t("payment.show.url")}:
                                 </Typography>
                                 </Grid>

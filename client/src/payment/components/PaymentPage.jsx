@@ -5,9 +5,7 @@ import { useTranslation } from "react-i18next";
 import PaymentFrom from './PaymentFrom';
 import PaymentResume from './PaymentResume';
 import PaymentShow from './PaymentShow';
-
-
-import StepperControl from '../../app/components/StepperControl';
+import StepperControl from '../../app/components/Stepper/StepperControl';
 
 import Button from "@material-ui/core/Button";
 

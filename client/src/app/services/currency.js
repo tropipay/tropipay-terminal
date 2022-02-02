@@ -1,4 +1,4 @@
-export default {
+const currency = {
     list: () => {
         return [{
                 label: "EUR",
@@ -11,3 +11,4 @@ export default {
         ]
     }
 };
+export default currency;

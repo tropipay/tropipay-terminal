@@ -1,4 +1,4 @@
-export default {
+const validation = {
     required: (t) => t("error.required"),
     string: (t) => {
         return {
@@ -29,3 +29,4 @@ export default {
         }
     },
 };
+export default validation;

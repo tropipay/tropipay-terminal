@@ -9,7 +9,7 @@ class Session {
      */
     isValid() {
         const session = db.get('session');
-        const from = session && session.from ? session.from.pathname : '/';
+        //const from = session && session.from ? session.from.pathname : '/';
         return session ? true : false;
     }
     /**

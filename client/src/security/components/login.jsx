@@ -8,7 +8,7 @@ import IconUrl from '../../app/images/favicon-96x96.png'
 import db from "../services/localdb";
 
 function Login() {
-    const url = "http://localhost:3005";
+    const url = ""; //"http://localhost:3005";
     const { t } = useTranslation();
     const location = useLocation();
 

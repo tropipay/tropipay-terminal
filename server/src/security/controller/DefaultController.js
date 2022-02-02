@@ -91,6 +91,7 @@ class DefaultController extends KsMf.app.Controller {
             url: url_tropipay + "/api/users/profile"
         });
 
+        this.logger.info('profile', session.access_token);
         res.json(profileData.data);
     }
 

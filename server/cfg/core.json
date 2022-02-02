@@ -1,6 +1,6 @@
 {
     "development": {
-        "port": 3005,
+        "port": 3001,
         "host": "localhost",
         "protocol": "http",
         "public": "../client/build/",
