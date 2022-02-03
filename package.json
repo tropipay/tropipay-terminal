@@ -1,19 +1,25 @@
 {
   "name": "terminal",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "terminal client app from TropiPay platform",
+  "main": "server/bin/server.js",
   "scripts": {
     "start": "node server/bin/server.js",
     "build": "cd client && npm install && npm run build",
-    "test": "cd client && npm run test"
+    "test": "cd client && npm run test",
+    "dev": "nodemon server/bin/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tropipay/pos.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "tropipay",
+    "api",
+    "pos",
+    "terminal"
+  ],
+  "author": "TropiPay",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tropipay/pos/issues"
@@ -29,5 +35,8 @@
     "jest": "^26.6.0",
     "ksmf": "^1.0.40",
     "qs": "^6.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

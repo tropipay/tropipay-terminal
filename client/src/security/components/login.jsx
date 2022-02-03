@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom"; // useHistory, 
 import IconUrl from '../../app/images/favicon-96x96.png'
 
-import db from "../services/localdb";
+import session from "../services/session";
 
 function Login() {
     const url = ""; //"http://localhost:3005";
@@ -14,8 +14,8 @@ function Login() {
 
     const { from } = location.state || { from: { pathname: "/" } };
     const login = () => {
-        db.set({ from }, "session");
-        window.location.href = url + "/api/v1/security/user/connected_view";
+        session.set({ from });
+        window.location.href = url + "/api/v1/security/oauth/connect";
     };
 
     return (

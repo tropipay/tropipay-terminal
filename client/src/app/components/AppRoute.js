@@ -34,12 +34,12 @@ export default function AppRoute() {
             <Route exact path="/login"> <Login /> </Route>
             <Route exact path="/auth/session"> <Session /> </Route>
             
-            <Route exact path="/home"> <Page>  <HomePage /> </Page> </Route>
+            <RoutePrivate exact path="/home"> <Page>  <HomePage /> </Page> </RoutePrivate>
             <Route exact path="/movement"> <Page> <MovementPage />  </Page> </Route>
             <Route exact path="/payment"> <Page> <PaymentPage /> </Page> </Route>
             <Route exact path="/profile"> <ProfilePage /> </Route>
 
-            <Route exact path='/' render={(props) => (<FrontPage />)}/>
+            <Route exact path='/' render={() => (<FrontPage />)}/>
             <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>
         </Switch>
     </ProvideAuth>

@@ -1,6 +1,6 @@
 {
     "development": {
-        "port": 3001,
+        "port": 3005,
         "host": "localhost",
         "protocol": "http",
         "public": "../client/build/",
@@ -8,9 +8,9 @@
         "log": 2,
         "module": {
             "load": [
-                "app",
                 "movement",
-                "security"
+                "security",
+                "app"
             ]
         },
         "event": {},

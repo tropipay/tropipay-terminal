@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import db from "./localdb";
+import session from "./session";
 const URL_TERMINAL = 'http://localhost:3005';
 
 // ... Create Slice
@@ -16,18 +16,18 @@ export const slice = createSlice({
     },
     updateSession: (state, action) => {
       if (action.payload) {
-        db.set(action.payload, "session");
+        session.set(action.payload); 
         state.session = action.payload;
       } else {
-        state.session = db.get("session");
+        state.session = session.get(); 
       }
     },
     updateProfile: (state, action) => {
       if (action.payload) {
-        db.set(action.payload, "profile");
+        session.set(action.payload, "profile"); 
         state.profile = action.payload;
       } else {
-        state.profile = db.get("profile");
+        state.profile = session.get("profile"); 
       }
     },
   },
@@ -48,13 +48,13 @@ export const { updateSession, updateProfile, updateError } = slice.actions;
 // ... Actions (async)  
 export const loadProfile = () => (dispatch) => {
   try {
-    const data = db.get("session");
-    const url = URL_TERMINAL + "/api/v1/security/profile";
+    const data = session.get(); 
+    const url = "/api/v1/security/profile";
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data), 
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       }
     })
     .then(response => response.json())

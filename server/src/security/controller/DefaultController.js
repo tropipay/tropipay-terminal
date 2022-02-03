@@ -15,7 +15,7 @@ const url_tropipay = process.env.URL_TROPIPAY;
 
 const oauth_authorize = url_tropipay + process.env.OAUTH_URL_AUTHORIZE;
 const oauth_token = url_tropipay + process.env.OAUTH_URL_TOKEN;
-const redirect_uri = url_terminal + process.env.OAUTH_REDIRECT_URI;
+const redirect_uri = process.env.OAUTH_REDIRECT_URI; //url_terminal + 
 
 const client_id = process.env.OAUTH_CLIENT_ID;
 const client_secret = process.env.OAUTH_CLIENT_SECRET;
@@ -54,6 +54,8 @@ class DefaultController extends KsMf.app.Controller {
                 ...old,
                 ...token.data
             };
+            console.log('sessionnnnnnnnnnnn', ses);
+            console.log('tokennnnnnnnnnnnnn', token);
             res.cookie('session', JSON.stringify(ses), {
                 maxAge: 86400000
             });
@@ -84,15 +86,23 @@ class DefaultController extends KsMf.app.Controller {
     async getProfile(req, res) {
         const session = req.body;
 
-        const profileData = await axios({
-            headers: {
-                'Authorization': 'Bearer ' + session.access_token
-            },
-            url: url_tropipay + "/api/users/profile"
-        });
+        console.log('session', session);
+        try {
+            const profileData = await axios({
+                headers: {
+                    'Authorization': 'Bearer ' + session.access_token
+                },
+                url: url_tropipay + "/api/users/profile"
+            });
+    
+            this.logger.info('profile', session.access_token);
+            res.json(profileData.data);
+        }
+        catch(error){
+            console.log('ssssssssss'), error;
+            res.json({ name: 'gest'});
+        }
 
-        this.logger.info('profile', session.access_token);
-        res.json(profileData.data);
     }
 
 }

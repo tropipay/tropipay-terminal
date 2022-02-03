@@ -3,29 +3,47 @@ import db from "./localdb";
  * @description Higher order layer for Session
  */
 class Session {
+
+    constructor() {
+        this.key = 'session';
+    }
+
     /**
      * @description select cookie by name
      * @param {BOLEAN} name
      */
-    isValid() {
-        const session = db.get('session');
+    isValid(key=null) {
+        key = key || this.key;
+        const session = db.get(key);
         //const from = session && session.from ? session.from.pathname : '/';
-        return session ? true : false;
+        console.log('session', session);
+        return session && session.access_token ? true : false;
     }
+
     /**
      * @description get session
      * @param {OBJECT} 
      */
-    get() {
-        return db.get('session');
+    get(key=null) {
+        key = key || this.key;
+        return db.get(key);
     }
 
     /**
      * @description clean session
      */
-    del() {
-        db.del("session");
+    del(key=null) {
+        key = key || this.key;
+        db.del(key);
         return this;
+    }
+
+    /**
+     * @description update session
+     */
+    set(payload, key=null) {
+        key = key || this.key;
+        db.set(payload, this.key);
     }
 }
 // ......................................................................
