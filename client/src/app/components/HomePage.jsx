@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
 import { loadProfile, selectProfile } from "../../security/services/AuthSlice";
+import { Grid } from "@mui/material";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -13,28 +15,44 @@ function HomePage() {
   const profile = useSelector(selectProfile);
 
   useEffect(() => {
-    document.title = `You clicked times`;
-    if(!profile){
-      console.log("no profile");
+    if (!profile) {
       dispatch(loadProfile());
     }
   });
 
   return (
-    <div className="Demo">
-      {t("demo.title", { test: "HomePage" })}
-      {profile ? profile.name : null}
-      <Button
-        variant="contained"
-        className="btn-full-width"
-        size="large"
-        style={{ marginTop: "2rem" }}
-        onClick={() => nav.push("/payment")}
-        color="secondary"
-      >
-        {t("payment.btn.back")}
-      </Button>
-    </div>
+    <Grid container spacing={2}>
+
+      <Grid item xs={12}>
+        {profile ? profile.name : null}
+      </Grid>
+
+      <Grid item xs={12}>
+        <Button
+          variant="contained"
+          className="btn-full-width"
+          size="large"
+          style={{ marginTop: "2rem" }}
+          onClick={() => nav.push("/payment")}
+          color="primary"
+        >
+          {t("home.btn.payment")}
+        </Button>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Button
+          variant="contained"
+          className="btn-full-width"
+          size="large"
+          style={{ marginTop: "2rem" }}
+          onClick={() => nav.push("/movement")}
+          color="secondary"
+        >
+          {t("home.btn.movement")}
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
 

@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-//import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
+import { loadProfile, selectProfile } from "../../security/services/AuthSlice";
 
 function ProfilePage() {
-  //const dispatch = useDispatch();
-  const count = 1; //useSelector(selectCount);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const profile = useSelector(selectProfile);
 
   useEffect(() => {
-    document.title = `You clicked ${count} times`;
+    if (!profile) {
+      dispatch(loadProfile());
+    }
   });
 
-  return (
-    <div className="Demo">
-        {t("demo.title", { test: 'profile' })}
-    </div>
-  );
+  return <div className="Demo">
+    {profile ? profile.name : null}
+  </div>;
 }
 
 export default ProfilePage;

@@ -1,11 +1,18 @@
 {
-    "home": {
+    "front": {
         "name": "Terminal",
         "by": "by",
         "company": "TropiPay",
         "title":"Cobra con terminal en tu tienda o comercio",
         "subtitle": "Terminal te permite crear tu propio proceso de compra para aceptar pagos en el mundo físico",
         "connect": "Conéctate con TropiPay"
+    },
+    "home": {
+        "name": "Terminal",
+        "btn": {
+            "payment": "Cobrar",
+            "movement": "Operaciones"
+        }
     },
     "legal": {
         "copyright": "©TropiPay 2021",

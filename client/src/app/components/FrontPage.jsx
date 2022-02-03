@@ -70,23 +70,23 @@ function FrontPage() {
                 <Grid item xs={12} sm={7}>
                     <div className="row" style={{ margin: '2rem' }}>
                         <Typography variant="h6" component="h4">
-                            {t("home.name")}
+                            {t("front.name")}
                         </Typography>
 
                         <div className="box-horizontal" style={{ marginLeft: '3rem' }}>
                             <Typography style={{ marginRight: '3px', fontSize: '5px' }}>
-                                {t("home.by")}
+                                {t("front.by")}
                             </Typography>
                             <Typography style={{ marginRight: '3px', fontSize: '10px' }}>
-                                {t("home.company")}
+                                {t("front.company")}
                             </Typography>
                         </div>
 
                         <Typography variant="h4" mt='4rem'>
-                            {t("home.title")}
+                            {t("front.title")}
                         </Typography>
                         <Typography variant="subtitle1" mt='1rem' mb='1rem'>
-                            {t("home.subtitle")}
+                            {t("front.subtitle")}
                         </Typography>
 
                         <Login />
