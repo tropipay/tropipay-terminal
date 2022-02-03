@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 
 import { useTranslation } from "react-i18next";
-import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { loadProfile, selectProfile } from "../../security/services/AuthSlice";
+
 import { Grid } from "@mui/material";
+import Button from "@material-ui/core/Button";
+import AvatarName from "./Avatar/AvatarName"
 
 function HomePage() {
   const { t } = useTranslation();
@@ -22,9 +24,16 @@ function HomePage() {
 
   return (
     <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <AvatarName name={profile ? profile.name : "TS"} />
+      </Grid>
+
+      <Grid item xs={12} sx={{ alignItems: 'center' }}>
+        {profile ? profile.name : null}
+      </Grid>
 
       <Grid item xs={12}>
-        {profile ? profile.name : null}
+        {profile ? profile.email : null}
       </Grid>
 
       <Grid item xs={12}>

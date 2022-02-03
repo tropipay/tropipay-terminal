@@ -7,7 +7,7 @@ import { Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import ContentDuplicateIcon from 'mdi-react/ContentDuplicateIcon';
 
-import ContentHeader from '../../app/components/ContentHeader';
+import ContentHeader from '../../app/components/Header/ContentHeader';
 import QRCode from '../../app/components/QRcode/QRCode';
 import ShareThis from '../../app/components/ShareThis/ShareThis';
 import FormTextField from '../../app/components/FormControl/FormTextField';

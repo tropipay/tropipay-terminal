@@ -7,7 +7,7 @@ import { Button } from "@material-ui/core";
 import FormTextField from '../../app/components/FormControl/FormTextField';
 import FormSelect from '../../app/components/FormControl/FormSelect';
 import FromCheckBox from '../../app/components/FormControl/FromCheckBox';
-import ContentHeader from '../../app/components/ContentHeader';
+import ContentHeader from '../../app/components/Header/ContentHeader';
 import Validation from '../../app/services/validation';
 
 import Grid from '@material-ui/core/Grid';

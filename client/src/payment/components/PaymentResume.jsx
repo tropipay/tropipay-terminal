@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { Button, Checkbox, FormControlLabel } from "@material-ui/core";
-import ContentHeader from '../../app/components/ContentHeader';
+import ContentHeader from '../../app/components/Header/ContentHeader';
 
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@mui/material';
