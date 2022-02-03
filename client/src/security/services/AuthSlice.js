@@ -54,7 +54,9 @@ export const loadProfile = () => (dispatch) => {
       method: "POST",
       body: JSON.stringify(data), 
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "access_token": data['access_token'],
+        "token_type": data['token_type']
       }
     })
     .then(response => response.json())

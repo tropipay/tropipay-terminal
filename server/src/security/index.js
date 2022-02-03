@@ -7,6 +7,8 @@
  * @version    	1.0
  * */
 const KsMf = require('ksmf');
+const TokenRequire = require('./middleware/TokenRequire');
+
 class SecurityModule extends KsMf.app.Module {
 
     initConfig() {
@@ -26,7 +28,8 @@ class SecurityModule extends KsMf.app.Module {
             route: prefix + "/profile",
             controller: 'DefaultController',
             action: 'getProfile',
-            method: 'post'
+            method: 'post',
+            middleware: [TokenRequire]
         }];
     }
 

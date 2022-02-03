@@ -26,7 +26,7 @@ function Login() {
             style={{ backgroundColor: '#232C53' }}
             startIcon={<img src={IconUrl} style={{ width: "2rem" }} alt="" />}
         >
-            {t("home.connect")}
+            {t("front.connect")}
         </Button>
     );
 }

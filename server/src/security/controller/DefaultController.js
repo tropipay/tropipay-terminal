@@ -54,8 +54,6 @@ class DefaultController extends KsMf.app.Controller {
                 ...old,
                 ...token.data
             };
-            console.log('sessionnnnnnnnnnnn', ses);
-            console.log('tokennnnnnnnnnnnnn', token);
             res.cookie('session', JSON.stringify(ses), {
                 maxAge: 86400000
             });
@@ -84,22 +82,19 @@ class DefaultController extends KsMf.app.Controller {
     }
 
     async getProfile(req, res) {
-        const session = req.body;
-
-        console.log('session', session);
+        const token = req.token;
         try {
             const profileData = await axios({
                 headers: {
-                    'Authorization': 'Bearer ' + session.access_token
+                    'Authorization': token
                 },
                 url: url_tropipay + "/api/users/profile"
             });
     
-            this.logger.info('profile', session.access_token);
+            this.logger.info('profile', token);
             res.json(profileData.data);
         }
         catch(error){
-            console.log('ssssssssss'), error;
             res.json({ name: 'gest'});
         }
 
