@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import loginReducer from '../../demo/DemoSlice';
 import authReducer from '../../security/services/AuthSlice';
+import paylinkReducer from '../../payment/services/PaylinkSlice';
 
 export default configureStore({
   reducer: {
-    counter: loginReducer,
-    auth: authReducer
+    auth: authReducer,
+    paylink: paylinkReducer
   },
 });

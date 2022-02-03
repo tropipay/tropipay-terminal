@@ -4,7 +4,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const slice = createSlice({
     name: "paylink",
     initialState: {
-        data: null,
+        data: {
+            advanced: false,
+            description: "",
+            amount: "",
+            currency: '2',
+            concept: "",
+            lang: "es",
+            reason: "",
+            reference: ""
+        },
         error: null,
         list: []
     },
@@ -29,7 +38,9 @@ export const slice = createSlice({
 export default slice.reducer;
 
 // ... Selectors  
-export const selectPaylinkData = (state) => state.paylink.data;
+export const selectPaylinkData = (state) => {
+    return state.paylink.data;
+};
 export const selectPaylinkError = (state) => state.paylink.error;
 export const selectPaylinkList = (state) => state.paylink.list;
 

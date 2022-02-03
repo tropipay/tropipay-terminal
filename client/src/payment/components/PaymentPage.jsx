@@ -7,31 +7,34 @@ import PaymentResume from './PaymentResume';
 import PaymentShow from './PaymentShow';
 import StepperControl from '../../app/components/Stepper/StepperControl';
 
+import { paylinkUpdate, createPaylink, selectPaylinkData } from '../services/PaylinkSlice';
+import { useDispatch, useSelector } from "react-redux";
+
 import Button from "@material-ui/core/Button";
 
 function PaymentPage(props) {
-
+  // ... initialize state
   const { t } = useTranslation();
   const history = useHistory();
   const stepper = StepperControl();
-  
+  const dispatch = useDispatch();
+  const paylink = useSelector(selectPaylinkData);
+  // ... define components by step 
   const steps = [
     () => <PaymentFrom submit={(payload) => {
-      console.log(" PaymentFrom >>>>>>>", payload);
+      dispatch(paylinkUpdate(payload));
       stepper.next();
     }} />,
     () => <PaymentResume submit={() => {
-      console.log(" PaymentResume >>>>>>>");
+      dispatch(createPaylink(paylink));
       stepper.next();
     }} />,
     () => <PaymentShow  />
   ];
-
+  // ... set components to stepper
   stepper.add(steps);
-  stepper.subscribe((step, dir) => {
-    console.log(">> PAGE #", step, dir);
-  });
-
+  stepper.subscribe((step, dir) => console.log(">> PAGE #", step, dir));
+  // ... define render controls
   const renderControls = (t, history) => {
     let page = "";
 
@@ -54,7 +57,7 @@ function PaymentPage(props) {
       </Button>
     );
   }
-
+  // ... render componet
   return (
     <div className="page-margin">
       {stepper.render()}

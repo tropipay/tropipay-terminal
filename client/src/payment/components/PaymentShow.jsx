@@ -14,17 +14,20 @@ import FormTextField from '../../app/components/FormControl/FormTextField';
 import { nakedUrl } from '../../app/services/util';
 import Msg from '../../app/components/Message/Message';
 
+import { selectPaylinkData } from '../services/PaylinkSlice';
+import { useSelector } from "react-redux";
+
 function PaymentShow(props) {
     const { t } = useTranslation();
+    const {
+        shortUrl,
+        createdAt,
+        expirationDate
+    } = useSelector(selectPaylinkData);
 
-    /*const currency = "EUR";
-    const amount = 123;
-    const selloff = 119.31;
-    const cost = 3.69;*/
-    const plDate = "12 Julio 2020, 20:20";
-    const plExp = "00:28:48";
-    const paylinkUrl = "http://tppay/2543fd";
-
+    //const createdAt = "12 Julio 2020, 20:20";
+    //const expirationDate = "00:28:48";
+    //const shortUrl = "http://tppay/2543fd";
 
     const [sendSMS, setSendSMS] = useState(false);
     const [sendEmail, setSendEmail] = useState(false);
@@ -65,14 +68,14 @@ function PaymentShow(props) {
                     <Grid container spacing={2} className="box-border-curved">
                         <Grid container spacing={2} className="box-padding-bottom-2 box-padding-top-2">
                             <Grid item xs={12} sm={6} className="box-vertical box-align-center">
-                                <QRCode url={paylinkUrl} size={200} />
+                                <QRCode url={shortUrl} size={200} />
                             </Grid>
                             <Grid item xs={12} sm={6} className="box-label-right ">
                                 <Typography variant="body2" className="box-padding-right-2">
-                                    {plDate}
+                                    {createdAt}
                                 </Typography>
                                 <Typography variant="body2" className="box-padding-right-2">
-                                    {plExp}
+                                    {expirationDate}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -91,10 +94,10 @@ function PaymentShow(props) {
                                     >
                                         <span className="d-inline-block text-truncate mr-2">
                                             <a target="_blank"
-                                                href={paylinkUrl}
+                                                href={shortUrl}
                                                 className="link-blue"
                                             >
-                                                {nakedUrl(paylinkUrl)}
+                                                {nakedUrl(shortUrl)}
                                             </a>
                                         </span>
                                         <IconButton
@@ -103,7 +106,7 @@ function PaymentShow(props) {
                                             color="inherit"
                                             className="gray-label"
                                             onClick={() =>
-                                                copyURL(paylinkUrl)
+                                                copyURL(shortUrl)
                                             }
                                         >
                                             <ContentDuplicateIcon />
@@ -113,7 +116,7 @@ function PaymentShow(props) {
 
                                 <Grid item xs={12} >
                                     <ShareThis
-                                        sharedUrl={paylinkUrl}
+                                        sharedUrl={shortUrl}
                                         className="gray-label box-label-bold"
                                     />
                                 </Grid>

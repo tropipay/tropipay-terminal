@@ -4,6 +4,7 @@
  * @returns {*}
  */
 export const nakedUrl = url => {
+    if(!url) return '';
     if (url.split('https://').length > 1)
         return url.split('https://')[1];
     else if (url.split('http://').length > 1)

@@ -13,7 +13,6 @@ class SecurityModule extends KsMf.app.Module {
 
     initConfig() {
         const prefix = "/api/v1" + this.prefix;
-        
         this.routes = [{
             route: prefix + "/oauth/response",
             controller: 'DefaultController',

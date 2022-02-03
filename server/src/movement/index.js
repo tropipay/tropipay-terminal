@@ -13,15 +13,12 @@ class MovementModule extends KsMf.app.Module {
 
     initConfig() {
         const prefix = "/api/v1" + this.prefix;
+
+        this.middleware.global.push(TokenRequire);
         this.routes = [{
             route: prefix + "/",
             controller: 'DefaultController',
-            action: 'list',
-            method: 'get',
-            middleware: {
-                global: [TokenRequire]
-            }
-
+            method: 'rest'
         }];
     }
 

@@ -30,6 +30,12 @@
                 "name": "ksmf",
                 "type": "package",
                 "namespace": "app.Logger"
+            },
+            "middleware.token": {
+                "type": "package",
+                "name": "TokenRequire",
+                "module": "security",
+                "path": "middleware" 
             }
         }
     },

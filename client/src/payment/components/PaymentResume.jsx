@@ -4,14 +4,32 @@ import { useTranslation } from 'react-i18next';
 import { Button, Checkbox, FormControlLabel } from "@material-ui/core";
 import ContentHeader from '../../app/components/Header/ContentHeader';
 
+import { selectPaylinkData } from '../services/PaylinkSlice';
+import { useSelector } from "react-redux";
+
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@mui/material';
 
 function PaymentResume(props) {
     const { t } = useTranslation();
+    const {
+        currency,  
+        amount
+    } = useSelector(selectPaylinkData);
 
-    const currency = "EUR";
-    const amount = 123;
+    /**
+      advanced: false,
+      description: "",
+      amount: "",
+      currency: '2',
+      concept: "",
+      lang: "es",
+      reason: "",
+      reference: ""
+    */
+    /*const currency = "EUR";
+    const amount = 123;*/
+
     const selloff = 119.31;
     const cost = 3.69;
 
