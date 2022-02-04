@@ -36,6 +36,10 @@
                 "name": "TokenRequire",
                 "module": "security",
                 "path": "middleware" 
+            },
+            "TropiPay": {
+                "path": "service",
+                "module": "app"
             }
         }
     },

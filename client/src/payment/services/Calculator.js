@@ -1,32 +1,44 @@
 class Calculator {
     /**
-     * @param payload.amount
      * @param payload.rate
+     * @param payload.amount
      * @param payload.currency
-     * @param payload.service.tp_fee_percent
      * @param payload.service.tp_fee_fixed
-     * @param payload.service.service_fee_percent
+     * @param payload.service.tp_fee_percent
      * @param payload.service.service_fee_fixed
+     * @param payload.service.service_fee_percent
      */
-    getInfo(payload) {
-        const amountInDestination = this.getAmountInDestination(payload);
-        return amountInDestination && amountInDestination.destinationValue ? {
-            'amount': amountInDestination.destinationValue.toFixed(2),
-            'currency': amountInDestination.currencyToWork
-        } : {
+    getResume(payload) {
+        const data = this.getAmountInDestination(payload);
+        const defaultValues = {
             'amount': 0,
             'currency': 'EUR'
+        };
+        const delivery = data && data.destinationValue ? {
+            'amount': data.destinationValue.toFixed(2),
+            'currency': data.currencyToWork
+        } : defaultValues;
+
+        const original = data && data.originalCurrencyAmount ? {
+            'amount': (data.originalCurrencyAmount / 100).toFixed(2),
+            'currency': data.currencyToWork
+        } : defaultValues;
+
+        return {
+            delivery,
+            original,
+            rate: Math.round(10000 * payload.currentRate) / 10000
         };
     }
 
     /**
-     * @param payload.amount
      * @param payload.rate
+     * @param payload.amount
      * @param payload.currency
-     * @param payload.service.tp_fee_percent
      * @param payload.service.tp_fee_fixed
-     * @param payload.service.service_fee_percent
+     * @param payload.service.tp_fee_percent
      * @param payload.service.service_fee_fixed
+     * @param payload.service.service_fee_percent
      */
     getAmountInDestination(payload) {
         const amount = payload.amount;

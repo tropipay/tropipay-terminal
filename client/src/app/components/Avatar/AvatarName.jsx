@@ -2,6 +2,7 @@ import Avatar from "@material-ui/core/Avatar";
 import './Avatar.scss';
 
 export const getStyleIndex = (str, max = 12) => {
+  str = str || '';
   const ranM =
     str.charCodeAt(0) > 97 ? str.charCodeAt(0) - 32 : str.charCodeAt(0);
   const ranI = ranM - 64 <= 0 ? 1 : ranM - 64;

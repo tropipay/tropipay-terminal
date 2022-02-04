@@ -29,6 +29,7 @@ class DefaultController extends KsMf.app.Controller {
 
     init() {
         this.logger = this.helper.get('logger').prefix('Security.DefaultController');
+        this.tropipay = this.helper.get('TropiPay');
     }
 
     async oauthResponse(req, res) {
@@ -82,22 +83,16 @@ class DefaultController extends KsMf.app.Controller {
     }
 
     async getProfile(req, res) {
-        const token = req.token;
-        try {
-            const profileData = await axios({
-                headers: {
-                    'Authorization': token
-                },
-                url: url_tropipay + "/api/users/profile"
+        const result = await this.tropipay.set({
+            token: req.token
+        }).getProfile();
+        if (result.error) {
+            res.status(401).json({
+                error: 'unauthorized'
             });
-    
-            this.logger.info('profile', token);
-            res.json(profileData.data);
+        } else {
+            res.json(result.data);
         }
-        catch(error){
-            res.json({ name: 'gest'});
-        }
-
     }
 
 }
