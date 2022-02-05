@@ -3,71 +3,50 @@ import {
 } from "@reduxjs/toolkit";
 import session from "./session";
 
+//... Define namespace
+const name = "auth";
 // ... Create Slice
 export const slice = createSlice({
-  name: "auth",
+  name,
   initialState: {
-    profile: null,
-    session: null,
+    data: {},
     error: null
   },
   reducers: {
-    updateError: (state, action) => {
+    onError: (state, action) => {
       state.error = action.payload;
+      state.data = {};
+      session.del();
     },
-    updateSession: (state, action) => {
+    onUpdate: (state, action) => {
       if (action.payload) {
         session.set(action.payload);
-        state.session = action.payload;
+        state.data = action.payload;
       } else {
-        state.session = session.get();
+        state.data = session.get();
       }
-    },
-    updateProfile: (state, action) => {
-      if (action.payload) {
-        session.set(action.payload, "profile");
-        state.profile = action.payload;
-      } else {
-        state.profile = session.get("profile");
-      }
-    },
+    }
   },
 });
 
-// ... Reducer  
-export default slice.reducer;
-
-// ... Selectors  
-export const selectProfile = (state) => state.auth.profile;
-export const selectSession = (state) => state.auth.session;
-export const selectError = (state) => state.auth.error;
-export const selectToken = (state) => state.auth.session.token;
-
 // ... Actions  
-export const {
-  updateSession,
-  updateProfile,
-  updateError
+const {
+  onUpdate,
+  onError
 } = slice.actions;
 
-// ... Actions (async)  
-export const loadProfile = () => (dispatch) => {
-
-  const data = session.get();
-  const url = "/api/v1/security/profile";
-  fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-        "access_token": data['access_token'],
-        "token_type": data['token_type']
-      }
-    })
-    .then(response => response.json())
-    .then(data => dispatch(updateProfile(data)))
-    .catch(function (error) {
-      dispatch(updateProfile({}));
-      dispatch(updateError(error.message));
-    });
-};
+//... Export the slice as a service
+const Service = {
+  name,
+  reducer: slice.reducer,
+  action: {
+      error: onError,
+      update: onUpdate
+  },
+  selector: {
+    data: (state) => state[name].daya,
+    token: (state) => state[name].data.token,
+    error: (state) => state[name].error
+  }
+}
+export default Service;

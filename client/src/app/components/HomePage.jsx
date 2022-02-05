@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { loadProfile, selectProfile } from "../../security/services/AuthSlice";
+import srvProfile from '../../security/services/ProfileSlice';
 
 import { Grid } from "@mui/material";
 import Button from "@material-ui/core/Button";
@@ -14,11 +14,11 @@ function HomePage() {
   const { t } = useTranslation();
   const nav = useHistory();
   const dispatch = useDispatch();
-  const profile = useSelector(selectProfile);
+  const profile = useSelector(srvProfile.selector.data);
 
   useEffect(() => {
     if (!profile) {
-      dispatch(loadProfile());
+      dispatch(srvProfile.action.load());
     }
   });
 

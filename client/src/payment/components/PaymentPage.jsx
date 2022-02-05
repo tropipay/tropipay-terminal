@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -7,33 +7,45 @@ import PaymentResume from './PaymentResume';
 import PaymentShow from './PaymentShow';
 import StepperControl from '../../app/components/Stepper/StepperControl';
 
-import { paylinkUpdate, createPaylink, selectPaylinkData } from '../services/PaylinkSlice';
+//import { paylinkUpdate, createPaylink, selectPaylinkData, loadImfoFee } from '../services/PaylinkSlice';
+import srvPaylink from '../services/PaylinkSlice';
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "@material-ui/core/Button";
 
 function PaymentPage(props) {
-  // ... initialize state
+  //... initialize state
   const { t } = useTranslation();
   const history = useHistory();
   const stepper = StepperControl();
   const dispatch = useDispatch();
-  const paylink = useSelector(selectPaylinkData);
-  // ... define components by step 
+  
+  const paylink = useSelector(srvPaylink.selector.data);
+  const fee = useSelector(srvPaylink.selector.fee);
+
+  useEffect(() => {
+    if (fee.rate === -1) {
+      dispatch(srvPaylink.action.loadfee());
+    }
+  }, [fee, dispatch])
+
+  //... define components by step 
   const steps = [
-    () => <PaymentFrom submit={(payload) => {
-      dispatch(paylinkUpdate(payload));
+    () => <PaymentFrom submit={async (payload) => {
+      dispatch(srvPaylink.action.update(payload));
       stepper.next();
     }} />,
     () => <PaymentResume submit={() => {
-      dispatch(createPaylink(paylink));
+      dispatch(srvPaylink.action.create(paylink));
       stepper.next();
     }} />,
     () => <PaymentShow  />
   ];
+
   // ... set components to stepper
   stepper.add(steps);
   stepper.subscribe((step, dir) => console.log(">> PAGE #", step, dir));
+
   // ... define render controls
   const renderControls = (t, history) => {
     let page = "";
@@ -57,6 +69,7 @@ function PaymentPage(props) {
       </Button>
     );
   }
+
   // ... render componet
   return (
     <div className="page-margin">

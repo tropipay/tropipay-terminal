@@ -14,7 +14,7 @@ import FormTextField from '../../app/components/FormControl/FormTextField';
 import { nakedUrl } from '../../app/services/util';
 import Msg from '../../app/components/Message/Message';
 
-import { selectPaylinkData } from '../services/PaylinkSlice';
+import srvPaylink from '../services/PaylinkSlice';
 import { useSelector } from "react-redux";
 
 function PaymentShow(props) {
@@ -23,7 +23,7 @@ function PaymentShow(props) {
         shortUrl,
         createdAt,
         expirationDate
-    } = useSelector(selectPaylinkData);
+    } = useSelector(srvPaylink.selector.data);
 
     //const createdAt = "12 Julio 2020, 20:20";
     //const expirationDate = "00:28:48";

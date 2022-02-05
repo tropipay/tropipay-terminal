@@ -28,6 +28,11 @@ class PaymentModule extends KsMf.app.Module {
             controller: 'DefaultController',
             action: 'getFee',
             method: 'get'
+        }, {
+            route: prefix + "/info",
+            controller: 'DefaultController',
+            action: 'getInfo',
+            method: 'post'
         }];
     }
 

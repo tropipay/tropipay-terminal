@@ -1,90 +1,192 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+    createSlice
+} from "@reduxjs/toolkit";
+import calculator from './Calculator';
+import session from "../../security/services/session";
 
-// ... Create Slice
+//... Define namespace
+const name = "paylink";
+//... Create Slice
 export const slice = createSlice({
-    name: "paylink",
+    name,
     initialState: {
         data: {
             advanced: false,
             description: "",
-            amount: "",
+            amount: 0,
             currency: '2',
             concept: "",
             lang: "es",
             reason: "",
-            reference: ""
+            reference: "",
+
+            error: null,
+            list: []
         },
-        error: null,
-        list: []
-    },
-    reducers: {
-        paylinkError: (state, action) => {
-            state.error = action.payload;
-        },
-        paylinkUpdate: (state, action) => {
-            if (action.payload) {
-                state.data = action.payload;
+        fee: {
+            rate: -1,
+            service: {
+                'tp_fee_fixed': 0,
+                'tp_fee_percent': 0,
+                'service_fee_fixed': 0,
+                'service_fee_percent': 0
             }
         },
-        paylinkUpdateList: (state, action) => {
+        resume: {
+            delivery: {
+                'amount': 0,
+                'currency': 'EUR'
+            },
+            original: {
+                'amount': 0,
+                'currency': 'EUR'
+            },
+            cost: {
+                'amount': 0,
+                'currency': 'EUR'
+            },
+            current: {
+                'amount': 0,
+                'currency': 'EUR'
+            },
+            rate: 0
+        },
+    },
+    reducers: {
+        onResume: (state, action) => {
+            state.resume = calculator.getResume({
+                amount: state.data.amount,
+                currency: state.data.currency,
+                ...state.fee
+            });
+            console.log('------------------------');
+            console.log('onFee.resume', state.resume);
+            console.log('onFee.fee', state.fee);
+            console.log('onFee.data', state.data);
+            console.log('------------------------');
+        },
+        onError: (state, action) => {
+            state.error = action.payload;
+        },
+        onUpdate: (state, action) => {
+            if (action.payload) {
+                state.data = action.payload;
+                state.resume = calculator.getResume({
+                    amount: state.data.amount,
+                    currency: state.data.currency,
+                    ...state.fee
+                });
+                console.log('------------------------');
+                console.log('onFee.resume', state.resume);
+                console.log('onFee.fee', state.fee);
+                console.log('onFee.data', state.data);
+                console.log('------------------------');
+                state.error = '';
+            }
+        },
+        onList: (state, action) => {
             if (action.payload) {
                 state.list = action.payload;
+                state.error = '';
+            }
+        },
+        onFee: (state, action) => {
+            if (action.payload) {
+                state.fee.rate = action.payload.rate;
+                if (action.payload.service) {
+                    state.fee.service = action.payload.service;
+                }
+                state.resume = calculator.getResume({
+                    amount: state.data.amount,
+                    currency: state.data.currency,
+                    ...state.fee
+                });
+                console.log('------------------------');
+                console.log('onFee.resume', state.resume);
+                console.log('onFee.fee', state.fee);
+                console.log('onFee.data', state.data);
+                console.log('------------------------');
+                state.error = '';
             }
         }
     }
 });
 
-// ... Reducer  
-export default slice.reducer;
-
-// ... Selectors  
-export const selectPaylinkData = (state) => {
-    return state.paylink.data;
-};
-export const selectPaylinkError = (state) => state.paylink.error;
-export const selectPaylinkList = (state) => state.paylink.list;
-
-// ... Actions  
+//... Actions  
 export const {
-    paylinkError,
-    paylinkUpdate,
-    paylinkUpdateList
+    onError,
+    onUpdate,
+    onList,
+    onFee
 } = slice.actions;
 
-// ... Actions (async)  
-export const createPaylink = (data) => (dispatch) => {
-    try {
-        const url = "/api/v1/payment";
-        fetch(url, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                    "access_token": data['access_token'],
-                    "token_type": data['token_type']
-                }
-            })
-            .then(response => response.json())
-            .then(data => dispatch(paylinkUpdate(data)));
-    } catch (e) {
-        dispatch(paylinkError(e.message));
-    }
+//... create a pyment links from server
+const onCreate = (data) => (dispatch) => {
+    fetch("/api/v1/payment", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+                "access_token": data['access_token'],
+                "token_type": data['token_type']
+            }
+        })
+        .then(response => response.json())
+        .then(data => dispatch(onUpdate(data)))
+        .catch(function (error) {
+            dispatch(onError(error.message));
+        });
 };
-
-export const listPaylink = (data) => (dispatch) => {
-    try {
-        const url = "/api/v1/payment";
-        fetch(url, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "access_token": data['access_token'],
-                    "token_type": data['token_type']
-                }
-            })
-            .then(response => response.json())
-            .then(data => dispatch(paylinkUpdateList(data)));
-    } catch (e) {
-        dispatch(paylinkError(e.message));
-    }
+//... load the list of PymentLinks from server
+const onLoad = () => (dispatch) => {
+    const data = session.get();
+    fetch("/api/v1/payment", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "access_token": data['access_token'],
+                "token_type": data['token_type']
+            }
+        })
+        .then(response => response.json())
+        .then(response => dispatch(onList(response)))
+        .catch(function (error) {
+            dispatch(onError(error.message));
+        });
 };
+//... load fee from server
+export const onLoadFee = () => (dispatch) => {
+    const data = session.get();
+    fetch("/api/v1/payment/info", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "access_token": data['access_token'],
+                "token_type": data['token_type']
+            }
+        })
+        .then(response => response.json())
+        .then(data => dispatch(onFee(data)))
+        .catch(function (error) {
+            dispatch(onError(error.message));
+        });
+};
+//... Export the slice as a service
+const Service = {
+    name,
+    reducer: slice.reducer,
+    action: {
+        loadfee: onLoadFee,
+        update: onUpdate,
+        load: onLoad,
+        create: onCreate
+    },
+    selector: {
+        data: (state) => state[name].data,
+        error: (state) => state[name].error,
+        fee: (state) => state[name].fee,
+        list: (state) => state[name].list, 
+        resume: (state) => state[name].resume
+    }
+} 
+export default Service;

@@ -14,20 +14,35 @@ class Calculator {
             'amount': 0,
             'currency': 'EUR'
         };
+        //... Applied exchange rate
+        const rate = Math.round(10000 * data.currentRate) / 10000;
+        //... Cost of service
+        const cost = data && data.amountToChargeInEUR ? {
+            'amount': ( data.amountToChargeInEUR / 100 - data.destinationValue).toFixed(2),
+            'currency': data.currencyToWork
+        } : defaultValues;
+        //... Amount over TropiPay base currency (EUR)
+        const current = data && data.amountToChargeInEUR ? {
+            'amount': (data.amountToChargeInEUR / 100).toFixed(2),
+            'currency': data.currencyToWork
+        } : defaultValues;
+        //... Amount over the currency selected by the user (USD), without applying field rate
+        const original = data && data.originalCurrencyAmount ? {
+            'amount': (data.originalCurrencyAmount / 100).toFixed(2),
+            'currency': data.originalCurrency
+        } : defaultValues;
+        //... Amount deposited in the TropiPay account (EUR), discounting the cost of the service
         const delivery = data && data.destinationValue ? {
             'amount': data.destinationValue.toFixed(2),
             'currency': data.currencyToWork
         } : defaultValues;
 
-        const original = data && data.originalCurrencyAmount ? {
-            'amount': (data.originalCurrencyAmount / 100).toFixed(2),
-            'currency': data.currencyToWork
-        } : defaultValues;
-
         return {
-            delivery,
-            original,
-            rate: Math.round(10000 * payload.currentRate) / 10000
+            rate,       // Tipo de cambio aplicado
+            cost,       // costo del servicio
+            current,    // importe
+            original,   // importe original en caso de que no conincida la moneda con la base de operaciones (EUR)
+            delivery   
         };
     }
 

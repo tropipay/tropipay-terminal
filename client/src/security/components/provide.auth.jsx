@@ -1,5 +1,5 @@
 import React, { useContext, createContext, useState } from "react";
-import db from "../services/localdb";
+import ses from "../services/session";
 
 const AuthContext = createContext();
 
@@ -25,7 +25,7 @@ export function useProvideAuth() {
 
   const signOut = (from) => {
     return new Promise((resolve, reject) => {
-      db.del("session");
+      ses.del();
       setSession(null);
       resolve(null);
     });

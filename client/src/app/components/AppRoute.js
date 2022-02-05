@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import {Switch, Route, Redirect} from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { updateSession, updateProfile } from "../../security/services/AuthSlice";
+import srvAuth from "../../security/services/AuthSlice";
+import srvProfile from "../../security/services/ProfileSlice";
 
 import ProvideAuth from '../../security/components/provide.auth';
 import RoutePrivate from '../../security/components/route.private';
@@ -21,8 +22,8 @@ export default function AppRoute() {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(updateSession());
-    dispatch(updateProfile());
+    dispatch(srvAuth.action.update());
+    dispatch(srvProfile.action.update());
   });
 
   return (

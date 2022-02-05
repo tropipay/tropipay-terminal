@@ -52,8 +52,8 @@ const links = [
 ]
 
 function FrontPage() {
-    const cls = useStyles();
     const { t } = useTranslation();
+    const cls = useStyles();
     const nav = useHistory();
 
     useEffect(() => {

@@ -134,5 +134,25 @@ class DefaultController extends KsMf.app.Controller {
         }
     }
 
+    async getInfo(req, res) {
+        const token = req.token;
+        this.tropipay.set({ token });
+        const fee = await this.tropipay.getFee();
+        const srv = await this.tropipay.getService('CHARGE_EXTERNAL_CARDS');
+        if(fee.error || srv.error) {
+            res.status(500).json({ error: fee.error.message + ', ' + srv.error.message });
+        }else{
+            const result = {
+                rate: fee.data['usd2eur'],
+                service: {
+                    "service_fee_percent": srv.data["service_fee_percent"],
+                    "service_fee_fixed": srv.data["service_fee_fixed"],
+                    "tp_fee_percent": srv.data["tp_fee_percent"],
+                    "tp_fee_fixed": srv.data["tp_fee_fixed"]
+                }
+            }
+            res.json(result);
+        }
+    }
 }
 module.exports = DefaultController;

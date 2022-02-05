@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, Checkbox, FormControlLabel } from "@material-ui/core";
 import ContentHeader from '../../app/components/Header/ContentHeader';
 
-import { selectPaylinkData } from '../services/PaylinkSlice';
+import srvPaylink from '../services/PaylinkSlice';
 import { useSelector } from "react-redux";
 
 import Grid from '@material-ui/core/Grid';
@@ -12,26 +12,8 @@ import { Typography } from '@mui/material';
 
 function PaymentResume(props) {
     const { t } = useTranslation();
-    const {
-        currency,  
-        amount
-    } = useSelector(selectPaylinkData);
 
-    /**
-      advanced: false,
-      description: "",
-      amount: "",
-      currency: '2',
-      concept: "",
-      lang: "es",
-      reason: "",
-      reference: ""
-    */
-    /*const currency = "EUR";
-    const amount = 123;*/
-
-    const selloff = 119.31;
-    const cost = 3.69;
+    const resume = useSelector(srvPaylink.selector.resume);
 
     const [accept, setAccept] = useState(false);
 
@@ -67,7 +49,7 @@ function PaymentResume(props) {
                         </Typography>
 
                         <Typography className="box-align-right">
-                            {cost} {currency}
+                            {getResume(resume, 'cost', 'amount')} {getResume(resume, 'cost', 'currency')}
                         </Typography>
                     </div>
                     <div className="box-horizontal box-align-between box-align-center">
@@ -76,7 +58,7 @@ function PaymentResume(props) {
                         </Typography>
 
                         <Typography className="box-align-right">
-                            {amount} {currency}
+                            {getResume(resume, 'current', 'amount')} {getResume(resume, 'current', 'currency')}
                         </Typography>
                     </div>
                     <div className="box-horizontal box-align-between box-align-center box-label-bold">
@@ -85,7 +67,7 @@ function PaymentResume(props) {
                         </Typography>
 
                         <Typography className="box-align-right">
-                            {selloff} {currency}
+                            {getResume(resume, 'delivery', 'amount')} {getResume(resume, 'delivery', 'currency')} 
                         </Typography>
                     </div>
                 </div>
@@ -123,4 +105,12 @@ function PaymentResume(props) {
     )
 }
 
+function getResume(data, scope, key) {
+    if(data && data[scope] && data[scope][key] ){
+        return data[scope][key];
+    }
+    return '';
+}
+
 export default PaymentResume;
+
