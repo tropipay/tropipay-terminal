@@ -38,7 +38,7 @@ class TropiPay {
             };
         } catch (error) {
             return {
-                error
+                error: error.message || error
             }
         }
     }

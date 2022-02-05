@@ -24,7 +24,7 @@ export const slice = createSlice({
             list: []
         },
         fee: {
-            rate: -1,
+            rate: 0,
             service: {
                 'tp_fee_fixed': 0,
                 'tp_fee_percent': 0,
@@ -121,10 +121,11 @@ export const {
 } = slice.actions;
 
 //... create a pyment links from server
-const onCreate = (data) => (dispatch) => {
+const onCreate = (payload) => (dispatch) => {
+    const data = session.get();
     fetch("/api/v1/payment", {
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify(payload),
             headers: {
                 "Content-Type": "application/json",
                 "access_token": data['access_token'],

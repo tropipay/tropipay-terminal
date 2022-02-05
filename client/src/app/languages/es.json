@@ -19,9 +19,6 @@
         "policy": "Política de privacidad",
         "terms": "Términos y condiciones"
     },
-    "demo": {
-        "title": "Hola Mundo {{test}}"
-    },
     "security":{
         "login": {
             "title": "Entrar"
@@ -111,6 +108,7 @@
         }
     },
     "error": {
+        "Unauthorized": "Usuario no autorizado o sesión caducada",
         "required": "Este campo es obligatorio",
         "email": "Este email no es válido",
         "phone": "Introduce un teléfono válido",

@@ -3,13 +3,14 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from 'mdi-react/CloseIcon';
 import CheckIcon from 'mdi-react/CheckIcon';
 import Snackbar from '@material-ui/core/Snackbar';
+import { useTranslation } from "react-i18next";
 
 export const Message = (props) => {
     const hideTime = 5000;
-    const helperClass = props.helperClass ? props.helperClass : '';
+    const style = props && props.style ? props.style : '';
     const btnActions = [];
 
-    if (props.type === 'confirm') {
+    if (props && props.type === 'confirm') {
         btnActions.push(
             <IconButton
                 key="ok"
@@ -46,12 +47,12 @@ export const Message = (props) => {
     );
 
     return <Snackbar
-        className={`appSnackbar ${helperClass}`}
+        className={`appSnackbar ${style}`}
         anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
         }}
-        open={(props.message && props.message !== "")}
+        open={(props && props.message && props.message !== "")}
         autoHideDuration={hideTime}
         onClose={props.onClose}
         ContentProps={{ 'aria-describedby': 'message-id' }}
@@ -61,15 +62,38 @@ export const Message = (props) => {
 };
 
 const Component = (props) => {
-
+    const { t } = useTranslation();
     const [message, setMessage] = useState("");
+    const [type, setType] = useState("");
+    const [style, setStyle] = useState("");
+
     const clean = () => setMessage("");
 
     return {
         render: () => {
-            return <Message message={message} onClose={clean} />
+            return <Message 
+                style={style}
+                message={message} 
+                onClose={clean} 
+                type={type} 
+                />
         },
-        show: (msg) => setMessage(msg),
+        show: (payload) => {
+            if(!payload) return false;
+            const msg = typeof(payload) === 'string' ? payload : payload.msg;
+            setMessage(msg);
+            setType(payload.type);
+            setStyle(payload.style);
+        },
+        traslate: (payload) => {
+            if(!payload) return false;
+            const msgId = typeof(payload) === 'string' ? payload : payload.msgId;
+            const msgDf = payload.default;
+            const msg = t(msgId) !== msgId ? t(msgId) : t(msgDf);
+            setMessage(msg);
+            setType(payload.type);
+            setStyle(payload.style);
+        },
         hide: clean
     }
 }

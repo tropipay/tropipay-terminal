@@ -24,7 +24,7 @@ function PaymentPage(props) {
   const fee = useSelector(srvPaylink.selector.fee);
 
   useEffect(() => {
-    if (fee.rate === -1) {
+    if (fee.rate === 0) {
       dispatch(srvPaylink.action.loadfee());
     }
   }, [fee, dispatch])

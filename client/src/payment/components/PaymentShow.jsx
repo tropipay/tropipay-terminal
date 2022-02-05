@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { Checkbox, FormControlLabel, Button, IconButton } from "@material-ui/core";
@@ -24,14 +24,17 @@ function PaymentShow(props) {
         createdAt,
         expirationDate
     } = useSelector(srvPaylink.selector.data);
-
-    //const createdAt = "12 Julio 2020, 20:20";
-    //const expirationDate = "00:28:48";
-    //const shortUrl = "http://tppay/2543fd";
+    const error = useSelector(srvPaylink.selector.error);
 
     const [sendSMS, setSendSMS] = useState(false);
     const [sendEmail, setSendEmail] = useState(false);
     const message = Msg();
+
+    useEffect(() => {
+        if(error){
+            message.traslate("error."+error);
+        }
+    });
 
     const { handleSubmit, control } = useForm({
         defaultValues: {
@@ -46,7 +49,6 @@ function PaymentShow(props) {
     };
 
     const submit = (data) => {
-        console.log("submit", data);
         if (props.submit instanceof Function) {
             props.submit(data);
         }
@@ -93,7 +95,8 @@ function PaymentShow(props) {
                                         className="text-left mt-1"
                                     >
                                         <span className="d-inline-block text-truncate mr-2">
-                                            <a target="_blank"
+                                            <a  target="_blank"
+                                                rel="noreferrer"
                                                 href={shortUrl}
                                                 className="link-blue"
                                             >
@@ -194,6 +197,7 @@ function PaymentShow(props) {
                 : null}
 
             {message.render()}
+            
         </div>
     )
 }

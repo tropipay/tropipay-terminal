@@ -19,9 +19,6 @@
         "policy": "Política de privacidad",
         "terms": "Términos y condiciones"
     },
-    "demo": {
-        "title": "Hello World"
-    },
     "security":{
         "login": {
             "title": "Login"

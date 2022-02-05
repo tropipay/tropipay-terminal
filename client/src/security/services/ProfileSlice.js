@@ -15,6 +15,7 @@ export const slice = createSlice({
     reducers: {
         onError: (state, action) => {
             state.error = action.payload;
+            session.del()
         },
         onUpdate: (state, action) => {
             if (action.payload) {
@@ -32,7 +33,7 @@ const {
 
 // ... Load reasons from server
 export const load = () => (dispatch) => {
-    const data = session.get();
+    const data = session.get() || {};
     fetch("/api/v1/security/profile", {
             method: "POST",
             headers: {
