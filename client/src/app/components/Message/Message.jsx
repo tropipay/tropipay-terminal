@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 export const Message = (props) => {
     const hideTime = 5000;
-    const style = props && props.style ? props.style : '';
+    const style = props && props.style ? props.styles : '';
     const btnActions = [];
 
     if (props && props.type === 'confirm') {

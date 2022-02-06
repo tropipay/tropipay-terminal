@@ -107,6 +107,17 @@
             }
         }
     },
+    "movement": {
+      "title": "Listado de movimientos",
+      "ko": "Algo ha ido mal ... revisa tu conección y vuelve a intentarlo.",
+      "search": "Al menos 3 caracteres",
+      "noResults": "No hay coincidencias",
+      "showMore": "Mostrar más",
+      "text": "Con nosotros puedes realizar cobros desde cualquier lugar. Empieza ahora !!",
+      "btn": "Haz tu primer cobro",
+      "downloadOk": "Recibirás un email con el listado de tus cobros.",
+      "downloadKo": "Hubo un error descargando sus cobros. Por favor inténtalo de nuevo."
+    },
     "error": {
         "Unauthorized": "Usuario no autorizado o sesión caducada",
         "required": "Este campo es obligatorio",

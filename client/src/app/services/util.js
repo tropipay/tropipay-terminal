@@ -4,10 +4,16 @@
  * @returns {*}
  */
 export const nakedUrl = url => {
-    if(!url) return '';
+    if (!url) return '';
     if (url.split('https://').length > 1)
         return url.split('https://')[1];
     else if (url.split('http://').length > 1)
         return url.split('http://')[1];
     else return url;
 };
+
+export function exec(action, params = []) {
+    if (action instanceof Function) {
+        action(...params);
+    }
+}

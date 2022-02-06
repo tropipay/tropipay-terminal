@@ -3,7 +3,7 @@ import session from "../../security/services/session";
 
 function objToStr(data) {
     try {
-        if(!data) return '';
+        if (!data) return '';
         return typeof (data) !== 'string' ? JSON.stringify(data) : data;
     } catch (error) {
         return '';
@@ -30,28 +30,24 @@ const httpRequest = (payload, dispatch = null) => {
     if (body && body !== '' && method !== 'get' && method !== 'head') {
         options['body'] = body;
     }
+    const throwError = (error, dispatch) => {
+        if (error && dispatch instanceof Function) {
+            dispatch(srvError.action.update({
+                message: error && error.message ? error.message : 'error',
+                code: error && error.code ? error.code : 'ERR',
+                type: 'request',
+                path: payload.url
+            }));
+        }
+    }
     return fetch(payload.url, options)
         .then(response => response.json())
         .then(data => {
-            if (data.error && dispatch instanceof Function) {
-                dispatch(srvError.action.update({
-                    message: data.error.message ? data.error.message : 'error',
-                    code: data.error.code ? data.error.code : 'ERR',
-                    type: 'request',
-                    path: payload.url
-                }));
-            }
+            throwError(data.error, dispatch);
             return data;
         })
-        .catch(function (error) {
-            if (dispatch instanceof Function) {
-                dispatch(srvError.action.update({
-                    message: error && error.message ? error.message : 'error',
-                    code: error && error.code ? error.code : 'ERR',
-                    type: 'request',
-                    path: payload.url
-                }));
-            }
+        .catch(error => {
+            throwError(error, dispatch);
             throw error;
         });
 }

@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Message } from "./Message/Message";
 import srvError from "../services/ErrorSlice";
 import { useTranslation } from "react-i18next";
-import { getSystemErrorMap } from "util";
 
 export default function AppRoute() {
   const { t } = useTranslation();
@@ -31,7 +30,7 @@ export default function AppRoute() {
     <ProvideAuth>
         <Switch>
             <RoutePrivate exact path="/home"> <Page>  <HomePage /> </Page> </RoutePrivate>
-            <RoutePrivate exact path="/movement"> <Page> <MovementPage />  </Page> </RoutePrivate>
+            <Route exact path="/movement"> <Page> <MovementPage />  </Page> </Route>
             <RoutePrivate exact path="/payment"> <Page> <PaymentPage /> </Page> </RoutePrivate>
             <RoutePrivate exact path="/profile"> <ProfilePage /> </RoutePrivate>
 
@@ -39,7 +38,7 @@ export default function AppRoute() {
             <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>
         </Switch>
         <Message 
-            style="error"
+            styles="error"
             message={traslate(errorId, t)} 
             onClose={()=>{
               console.log("message-onClose");

@@ -290,6 +290,8 @@ class TropiPay {
      * @param {STRING} criteria 
      * @return {OBJECT} {
                 "count": 33,
+                "limit": "2",
+                "offset": "3"
                 "rows": [
                     {
                         "id": 376052,
