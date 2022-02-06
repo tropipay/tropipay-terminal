@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import session from "../../security/services/session";
+//import session from "../../security/services/session";
+import httpReq from '../../app/services/HttpRequest';
 
 //... Define namespace
 const name = "reason";
@@ -25,6 +26,8 @@ const { onError, onUpdate } = slice.actions;
 
 // ... Load reasons from server
 const onLoad = () => (dispatch) => {
+    httpReq("/api/v1/payment/reasons", dispatch).then(data => dispatch(onUpdate(data)));
+    /*
     const data = session.get();
     fetch("/api/v1/payment/reasons", {
             method: "GET",
@@ -38,7 +41,7 @@ const onLoad = () => (dispatch) => {
         .then(data => dispatch(onUpdate(data)))
         .catch(function (error) {
             dispatch(onError(error.message));
-        });
+        });*/
 };
 //... Export the slice as a service
 const Service = {

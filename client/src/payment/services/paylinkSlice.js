@@ -2,7 +2,8 @@ import {
     createSlice
 } from "@reduxjs/toolkit";
 import calculator from './Calculator';
-import session from "../../security/services/session";
+//import session from "../../security/services/session";
+import httpReq from '../../app/services/HttpRequest';
 
 //... Define namespace
 const name = "paylink";
@@ -13,7 +14,7 @@ export const slice = createSlice({
         data: {
             advanced: false,
             description: "",
-            amount: 0,
+            amount: "0.0",
             currency: '2',
             concept: "",
             lang: "es",
@@ -70,12 +71,17 @@ export const slice = createSlice({
         },
         onUpdate: (state, action) => {
             if (action.payload) {
-                state.data = action.payload;
-                state.resume = calculator.getResume({
-                    amount: state.data.amount,
-                    currency: state.data.currency,
-                    ...state.fee
-                });
+                if (action.payload.error) {
+
+                } else {
+                    state.data = action.payload;
+                    state.resume = calculator.getResume({
+                        amount: state.data.amount,
+                        currency: state.data.currency,
+                        ...state.fee
+                    });
+                }
+
                 console.log('------------------------');
                 console.log('onFee.resume', state.resume);
                 console.log('onFee.fee', state.fee);
@@ -122,6 +128,12 @@ export const {
 
 //... create a pyment links from server
 const onCreate = (payload) => (dispatch) => {
+    httpReq({
+        url: "/api/v1/payment",
+        method: "POST",
+        data: payload
+    }, dispatch).then(data => dispatch(onUpdate(data)));
+    /*
     const data = session.get();
     fetch("/api/v1/payment", {
             method: "POST",
@@ -137,9 +149,12 @@ const onCreate = (payload) => (dispatch) => {
         .catch(function (error) {
             dispatch(onError(error.message));
         });
+    */
 };
 //... load the list of PymentLinks from server
 const onLoad = () => (dispatch) => {
+    httpReq("/api/v1/payment", dispatch).then(data => dispatch(onList(data)));
+    /*
     const data = session.get();
     fetch("/api/v1/payment", {
             method: "GET",
@@ -153,10 +168,15 @@ const onLoad = () => (dispatch) => {
         .then(response => dispatch(onList(response)))
         .catch(function (error) {
             dispatch(onError(error.message));
-        });
+        });*/
 };
 //... load fee from server
 export const onLoadFee = () => (dispatch) => {
+    httpReq({
+        url: "/api/v1/payment/info",
+        method: "POST"
+    }, dispatch).then(data => dispatch(onFee(data)));
+    /*
     const data = session.get();
     fetch("/api/v1/payment/info", {
             method: "POST",
@@ -170,7 +190,7 @@ export const onLoadFee = () => (dispatch) => {
         .then(data => dispatch(onFee(data)))
         .catch(function (error) {
             dispatch(onError(error.message));
-        });
+        });*/
 };
 //... Export the slice as a service
 const Service = {
@@ -186,8 +206,8 @@ const Service = {
         data: (state) => state[name].data,
         error: (state) => state[name].error,
         fee: (state) => state[name].fee,
-        list: (state) => state[name].list, 
+        list: (state) => state[name].list,
         resume: (state) => state[name].resume
     }
-} 
+}
 export default Service;

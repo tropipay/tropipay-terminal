@@ -18,7 +18,7 @@ class Calculator {
         const rate = Math.round(10000 * data.currentRate) / 10000;
         //... Cost of service
         const cost = data && data.amountToChargeInEUR ? {
-            'amount': ( data.amountToChargeInEUR / 100 - data.destinationValue).toFixed(2),
+            'amount': (data.amountToChargeInEUR / 100 - data.destinationValue).toFixed(2),
             'currency': data.currencyToWork
         } : defaultValues;
         //... Amount over TropiPay base currency (EUR)
@@ -38,11 +38,11 @@ class Calculator {
         } : defaultValues;
 
         return {
-            rate,       // Tipo de cambio aplicado
-            cost,       // costo del servicio
-            current,    // importe
-            original,   // importe original en caso de que no conincida la moneda con la base de operaciones (EUR)
-            delivery   
+            rate, // Tipo de cambio aplicado
+            cost, // costo del servicio
+            current, // importe
+            original, // importe original en caso de que no conincida la moneda con la base de operaciones (EUR)
+            delivery
         };
     }
 
@@ -56,8 +56,13 @@ class Calculator {
      * @param payload.service.service_fee_percent
      */
     getAmountInDestination(payload) {
-        const amount = payload.amount;
-        const inCents = Math.round(parseFloat(amount.split(",").join(".")) * 100);
+        payload = payload || "";
+        const amount = (!payload.amount || payload.amount === '') ? 0 : (
+            typeof (payload.amount) === 'string' ?
+            payload.amount.split(",").join(".") :
+            payload.amount
+        );
+        const inCents = Math.round(parseFloat(amount) * 100);
         const usd2eur = payload.rate;
         const originalCurrency = payload.currency;
         const currencyToWork = "EUR";

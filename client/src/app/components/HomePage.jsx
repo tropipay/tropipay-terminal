@@ -9,7 +9,6 @@ import srvProfile from '../../security/services/ProfileSlice';
 import { Grid } from "@mui/material";
 import Button from "@material-ui/core/Button";
 import AvatarName from "./Avatar/AvatarName"
-import Message  from "./Message/Message";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -19,7 +18,10 @@ function HomePage() {
   const error = useSelector(srvProfile.selector.error);
 
   useEffect(() => {
-    if (!profile) {
+    console.log("profile-DATA", profile);
+    console.log("profile-error", error);
+    
+    if (!profile && !error) {
       dispatch(srvProfile.action.load());
     }
   });
@@ -62,18 +64,6 @@ function HomePage() {
         >
           {t("home.btn.movement")}
         </Button>
-      </Grid>
-      <Grid>
-        <Message 
-            open={(error && error !== '')} 
-            helperClass={'error'} 
-            message={t('error.' + error) !== 'error.' + error ? t('error.' + error) : t('error.internal')} 
-            onClose={()=>{
-              dispatch(srvProfile.action.error());
-            }} 
-            onConfirm={()=>{
-              dispatch(srvProfile.action.error());
-            }} />
       </Grid>
     </Grid>
   );

@@ -2,6 +2,7 @@ import {
     createSlice
 } from "@reduxjs/toolkit";
 import session from "./session";
+import httpReq from '../../app/services/HttpRequest';
 
 //... Define namespace
 const name = "profile";
@@ -19,7 +20,12 @@ export const slice = createSlice({
         },
         onUpdate: (state, action) => {
             if (action.payload) {
-                state.data = action.payload;
+                if (action.payload.error) {
+                    state.error = action.payload.error;
+                    session.del()
+                } else {
+                    state.data = action.payload;
+                }
             }
         }
     }
@@ -33,19 +39,14 @@ const {
 
 // ... Load reasons from server
 export const load = () => (dispatch) => {
-    const data = session.get() || {};
-    fetch("/api/v1/security/profile", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "access_token": data['access_token'],
-                "token_type": data['token_type']
-            }
-        })
-        .then(response => response.json())
+    httpReq({
+            url: "/api/v1/security/profile",
+            method: "POST"
+        }, dispatch)
         .then(data => dispatch(onUpdate(data)))
-        .catch(function (error) {
-            dispatch(onError(error.message));
+        .catch(error => {
+            console.log('profile-error', error);
+            dispatch(onError(error.message))
         });
 };
 //... Export the slice as a service
