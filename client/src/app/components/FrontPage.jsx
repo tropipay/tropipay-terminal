@@ -23,16 +23,22 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         width: '98%',
+        margin: '0'
     },
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
-    layoutLeft: {},
+    layoutLeft: {
+        height: '100vh',
+        margin: '0'
+    },
     layoutRight: {
         backgroundColor: '#4B59D3',
-        minHeight: '20rem'
+        minHeight: '2rem',
+        height: '100vh',
+        margin: '0'
     }
 }));
 
