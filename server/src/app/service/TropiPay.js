@@ -422,6 +422,7 @@ class TropiPay {
         }
      */
     async getMovements(offset=0, limit=10, criteria=''){
+        console.log('getMovements>>', `/api/v2/movements?offset=${offset}&limit=${limit}&criteria=${criteria}`);
         return await this.req({
             url: `/api/v2/movements?offset=${offset}&limit=${limit}&criteria=${criteria}`,
             method: 'get'

@@ -54,6 +54,7 @@ function MovementItem(props) {
           primary={
             (props.data.amount / 100).toFixed(2) + " " + props.data.currency
           }
+          secondary={333}
         />
       ) : (
         <ListItemText
@@ -63,6 +64,7 @@ function MovementItem(props) {
             " " +
             props.data.destinationCurrency
           }
+          secondary={333}
         />
       )}
     </ListItem>

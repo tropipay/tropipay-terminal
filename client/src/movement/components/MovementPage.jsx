@@ -21,6 +21,7 @@ import FormControl from '@material-ui/core/FormControl';*/
 import srvMovement from "../services/MovementSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@material-ui/core/Grid";
+import moment from "moment/moment";
 
 function MovementPage() {
   const { t } = useTranslation();
@@ -81,6 +82,9 @@ function MovementPage() {
   const renderData = () => {
     return (
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+          {moment().format("ll")}
+        </Grid>
         <Grid item xs={12}>
           <TextFilter
             onSearch={onSearch}
