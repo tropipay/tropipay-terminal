@@ -23,7 +23,7 @@ const AvatarName = props => {
   const bgColor = props.textColor !== "auto" ? (props.bgColor || 'avatar-name') : '';
   return (
     <Avatar
-      className={`mt-1 font-weight-bold ${bgColor} ${className} ${textColor}`}
+      className={`font-weight-bold ${bgColor} ${className} ${textColor}`}
     >
       {truncate(props.name)}
     </Avatar>

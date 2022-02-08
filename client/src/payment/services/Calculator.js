@@ -101,6 +101,17 @@ class Calculator {
             cardProviderFeeFixed
         }
     };
+
+    /**
+     * @description fix amount 
+     * @param {NUMBER} amount
+     * @param {NUMBER} place     
+     * @return {NUMBER}
+     */
+    fix(amount, place = 2) {
+        amount = parseFloat(amount) || 0;
+        return (amount / 100).toFixed(place);
+    }
 }
 
 // ......................................................................

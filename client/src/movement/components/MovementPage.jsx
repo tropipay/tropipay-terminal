@@ -31,8 +31,6 @@ function MovementPage() {
 
   const [filter, setFilter] = useState("");
 
-  //const error = useSelector(srvMovement.selector.error);
-
   useEffect(() => {
     if (!data && !isLoading) {
       dispatch(srvMovement.action.load());
@@ -99,32 +97,17 @@ function MovementPage() {
           </List>
         </Grid>
 
-        <Grid item xs={12}>
-          {!completed ? (
+        {!completed ? (
+          <Grid item xs={12}>
             <Typography
               onClick={() => loadMore()}
-              className="text-center btn-txt"
+              className="box box-vertical box-align-center btn-txt"
             >
               <a href="#">{t("movement.showMore")}</a> <br />
               <ExpandMoreIcon />
             </Typography>
-          ) : null}
-        </Grid>
-
-        <Grid item xs={12}>
-          <Fab
-            color="primary"
-            aria-label="Add"
-            to={"/home"}
-            component={Link}
-            className="floatBtn"
-            onClick={() => {
-              //nav.push("/home");
-            }}
-          >
-            <CurrencyUsdIcon />
-          </Fab>
-        </Grid>
+          </Grid>
+        ) : null}
       </Grid>
     );
   };

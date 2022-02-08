@@ -78,11 +78,11 @@ function MenuPage() {
         <AccountCircleIcon />
       </IconButton>
       <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
-        <div className="page-padding box box-vertical">
+        <div className="box box-vertical">
 
           <MenuHeader model={profile} onClose={toggleDrawer(false)} />
 
-          <List className="list marginB2">
+          <List className="page-padding ">
             {options.length > 1
               ? options.map(item => <MenuItem model={item} />)
               : null}
