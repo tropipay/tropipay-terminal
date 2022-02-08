@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-//import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom"; 
 import { Grid } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import srvProfile from "../services/ProfileSlice";
@@ -14,7 +14,7 @@ import SendIcon from 'mdi-react/SendIcon';
 import HomeIcon from 'mdi-react/HomeIcon';
 
 function ProfilePage() {
-  //const { t } = useTranslation();
+  const nav = useLocation();
   const dispatch = useDispatch();
   const profile = useSelector(srvProfile.selector.data);
   const menu = [
@@ -22,34 +22,28 @@ function ProfilePage() {
       className: "",
       label: "menu.home",
       to: "/home",
-      active: false,
-      icon: <HomeIcon />,
-      type: "internal"
+      icon: <HomeIcon />
     },
     {
       label: "menu.contact",
-      to: "https://help.tropipay.com/contact",
       className: "",
-      active: false,
-      icon: <SendIcon />,
-      type: "external"
+      to: "https://help.tropipay.com/contact",
+      icon: <LogoutIcon />
     },
     {
       label: "menu.help",
-      to: "https://help.tropipay.com",
       className: "",
-      active: false,
-      icon: <HelpIcon />,
-      type: "external"
+      to: "https://help.tropipay.com",
+      icon: <HelpIcon />
     },
     {
       label: "menu.logout",
       className: "out",
+      icon: <LogoutIcon />,
       onClick: () => {
         dispatch(srvProfile.action.delete);
-      },
-      icon: <LogoutIcon />,
-      type: "internal"
+        nav.push('/');
+      }
     }
   ];
 
@@ -58,6 +52,7 @@ function ProfilePage() {
       dispatch(srvProfile.action.load());
     }
   });
+  
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -74,7 +69,7 @@ function ProfilePage() {
 
       <Grid item xs={12}>
         <List className="list marginB2">
-          {menu.length < 1
+          {menu.length > 1
             ? menu.map(item => <MenuItem model={item} />)
             : null}
         </List>

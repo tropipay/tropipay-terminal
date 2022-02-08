@@ -4,9 +4,11 @@ import ListItem from "@material-ui/core/ListItem";
 import { useTranslation } from "react-i18next";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom"; 
 
 function MenuItem(props) {
   const { t } = useTranslation();
+  const nav = useLocation();
 
   const isExternal = str => {
     const tmp = (str || "").match(/https{0,1}:\/\/.*/gm);
@@ -15,24 +17,22 @@ function MenuItem(props) {
 
   return (
     <ListItem
-      key={props.data.id}
-      className="history-list-item"
-      onClick={() => exec(props.onClick, [props.data])}
+      key={props.model.id}
+      className={props.model.className || ""}
+      onClick={() => {
+
+        if (props.to) {
+          if (isExternal(props.model.to)) {
+            window.location.href = props.model.to;
+          } else {
+            nav.push(props.model.to);
+          }
+        }
+        exec(props.onClick, [props.model]);
+      }}
     >
-      {isExternal(props.data.type) ? (
-        <a href={props.data.to} target="_blank">
-          {props.data.icon}
-          <Typography>{t(props.data.label)}</Typography>
-        </a>
-      ) : (
-        <Link
-          className={props.data.className}
-          to={props.data.to ? props.data.to : ""}
-        >
-          {props.data.icon}
-          <Typography>{t(props.data.label)}</Typography>
-        </Link>
-      )}
+      {props.model.icon}
+      <Typography>{t(props.model.label)}</Typography>
     </ListItem>
   );
 }
