@@ -16,7 +16,7 @@ export default function Menu() {
     <Box sx={{ flexGrow: 1, marginBottom: '0.9rem' }}>
       <AppBar position="static" color="default" >
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} onClick={() => history.push("/home")}>
             {t('home.name')}
           </Typography>
           <IconButton

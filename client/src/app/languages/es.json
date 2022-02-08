@@ -1,4 +1,10 @@
 {
+    "menu": {
+        "comunity": "Comunidad",
+        "contact": "Contactenos",
+        "help": "Centro de Ayuda",
+        "logout": "Salir"
+    },
     "front": {
         "name": "Terminal",
         "by": "by",

@@ -1,7 +1,6 @@
 import React from "react";
 import { exec } from "../../app/services/util";
 import ListItem from "@material-ui/core/ListItem";
-//import Avatar from "@material-ui/core/Avatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import {
   bookingStates,

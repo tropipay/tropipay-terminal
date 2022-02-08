@@ -7,7 +7,6 @@ import PaymentResume from './PaymentResume';
 import PaymentShow from './PaymentShow';
 import StepperControl from '../../app/components/Stepper/StepperControl';
 
-//import { paylinkUpdate, createPaylink, selectPaylinkData, loadImfoFee } from '../services/PaylinkSlice';
 import srvPaylink from '../services/PaylinkSlice';
 import { useDispatch, useSelector } from "react-redux";
 

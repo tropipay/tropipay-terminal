@@ -60,7 +60,7 @@ class DefaultController extends KsMf.app.Controller {
             });
             this.logger.info('session', ses);
             const from = '/auth/session';
-            res.redirect(url_terminal + from);
+                res.redirect(url_terminal + from);
         } catch (error) {
             this.logger.error("Error", error);
             res.end('OAUTH: Not authorize');

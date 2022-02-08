@@ -10,13 +10,6 @@ import { Link } from "react-router-dom";
 import CurrencyUsdIcon from "mdi-react/CurrencyUsdIcon";
 import ExpandMoreIcon from "mdi-react/ExpandMoreIcon";
 import MovementItem from "./MovementItem";
-/*import IconButton from '@material-ui/core/IconButton';
-import DownloadIcon from 'mdi-react/DownloadIcon';
-import ClearIcon from 'mdi-react/ClearIcon';
-import SearchIcon from 'mdi-react/SearchIcon';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';*/
 
 import srvMovement from "../services/MovementSlice";
 import { useSelector, useDispatch } from "react-redux";
