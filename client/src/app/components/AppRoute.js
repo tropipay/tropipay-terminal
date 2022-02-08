@@ -7,7 +7,7 @@ import ProvideAuth from '../../security/components/provide.auth';
 import RoutePrivate from '../../security/components/route.private';
 import MovementPage from '../../movement/components/MovementPage';
 import PaymentPage from '../../payment/components/PaymentPage';
-import ProfilePage from '../../profile/components/ProfilePage';
+import MenuPage from './Menu/MenuPage';
 import FrontPage from "./FrontPage.jsx";
 import HomePage from "./HomePage.jsx";
 import Page from "./Page.jsx";
@@ -32,7 +32,7 @@ export default function AppRoute() {
             <RoutePrivate exact path="/home"> <Page>  <HomePage /> </Page> </RoutePrivate>
             <Route exact path="/movement"> <Page> <MovementPage />  </Page> </Route>
             <RoutePrivate exact path="/payment"> <Page> <PaymentPage /> </Page> </RoutePrivate>
-            <RoutePrivate exact path="/profile"> <ProfilePage /> </RoutePrivate>
+            <RoutePrivate exact path="/profile"> <MenuPage /> </RoutePrivate>
 
             <Route exact path='/' render={() => (<FrontPage />)}/>
             <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>

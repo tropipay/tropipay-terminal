@@ -4,11 +4,12 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import srvProfile from '../../profile/services/ProfileSlice';
+import srvProfile from "../../profile/services/ProfileSlice";
 
 import { Grid } from "@mui/material";
 import Button from "@material-ui/core/Button";
-import AvatarName from "./Avatar/AvatarName"
+import AvatarName from "./Avatar/AvatarName";
+import ContentHeader from "./Header/ContentHeader";
 
 function HomePage() {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ function HomePage() {
   useEffect(() => {
     console.log("profile-DATA", profile);
     console.log("profile-error", error);
-    
+
     if (!profile && !error) {
       dispatch(srvProfile.action.load());
     }
@@ -32,12 +33,11 @@ function HomePage() {
         <AvatarName name={profile ? profile.name : "TS"} />
       </Grid>
 
-      <Grid item xs={12} sx={{ alignItems: 'center' }}>
-        {profile ? profile.name : null}
-      </Grid>
-
-      <Grid item xs={12}>
-        {profile ? profile.email : null}
+      <Grid item xs={12} sx={{ alignItems: "center" }}>
+        <ContentHeader
+          title={profile ? profile.name : "Gest"}
+          subtitle={profile ? profile.email : "gest@tropipay.com"}
+        />
       </Grid>
 
       <Grid item xs={12}>

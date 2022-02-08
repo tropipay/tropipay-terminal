@@ -15,6 +15,7 @@ import srvMovement from "../services/MovementSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment/moment";
+import ContentHeader from "../../app/components/Header/ContentHeader";
 
 function MovementPage() {
   const { t } = useTranslation();
@@ -72,7 +73,7 @@ function MovementPage() {
     return (
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          {moment().format("ll")}
+          <ContentHeader title={moment().format("ll")} />
         </Grid>
         <Grid item xs={12}>
           <TextFilter
