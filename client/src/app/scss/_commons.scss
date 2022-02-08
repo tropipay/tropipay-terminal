@@ -282,6 +282,30 @@ span.success {
 .btn-txt {
   cursor: pointer;
   color: $mainColor;
+  a {
+    outline: none;
+    text-decoration: none;
+  }
+  a:link {
+    color: $mainColor;
+  }
+  
+  a:visited {
+    color: $mainColor;
+  }
+  
+  a:focus {
+    background: $mainColor;
+  }
+  
+  a:hover {
+    background: $mainColor;
+  }
+  
+  a:active {
+    background: $mainColor;
+    color: $mainColor;
+  }
 }
 
 .lineaConMargen {

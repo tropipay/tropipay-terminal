@@ -1,14 +1,9 @@
 import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import DownloadIcon from "mdi-react/DownloadIcon";
 import moment from "moment/moment";
-import {
-  bookingStates,
-  providersTypeList,
-  movementTypes,
-  serviceTypes
-} from "../models/enum";
+import { providersTypeList, movementTypes } from "../models/enum";
+import Typography from "@material-ui/core/Typography";
 import { exec } from "../../app/services/util";
 import calc from "../../payment/services/Calculator";
 import AvatarName from "../../app/components/Avatar/AvatarName";
@@ -23,7 +18,13 @@ function MovementItem(props) {
     return <AvatarName name={nameStr} textColor="auto" />;
   }
 
+  function getCard(item) {
+    if (!item || !item.charges || !item.charges[0]) return null;
+    return "****" + item.charges[0].cardPan;
+  }
+
   const { data } = props;
+  const cardNumber = getCard(data);
 
   return (
     <ListItem
@@ -38,13 +39,10 @@ function MovementItem(props) {
         primary={data.reference}
         secondary={
           <React.Fragment>
-            {moment(data.createdAt).format("ll")}
-            {data.movementTypeId === movementTypes.transfer &&
-            data.state === bookingStates.paid &&
-            !data.isInternal &&
-            (!data.service || data.service.slug === serviceTypes.REMITTANCE) ? (
-              <DownloadIcon className="ml-2" size={17} />
+            {cardNumber ? (
+              <Typography className=" ">{cardNumber}</Typography>
             ) : null}
+            {moment(data.createdAt).format("ll")}
           </React.Fragment>
         }
       />

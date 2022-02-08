@@ -4,10 +4,8 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
-import Fab from "@material-ui/core/Fab";
 import TextFilter from "./TextFilter";
 import { Link } from "react-router-dom";
-import CurrencyUsdIcon from "mdi-react/CurrencyUsdIcon";
 import ExpandMoreIcon from "mdi-react/ExpandMoreIcon";
 import MovementItem from "./MovementItem";
 
@@ -71,9 +69,6 @@ function MovementPage() {
     return (
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <ContentHeader title={moment().format("ll")} />
-        </Grid>
-        <Grid item xs={12}>
           <TextFilter
             onSearch={onSearch}
             onClean={onClean}
@@ -86,13 +81,13 @@ function MovementPage() {
             {isLoading && movements.length < 1 ? (
               <LinearProgress className="my-5" />
             ) : (
-              movements.map(item => (
+              movements.map(item => item ? (
                 <MovementItem
                   key={item.id}
                   data={item}
                   onSelect={onSelectItem}
                 />
-              ))
+              ) : null)
             )}
           </List>
         </Grid>
@@ -103,7 +98,7 @@ function MovementPage() {
               onClick={() => loadMore()}
               className="box box-vertical box-align-center btn-txt"
             >
-              <a href="#">{t("movement.showMore")}</a> <br />
+              {t("movement.showMore")}
               <ExpandMoreIcon />
             </Typography>
           </Grid>
@@ -148,7 +143,11 @@ function MovementPage() {
     <div className="page-margin page-padding">
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h6" className="text-center my-4">
+          <ContentHeader title={moment().format("ll")} />
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="h6" className="">
             {t("movement.title")}
           </Typography>
         </Grid>
