@@ -20,9 +20,10 @@ function truncate(str, limit = 2) {
 const AvatarName = props => {
   const className = props.className || "";
   const textColor = props.textColor === "auto" ? `text-color-${getStyleIndex(props.name)}` : "";
+  const bgColor = props.textColor !== "auto" ? (props.bgColor || 'avatar-name') : '';
   return (
     <Avatar
-      className={`mt-1 font-weight-bold avatar-name ${className} ${textColor}`}
+      className={`mt-1 font-weight-bold ${bgColor} ${className} ${textColor}`}
     >
       {truncate(props.name)}
     </Avatar>

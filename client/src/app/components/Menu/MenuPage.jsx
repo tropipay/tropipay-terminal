@@ -12,8 +12,10 @@ import HelpIcon from "mdi-react/LifebuoyIcon";
 import LogoutIcon from "mdi-react/LogoutIcon";
 import HomeIcon from "mdi-react/HomeIcon";
 import IconButton from "@mui/material/IconButton";
+import CloseIcon from 'mdi-react/CloseIcon';
 import AccountCircleIcon from "mdi-react/AccountCircleIcon";
 import ContentHeader from "../Header/ContentHeader";
+
 
 function MenuPage() {
   const dispatch = useDispatch();
@@ -76,18 +78,18 @@ function MenuPage() {
         <AccountCircleIcon />
       </IconButton>
       <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ alignItems: "center" }}>
           <Grid item xs={12}>
             <IconButton onClick={toggleDrawer(false)}>
-              <AccountCircleIcon />}
+              <CloseIcon />
             </IconButton>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} className="box box-align-center">
             <AvatarName name={profile ? profile.name : "TS"} />
           </Grid>
 
-          <Grid item xs={12} sx={{ alignItems: "center" }}>
+          <Grid item xs={12} className="box box-align-center">
             <ContentHeader
               title={profile ? profile.name : 'Gest'}
               subtitle={profile ? profile.email : 'gest@tropipay.com'}

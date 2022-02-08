@@ -26,46 +26,48 @@ function HomePage() {
       dispatch(srvProfile.action.load());
     }
   });
-
+  
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <AvatarName name={profile ? profile.name : "TS"} />
-      </Grid>
+    <div className="page-margin">
+      <Grid container spacing={2}>
+        <Grid item xs={12} className="box box-align-center">
+          <AvatarName name={profile ? profile.name : "TS"} />
+        </Grid>
 
-      <Grid item xs={12} sx={{ alignItems: "center" }}>
-        <ContentHeader
-          title={profile ? profile.name : "Gest"}
-          subtitle={profile ? profile.email : "gest@tropipay.com"}
-        />
-      </Grid>
+        <Grid item xs={12} className="box box-align-center">
+          <ContentHeader  
+            title={profile ? profile.name : "Gest"}
+            subtitle={profile ? profile.email : "gest@tropipay.com"}
+          />
+        </Grid>
 
-      <Grid item xs={12}>
-        <Button
-          variant="contained"
-          className="btn-full-width"
-          size="large"
-          style={{ marginTop: "2rem" }}
-          onClick={() => nav.push("/payment")}
-          color="primary"
-        >
-          {t("home.btn.payment")}
-        </Button>
-      </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant="contained"
+            className="btn-full-width"
+            size="large"
+            style={{ marginTop: "2rem" }}
+            onClick={() => nav.push("/payment")}
+            color="primary"
+          >
+            {t("home.btn.payment")}
+          </Button>
+        </Grid>
 
-      <Grid item xs={12}>
-        <Button
-          variant="contained"
-          className="btn-full-width"
-          size="large"
-          style={{ marginTop: "2rem" }}
-          onClick={() => nav.push("/movement")}
-          color="secondary"
-        >
-          {t("home.btn.movement")}
-        </Button>
+        <Grid item xs={12}>
+          <Button
+            variant="contained"
+            className="btn-full-width"
+            size="large"
+            style={{ marginTop: "2rem" }}
+            onClick={() => nav.push("/movement")}
+            color="secondary"
+          >
+            {t("home.btn.movement")}
+          </Button>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }
 
