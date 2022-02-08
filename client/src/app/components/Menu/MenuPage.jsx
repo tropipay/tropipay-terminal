@@ -1,21 +1,17 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-import { Grid } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 import srvProfile from "../../../profile/services/ProfileSlice";
+
 import List from "@material-ui/core/List";
 import Drawer from "@material-ui/core/Drawer";
+import IconButton from "@mui/material/IconButton";
 import MenuItem from "./MenuItem";
 
-import AvatarName from "../Avatar/AvatarName";
 import HelpIcon from "mdi-react/LifebuoyIcon";
 import LogoutIcon from "mdi-react/LogoutIcon";
-import HomeIcon from "mdi-react/HomeIcon";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from 'mdi-react/CloseIcon';
+import SendIcon from "mdi-react/SendIcon";
 import AccountCircleIcon from "mdi-react/AccountCircleIcon";
-import ContentHeader from "../Header/ContentHeader";
-
+import MenuHeader from "./MenuHeader";
 
 function MenuPage() {
   const dispatch = useDispatch();
@@ -33,8 +29,7 @@ function MenuPage() {
   };
 
   const options = [
-    {
-      className: "",
+    /*{
       label: "menu.home",
       to: "/home",
       icon: <HomeIcon />
@@ -44,6 +39,11 @@ function MenuPage() {
       className: "",
       to: "https://help.tropipay.com/contact",
       icon: <LogoutIcon />
+    },*/
+    {
+      label: "menu.comunity",
+      to: "https://t.me/joinchat/SeivjhsA4ekFEZc4aNR26Q",
+      icon: <SendIcon />
     },
     {
       label: "menu.help",
@@ -78,30 +78,17 @@ function MenuPage() {
         <AccountCircleIcon />
       </IconButton>
       <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
-        <Grid container spacing={2} sx={{ alignItems: "center" }}>
-          <Grid item xs={12}>
-            <IconButton onClick={toggleDrawer(false)}>
-              <CloseIcon />
-            </IconButton>
-          </Grid>
+        <div className="page-padding box box-vertical">
 
-          <Grid item xs={12} className="box box-align-center">
-            <AvatarName name={profile ? profile.name : "TS"} />
-          </Grid>
+          <MenuHeader model={profile} onClose={toggleDrawer(false)} />
 
-          <Grid item xs={12} className="box box-align-center">
-            <ContentHeader
-              title={profile ? profile.name : 'Gest'}
-              subtitle={profile ? profile.email : 'gest@tropipay.com'}
-            />
-          </Grid>
-        </Grid>
+          <List className="list marginB2">
+            {options.length > 1
+              ? options.map(item => <MenuItem model={item} />)
+              : null}
+          </List>
 
-        <List className="list marginB2">
-          {options.length > 1
-            ? options.map(item => <MenuItem model={item} />)
-            : null}
-        </List>
+        </div>
       </Drawer>
     </div>
   );

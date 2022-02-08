@@ -28,7 +28,7 @@ function HomePage() {
   });
   
   return (
-    <div className="page-margin">
+    <div className="page-margin page-padding">
       <Grid container spacing={2}>
         <Grid item xs={12} className="box box-align-center">
           <AvatarName name={profile ? profile.name : "TS"} />

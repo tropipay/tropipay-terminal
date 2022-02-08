@@ -162,7 +162,7 @@ function MovementPage() {
   };
 
   return (
-    <div className="page-margin">
+    <div className="page-margin page-padding">
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h6" className="text-center my-4">
