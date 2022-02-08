@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import session from "../services/session";
+import session from "../services/Session";
 
 export default function RoutePrivate({ children, ...rest }) {
   const loginPath = "/";

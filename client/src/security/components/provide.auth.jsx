@@ -1,5 +1,5 @@
 import React, { useContext, createContext, useState } from "react";
-import ses from "../services/session";
+import ses from "../services/Session";
 
 const AuthContext = createContext();
 

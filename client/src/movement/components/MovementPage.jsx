@@ -49,11 +49,7 @@ function MovementPage() {
 
   function loadMore() {
     dispatch(
-      srvMovement.action.search(
-        parseInt(offset) + parseInt(limit),
-        limit,
-        filter
-      )
+      srvMovement.action.load(parseInt(offset) + parseInt(limit), limit, filter)
     );
   }
 
@@ -95,7 +91,9 @@ function MovementPage() {
 
         <Grid item xs={12}>
           <List className="list marginB2">
-            {!isLoading ? (
+            {isLoading && movements.length < 1 ? (
+              <LinearProgress className="my-5" />
+            ) : (
               movements.map(item => (
                 <MovementItem
                   key={item.id}
@@ -103,8 +101,6 @@ function MovementPage() {
                   onSelect={onSelectItem}
                 />
               ))
-            ) : (
-              <LinearProgress className="my-5" />
             )}
           </List>
         </Grid>

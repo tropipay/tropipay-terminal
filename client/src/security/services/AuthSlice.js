@@ -1,7 +1,7 @@
 import {
   createSlice
 } from "@reduxjs/toolkit";
-import session from "./session";
+import session from "./Session";
 
 //... Define namespace
 const name = "auth";
@@ -25,14 +25,20 @@ export const slice = createSlice({
       } else {
         state.data = session.get();
       }
-    }
+    },
+    onDestroy: (state, action) => {
+      session.del();
+      state.data = {};
+      state.error = null;
+    }  
   },
 });
 
 // ... Actions  
 const {
   onUpdate,
-  onError
+  onError,
+  onDestroy
 } = slice.actions;
 
 //... Export the slice as a service
@@ -41,7 +47,8 @@ const Service = {
   reducer: slice.reducer,
   action: {
       error: onError,
-      update: onUpdate
+      update: onUpdate,
+      delete: onDestroy 
   },
   selector: {
     data: (state) => state[name].daya,

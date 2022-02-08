@@ -16,8 +16,9 @@ import TwitterIcon from 'mdi-react/TwitterIcon';
 import FacebookIcon from 'mdi-react/FacebookIcon';
 import InstagramIcon from 'mdi-react/InstagramIcon';
 import Login from '../../security/components/login';
+import links from '../models/menu.link';
 
-import session from "../../security/services/session";
+import session from "../../security/services/Session";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,21 +42,6 @@ const useStyles = makeStyles((theme) => ({
         margin: '0'
     }
 }));
-
-const links = [
-    {
-        label: "legal.copyright",
-        to: "#"
-    },
-    {
-        label: "legal.policy",
-        to: "/privacy"
-    },
-    {
-        label: "legal.terms",
-        to: "/terms"
-    }
-]
 
 function FrontPage() {
     const { t } = useTranslation();

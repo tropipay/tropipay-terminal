@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import {Switch, Route, Redirect} from 'react-router-dom';
 import srvAuth from "../../security/services/AuthSlice";
-import srvProfile from "../../security/services/ProfileSlice";
+import srvProfile from "../../profile/services/ProfileSlice";
 import ProvideAuth from '../../security/components/provide.auth';
 import RoutePrivate from '../../security/components/route.private';
 import MovementPage from '../../movement/components/MovementPage';

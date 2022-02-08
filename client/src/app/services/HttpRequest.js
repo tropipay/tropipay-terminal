@@ -1,5 +1,5 @@
 import srvError from './ErrorSlice';
-import session from "../../security/services/session";
+import session from "../../security/services/Session";
 
 function objToStr(data) {
     try {

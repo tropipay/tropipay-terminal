@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom"; // useHistory, 
 import IconUrl from '../../app/images/favicon-96x96.png'
 
-import session from "../services/session";
+import session from "../services/Session";
 
 function Login() {
     const url = ""; //"http://localhost:3005";

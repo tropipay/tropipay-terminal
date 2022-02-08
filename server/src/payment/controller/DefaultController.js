@@ -95,7 +95,11 @@ class DefaultController extends KsMf.app.Controller {
         const fee = await this.tropipay.getFee();
         const srv = await this.tropipay.getService('CHARGE_EXTERNAL_CARDS');
         if(fee.error || srv.error) {
-            res.status(500).json({ error: fee.error.message + ', ' + srv.error.message });
+            console.log('[ERROR]', fee.error, srv.error);
+            res.status(500);
+            res.json({ 
+                code: 'connection'
+            });
         }else{
             const result = {
                 rate: fee.data['usd2eur'],

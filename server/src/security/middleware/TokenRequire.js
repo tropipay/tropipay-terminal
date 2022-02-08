@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
     if (!req.token) {
         res.status(401).json({
             error: {
-                message: 'Unauthorized'
+                code: 'Unauthorized'
             }
         });
     }else{

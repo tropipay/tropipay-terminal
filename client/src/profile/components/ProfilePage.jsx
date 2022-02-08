@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 //import { useTranslation } from "react-i18next";
 import { Grid } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import srvProfile from "../../security/services/ProfileSlice";
+import srvProfile from "../services/ProfileSlice";
 import AvatarName from "../../app/components/Avatar/AvatarName";
 
 function ProfilePage() {
@@ -24,6 +24,10 @@ function ProfilePage() {
 
       <Grid item xs={12} sx={{ alignItems: "center" }}>
         {profile ? profile.name : null}
+      </Grid>
+
+      <Grid item xs={12}>
+        {profile ? profile.email : null}
       </Grid>
 
       <Grid item xs={12}>

@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import Paylink from '../../payment/services/PaylinkSlice';
 import Reason from '../../payment/services/ReasonSlice';
 import Auth from '../../security/services/AuthSlice';
-import Profile from '../../security/services/ProfileSlice';
+import Profile from '../../profile/services/ProfileSlice';
 import ErrorHandler from '../services/ErrorSlice';
 import Movement from '../../movement/services/MovementSlice';
 

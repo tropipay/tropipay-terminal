@@ -1,7 +1,7 @@
 import {
     createSlice
 } from "@reduxjs/toolkit";
-import session from "./session";
+import session from "../../security/services/Session";
 import httpReq from '../../app/services/HttpRequest';
 
 //... Define namespace
@@ -27,14 +27,21 @@ export const slice = createSlice({
                     state.data = action.payload;
                 }
             }
+        },
+        onDelete: (state, action) => {
+            state.data = null;
+            state.error = null;
+            session.del(); 
         }
+        
     }
 });
 
 // ... Actions  
 const {
     onError,
-    onUpdate
+    onUpdate,
+    onDelete
 } = slice.actions;
 
 // ... Load reasons from server
@@ -55,6 +62,7 @@ const Service = {
     reducer: slice.reducer,
     action: {
         update: onUpdate,
+        delete: onDelete,
         load
     },
     selector: {

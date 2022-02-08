@@ -6,13 +6,13 @@ import { Provider } from "react-redux";
 import "./App.scss";
 import './services/lang';
 
-import store from './stores/AppStore';
+import AppStore from './models/AppStore';
 import AppRoute from './components/AppRoute';
 
 function App() {
   return (
       <BrowserRouter>
-        <Provider store={store}>
+        <Provider store={AppStore}>
           <AppRoute />
         </Provider>
       </BrowserRouter>
