@@ -18,6 +18,7 @@ import ShareThis from "../../app/components/ShareThis/ShareThis";
 import FormTextField from "../../app/components/FormControl/FormTextField";
 import { nakedUrl, exec } from "../../app/services/util";
 import Msg from "../../app/components/Message/Message";
+import moment from "moment/moment";
 
 import srvPaylink from "../services/PaylinkSlice";
 import { useSelector } from "react-redux";
@@ -32,6 +33,14 @@ function PaymentShow(props) {
   const [sendSMS, setSendSMS] = useState(false);
   const [sendEmail, setSendEmail] = useState(false);
   const message = Msg();
+
+  function expireInHours(dIn, dEnd) {
+    const dateIn = moment(dIn);
+    const dateEnd = moment(dEnd);
+    const hours = dateIn.diff(dateEnd, "hours");
+    const minutes = dateIn.diff(dateEnd, "minutes");
+    return `${hours}:${minutes}`;
+  }
 
   useEffect(() => {
     if (error) {
@@ -104,11 +113,18 @@ function PaymentShow(props) {
               </Grid>
               <Grid item xs={12} sm={6} className="box-label-right ">
                 <Typography variant="body2" className="box-padding-right-2">
-                  {createdAt}
+                  {moment(createdAt).format("LLL")}
                 </Typography>
-                <Typography variant="body2" className="box-padding-right-2">
-                  {expirationDate}
-                </Typography>
+                {expirationDate ? (
+                  <div>
+                    <Typography variant="body2" className="box-padding-right-2">
+                      {t("payment.show.expireIn")}
+                    </Typography>
+                    <Typography variant="body2" className="box-padding-right-2">
+                      {expireInHours(createdAt, expirationDate)}
+                    </Typography>
+                  </div>
+                ) : null}
               </Grid>
             </Grid>
             <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
