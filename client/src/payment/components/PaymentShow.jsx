@@ -24,7 +24,7 @@ import { useSelector } from "react-redux";
 
 function PaymentShow(props) {
   const { t } = useTranslation();
-  const { shortUrl, createdAt, expirationDate } = useSelector(
+  const { shortUrl, createdAt, expirationDate, id } = useSelector(
     srvPaylink.selector.data
   );
   const error = useSelector(srvPaylink.selector.error);
@@ -57,7 +57,17 @@ function PaymentShow(props) {
 
   const submit = data => {
     if (!empty(data.email) || !empty(data.phone)) {
-      exec(props.submit, [data]);
+      exec(props.submit, [
+        {
+          sendEmail: !empty(data.email),
+          sendSMS: !empty(data.phone),
+          phone: `${(data.code || "").replace(/\\s/g, "")}${(
+            data.phone || ""
+          ).replace(/\\s/g, "")}`,
+          notifyEmail: data.email,
+          cardPaymentId: id
+        }
+      ]);
     }
   };
 

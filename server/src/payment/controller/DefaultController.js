@@ -122,12 +122,11 @@ class DefaultController extends KsMf.app.Controller {
             token
         });
         const data = {
-            cardPaymentId: req.body.cardObj.id,
-            //payWithTppData: req.body.payWithTppData,
+            cardPaymentId: req.body.cardPaymentId,
             sendEmail: req.body.sendEmail,
             notifyEmail: req.body.notifyEmail,
             sendSMS: req.body.sendSMS,
-            phone: `${req.body.callingCode.replace(/\\s/g, "")}${req.body.phone.replace(/\\s/g, "")}`,
+            phone: req.body.phone
         };
         const result = await this.tropipay.sharePaylink(data);
         if (!result || result.error) {
