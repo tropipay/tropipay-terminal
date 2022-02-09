@@ -80,7 +80,7 @@ const Service = {
             const limit = parseInt(model.data.limit);
             const offset = parseInt(model.data.offset);
             const count = parseInt(model.data.count);
-            return (limit * offset) >= count;
+            return (limit + offset) >= count;
         }
     },
     default: {

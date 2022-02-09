@@ -129,7 +129,7 @@ function MovementPage() {
               */
             }}
             size="large"
-            disabled={() => notAllowed()}
+            disabled={notAllowed()}
             color="primary"
           >
             {t("movement.btn")}
