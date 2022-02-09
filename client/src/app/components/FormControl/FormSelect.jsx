@@ -1,22 +1,34 @@
 import React from "react";
-import { MenuItem, Select } from "@material-ui/core";
 import { Controller } from "react-hook-form";
+import TextField from "@material-ui/core/TextField";
+import { MenuItem } from "@material-ui/core";
 
-export const FormSelect = ({ name, label, control, options, className, variant, size, placeholder, rules, type, keys }) => {
-
+const FormSelect = ({
+  name,
+  control,
+  label,
+  keys,
+  options,
+  rules,
+  placeholder,
+  variant,
+  type,
+  size,
+  className
+}) => {
+  placeholder = placeholder || "";
   options = options || [];
-  keys = keys || {
-    label: 'label',
-    value: 'value'
-  };
-  label = label || '';
-  placeholder = placeholder || '';
   rules = rules || {};
+  keys = keys || {
+    label: "label",
+    value: "value"
+  };
   variant = variant || "outlined";
-  size = size || "large";
+  type = type || "text";
+  size = size || "small";
   className = className || "";
 
-  const generateOptions = () => {
+  const generateOptions = options => {
     return options.map((option, i) => {
       return (
         <MenuItem key={i} value={option[keys.value]}>
@@ -26,25 +38,34 @@ export const FormSelect = ({ name, label, control, options, className, variant, 
     });
   };
 
-  return <Controller
-    control={control}
-    name={name}
-    rules={rules}
-    render={({ field: { onChange, value } }) => (
-      <Select
-        placeholder={placeholder}
-        onChange={onChange}
-        value={value}
-        className={className}
-        variant={variant}
-        size={size}
-        label={label}
-        fullWidth
-      >
-        {generateOptions()}
-      </Select>
-    )}
-  />
+  return (
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({
+        field: { onChange, value },
+        fieldState: { error },
+        formState
+      }) => (
+        <TextField
+          select
+          helperText={error ? error.message : null}
+          size={size}
+          label={label}
+          placeholder={placeholder}
+          error={!!error}
+          onChange={onChange}
+          type={type}
+          className={className}
+          fullWidth
+          variant={variant}
+        >
+          {generateOptions(options)}
+        </TextField>
+      )}
+    />
+  );
 };
 
 export default FormSelect;

@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { Button } from "@material-ui/core";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 import FormTextField from "../../app/components/FormControl/FormTextField";
 import FormSelect from "../../app/components/FormControl/FormSelect";
-import FromCheckBox from "../../app/components/FormControl/FromCheckBox";
 import ContentHeader from "../../app/components/Header/ContentHeader";
 import Validation from "../../app/services/validation";
 
 import Grid from "@material-ui/core/Grid";
 import Lang from "../../app/services/lang";
 import Currency from "../../app/services/currency";
+import './PaymentFrom.scss';
 
 //... redux
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +25,7 @@ function PaymentFrom(props) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const reasons = useSelector(srvReason.selector.data);
+  const [advanced, setAdvanced] = useState(false);
 
   if (!reasons || reasons.length < 1) {
     dispatch(srvReason.action.onLoad());
@@ -34,9 +37,9 @@ function PaymentFrom(props) {
       advanced: false,
       description: "",
       amount: "",
-      currency: "2",
+      currency: "",
       concept: "",
-      lang: "es",
+      lang: "",
       reason: "",
       reference: ""
     }
@@ -77,8 +80,10 @@ function PaymentFrom(props) {
           control={control}
           name="currency"
           size="medium"
-          value="EUR"
-          label={t("payment.form.concept.label")}
+          fullWidth
+          label={t("payment.form.currency.label")}
+          placeholder={t("payment.form.currency.label")}
+          rules={{ required: t("error.required") }}
           options={Currency.list()}
         />
       </Grid>
@@ -98,23 +103,26 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12}>
-        <FromCheckBox
-          name="advanced"
-          size="medium"
-          control={control}
-          label={t("payment.form.advanced")}
-        />
+          <FormControlLabel
+            control={<Checkbox />}
+            className="payment-form-checkbox"
+            label={t("payment.form.advanced")}
+            value={advanced}
+            onChange={() => setAdvanced(!advanced)}
+          />
       </Grid>
 
-      <Grid item xs={12}>
-        <FormTextField
-          control={control}
-          name="reference"
-          size="medium"
-          label={t("payment.form.reference.label")}
-          rules={{ required: t("error.required") }}
-        />
-      </Grid>
+      {advanced ? (
+        <Grid item xs={12}>
+          <FormTextField
+            control={control}
+            name="reference"
+            size="medium"
+            label={t("payment.form.reference.label")}
+            rules={{ required: t("error.required") }}
+          />
+        </Grid>
+      ) : null}
 
       <Grid item xs={12}>
         <FormSelect
@@ -134,10 +142,11 @@ function PaymentFrom(props) {
         <FormSelect
           control={control}
           name="lang"
-          value="1"
           size="medium"
-          className=""
+          label={t("payment.form.lang.label")}
+          placeholder={t("payment.form.lang.label")}
           keys={{ label: "label", value: "lang" }}
+          rules={{ required: t("error.required") }}
           options={Lang.getSupported()}
         />
       </Grid>

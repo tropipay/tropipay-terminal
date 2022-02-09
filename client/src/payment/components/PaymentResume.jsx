@@ -13,9 +13,7 @@ import { Typography } from "@mui/material";
 
 function PaymentResume(props) {
   const { t } = useTranslation();
-
   const resume = useSelector(srvPaylink.selector.resume);
-
   const [accept, setAccept] = useState(false);
 
   const handleChange = event => {
