@@ -25,12 +25,13 @@ export const slice = createSlice({
             list: []
         },
         fee: {
-            rate: 0,
+            loaded: false,
+            rate: 1.1, //0.8738967054094205,
             service: {
-                'tp_fee_fixed': 0,
-                'tp_fee_percent': 0,
+                'tp_fee_fixed': 50,
+                'tp_fee_percent': 300,
                 'service_fee_fixed': 0,
-                'service_fee_percent': 0
+                'service_fee_percent': 45
             }
         },
         resume: {
@@ -52,6 +53,7 @@ export const slice = createSlice({
             },
             rate: 0
         },
+        share: null
     },
     reducers: {
         onResume: (state, action) => {
@@ -98,7 +100,10 @@ export const slice = createSlice({
         },
         onFee: (state, action) => {
             if (action.payload) {
-                state.fee.rate = action.payload.rate;
+                if(action.payload.rate){
+                    state.fee.rate = action.payload.rate;
+                    state.fee.loaded = true;
+                }
                 if (action.payload.service) {
                     state.fee.service = action.payload.service;
                 }
@@ -114,6 +119,9 @@ export const slice = createSlice({
                 console.log('------------------------');
                 state.error = '';
             }
+        },
+        onShare: (state, action) => {
+            state.share = action.payload;
         }
     }
 });
@@ -123,7 +131,7 @@ export const {
     onError,
     onUpdate,
     onList,
-    onFee
+    onFee,
 } = slice.actions;
 
 //... create a pyment links from server
@@ -133,42 +141,18 @@ const onCreate = (payload) => (dispatch) => {
         method: "POST",
         data: payload
     }, dispatch).then(data => dispatch(onUpdate(data)));
-    /*
-    const data = session.get();
-    fetch("/api/v1/payment", {
-            method: "POST",
-            body: JSON.stringify(payload),
-            headers: {
-                "Content-Type": "application/json",
-                "access_token": data['access_token'],
-                "token_type": data['token_type']
-            }
-        })
-        .then(response => response.json())
-        .then(data => dispatch(onUpdate(data)))
-        .catch(function (error) {
-            dispatch(onError(error.message));
-        });
-    */
+};
+//... create a pyment links from server
+const onShare = (payload) => (dispatch) => {
+    httpReq({
+        url: "/api/v1/payment/share",
+        method: "POST",
+        data: payload
+    }, dispatch);//.then(data => dispatch(onUpdate(data)));
 };
 //... load the list of PymentLinks from server
 const onLoad = () => (dispatch) => {
     httpReq("/api/v1/payment", dispatch).then(data => dispatch(onList(data)));
-    /*
-    const data = session.get();
-    fetch("/api/v1/payment", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "access_token": data['access_token'],
-                "token_type": data['token_type']
-            }
-        })
-        .then(response => response.json())
-        .then(response => dispatch(onList(response)))
-        .catch(function (error) {
-            dispatch(onError(error.message));
-        });*/
 };
 //... load fee from server
 export const onLoadFee = () => (dispatch) => {
@@ -176,21 +160,6 @@ export const onLoadFee = () => (dispatch) => {
         url: "/api/v1/payment/info",
         method: "POST"
     }, dispatch).then(data => dispatch(onFee(data)));
-    /*
-    const data = session.get();
-    fetch("/api/v1/payment/info", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "access_token": data['access_token'],
-                "token_type": data['token_type']
-            }
-        })
-        .then(response => response.json())
-        .then(data => dispatch(onFee(data)))
-        .catch(function (error) {
-            dispatch(onError(error.message));
-        });*/
 };
 //... Export the slice as a service
 const Service = {
@@ -200,7 +169,8 @@ const Service = {
         loadfee: onLoadFee,
         update: onUpdate,
         load: onLoad,
-        create: onCreate
+        create: onCreate,
+        share: onShare
     },
     selector: {
         data: (state) => state[name].data,

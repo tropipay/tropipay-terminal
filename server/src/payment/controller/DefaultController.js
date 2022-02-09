@@ -48,7 +48,7 @@ class DefaultController extends KsMf.app.Controller {
             "urlFailed": "",
             "urlNotification": ""
         };
-        
+
         const result = await this.tropipay.set({
             token: req.token
         }).setPaylink(data);
@@ -91,16 +91,18 @@ class DefaultController extends KsMf.app.Controller {
 
     async getInfo(req, res) {
         const token = req.token;
-        this.tropipay.set({ token });
+        this.tropipay.set({
+            token
+        });
         const fee = await this.tropipay.getFee();
         const srv = await this.tropipay.getService('CHARGE_EXTERNAL_CARDS');
-        if(fee.error || srv.error) {
+        if (fee.error || srv.error) {
             console.log('[ERROR]', fee.error, srv.error);
             res.status(500);
-            res.json({ 
+            res.json({
                 code: 'connection'
             });
-        }else{
+        } else {
             const result = {
                 rate: fee.data['usd2eur'],
                 service: {
@@ -113,5 +115,32 @@ class DefaultController extends KsMf.app.Controller {
             res.json(result);
         }
     }
+
+    async share(req, res) {
+        const token = req.token;
+        this.tropipay.set({
+            token
+        });
+        const data = {
+            cardPaymentId: req.body.cardObj.id,
+            //payWithTppData: req.body.payWithTppData,
+            sendEmail: req.body.sendEmail,
+            notifyEmail: req.body.notifyEmail,
+            sendSMS: req.body.sendSMS,
+            phone: `${req.body.callingCode.replace(/\\s/g, "")}${req.body.phone.replace(/\\s/g, "")}`,
+        };
+        const result = await this.tropipay.sharePaylink(data);
+        if (!result || result.error) {
+            console.log('[ERROR]', result);
+            res.status(500);
+            res.json({
+                code: 'connection'
+            });
+        } else {
+            res.json(result);
+        }
+
+    }
+
 }
 module.exports = DefaultController;

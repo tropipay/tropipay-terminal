@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import PaymentFrom from './PaymentFrom';
-import PaymentResume from './PaymentResume';
-import PaymentShow from './PaymentShow';
-import StepperControl from '../../app/components/Stepper/StepperControl';
+import PaymentFrom from "./PaymentFrom";
+import PaymentResume from "./PaymentResume";
+import PaymentShow from "./PaymentShow";
+import StepperControl from "../../app/components/Stepper/StepperControl";
 
-import srvPaylink from '../services/PaylinkSlice';
+import srvPaylink from "../services/PaylinkSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "@material-ui/core/Button";
@@ -18,27 +18,41 @@ function PaymentPage(props) {
   const history = useHistory();
   const stepper = StepperControl();
   const dispatch = useDispatch();
-  
+
   const paylink = useSelector(srvPaylink.selector.data);
   const fee = useSelector(srvPaylink.selector.fee);
 
   useEffect(() => {
-    if (fee.rate === 0) {
+    if (!fee.loaded) {
       dispatch(srvPaylink.action.loadfee());
     }
-  }, [fee, dispatch])
+  }, [fee, dispatch]);
 
-  //... define components by step 
+  //... define components by step
   const steps = [
-    () => <PaymentFrom submit={async (payload) => {
-      dispatch(srvPaylink.action.update(payload));
-      stepper.next();
-    }} />,
-    () => <PaymentResume submit={() => {
-      dispatch(srvPaylink.action.create(paylink));
-      stepper.next();
-    }} />,
-    () => <PaymentShow  />
+    () => (
+      <PaymentFrom
+        submit={async payload => {
+          dispatch(srvPaylink.action.update(payload));
+          stepper.next();
+        }}
+      />
+    ),
+    () => (
+      <PaymentResume
+        submit={() => {
+          dispatch(srvPaylink.action.create(paylink));
+          stepper.next();
+        }}
+      />
+    ),
+    () => (
+      <PaymentShow
+        submit={payload => {
+          dispatch(srvPaylink.action.share(payload));
+        }}
+      />
+    )
   ];
 
   // ... set components to stepper
@@ -50,9 +64,15 @@ function PaymentPage(props) {
     let page = "";
 
     switch (stepper.index) {
-      case 0: page = "form"; break;
-      case 1: page = "resume"; break;
-      default: page = "show"; break;
+      case 0:
+        page = "form";
+        break;
+      case 1:
+        page = "resume";
+        break;
+      default:
+        page = "show";
+        break;
     }
 
     return (
@@ -61,13 +81,13 @@ function PaymentPage(props) {
         className="btn-full-width"
         size="large"
         style={{ marginTop: "2rem" }}
-        onClick={() => history.push('/home')}
+        onClick={() => history.push("/home")}
         color="secondary"
       >
         {t("payment." + page + ".btn.back")}
       </Button>
     );
-  }
+  };
 
   // ... render componet
   return (

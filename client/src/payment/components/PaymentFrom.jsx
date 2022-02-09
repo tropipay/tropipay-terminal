@@ -77,7 +77,8 @@ function PaymentFrom(props) {
           control={control}
           name="currency"
           size="medium"
-          value="1"
+          value="EUR"
+          label={t("payment.form.concept.label")}
           options={Currency.list()}
         />
       </Grid>
@@ -115,14 +116,13 @@ function PaymentFrom(props) {
         />
       </Grid>
 
-      <Grid item xs={12} sm={5}>
+      <Grid item xs={12}>
         <FormSelect
           control={control}
           name="reason"
           size="medium"
           value="1"
           fullWidth
-          className="btn-full-width"
           label={t("payment.form.reason.label")}
           placeholder={t("payment.form.reason.label")}
           rules={{ required: t("error.required") }}
@@ -136,6 +136,7 @@ function PaymentFrom(props) {
           name="lang"
           value="1"
           size="medium"
+          className=""
           keys={{ label: "label", value: "lang" }}
           options={Lang.getSupported()}
         />

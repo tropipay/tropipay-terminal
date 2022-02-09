@@ -33,6 +33,11 @@ class PaymentModule extends KsMf.app.Module {
             controller: 'DefaultController',
             action: 'getInfo',
             method: 'post'
+        }, {
+            route: prefix + "/share",
+            controller: 'DefaultController',
+            action: 'share',
+            method: 'post'
         }];
     }
 

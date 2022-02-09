@@ -10,6 +10,7 @@ class Calculator {
      */
     getResume(payload) {
         const data = this.getAmountInDestination(payload);
+        console.log("getResume");
         const defaultValues = {
             'amount': 0,
             'currency': 'EUR'
@@ -90,15 +91,15 @@ class Calculator {
             amountToChargeInEUR: amountToChargeInEUR(),
             destinationValue: destinationValue(),
             serviceCost: Math.round(inCents * ourMargin) / 100 + ourMarginFixed + cardProviderFeeFixed,
-            bankTransferFeePercent: null,
-            bankTransferFee: null,
             cardProviderFeePercent: cardProviderFeePercent,
             cardProviderFee: Math.round(inCents * cardProviderFeePercent) / 100,
             currencyToWork: currencyToWork,
-            cubanAccount: null,
-            bankTransferFeeType: null,
             ourMarginFixed,
-            cardProviderFeeFixed
+            cardProviderFeeFixed,
+            bankTransferFeePercent: null,
+            bankTransferFee: null,
+            cubanAccount: null,
+            bankTransferFeeType: null
         }
     };
 

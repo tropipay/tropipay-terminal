@@ -428,6 +428,23 @@ class TropiPay {
             method: 'get'
         });
     }
+
+    /**
+     * @description share paylink via email or/and SMS 
+     * @param {OBJECT} data 
+     * @param {NUMBER} data.cardPaymentId 
+     * @param {STRING} data.sendEmail 
+     * @param {STRING} data.notifyEmail 
+     * @param {STRING} data.sendSMS
+     * @param {STRING} data.phone 
+     */
+    async sharePaylink(data){
+        return await this.req({
+            url: "/api/v2/paymentcards/notify",
+            method: 'post',
+            data
+        });
+    }
 }
 
 module.exports = TropiPay;

@@ -19,9 +19,6 @@ function HomePage() {
   const error = useSelector(srvProfile.selector.error);
 
   useEffect(() => {
-    console.log("profile-DATA", profile);
-    console.log("profile-error", error);
-
     if (!profile && !error) {
       dispatch(srvProfile.action.load());
     }
