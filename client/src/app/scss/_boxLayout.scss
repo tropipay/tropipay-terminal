@@ -35,6 +35,14 @@
     justify-content: left;
 }
 
+.box-align-bottom {
+    justify-content: flex-end;
+}
+
+.box-align-top {
+    justify-content: flex-start;
+}
+
 .box-shadow {
     -webkit-box-shadow: 7px 4px 9px #D3D2E1;
     box-shadow: 7px 4px 9px #D3D2E1;

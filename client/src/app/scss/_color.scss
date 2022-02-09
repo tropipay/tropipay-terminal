@@ -5,6 +5,8 @@ $baseTextColor: #39365b;
 $baseTextColorDark: #0d0c15;
 $baseYellow: #f6d25a;
 $baseRed: #fa5061;
+$baseGray: #757588;
+
 $color1: #c52887;
 $color2: #3d3991;
 $color3: #109e90;
@@ -19,6 +21,9 @@ $color11: #7d1f93;
 $color12: #f4654a;
 
 /* ----------------------------- */
+.gray-label {
+  color: $baseGray;
+}
 
 .text-color-main-blue {
   color: $mainColor;

@@ -11,7 +11,10 @@ import HelpIcon from "mdi-react/LifebuoyIcon";
 import LogoutIcon from "mdi-react/LogoutIcon";
 import SendIcon from "mdi-react/SendIcon";
 import AccountCircleIcon from "mdi-react/AccountCircleIcon";
+import MenuLink from "./MenuLink";
 import MenuHeader from "./MenuHeader";
+import links from "../../models/menu.link";
+import "./MenuPage.scss";
 
 function MenuPage() {
   const dispatch = useDispatch();
@@ -78,16 +81,22 @@ function MenuPage() {
         <AccountCircleIcon />
       </IconButton>
       <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
-        <div className="box box-vertical">
+        <div className="box box-vertical box-align-between menu-page-content">
+          <div>
+            <MenuHeader model={profile} onClose={toggleDrawer(false)} />
 
-          <MenuHeader model={profile} onClose={toggleDrawer(false)} />
+            <List className="page-padding ">
+              {options.length > 1
+                ? options.map(item => <MenuItem model={item} className="box-padding" />)
+                : null}
+            </List>
+          </div>
 
-          <List className="page-padding ">
-            {options.length > 1
-              ? options.map(item => <MenuItem model={item} />)
-              : null}
-          </List>
-
+          <MenuLink
+            data={links.reverse()}
+            align="vertical"
+            className="box-padding"
+          />
         </div>
       </Drawer>
     </div>

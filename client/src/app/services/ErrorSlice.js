@@ -30,7 +30,6 @@ export const slice = createSlice({
             state.code = null;
             state.type = null;
             state.path = null;
-            console.log("errorhandler-clean");
         }
     }
 });

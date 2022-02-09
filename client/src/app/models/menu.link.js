@@ -5,11 +5,11 @@ const links = [
     },
     {
         label: "legal.policy",
-        to: "/privacy"
+        to: "https://www.tropipay.com/privacy"
     },
     {
         label: "legal.terms",
-        to: "/terms"
+        to: "https://www.tropipay.com/terms"
     }
 ]
 

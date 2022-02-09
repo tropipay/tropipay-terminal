@@ -9,9 +9,12 @@ function MenuHeader(props) {
   const { model, onClose } = props;
   return (
     <div className="note-bg menu-header">
-      <IconButton onClick={onClose}>
-        <CloseIcon />
-      </IconButton>
+      <div className="menu-header-btn-close">
+        <IconButton onClick={onClose}>
+          <CloseIcon />
+        </IconButton>
+      </div>
+
       <div className="box box-vertical box-align-center">
         <div className="menu-header-avatar">
           <AvatarName name={model ? model.name : "TS"} />

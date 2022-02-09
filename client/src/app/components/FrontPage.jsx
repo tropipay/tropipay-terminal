@@ -17,6 +17,7 @@ import FacebookIcon from 'mdi-react/FacebookIcon';
 import InstagramIcon from 'mdi-react/InstagramIcon';
 import Login from '../../security/components/login';
 import links from '../models/menu.link';
+import MenuLink from './Menu/MenuLink';
 
 import session from "../../security/services/Session";
 
@@ -77,19 +78,14 @@ function FrontPage() {
                         <Typography variant="h4" mt='4rem'>
                             {t("front.title")}
                         </Typography>
+
                         <Typography variant="subtitle1" mt='1rem' mb='1rem'>
                             {t("front.subtitle")}
                         </Typography>
 
                         <Login />
 
-                        <ul className="lstMenu box-horizontal">
-                            {links.map((item, i) => (
-                                <li key={i} className="menuItem my-2">
-                                    <Link to={item.to}>{t(item.label)}</Link>
-                                </li>
-                            ))}
-                        </ul>
+                        <MenuLink data={links} />
 
                         <div className="logos box-horizontal">
                             <img src={IMG_VISA} alt="Visa" />
