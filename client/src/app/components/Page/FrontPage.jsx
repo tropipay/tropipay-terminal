@@ -4,21 +4,13 @@ import { useTranslation } from "react-i18next";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@mui/material";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
 
-import IMG_VISA from "../../images/icon_visa.png";
-import IMG_MASTERCARD from "../../images/icon_mastercard.png";
-import IMG_MAESTRO from "../../images/icon_maestro.png";
-import IMG_UNIONPLAY from "../../images/icon_unionplay.png";
-import IMG_DISCOVER from "../../images/icon_discover.png";
-
-import TwitterIcon from "mdi-react/TwitterIcon";
-import FacebookIcon from "mdi-react/FacebookIcon";
-import InstagramIcon from "mdi-react/InstagramIcon";
 import Login from "../../../security/components/login";
 import links from "../../models/menu.link";
 import MenuLink from "../Menu/MenuLink";
 import "./FrontPage.scss";
+import SocialBtn from "../ShareThis/SocialBtn";
+import CadsBtn from "../ShareThis/CardsBtn";
 
 import session from "../../../security/services/Session";
 
@@ -95,42 +87,9 @@ function FrontPage() {
             </div>
 
             <div className="bottom">
-              <div className="logos box-horizontal">
-                <img src={IMG_VISA} alt="Visa" />
-                <img src={IMG_MASTERCARD} alt="Master Card" />
-                <img src={IMG_MAESTRO} alt="IMG_MAESTRO" />
-                <img src={IMG_UNIONPLAY} alt="IMG_UNIONPLAY" />
-                <img src={IMG_DISCOVER} alt="IMG_DISCOVER" />
-              </div>
-
               <MenuLink data={links} />
-
-              <div className="socials">
-                <IconButton
-                  title={t("Footer.social.twitter")}
-                  href="https://twitter.com/tropipay"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <TwitterIcon />
-                </IconButton>
-                <IconButton
-                  title={t("Footer.social.facebook")}
-                  href="https://www.facebook.com/tropipay/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FacebookIcon />
-                </IconButton>
-                <IconButton
-                  title={t("Footer.social.instagram")}
-                  href="https://www.instagram.com/tropipay"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <InstagramIcon />
-                </IconButton>
-              </div>
+              <CadsBtn />
+              <SocialBtn />
             </div>
           </div>
         </Grid>
