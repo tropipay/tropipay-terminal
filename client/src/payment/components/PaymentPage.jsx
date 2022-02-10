@@ -50,6 +50,7 @@ function PaymentPage(props) {
       <PaymentShow
         submit={payload => {
           dispatch(srvPaylink.action.share(payload));
+          history.push('/');
         }}
       />
     )

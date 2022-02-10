@@ -16,11 +16,6 @@
         },
         "event": {},
         "helper": {
-            "error": {
-                "name": "ksmf",
-                "type": "lib",
-                "namespace": "app.Error"
-            },
             "logger": {
                 "name": "ksmf",
                 "type": "lib",

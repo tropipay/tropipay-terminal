@@ -13,7 +13,7 @@ class DefaultController extends KsMf.app.Controller {
      * http://localhost:3005/api/v1/payment
      */
     init() {
-        this.logger = this.helper.get('logger').prefix('Payment.DefaultController');
+        this.logger = this.helper.get('logger');
         this.tropipay = this.helper.get('TropiPay');
     }
 
@@ -97,7 +97,9 @@ class DefaultController extends KsMf.app.Controller {
         const fee = await this.tropipay.getFee();
         const srv = await this.tropipay.getService('CHARGE_EXTERNAL_CARDS');
         if (fee.error || srv.error) {
-            console.log('[ERROR]', fee.error, srv.error);
+            this.logger.prefix('Payment.DefaultController');
+            this.logger.error("fee", fee.error);
+            this.logger.error("srv", srv.error);
             res.status(500);
             res.json({
                 code: 'connection'

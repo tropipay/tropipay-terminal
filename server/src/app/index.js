@@ -12,7 +12,7 @@ class AppModule extends KsMf.app.Module {
     async initApp() {
         const app = this.helper.get('app').web;
         app.use(function (req, res, next) {
-            res.header("Access-Control-Allow-Origin", "*"); 
+            res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             next();
         });

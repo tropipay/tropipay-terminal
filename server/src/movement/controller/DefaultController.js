@@ -20,12 +20,11 @@ class DefaultController extends KsMf.app.Controller {
     }
 
     async list(req, res) {
-        console.log('params', req.query);
+        this.logger.info('params', req.query)
         const {offset, limit, criteria} = req.query;
         const result = await this.tropipay.set({
             token: req.token
         }).getMovements(offset || 0, limit || 10, criteria || '');
-        console.log('result', result);
         if (result.error) {
             res.status(401).json({
                 error: result.error.message

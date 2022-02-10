@@ -29,6 +29,11 @@ class SecurityModule extends KsMf.app.Module {
             action: 'getProfile',
             method: 'post',
             middleware: [TokenRequire]
+        }, {
+            route: prefix + "/test",
+            controller: 'DefaultController',
+            action: 'test',
+            method: 'post'
         }];
     }
 

@@ -37,7 +37,6 @@ class TropiPay {
                 data: result.data
             };
         } catch (error) {
-            console.log('[ERROR]', 'TROPIPAY', error.message);
             return {
                 error: error.message || error
             }
