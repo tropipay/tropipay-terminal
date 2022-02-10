@@ -81,7 +81,7 @@ function PaymentPage(props) {
         variant="contained"
         className="btn-full-width"
         size="large"
-        style={{ marginTop: "1rem" }}
+        style={{ marginTop: "2rem" }}
         onClick={() => history.push("/home")}
         color="secondary"
       >

@@ -37,7 +37,7 @@ function PaymentResume(props) {
           className="note-bg note-border box-padding-1"
         >
           <Typography variant="body2">{t("payment.resume.detail")}</Typography>
-          <div className="box-horizontal box-align-between box-align-center">
+          <div className="box-horizontal box-align-between box-align-center box-margin-top-1">
             <Typography variant="body2">{t("payment.resume.cost")}</Typography>
 
             <Typography className="box-align-right">
@@ -45,7 +45,7 @@ function PaymentResume(props) {
               {getResume(resume, "cost", "currency")}
             </Typography>
           </div>
-          <div className="box-horizontal box-align-between box-align-center">
+          <div className="box-horizontal box-align-between box-align-center box-margin-top-1">
             <Typography variant="body2">
               {t("payment.resume.amount")}
             </Typography>
@@ -55,7 +55,7 @@ function PaymentResume(props) {
               {getResume(resume, "current", "currency")}
             </Typography>
           </div>
-          <div className="box-horizontal box-align-between box-align-center box-label-bold">
+          <div className="box-horizontal box-align-between box-align-center box-label-bold box-margin-top-1">
             <Typography variant="body2">
               {t("payment.resume.selloff")}
             </Typography>

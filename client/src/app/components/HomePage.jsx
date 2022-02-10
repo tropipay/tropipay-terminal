@@ -56,7 +56,7 @@ function HomePage() {
             variant="contained"
             className="btn-full-width"
             size="large"
-            style={{ marginTop: "2rem" }}
+            style={{ marginTop: "1rem" }}
             onClick={() => nav.push("/movement")}
             color="secondary"
           >
