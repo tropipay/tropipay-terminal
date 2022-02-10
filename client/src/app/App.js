@@ -7,7 +7,7 @@ import "./App.scss";
 import './services/lang';
 
 import AppStore from './models/AppStore';
-import AppRoute from './components/AppRoute';
+import AppRoute from './components/Page/AppRoute';
 
 function App() {
   return (

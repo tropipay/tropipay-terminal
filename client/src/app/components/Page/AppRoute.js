@@ -1,19 +1,19 @@
 
 import React, { useEffect } from "react";
 import {Switch, Route, Redirect} from 'react-router-dom';
-import srvAuth from "../../security/services/AuthSlice";
-import srvProfile from "../../profile/services/ProfileSlice";
-import ProvideAuth from '../../security/components/provide.auth';
-import RoutePrivate from '../../security/components/route.private';
-import MovementPage from '../../movement/components/MovementPage';
-import PaymentPage from '../../payment/components/PaymentPage';
-import MenuPage from './Menu/MenuPage';
+import srvAuth from "../../../security/services/AuthSlice";
+import srvProfile from "../../../profile/services/ProfileSlice";
+import ProvideAuth from '../../../security/components/provide.auth';
+import RoutePrivate from '../../../security/components/route.private';
+import MovementPage from '../../../movement/components/MovementPage';
+import PaymentPage from '../../../payment/components/PaymentPage';
+import MenuPage from '../Menu/MenuPage';
 import FrontPage from "./FrontPage.jsx";
 import HomePage from "./HomePage.jsx";
 import Page from "./Page.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { Message } from "./Message/Message";
-import srvError from "../services/ErrorSlice";
+import { Message } from "../Message/Message";
+import srvError from "../../services/ErrorSlice";
 import { useTranslation } from "react-i18next";
 
 export default function AppRoute() {

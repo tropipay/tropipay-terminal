@@ -4,12 +4,12 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import srvProfile from "../../profile/services/ProfileSlice";
+import srvProfile from "../../../profile/services/ProfileSlice";
 
 import { Grid } from "@mui/material";
 import Button from "@material-ui/core/Button";
-import AvatarName from "./Avatar/AvatarName";
-import ContentHeader from "./Header/ContentHeader";
+import AvatarName from "../Avatar/AvatarName";
+import ContentHeader from "../Header/ContentHeader";
 
 function HomePage() {
   const { t } = useTranslation();
