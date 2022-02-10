@@ -23,6 +23,7 @@ function Login() {
             onClick={login} 
             variant="contained"
             color="primary"
+            size="large"
             style={{ backgroundColor: '#232C53' }}
             startIcon={<img src={IconUrl} style={{ width: "2rem" }} alt="" />}
         >

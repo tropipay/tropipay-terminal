@@ -89,7 +89,7 @@ function PaymentResume(props) {
         <Button
           variant="contained"
           className="btn-full-width"
-          size="medium"
+          size="large"
           color="primary"
           style={{ marginTop: "2rem" }}
           disabled={!accept}

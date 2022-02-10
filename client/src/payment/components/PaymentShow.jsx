@@ -251,7 +251,7 @@ function PaymentShow(props) {
         <Button
           variant="contained"
           className="btn-full-width"
-          size="medium"
+          size="large"
           color="primary"
           style={{ marginTop: "2rem" }}
           onClick={handleSubmit(submit)}
