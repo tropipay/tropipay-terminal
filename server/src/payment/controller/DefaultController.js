@@ -131,13 +131,15 @@ class DefaultController extends KsMf.app.Controller {
             phone: req.body.phone
         };
         const result = await this.tropipay.sharePaylink(data);
+        this.logger.prefix('Payment.DefaultController');
         if (!result || result.error) {
-            console.log('[ERROR]', result);
+            this.logger.error(result);
             res.status(500);
             res.json({
                 code: 'connection'
             });
         } else {
+            this.logger.info(result);
             res.json(result);
         }
 

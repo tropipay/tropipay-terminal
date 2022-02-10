@@ -54,7 +54,7 @@ class TropiPay {
      * @param {STRING} payload.code 
      */
     async getAuthorization(payload) {
-         //... confifure options for get authorization code
+        //... confifure options for get authorization code
         const data = {
             grant_type: "authorization_code",
             ...payload
@@ -264,7 +264,7 @@ class TropiPay {
             "updatedAt": "2021-09-28T08:26:48.174Z"
      * }
      */
-    async getService(slug = 'CHARGE_EXTERNAL_CARDS'){
+    async getService(slug = 'CHARGE_EXTERNAL_CARDS') {
         return await this.req({
             url: "/api/services/get/" + slug,
             method: 'get'
@@ -275,7 +275,7 @@ class TropiPay {
      * @description get service list
      * @return {ARRAY} Service
      */
-    async getServices(){
+    async getServices() {
         return await this.req({
             url: "/api/services",
             method: 'get'
@@ -420,8 +420,7 @@ class TropiPay {
             ]
         }
      */
-    async getMovements(offset=0, limit=10, criteria=''){
-        console.log('getMovements>>', `/api/v2/movements?offset=${offset}&limit=${limit}&criteria=${criteria}`);
+    async getMovements(offset = 0, limit = 10, criteria = '') {
         return await this.req({
             url: `/api/v2/movements?offset=${offset}&limit=${limit}&criteria=${criteria}`,
             method: 'get'
@@ -437,12 +436,22 @@ class TropiPay {
      * @param {STRING} data.sendSMS
      * @param {STRING} data.phone 
      */
-    async sharePaylink(data){
+    async sharePaylink(data) {
         return await this.req({
             url: "/api/v2/paymentcards/notify",
             method: 'post',
             data
         });
+    }
+
+    /**
+     * @description get user web page url
+     * @param {OBJECT} user 
+     * @return {STRING}
+     */
+    getCompanyQrURL(user) {
+        const urlBase = "https://tropipay.com/comercio/";
+        return user ? urlBase + user["shortId"] : urlBase;
     }
 }
 

@@ -15,12 +15,12 @@ class DefaultController extends KsMf.app.Controller {
      * http://localhost:3005/api/v1/movement
      */
     init() {
-        this.logger = this.helper.get('logger').prefix('Movement.DefaultController');
+        this.logger = this.helper.get('logger');
         this.tropipay = this.helper.get('TropiPay');
     }
 
     async list(req, res) {
-        this.logger.info('params', req.query)
+        this.logger.prefix('Movement.DefaultController').info('params', req.query);
         const {offset, limit, criteria} = req.query;
         const result = await this.tropipay.set({
             token: req.token
