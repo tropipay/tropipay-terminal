@@ -13,13 +13,15 @@ export const slice = createSlice({
         list: [],
         loading: false,
         data: null,
-        error: null
+        error: null,
+        query: null
     },
     reducers: {
         onError: (state, action) => {
             state.error = action.payload;
         },
         onUpdate: (state, action) => {
+            state.query = action.query;
             state.data = action.payload;
             state.loading = false;
             state.list = state.list.concat(state.data.rows);
@@ -42,10 +44,10 @@ const {
 } = slice.actions;
 
 // ... Load movements from server
-const onLoad = (offset = 0, limit = 10, criteria = "") => (dispatch) => {
+const onLoad = (offset = 0, limit = 10, query = "") => (dispatch) => {
     dispatch(onLoading(true));
-    httpReq(`/api/v1/movement?offset=${offset}&limit=${limit}&criteria=${criteria}`, dispatch)
-        .then(data => dispatch(onUpdate(data)));
+    httpReq(`/api/v1/movement?offset=${offset}&limit=${limit}&criteria=${query}`, dispatch)
+        .then(data => dispatch(onUpdate({...data, query})));
 };
 
 const onSearch = (offset = 0, limit = 10, criteria = "") => (dispatch) => {

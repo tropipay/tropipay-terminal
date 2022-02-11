@@ -68,35 +68,39 @@ function MovementPage() {
   const renderData = () => {
     return (
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <FormTextFilter
-            id="criteria"
-            name="criteria"
-            placeholder={t("movement.search")}
-            onSearch={onSearch}
-            onClean={onClean}
-            onChange={onChangeFilter}
-          />
-        </Grid>
+        {!isLoading ? (
+          <Grid item xs={12}>
+            <FormTextFilter
+              id="criteria"
+              name="criteria"
+              placeholder={t("movement.search")}
+              onSearch={onSearch}
+              onClean={onClean}
+              onChange={onChangeFilter}
+            />
+          </Grid>
+        ) : null}
 
         <Grid item xs={12}>
           <List className="list marginB2">
             {isLoading && movements.length < 1 ? (
               <LinearProgress className="my-5" />
             ) : (
-              movements.map(item => item ? (
-                <MovementItem
-                  className=""
-                  key={item.id}
-                  data={item}
-                  onSelect={onSelectItem}
-                />
-              ) : null)
+              movements.map(item =>
+                item ? (
+                  <MovementItem
+                    className=""
+                    key={item.id}
+                    data={item}
+                    onSelect={onSelectItem}
+                  />
+                ) : null
+              )
             )}
           </List>
         </Grid>
 
-        {!completed ? (
+        {!isLoading && !completed ? (
           <Grid item xs={12}>
             <Typography
               onClick={() => loadMore()}

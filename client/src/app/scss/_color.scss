@@ -21,7 +21,13 @@ $color11: #7d1f93;
 $color12: #f4654a;
 
 /* ----------------------------- */
-.gray-label {
+.gray-label,
+.MuiTypography-root.gray-label {
+  color: $baseGray;
+}
+
+.text-color-gray,
+.MuiTypography-root.text-color-gray {
   color: $baseGray;
 }
 

@@ -93,6 +93,7 @@ function PaymentShow(props) {
             title={t("payment.show.title")}
             subtitle={t("payment.show.subtitle")}
             className="box-label-center box-margin-bottom-2"
+            classNameTitle="box-label-bold"
           />
         </Grid>
 
