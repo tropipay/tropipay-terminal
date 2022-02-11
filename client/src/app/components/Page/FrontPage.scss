@@ -10,6 +10,44 @@
 .page-container {
   margin-left: 4rem;
   margin-top: 1rem;
-  margin-right: 6rem;
+  margin-right: 4rem;
   height: 95vh;
+}
+
+.page-front-font,
+.MuiTypography-root.page-front-font {
+  font-family: "Poppins";
+}
+
+.page-front-app-name,
+.MuiTypography-root.page-front-app-name {
+  font-size: 24px;
+}
+.page-front-app-by,
+.MuiTypography-root.page-front-app-by {
+  font-size: 10px;
+  align-self: end;
+  padding-bottom: 2px;
+  margin-right: 3px; 
+  font-size: 10px;
+}
+.page-front-app-company,
+.MuiTypography-root.page-front-app-company {
+  font-size: 18px;
+  margin-right: 3px;
+}
+
+.page-front-title, 
+.MuiTypography-root.page-front-title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.page-front-subtitle,
+.MuiTypography-root.page-front-subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 428px;
+  font-family: "Roboto";
 }

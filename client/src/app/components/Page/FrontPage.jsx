@@ -8,11 +8,11 @@ import Grid from "@material-ui/core/Grid";
 import Login from "../../../security/components/login";
 import links from "../../models/menu.link";
 import MenuLink from "../Menu/MenuLink";
-import "./FrontPage.scss";
 import SocialBtn from "../ShareThis/SocialBtn";
 import CadsBtn from "../ShareThis/CardsBtn";
 
 import session from "../../../security/services/Session";
+import "./FrontPage.scss";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,21 +61,20 @@ function FrontPage() {
           <div className="box box-vertical box-align-between page-container">
             <div className="front-top">
               <div className="front-company">
-                <Typography variant="h6" component="h4">
+                <Typography variant="h6" component="h4" className="page-front-font page-front-app-name">
                   {t("front.name")}
                 </Typography>
-
                 <div className="box-horizontal" style={{ marginLeft: "3rem" }}>
-                  <Typography style={{ marginRight: "3px", fontSize: "5px" }}>
+                  <Typography className="page-front-text-srv page-front-app-by">
                     {t("front.by")}
                   </Typography>
-                  <Typography style={{ marginRight: "3px", fontSize: "10px" }}>
+                  <Typography className="page-front-font page-front-app-company">
                     {t("front.company")}
                   </Typography>
                 </div>
               </div>
 
-              <Typography variant="h4" mt="4rem">
+              <Typography mt="2rem" className="page-front-title page-front-font">
                 {t("front.title")}
               </Typography>
 

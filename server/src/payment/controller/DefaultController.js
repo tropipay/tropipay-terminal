@@ -119,6 +119,7 @@ class DefaultController extends KsMf.app.Controller {
     }
 
     async share(req, res) {
+        this.logger.prefix('Payment.DefaultController');
         const token = req.token;
         this.tropipay.set({
             token
@@ -130,16 +131,16 @@ class DefaultController extends KsMf.app.Controller {
             sendSMS: req.body.sendSMS,
             phone: req.body.phone
         };
+        this.logger.info("share", "req", req.body);
         const result = await this.tropipay.sharePaylink(data);
-        this.logger.prefix('Payment.DefaultController');
         if (!result || result.error) {
-            this.logger.error(result);
+            this.logger.error("share", result);
             res.status(500);
             res.json({
                 code: 'connection'
             });
         } else {
-            this.logger.info(result);
+            this.logger.info("share", result);
             res.json(result);
         }
 

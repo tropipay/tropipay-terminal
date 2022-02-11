@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
-import TextFilter from "./TextFilter";
+import FormTextFilter from "../../app/components/FormControl/FormTextFilter";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from "mdi-react/ExpandMoreIcon";
 import MovementItem from "./MovementItem";
@@ -69,7 +69,10 @@ function MovementPage() {
     return (
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <TextFilter
+          <FormTextFilter
+            id="criteria"
+            name="criteria"
+            placeholder={t("movement.search")}
             onSearch={onSearch}
             onClean={onClean}
             onChange={onChangeFilter}
@@ -144,12 +147,6 @@ function MovementPage() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <ContentHeader title={moment().format("ll")} />
-        </Grid>
-
-        <Grid item xs={12}>
-          <Typography variant="h6" className="">
-            {t("movement.title")}
-          </Typography>
         </Grid>
 
         <Grid item xs={12}>
