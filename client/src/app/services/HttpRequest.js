@@ -1,4 +1,4 @@
-import srvError from './ErrorSlice';
+import srvMessage from './MessageSlice';
 import session from "../../security/services/Session";
 
 function objToStr(data) {
@@ -32,10 +32,11 @@ const httpRequest = (payload, dispatch = null) => {
     }
     const throwError = (error, dispatch) => {
         if (error && dispatch instanceof Function) {
-            dispatch(srvError.action.update({
+            dispatch(srvMessage.action.update({
                 message: error && error.message ? error.message : 'error',
                 code: error && error.code ? error.code : 'ERR',
-                type: 'request',
+                type: 'error',
+                group: 'request',
                 path: payload.url
             }));
         }

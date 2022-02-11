@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 
 export const Message = (props) => {
     const hideTime = 5000;
-    const style = props && props.style ? props.styles : '';
+    const cls = props && props.cls ? props.cls : '';
     const btnActions = [];
 
     if (props && props.type === 'confirm') {
@@ -47,7 +47,7 @@ export const Message = (props) => {
     );
 
     return <Snackbar
-        className={`appSnackbar ${style}`}
+        className={`appSnackbar ${cls}`}
         anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',

@@ -443,7 +443,8 @@ a.telegram {
   height: 40px;
 }
 
-.text-color-main-blue {
+.text-color-main-blue,
+.MuiTypography-root.text-color-main-blue {
   color: $mainColor;
 }
 

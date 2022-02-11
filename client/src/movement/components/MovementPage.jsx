@@ -86,6 +86,7 @@ function MovementPage() {
             ) : (
               movements.map(item => item ? (
                 <MovementItem
+                  className=""
                   key={item.id}
                   data={item}
                   onSelect={onSelectItem}
@@ -99,7 +100,7 @@ function MovementPage() {
           <Grid item xs={12}>
             <Typography
               onClick={() => loadMore()}
-              className="box box-vertical box-align-center btn-txt"
+              className="box box-vertical box-align-center btn-txt box-label-bold"
             >
               {t("movement.showMore")}
               <ExpandMoreIcon />

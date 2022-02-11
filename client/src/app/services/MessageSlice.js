@@ -3,7 +3,7 @@ import {
 } from "@reduxjs/toolkit";
 
 //... Define namespace
-const name = "error";
+const name = "message";
 
 // ... Create Slice
 export const slice = createSlice({
@@ -12,7 +12,8 @@ export const slice = createSlice({
         message: null,
         code: null,
         type: null,
-        path: null
+        path: null,
+        group: null,
     },
     reducers: {
         update: (state, action) => {
@@ -21,6 +22,7 @@ export const slice = createSlice({
                 state.code = action.payload.code;
                 state.type = action.payload.type;
                 state.path = action.payload.path;
+                state.group = action.payload.group;
             } else {
                 state.message = action.payload;
             }
@@ -30,6 +32,7 @@ export const slice = createSlice({
             state.code = null;
             state.type = null;
             state.path = null;
+            state.group = null;
         }
     }
 });
@@ -52,7 +55,8 @@ const Service = {
         error: (state) => state[name].message,
         code: (state) => state[name].code,
         type: (state) => state[name].type,
-        path: (state) => state[name].path
+        path: (state) => state[name].path,
+        group: (state) => state[name].group
     }
 }
 export default Service;

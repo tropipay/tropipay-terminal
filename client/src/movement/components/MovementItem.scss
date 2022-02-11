@@ -1,3 +1,5 @@
+@import "../../app/scss/variables";
+
 .movement-margin-right {
   margin-right: 10px;
 }
@@ -6,3 +8,15 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.movement-item span {
+  font-weight: 700;
+  color: $mainColor;
+}
+
+.movement-name span,
+.movement-name p p {
+  font-weight: 700;
+}
+
+

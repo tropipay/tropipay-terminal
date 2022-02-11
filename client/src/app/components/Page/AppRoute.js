@@ -13,13 +13,14 @@ import HomePage from "./HomePage.jsx";
 import Page from "./Page.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { Message } from "../Message/Message";
-import srvError from "../../services/ErrorSlice";
+import srvMessage from "../../services/MessageSlice";
 import { useTranslation } from "react-i18next";
 
 export default function AppRoute() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const errorId = useSelector(srvError.selector.code);
+  const msgId = useSelector(srvMessage.selector.code);
+  const msgType = useSelector(srvMessage.selector.type);
   
   useEffect(() => {
     dispatch(srvAuth.action.update());
@@ -38,13 +39,12 @@ export default function AppRoute() {
             <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>
         </Switch>
         <Message 
-            styles="error"
-            message={traslate(errorId, t)} 
+            cls={msgType || ""}
+            message={traslate(msgId, t, msgType)} 
             onClose={()=>{
-              console.log("message-onClose");
-              dispatch(srvError.action.clean());
+              dispatch(srvMessage.action.clean());
             }} 
-            />
+        />
     </ProvideAuth>
   );
 }

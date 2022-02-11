@@ -51,7 +51,7 @@ function MovementItem(props) {
       <div className="movement-margin-right">{renderAvatar(data)}</div>
 
       <ListItemText
-        className="pl-3 ref"
+        className="movement-name"
         primary={getName(data)}
         secondary={
           <React.Fragment>
@@ -65,13 +65,13 @@ function MovementItem(props) {
 
       {data.movementTypeId === movementTypes.transfer ? (
         <ListItemText
-          className="box-label-right"
+          className="box-label-right movement-item"
           primary={calc.fix(data.amount) + " " + data.currency}
           secondary={getReference(data)}
         />
       ) : (
         <ListItemText
-          className="box-label-right"
+          className="box-label-right movement-item"
           primary={
             calc.fix(data.destinationAmount) + " " + data.destinationCurrency
           }

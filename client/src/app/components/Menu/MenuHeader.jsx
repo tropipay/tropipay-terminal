@@ -20,6 +20,8 @@ function MenuHeader(props) {
           <AvatarName name={model ? model.name : "TS"} />
         </div>
         <ContentHeader
+          classNameTitle="box-label-bold"
+          classNameSubtitle="text-color-main-blue"
           title={model ? model.name : "Gest"}
           subtitle={model ? model.email : "gest@tropipay.com"}
         />
