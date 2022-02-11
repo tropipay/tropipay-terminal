@@ -31,9 +31,9 @@ export const slice = createSlice({
         onDelete: (state, action) => {
             state.data = null;
             state.error = null;
-            session.del(); 
+            session.del();
         }
-        
+
     }
 });
 
@@ -56,6 +56,12 @@ export const load = () => (dispatch) => {
             dispatch(onError(error.message))
         });
 };
+
+function getPageURL(user) {
+    const urlBase = "https://tropipay.com/comercio/";
+    return user && user.shortId ? urlBase + user.shortId : urlBase;
+}
+
 //... Export the slice as a service
 const Service = {
     name,
@@ -67,6 +73,12 @@ const Service = {
     },
     selector: {
         data: (state) => state[name].data,
+        url: (state) => {
+            const {
+                data
+            } = state[name];
+            return getPageURL(data);
+        },
         error: (state) => state[name].error
     }
 }

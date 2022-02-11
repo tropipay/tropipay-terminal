@@ -60,22 +60,21 @@ function PaymentPage(props) {
   stepper.add(steps);
   stepper.subscribe((step, dir) => console.log(">> PAGE #", step, dir));
 
+  function getPageName(index) {
+    switch (index) {
+      case 0:
+        return "form";
+
+      case 1:
+        return "resume";
+
+      default:
+        return"show";
+    }
+  }
   // ... define render controls
   const renderControls = (t, history) => {
-    let page = "";
-
-    switch (stepper.index) {
-      case 0:
-        page = "form";
-        break;
-      case 1:
-        page = "resume";
-        break;
-      default:
-        page = "show";
-        break;
-    }
-
+    const page = getPageName(stepper.index);
     return (
       <Button
         variant="contained"

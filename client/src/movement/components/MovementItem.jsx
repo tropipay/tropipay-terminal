@@ -29,7 +29,7 @@ function MovementItem(props) {
   return (
     <ListItem
       key={data.id}
-      className="history-list-item"
+      className="movement-list-item"
       onClick={() => exec(props.onSelect, [data])}
     >
       <div className="movement-margin-right">{renderAvatar(data)}</div>

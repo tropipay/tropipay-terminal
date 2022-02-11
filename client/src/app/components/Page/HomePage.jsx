@@ -10,6 +10,8 @@ import { Grid } from "@mui/material";
 import Button from "@material-ui/core/Button";
 import AvatarName from "../Avatar/AvatarName";
 import ContentHeader from "../Header/ContentHeader";
+import QRCode from "../QRcode/QRCode";
+import './HomePage.scss';
 
 function HomePage() {
   const { t } = useTranslation();
@@ -17,6 +19,7 @@ function HomePage() {
   const dispatch = useDispatch();
   const profile = useSelector(srvProfile.selector.data);
   const error = useSelector(srvProfile.selector.error);
+  const shortUrl = useSelector(srvProfile.selector.url);
 
   useEffect(() => {
     if (!profile && !error) {
@@ -36,6 +39,12 @@ function HomePage() {
             title={profile ? profile.name : "Gest"}
             subtitle={profile ? profile.email : "gest@tropipay.com"}
           />
+        </Grid>
+        
+        <Grid item xs={12} className="box box-align-center">
+          <div className="box box-align-center home-page-qr note-bg">
+            <QRCode url={shortUrl} size={200} />
+          </div>
         </Grid>
 
         <Grid item xs={12}>

@@ -7,6 +7,11 @@ class TropiPay {
         this.base = process.env.URL_TROPIPAY;
     }
 
+    /**
+     * @description set configuration options 
+     * @param {OBJECT} data 
+     * @param {STRING} data.token 
+     */
     set(data) {
         this.token = data && data.token ? data.token : this.token;
         return this;
@@ -65,6 +70,7 @@ class TropiPay {
             data
         });
     }
+
     /**
      * 
      * @returns {OBJECT} {
@@ -173,6 +179,7 @@ class TropiPay {
      * @return {OBJECT} {
             "usd2eur": 0.8738967054094205
         }
+        rate: (Math.round(10000 / obj.result.data.usd2eur) / 10000) //ej. 1.15935
      */
     async getFee() {
         return await this.req({
@@ -236,6 +243,9 @@ class TropiPay {
             data
         });
     }
+    /**
+     * @description get payment link list
+     */
     async getPaylink() {
         return await this.req({
             url: "/api/v2/paymentcards",
@@ -449,9 +459,9 @@ class TropiPay {
      * @param {OBJECT} user 
      * @return {STRING}
      */
-    getCompanyQrURL(user) {
+    getPageURL(user) {
         const urlBase = "https://tropipay.com/comercio/";
-        return user ? urlBase + user["shortId"] : urlBase;
+        return user && user.shortId ? urlBase + user.shortId : urlBase;
     }
 }
 

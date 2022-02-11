@@ -14,7 +14,10 @@ class DefaultController extends KsMf.app.Controller {
 
     init() {
         const Logger = this.helper.get('logger.class');
-        this.logger =  new Logger({prefix: 'Security.DefaultController', level: this.opt.srv.log});
+        this.logger = new Logger({
+            prefix: 'Security.DefaultController',
+            level: this.opt.srv.log
+        });
         this.tropipay = this.helper.get('TropiPay');
     }
 
@@ -81,6 +84,17 @@ class DefaultController extends KsMf.app.Controller {
             res.json(result.data);
         }
     }
+
+    async getPageURL(req, res) {
+        this.tropipay.set({
+            token: req.token
+        });
+        const url = this.tropipay.getPageURL();
+        res.json({
+            url
+        });
+    }
+
 
     test(req, res) {
         throw Error('AAAAAAAAAA');
