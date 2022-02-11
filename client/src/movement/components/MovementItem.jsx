@@ -18,6 +18,22 @@ function MovementItem(props) {
     return <AvatarName name={nameStr} textColor="auto" />;
   }
 
+  function getName(item) {
+    if (item && item.charges && item.charges[0]) {
+      return item.charges[0].clientName + " " + item.charges[0].clientLastName;
+    }
+
+    if (item.depositaccount && item.amount < 0) {
+      return item.depositaccount.alias || item.depositaccount.accountNumber;
+    }
+
+    return item.reference;
+  }
+
+  function getReference(item) {
+    return item.bankOrderCode;
+  }
+
   function getCard(item) {
     if (!item || !item.charges || !item.charges[0]) return null;
     return "****" + item.charges[0].cardPan;
@@ -36,7 +52,7 @@ function MovementItem(props) {
 
       <ListItemText
         className="pl-3 ref"
-        primary={data.reference}
+        primary={getName(data)}
         secondary={
           <React.Fragment>
             {cardNumber ? (
@@ -51,7 +67,7 @@ function MovementItem(props) {
         <ListItemText
           className="box-label-right"
           primary={calc.fix(data.amount) + " " + data.currency}
-          secondary={333}
+          secondary={getReference(data)}
         />
       ) : (
         <ListItemText
@@ -59,7 +75,7 @@ function MovementItem(props) {
           primary={
             calc.fix(data.destinationAmount) + " " + data.destinationCurrency
           }
-          secondary={333}
+          secondary={getReference(data)}
         />
       )}
     </ListItem>

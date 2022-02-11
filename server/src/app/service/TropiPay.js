@@ -463,6 +463,45 @@ class TropiPay {
         const urlBase = "https://tropipay.com/comercio/";
         return user && user.shortId ? urlBase + user.shortId : urlBase;
     }
+
+    /**
+     * @description GET Country list
+     * @return {
+            "count": 300,
+            "limit": 1,
+            "offset": 0,
+            "rows": [
+                {
+                    "id": 44,
+                    "name": "Afghanistan",
+                    "sepaZone": false,
+                    "state": 1,
+                    "slug": "AF",
+                    "slugn": "004",
+                    "callingCode": 93,
+                    "isDestination": false,
+                    "createdAt": "2019-09-03T15:22:26.410Z",
+                    "updatedAt": "2019-09-03T15:22:26.410Z"
+                }
+            ]
+        }  
+     */
+    async getCountries() {
+        return await this.req({
+            url: '/api/countries',
+            method: 'get'
+        });
+    }
+
+    /**
+     * @description GET Destinations Country list
+     */
+    async getDestinations() {
+        return await this.req({
+            url: '/api/countries/destinations',
+            method: 'get'
+        });
+    }
 }
 
 module.exports = TropiPay;
