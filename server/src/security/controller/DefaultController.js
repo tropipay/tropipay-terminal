@@ -77,7 +77,8 @@ class DefaultController extends KsMf.app.Controller {
             token: req.token
         }).getProfile();
         if (result.error) {
-            res.status(401).json({
+            res.status(401);
+            res.json({
                 error: 'unauthorized'
             });
         } else {

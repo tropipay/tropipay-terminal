@@ -26,7 +26,7 @@ export const slice = createSlice({
         },
         fee: {
             loaded: false,
-            rate: 1.1, //0.8738967054094205,
+            rate: 1.1,
             service: {
                 'tp_fee_fixed': 50,
                 'tp_fee_percent': 300,
@@ -53,7 +53,8 @@ export const slice = createSlice({
             },
             rate: 0
         },
-        share: null
+        share: null,
+        country: null
     },
     reducers: {
         onResume: (state, action) => {
@@ -62,11 +63,6 @@ export const slice = createSlice({
                 currency: state.data.currency,
                 ...state.fee
             });
-            console.log('------------------------');
-            console.log('onFee.resume', state.resume);
-            console.log('onFee.fee', state.fee);
-            console.log('onFee.data', state.data);
-            console.log('------------------------');
         },
         onError: (state, action) => {
             state.error = action.payload;
@@ -83,12 +79,6 @@ export const slice = createSlice({
                         ...state.fee
                     });
                 }
-
-                console.log('------------------------');
-                console.log('onFee.resume', state.resume);
-                console.log('onFee.fee', state.fee);
-                console.log('onFee.data', state.data);
-                console.log('------------------------');
                 state.error = '';
             }
         },
@@ -100,7 +90,7 @@ export const slice = createSlice({
         },
         onFee: (state, action) => {
             if (action.payload) {
-                if(action.payload.rate){
+                if (action.payload.rate) {
                     state.fee.rate = action.payload.rate;
                     state.fee.loaded = true;
                 }
@@ -112,16 +102,14 @@ export const slice = createSlice({
                     currency: state.data.currency,
                     ...state.fee
                 });
-                console.log('------------------------');
-                console.log('onFee.resume', state.resume);
-                console.log('onFee.fee', state.fee);
-                console.log('onFee.data', state.data);
-                console.log('------------------------');
                 state.error = '';
             }
         },
         onShare: (state, action) => {
             state.share = action.payload;
+        },
+        onCountry(state, action) {
+            state.country = action.payload.data;
         }
     }
 });
@@ -132,6 +120,7 @@ export const {
     onUpdate,
     onList,
     onFee,
+    onCountry
 } = slice.actions;
 
 //... create a pyment links from server
@@ -148,7 +137,7 @@ const onShare = (payload) => (dispatch) => {
         url: "/api/v1/payment/share",
         method: "POST",
         data: payload
-    }, dispatch);//.then(data => dispatch(onUpdate(data)));
+    }, dispatch); //.then(data => dispatch(onUpdate(data)));
 };
 //... load the list of PymentLinks from server
 const onLoad = () => (dispatch) => {
@@ -161,6 +150,13 @@ export const onLoadFee = () => (dispatch) => {
         method: "POST"
     }, dispatch).then(data => dispatch(onFee(data)));
 };
+//... load country conde list 
+export const onCountryConde = () => (dispatch) => {
+    httpReq({
+        url: "/api/v1/payment/countrycode",
+        method: "GET"
+    }, dispatch).then(data => dispatch(onCountry(data)));
+};
 //... Export the slice as a service
 const Service = {
     name,
@@ -170,14 +166,19 @@ const Service = {
         update: onUpdate,
         load: onLoad,
         create: onCreate,
-        share: onShare
+        share: onShare,
+        loadCountryConde: onCountryConde
     },
     selector: {
         data: (state) => state[name].data,
         error: (state) => state[name].error,
         fee: (state) => state[name].fee,
         list: (state) => state[name].list,
-        resume: (state) => state[name].resume
+        resume: (state) => state[name].resume,
+        country: (state) => {
+            const country = state[name].country;
+            return country && country.rows ? country.rows : [];
+        }
     }
 }
 export default Service;

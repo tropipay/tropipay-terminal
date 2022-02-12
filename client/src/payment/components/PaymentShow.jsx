@@ -19,9 +19,12 @@ import FormTextField from "../../app/components/FormControl/FormTextField";
 import { nakedUrl, exec } from "../../app/services/util";
 import Msg from "../../app/components/Message/Message";
 import moment from "moment/moment";
+import "./PaymentShow.scss";
 
 import srvPaylink from "../services/PaylinkSlice";
 import { useSelector } from "react-redux";
+import FormSelect from "../../app/components/FormControl/FormSelect";
+import Validation from "../../app/services/validation";
 
 function PaymentShow(props) {
   const { t } = useTranslation();
@@ -29,6 +32,9 @@ function PaymentShow(props) {
     srvPaylink.selector.data
   );
   const error = useSelector(srvPaylink.selector.error);
+  const countries = useSelector(srvPaylink.selector.country);
+
+  console.log(countries);
 
   const [sendSMS, setSendSMS] = useState(false);
   const [sendEmail, setSendEmail] = useState(false);
@@ -47,6 +53,18 @@ function PaymentShow(props) {
       message.traslate("error." + error);
     }
   });
+
+  function getItems(lst) {
+    if (lst && lst instanceof Array) {
+      return lst.map(item => {
+        return {
+          label: `${item.name} (+${item.callingCode})`,
+          value: item.callingCode
+        };
+      });
+    }
+    return [];
+  }
 
   function empty(str) {
     return !str || str === "";
@@ -70,14 +88,65 @@ function PaymentShow(props) {
         {
           sendEmail: !empty(data.email),
           sendSMS: !empty(data.phone),
-          phone: `${(data.code || "").replace(/\\s/g, "")}${(
-            data.phone || ""
-          ).replace(/\\s/g, "")}`,
-          notifyEmail: data.email,
+          phone: `+${data.code || ""}${data.phone || ""}`,
+          notifyEmail: data.email || "",
           cardPaymentId: id
         }
       ]);
     }
+  };
+
+  const renderQrSection = () => {
+    return (
+      <Grid container spacing={2} className="payment-show-qr-section">
+        <Grid item xs={12} sm={6} className="box-vertical box-align-left">
+          <QRCode url={shortUrl} size={200} />
+        </Grid>
+        <Grid item xs={12} sm={6} className="box-label-right ">
+          <Typography variant="body2" className="">
+            {moment(createdAt).format("LLL")}
+          </Typography>
+          {expirationDate ? (
+            <div>
+              <Typography variant="body2" className="">
+                {t("payment.show.expireIn")}
+              </Typography>
+              <Typography variant="body2" className="">
+                {expireInHours(createdAt, expirationDate)}
+              </Typography>
+            </div>
+          ) : null}
+        </Grid>
+      </Grid>
+    );
+  };
+
+  const renderUrlSection = () => {
+    return (
+      <Grid item xs={12}>
+        <Typography variant="subtitle1" noWrap className="text-left mt-1">
+          <span className="d-inline-block text-truncate mr-2">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={shortUrl}
+              className="link-blue"
+            >
+              {nakedUrl(shortUrl)}
+            </a>
+          </span>
+          <IconButton
+            key="copy"
+            aria-label="Copy"
+            color="inherit"
+            className="gray-label"
+            onClick={() => copyURL(shortUrl)}
+          >
+            <ContentDuplicateIcon />
+          </IconButton>
+        </Typography>
+      </Grid>
+    );
   };
 
   return (
@@ -97,37 +166,10 @@ function PaymentShow(props) {
           />
         </Grid>
 
+        {renderQrSection()}
+
         <Grid item xs={12}>
           <Grid container spacing={2} className="box-border-curved">
-            <Grid
-              container
-              spacing={2}
-              className="box-padding-bottom-2 box-padding-top-2"
-            >
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                className="box-vertical box-align-center"
-              >
-                <QRCode url={shortUrl} size={200} />
-              </Grid>
-              <Grid item xs={12} sm={6} className="box-label-right ">
-                <Typography variant="body2" className="box-padding-right-2">
-                  {moment(createdAt).format("LLL")}
-                </Typography>
-                {expirationDate ? (
-                  <div>
-                    <Typography variant="body2" className="box-padding-right-2">
-                      {t("payment.show.expireIn")}
-                    </Typography>
-                    <Typography variant="body2" className="box-padding-right-2">
-                      {expireInHours(createdAt, expirationDate)}
-                    </Typography>
-                  </div>
-                ) : null}
-              </Grid>
-            </Grid>
             <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -138,33 +180,8 @@ function PaymentShow(props) {
                     {t("payment.show.url")}:
                   </Typography>
                 </Grid>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="subtitle1"
-                    noWrap
-                    className="text-left mt-1"
-                  >
-                    <span className="d-inline-block text-truncate mr-2">
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={shortUrl}
-                        className="link-blue"
-                      >
-                        {nakedUrl(shortUrl)}
-                      </a>
-                    </span>
-                    <IconButton
-                      key="copy"
-                      aria-label="Copy"
-                      color="inherit"
-                      className="gray-label"
-                      onClick={() => copyURL(shortUrl)}
-                    >
-                      <ContentDuplicateIcon />
-                    </IconButton>
-                  </Typography>
-                </Grid>
+
+                {renderUrlSection()}
 
                 <Grid item xs={12}>
                   <ShareThis
@@ -193,12 +210,15 @@ function PaymentShow(props) {
                 </Grid>
                 {sendSMS ? (
                   <Grid item xs={12}>
-                    <FormTextField
+                    <FormSelect
                       control={control}
                       name="code"
-                      size="medium"
-                      label={t("payment.show.code") + " *"}
+                      size="large"
+                      fullWidth
+                      label={t("payment.show.code")}
+                      placeholder={t("payment.show.code")}
                       rules={{ required: t("error.required") }}
+                      options={getItems(countries)}
                     />
                   </Grid>
                 ) : null}
@@ -207,9 +227,12 @@ function PaymentShow(props) {
                     <FormTextField
                       control={control}
                       name="phone"
-                      size="medium"
-                      label={t("payment.show.phone") + " *"}
-                      rules={{ required: t("error.required") }}
+                      size="large"
+                      label={t("payment.show.phone")}
+                      rules={{
+                        required: t("error.required"),
+                        pattern: Validation.number(t)
+                      }}
                     />
                   </Grid>
                 ) : null}
@@ -237,8 +260,11 @@ function PaymentShow(props) {
                       control={control}
                       name="email"
                       size="medium"
-                      label={t("payment.show.email") + " *"}
-                      rules={{ required: t("error.required") }}
+                      label={t("payment.show.email")}
+                      rules={{
+                        required: t("error.required"),
+                        pattern: Validation.email(t)
+                      }}
                     />
                   </Grid>
                 ) : null}

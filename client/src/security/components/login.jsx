@@ -8,14 +8,13 @@ import IconUrl from '../../app/images/favicon-96x96.png'
 import session from "../services/Session";
 
 function Login() {
-    const url = ""; //"http://localhost:3005";
     const { t } = useTranslation();
     const location = useLocation();
 
     const { from } = location.state || { from: { pathname: "/" } };
     const login = () => {
         session.set({ from });
-        window.location.href = url + "/api/v1/security/oauth/connect";
+        window.location.href = "/api/v1/security/oauth/connect";
     };
 
     return (

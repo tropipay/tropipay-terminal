@@ -6,6 +6,12 @@ const validation = {
             message: t("error.string")
         }
     },
+    email: (t, v) => {
+        return {
+            value: /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/,
+            message: t("error.email")
+        }
+    },
     number: (t) => {
         return {
             value: /^-?\d+(?:,\d+)?(?:[Ee][-+]?\d+)?$/i,

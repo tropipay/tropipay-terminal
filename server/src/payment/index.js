@@ -38,6 +38,11 @@ class PaymentModule extends KsMf.app.Module {
             controller: 'DefaultController',
             action: 'share',
             method: 'post'
+        }, {
+            route: prefix + "/countrycode",
+            controller: 'DefaultController',
+            action: 'getCountryCode',
+            method: 'get'
         }];
     }
 

@@ -105,7 +105,8 @@
             "copyURL": "URL copiada",
             "expireIn": "Expira en",
             "send": {
-                "sms": "Enviar SMS",
+                "sms": "Enviar SMS costo adicional de 0.45 EUR",
+                "sms-note": "costo adicional de 0.45 EUR",
                 "email": "Enviar vía email",
                 "cost": "costo adicional {{value}}"
             }, 

@@ -15,8 +15,6 @@ class Session {
     isValid(key=null) {
         key = key || this.key;
         const session = db.get(key);
-        //const from = session && session.from ? session.from.pathname : '/';
-        console.log('session', session);
         return session && session.access_token ? true : false;
     }
 

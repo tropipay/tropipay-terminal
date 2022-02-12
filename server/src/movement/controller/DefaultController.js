@@ -27,7 +27,8 @@ class DefaultController extends KsMf.app.Controller {
         }).getMovements(offset || 0, limit || 10, criteria || '');
         if (result.error) {
             res.status(401).json({
-                error: result.error.message
+                code: 'unauthorized',
+                message: result.error.message
             });
         } else {
             res.json(result.data);

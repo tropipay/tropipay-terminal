@@ -100,9 +100,9 @@ class DefaultController extends KsMf.app.Controller {
             this.logger.prefix('Payment.DefaultController');
             this.logger.error("fee", fee.error);
             this.logger.error("srv", srv.error);
-            res.status(500);
+            res.status(401);
             res.json({
-                code: 'connection'
+                code: 'unauthorized'
             });
         } else {
             const result = {
@@ -135,12 +135,31 @@ class DefaultController extends KsMf.app.Controller {
         const result = await this.tropipay.sharePaylink(data);
         if (!result || result.error) {
             this.logger.error("share", result);
-            res.status(500);
+            res.status(401);
             res.json({
-                code: 'connection'
+                code: 'unauthorized'
             });
         } else {
             this.logger.info("share", result);
+            res.json(result);
+        }
+
+    }
+
+    async getCountryCode(req, res) {
+        this.logger.prefix('Payment.DefaultController');
+        const token = req.token;
+        this.tropipay.set({
+            token
+        });
+        const result = await this.tropipay.getCountries();
+        if (!result || result.error) {
+            this.logger.error("country", result);
+            res.status(401);
+            res.json({
+                code: 'unauthorized'
+            });
+        } else {
             res.json(result);
         }
 
