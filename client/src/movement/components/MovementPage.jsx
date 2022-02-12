@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment/moment";
 import ContentHeader from "../../app/components/Header/ContentHeader";
-import './MovementPage.scss';
+import "./MovementPage.scss";
 
 function MovementPage() {
   const { t } = useTranslation();
@@ -27,6 +27,7 @@ function MovementPage() {
   const isLoading = useSelector(srvMovement.selector.isLoading);
   const isEmpty = useSelector(srvMovement.selector.isEmpty);
   const data = useSelector(srvMovement.selector.data);
+  const query = useSelector(srvMovement.selector.query);
 
   const [filter, setFilter] = useState("");
 
@@ -78,7 +79,14 @@ function MovementPage() {
               onSearch={onSearch}
               onClean={onClean}
               onChange={onChangeFilter}
+              value={query}
             />
+          </Grid>
+        ) : null}
+
+        {isEmpty && query ? (
+          <Grid item xs={12}>
+            {t("movement.noResults")}
           </Grid>
         ) : null}
 
@@ -156,7 +164,7 @@ function MovementPage() {
         </Grid>
 
         <Grid item xs={12}>
-          {!isEmpty ? renderData() : renderNoData()}
+          {isEmpty && (!query || query === "") ? renderNoData() : renderData()}
         </Grid>
       </Grid>
     </div>

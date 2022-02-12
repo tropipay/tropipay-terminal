@@ -14,14 +14,14 @@ export const slice = createSlice({
         loading: false,
         data: null,
         error: null,
-        query: null
+        query: ""
     },
     reducers: {
         onError: (state, action) => {
             state.error = action.payload;
         },
         onUpdate: (state, action) => {
-            state.query = action.query;
+            state.query = action.payload.query;
             state.data = action.payload;
             state.loading = false;
             state.list = state.list.concat(state.data.rows);
@@ -71,6 +71,7 @@ const Service = {
         limit: (state) => state[name].data ? state[name].data.limit : 0,
         offset: (state) => state[name].data ? state[name].data.offset : 0,
         isLoading: (state) => state[name].loading,
+        query: (state) => state[name].query,
         isEmpty: (state) => {
             const model = state[name];
             if (!model.data) return false;
