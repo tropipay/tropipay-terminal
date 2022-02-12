@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment/moment";
 import ContentHeader from "../../app/components/Header/ContentHeader";
+import './MovementPage.scss';
 
 function MovementPage() {
   const { t } = useTranslation();
@@ -89,7 +90,7 @@ function MovementPage() {
               movements.map(item =>
                 item ? (
                   <MovementItem
-                    className=""
+                    className="movement-item"
                     key={item.id}
                     data={item}
                     onSelect={onSelectItem}

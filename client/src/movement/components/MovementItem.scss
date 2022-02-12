@@ -9,6 +9,10 @@
   margin-right: 10px;
 }
 
+.movement-item {
+  overflow: hidden;
+}
+
 .movement-item span {
   font-weight: 700;
   color: $mainColor;
@@ -19,4 +23,6 @@
   font-weight: 700;
 }
 
-
+.movement-item-avatar{
+  margin-top: 10px;
+}

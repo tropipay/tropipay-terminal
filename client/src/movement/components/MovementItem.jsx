@@ -45,10 +45,10 @@ function MovementItem(props) {
   return (
     <ListItem
       key={data.id}
-      className="movement-list-item"
+      className="movement-list-item box-align-top"
       onClick={() => exec(props.onSelect, [data])}
     >
-      <div className="movement-margin-right">{renderAvatar(data)}</div>
+      <div className="movement-margin-right movement-item-avatar">{renderAvatar(data)}</div>
 
       <ListItemText
         className="movement-name"
