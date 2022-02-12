@@ -28,7 +28,7 @@
   font-size: 10px;
   align-self: end;
   padding-bottom: 2px;
-  margin-right: 3px; 
+  margin-right: 3px;
   font-size: 10px;
 }
 .page-front-app-company,
@@ -37,7 +37,7 @@
   margin-right: 3px;
 }
 
-.page-front-title, 
+.page-front-title,
 .MuiTypography-root.page-front-title {
   font-weight: 700;
   font-size: 40px;
@@ -50,4 +50,9 @@
   font-size: 18px;
   line-height: 428px;
   font-family: "Roboto";
+}
+
+.front-company-logo,
+.front-company-logo img {
+  width: 100%;
 }

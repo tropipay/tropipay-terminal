@@ -11,6 +11,7 @@ import MenuLink from "../Menu/MenuLink";
 import SocialBtn from "../ShareThis/SocialBtn";
 import CadsBtn from "../ShareThis/CardsBtn";
 
+import TpvLogo from "../../images/terminal-logo.png";
 import session from "../../../security/services/Session";
 import "./FrontPage.scss";
 
@@ -60,21 +61,14 @@ function FrontPage() {
         <Grid item xs={12} sm={8}>
           <div className="box box-vertical box-align-between page-container">
             <div className="front-top">
-              <div className="front-company">
-                <Typography variant="h6" component="h4" className="page-front-font page-front-app-name">
-                  {t("front.name")}
-                </Typography>
-                <div className="box-horizontal" style={{ marginLeft: "3rem" }}>
-                  <Typography className="page-front-text-srv page-front-app-by">
-                    {t("front.by")}
-                  </Typography>
-                  <Typography className="page-front-font page-front-app-company">
-                    {t("front.company")}
-                  </Typography>
-                </div>
+              <div className="front-company-logo">
+                <img src={TpvLogo} alt="TpvLogo" />
               </div>
 
-              <Typography mt="2rem" className="page-front-title page-front-font">
+              <Typography
+                mt="2rem"
+                className="page-front-title page-front-font"
+              >
                 {t("front.title")}
               </Typography>
 
