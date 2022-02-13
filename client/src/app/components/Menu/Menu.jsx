@@ -13,7 +13,7 @@ export default function Menu() {
   const history = useHistory();
 
   return (
-    <Box sx={{ flexGrow: 1, marginBottom: "0.9rem" }}>
+    <Box sx={{ flexGrow: 1, marginBottom: "0.9rem" }} id="main-menu">
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography

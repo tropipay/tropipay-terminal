@@ -1,11 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import {BrowserRouter} from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from '../../models/AppStore';
 import Menu from './Menu';
 
 test('renders menu', () => {
-  render(<BrowserRouter><Provider store={store}> <Menu /> </Provider></BrowserRouter>);
-  const linkElement = screen.getByText(/Menu/i);
-  expect(linkElement).toBeInTheDocument();
+  const {container} = render(
+    <BrowserRouter>
+      <Provider store={store}> 
+        <Menu /> 
+      </Provider>
+    </BrowserRouter>
+  );
+  const mainMenu = container.querySelector('[id="main-menu"]')
+  expect(mainMenu).toBeInTheDocument();
 });
