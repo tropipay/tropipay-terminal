@@ -7,6 +7,11 @@
   margin-left:auto;
 }
 
+.page-padding {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .note-bg {
   background-color: #F0F3FA;
 }
@@ -277,6 +282,30 @@ span.success {
 .btn-txt {
   cursor: pointer;
   color: $mainColor;
+  a {
+    outline: none;
+    text-decoration: none;
+  }
+  a:link {
+    color: $mainColor;
+  }
+  
+  a:visited {
+    color: $mainColor;
+  }
+  
+  a:focus {
+    background: $mainColor;
+  }
+  
+  a:hover {
+    background: $mainColor;
+  }
+  
+  a:active {
+    background: $mainColor;
+    color: $mainColor;
+  }
 }
 
 .lineaConMargen {
@@ -414,7 +443,8 @@ a.telegram {
   height: 40px;
 }
 
-.text-color-main-blue {
+.text-color-main-blue,
+.MuiTypography-root.text-color-main-blue {
   color: $mainColor;
 }
 

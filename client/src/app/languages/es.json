@@ -1,19 +1,30 @@
 {
-    "home": {
+    "menu": {
+        "home": "Home",
+        "comunity": "Comunidad",
+        "contact": "Contactenos",
+        "help": "Centro de Ayuda",
+        "logout": "Salir"
+    },
+    "front": {
         "name": "Terminal",
-        "by": "by",
+        "by": "un servicio de",
         "company": "TropiPay",
         "title":"Cobra con terminal en tu tienda o comercio",
         "subtitle": "Terminal te permite crear tu propio proceso de compra para aceptar pagos en el mundo físico",
         "connect": "Conéctate con TropiPay"
     },
+    "home": {
+        "name": "Terminal",
+        "btn": {
+            "payment": "Cobrar",
+            "movement": "Operaciones"
+        }
+    },
     "legal": {
         "copyright": "©TropiPay 2021",
         "policy": "Política de privacidad",
         "terms": "Términos y condiciones"
-    },
-    "demo": {
-        "title": "Hola Mundo {{test}}"
     },
     "security":{
         "login": {
@@ -92,8 +103,10 @@
             "email": "Enviar vía email",
             "code": "Código de país", 
             "copyURL": "URL copiada",
+            "expireIn": "Expira en",
             "send": {
-                "sms": "Enviar SMS",
+                "sms": "Enviar SMS costo adicional de 0.45 EUR",
+                "sms-note": "costo adicional de 0.45 EUR",
                 "email": "Enviar vía email",
                 "cost": "costo adicional {{value}}"
             }, 
@@ -103,7 +116,19 @@
             }
         }
     },
+    "movement": {
+      "title": "Listado de movimientos",
+      "ko": "Algo ha ido mal ... revisa tu conección y vuelve a intentarlo.",
+      "search": "Buscar movimientos",
+      "noResults": "No hay coincidencias",
+      "showMore": "Mostrar más",
+      "text": "Con nosotros puedes realizar cobros desde cualquier lugar. Empieza ahora !!",
+      "btn": "Haz tu primer cobro",
+      "downloadOk": "Recibirás un email con el listado de tus cobros.",
+      "downloadKo": "Hubo un error descargando sus cobros. Por favor inténtalo de nuevo."
+    },
     "error": {
+        "Unauthorized": "Usuario no autorizado o sesión caducada",
         "required": "Este campo es obligatorio",
         "email": "Este email no es válido",
         "phone": "Introduce un teléfono válido",

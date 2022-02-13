@@ -49,7 +49,6 @@ const theme = createTheme({
             color: "#39365b"
         },
         h3: {
-            //color: "#4a59d9",
             fontWeight: 300
         },
         h4: {
@@ -59,7 +58,7 @@ const theme = createTheme({
             color: "#39365b"
         },
         h6: {
-            color: "#39365b", //rgba(0, 0, 0, 0.87)
+            color: "#39365b",
             fontWeight: 300
         },
         subtitle1: {

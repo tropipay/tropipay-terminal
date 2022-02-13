@@ -1,5 +1,5 @@
 {    
-    "home": {
+    "front": {
         "name": "Terminal",
         "by": "by",
         "company": "TropiPay",
@@ -7,13 +7,17 @@
         "subtitle": "Terminal te permite crear tu propio proceso de compra para aceptar pagos en el mundo físico",
         "connect": "Conéctate con TropiPay",
     },
+    "home": {
+        "name": "Terminal",
+        "btn": {
+            "payment": "Payment",
+            "movement": "Movement"
+        }
+    },
     "legal": {
         "copyright": "©TropiPay 2021",
         "policy": "Política de privacidad",
         "terms": "Términos y condiciones"
-    },
-    "demo": {
-        "title": "Hello World"
     },
     "security":{
         "login": {

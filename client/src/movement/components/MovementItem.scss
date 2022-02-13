@@ -1,0 +1,28 @@
+@import "../../app/scss/variables";
+
+.movement-margin-right {
+  margin-right: 10px;
+}
+
+.movement-list-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.movement-item {
+  overflow: hidden;
+}
+
+.movement-item span {
+  font-weight: 700;
+  color: $mainColor;
+}
+
+.movement-name span,
+.movement-name p span {
+  font-weight: 700;
+}
+
+.movement-item-avatar{
+  margin-top: 10px;
+}

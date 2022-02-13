@@ -1,9 +1,15 @@
-export default {
+const validation = {
     required: (t) => t("error.required"),
     string: (t) => {
         return {
             value: /^ *\w+(\s+\w+)* *$/,
             message: t("error.string")
+        }
+    },
+    email: (t, v) => {
+        return {
+            value: /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/,
+            message: t("error.email")
         }
     },
     number: (t) => {
@@ -29,3 +35,4 @@ export default {
         }
     },
 };
+export default validation;

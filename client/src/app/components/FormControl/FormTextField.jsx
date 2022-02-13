@@ -47,6 +47,7 @@ const FormTextField = ({ name, control, label, rules, placeholder, variant, type
             value={value}
             className={className}
             fullWidth
+            minRows={minRows}
             variant={variant}
             type={showpass ? 'text' : 'password'}
             endAdornment={

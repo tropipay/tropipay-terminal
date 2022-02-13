@@ -85,7 +85,7 @@ export default function ShareThis(props) {
                 <Typography variant="subtitle2" noWrap className="text-left mt-1">
                     <TelegramShareButton
                         url={props.sharedUrl}
-                        className="box-margin-left-1"
+                        className="box-margin-right-1"
                         beforeOnClick={() => {
                             track("SHARED_TELEGRAM", { event_label: "SHARE_BTN" });
                         }}
@@ -99,7 +99,7 @@ export default function ShareThis(props) {
                     </TelegramShareButton>
                     <WhatsappShareButton
                         url={props.sharedUrl}
-                        className="box-margin-left-1"
+                        className="box-margin-right-1"
                         beforeOnClick={() => {
                             track("SHARED_WHATSAPP", { event_label: "SHARE_BTN" });
                         }}
@@ -113,7 +113,7 @@ export default function ShareThis(props) {
                     </WhatsappShareButton>
                     <FacebookMessengerShareButton
                         url={props.sharedUrl}
-                        className="box-margin-left-1"
+                        className="box-margin-right-1"
                         appId='276151887216053'
                         beforeOnClick={() => {
                             track("SHARED_FACEBOOK", { event_label: "SHARE_BTN" });

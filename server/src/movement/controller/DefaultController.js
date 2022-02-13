@@ -11,74 +11,28 @@ const axios = require('axios');
 const qs = require('qs');
 
 class DefaultController extends KsMf.app.Controller {
-
+    /**
+     * http://localhost:3005/api/v1/movement
+     */
     init() {
-        this.logger = this.helper.get('logger').prefix('Security.DefaultController');
+        this.logger = this.helper.get('logger');
+        this.tropipay = this.helper.get('TropiPay');
     }
 
-    async oauthResponse(req, res) {
-        try {
-            //... verify the state value
-            if (req.query['state'] !== state) {
-                this.logger.error('NOT secure, the state value not match');
-            }
-            //... confifure options for get authorization code
-            const param = {
-                grant_type: "authorization_code",
-                code: req.query['code'],
-                client_id,
-                client_secret,
-                redirect_uri,
-                code_verifier,
-                scope
-            };
-            //... save authorization code 
-            const token = await axios.post(oauth_token, param);
-            const old = req.cookies.session ? (typeof (req.cookies.session) === 'string' ? JSON.parse(req.cookies.session) : req.cookies.session) : {};
-            const ses = {
-                ...old,
-                ...token.data
-            };
-            res.cookie('session', JSON.stringify(ses), {
-                maxAge: 86400000
+    async list(req, res) {
+        this.logger.prefix('Movement.DefaultController').info('params', req.query);
+        const {offset, limit, criteria} = req.query;
+        const result = await this.tropipay.set({
+            token: req.token
+        }).getMovements(offset || 0, limit || 10, criteria || '');
+        if (result.error) {
+            res.status(401).json({
+                code: 'unauthorized',
+                message: result.error.message
             });
-
-            this.logger.info('session', ses);
-            const from = '/auth/session';
-            res.redirect(url_terminal + from);
-        } catch (error) {
-            this.logger.error("Error", error);
-            res.end('OAUTH: Not authorize');
+        } else {
+            res.json(result.data);
         }
     }
-
-    async oauthConnect(req, res) {
-        const param = qs.stringify({
-            response_type: "code",
-            client_id,
-            client_secret,
-            redirect_uri,
-            code_challenge,
-            code_challenge_method,
-            state,
-            scope
-        });
-        this.logger.info('connected_view', param);
-        res.redirect(oauth_authorize + "?" + param);
-    }
-
-    async getProfile(req, res) {
-        const session = req.body;
-
-        const profileData = await axios({
-            headers: {
-                'Authorization': 'Bearer ' + session.access_token
-            },
-            url: url_tropipay + "/api/users/profile"
-        });
-
-        res.json(profileData.data);
-    }
-
 }
 module.exports = DefaultController;

@@ -1,66 +1,59 @@
-import { createSlice } from "@reduxjs/toolkit";
-import db from "./localdb";
-const URL_TERMINAL = 'http://localhost:3005';
+import {
+  createSlice
+} from "@reduxjs/toolkit";
+import session from "./Session";
 
+//... Define namespace
+const name = "auth";
 // ... Create Slice
 export const slice = createSlice({
-  name: "auth",
+  name,
   initialState: {
-    profile: null,
-    session: null,
+    data: {},
     error: null
   },
   reducers: {
-    updateError: (state, action) => {
+    onError: (state, action) => {
       state.error = action.payload;
+      state.data = {};
+      session.del();
     },
-    updateSession: (state, action) => {
+    onUpdate: (state, action) => {
       if (action.payload) {
-        db.set(action.payload, "session");
-        state.session = action.payload;
+        session.set(action.payload);
+        state.data = action.payload;
       } else {
-        state.session = db.get("session");
+        state.data = session.get();
       }
     },
-    updateProfile: (state, action) => {
-      if (action.payload) {
-        db.set(action.payload, "profile");
-        state.profile = action.payload;
-      } else {
-        state.profile = db.get("profile");
-      }
-    },
+    onDestroy: (state, action) => {
+      session.del();
+      state.data = {};
+      state.error = null;
+    }  
   },
 });
 
-// ... Reducer  
-export default slice.reducer;
-
-// ... Selectors  
-export const selectProfile = (state) => state.auth.profile;
-export const selectSession = (state) => state.auth.session;
-export const selectError = (state) => state.auth.error;
-export const selectToken = (state) => state.auth.session.token;
-
 // ... Actions  
-export const { updateSession, updateProfile, updateError } = slice.actions;
+const {
+  onUpdate,
+  onError,
+  onDestroy
+} = slice.actions;
 
-// ... Actions (async)  
-export const loadProfile = () => (dispatch) => {
-  try {
-    const data = db.get("session");
-    const url = URL_TERMINAL + "/api/v1/security/profile";
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data), 
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-    .then(response => response.json())
-    .then(data => dispatch(updateProfile(data)));
-  } catch (e) {
-    dispatch(updateError(e.message));
-    return console.error(e.message);
+//... Export the slice as a service
+const Service = {
+  name,
+  reducer: slice.reducer,
+  action: {
+      error: onError,
+      update: onUpdate,
+      delete: onDestroy 
+  },
+  selector: {
+    data: (state) => state[name].daya,
+    token: (state) => state[name].data.token,
+    error: (state) => state[name].error
   }
-};
+}
+export default Service;

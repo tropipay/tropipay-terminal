@@ -10,7 +10,7 @@
 try {
     const KsMf = require('ksmf');
     const app = new KsMf.app.WEB(__dirname + "/../");
-    module.exports = app.init().run();
+    module.exports = app.run();
 }
 catch (error) {
     console.log('[ERROR]', error);

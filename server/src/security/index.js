@@ -7,18 +7,19 @@
  * @version    	1.0
  * */
 const KsMf = require('ksmf');
+const TokenRequire = require('./middleware/TokenRequire');
+
 class SecurityModule extends KsMf.app.Module {
 
     initConfig() {
         const prefix = "/api/v1" + this.prefix;
-        
         this.routes = [{
             route: prefix + "/oauth/response",
             controller: 'DefaultController',
             action: 'oauthResponse',
             method: 'get'
         }, {
-            route: prefix + "/user/connected_view",
+            route: prefix + "/oauth/connect",
             controller: 'DefaultController',
             action: 'oauthConnect',
             method: 'get'
@@ -26,7 +27,13 @@ class SecurityModule extends KsMf.app.Module {
             route: prefix + "/profile",
             controller: 'DefaultController',
             action: 'getProfile',
-            method: 'get'
+            method: 'post',
+            middleware: [TokenRequire]
+        }, {
+            route: prefix + "/test",
+            controller: 'DefaultController',
+            action: 'test',
+            method: 'post'
         }];
     }
 
