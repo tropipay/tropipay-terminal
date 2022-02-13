@@ -84,7 +84,8 @@
         "resume": {
             "title": "Resumen de cobro",
             "subtitle": "Se generará un enlace de pago a un cobro con las siguientes condiciones",
-            "accept": "Acepto los {{term}} y las {{policy}}",
+            "accept1": "Acepto los",
+            "accept2": "y la",
             "detail": "Detales de la operación",
             "cost": "Coste del servicio",
             "amount": "Importe",
