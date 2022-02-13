@@ -2,11 +2,10 @@ import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import moment from "moment/moment";
-import { providersTypeList, movementTypes } from "../models/enum";
-import Typography from "@material-ui/core/Typography";
-import { exec } from "../../app/services/util";
 import calc from "../../payment/services/Calculator";
 import AvatarName from "../../app/components/Avatar/AvatarName";
+import { providersTypeList, movementTypes } from "../models/enum";
+import { exec } from "../../app/services/util";
 import "./MovementItem.scss";
 
 function MovementItem(props) {
@@ -56,7 +55,7 @@ function MovementItem(props) {
         secondary={
           <React.Fragment>
             {cardNumber ? (
-              <Typography className=" ">{cardNumber}</Typography>
+              <span className=" ">{cardNumber}</span>
             ) : null}
             {moment(data.createdAt).format("ll")}
           </React.Fragment>

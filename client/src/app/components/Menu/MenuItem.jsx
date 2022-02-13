@@ -27,7 +27,6 @@ function MenuItem(props) {
 
   return (
     <ListItem
-      disablePadding
       model={props.model}
       key={id}
       className={`menu-item ${className}`}

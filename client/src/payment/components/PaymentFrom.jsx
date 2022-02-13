@@ -66,7 +66,7 @@ function PaymentFrom(props) {
         <FormTextField
           control={control}
           name="amount"
-          size="large"
+          size="medium"
           label={t("payment.form.amount.label")}
           rules={{
             required: Validation.required(t),
@@ -80,7 +80,7 @@ function PaymentFrom(props) {
         <FormSelect
           control={control}
           name="currency"
-          size="large"
+          size="medium"
           fullWidth
           label={t("payment.form.currency.label")}
           placeholder={t("payment.form.currency.label")}
@@ -93,7 +93,7 @@ function PaymentFrom(props) {
         <FormTextField
           control={control}
           name="concept"
-          size="large"
+          size="medium"
           label={t("payment.form.concept.label")}
           rules={{
             required: Validation.required(t),
@@ -118,7 +118,7 @@ function PaymentFrom(props) {
           <FormTextField
             control={control}
             name="reference"
-            size="large"
+            size="medium"
             label={t("payment.form.reference.label")}
             rules={{ required: t("error.required") }}
           />
@@ -129,7 +129,7 @@ function PaymentFrom(props) {
         <FormSelect
           control={control}
           name="reason"
-          size="large"
+          size="medium"
           value="1"
           fullWidth
           label={t("payment.form.reason.label")}
@@ -143,7 +143,7 @@ function PaymentFrom(props) {
         <FormSelect
           control={control}
           name="lang"
-          size="large"
+          size="medium"
           label={t("payment.form.lang.label")}
           placeholder={t("payment.form.lang.label")}
           keys={{ label: "label", value: "lang" }}
@@ -153,12 +153,12 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12}>
-        <FormTextField
+        <FormTextField  
           control={control}
           name="description"
           multiline
-          rows="3"
-          size="large"
+          minRows="3"
+          size="medium"
           label={t("payment.form.description.label")}
           placeholder={t("payment.form.description.label")}
           rules={{ required: t("error.required") }}
@@ -169,7 +169,7 @@ function PaymentFrom(props) {
         <Button
           variant="contained"
           className="btn-full-width"
-          size="large"
+          size="medium"
           color="primary"
           style={{ marginTop: "2rem" }}
           onClick={handleSubmit(submit)}
