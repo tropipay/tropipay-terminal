@@ -214,6 +214,20 @@
   -webkit-border-radius: 7px;
 }
 
+.box-border-curved-top {
+  border: 1px solid #dddce2;
+  -moz-border-radius: 7px 7px 0 0;
+  -webkit-border-radius: 7px 7px 0 0;
+  margin-bottom: 7px 7px 0 0;
+}
+
+.box-border-curved-bottom {
+  border: 1px solid #dddce2;
+  -moz-border-radius: 0 0 7px 7px;
+  -webkit-border-radius: 0 0 7px 7px;
+  margin-bottom: 0 0 7px 7px;
+}
+
 .box-panel {
   padding: 2rem;
   margin: 2rem 0;

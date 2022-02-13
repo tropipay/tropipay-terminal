@@ -99,10 +99,10 @@ function PaymentShow(props) {
   const renderQrSection = () => {
     return (
       <Grid container spacing={2} className="payment-show-qr-section">
-        <Grid item xs={12} sm={6} className="box-vertical box-align-left">
+        <Grid item xs={6} className="box-vertical box-align-left">
           <QRCode url={shortUrl} size={200} />
         </Grid>
-        <Grid item xs={12} sm={6} className="box-label-right ">
+        <Grid item xs={6} className="box-label-right ">
           <Typography variant="body2" className="">
             {moment(createdAt).format("LLL")}
           </Typography>
@@ -124,7 +124,7 @@ function PaymentShow(props) {
   const renderOptionSection = () => {
     return (
       <Grid item xs={12}>
-        <Grid container spacing={2} className="box-border-curved">
+        <Grid container spacing={2} className="box-border-curved-bottom">
           <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
