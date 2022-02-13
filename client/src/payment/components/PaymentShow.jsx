@@ -121,6 +121,115 @@ function PaymentShow(props) {
     );
   };
 
+  const renderOptionSection = () => {
+    return (
+      <Grid item xs={12}>
+        <Grid container spacing={2} className="box-border-curved">
+          <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Typography
+                  variant="body2"
+                  className="gray-label box-label-bold"
+                >
+                  {t("payment.show.url")}:
+                </Typography>
+              </Grid>
+
+              {renderUrlSection()}
+
+              <Grid item xs={12}>
+                <ShareThis
+                  sharedUrl={shortUrl}
+                  className="gray-label box-label-bold"
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={sendSMS}
+                      onChange={event =>
+                        setSendSMS(event.currentTarget.checked)
+                      }
+                      name="sendSMS"
+                      color="primary"
+                    />
+                  }
+                  label={t("payment.show.send.sms", {
+                    term: t("legal.terms"),
+                    policy: t("legal.policy")
+                  })}
+                />
+              </Grid>
+              {sendSMS ? (
+                <Grid item xs={12}>
+                  <FormSelect
+                    control={control}
+                    name="code"
+                    size="large"
+                    fullWidth
+                    label={t("payment.show.code")}
+                    placeholder={t("payment.show.code")}
+                    rules={{ required: t("error.required") }}
+                    options={getItems(countries)}
+                  />
+                </Grid>
+              ) : null}
+              {sendSMS ? (
+                <Grid item xs={12}>
+                  <FormTextField
+                    control={control}
+                    name="phone"
+                    size="large"
+                    label={t("payment.show.phone")}
+                    rules={{
+                      required: t("error.required"),
+                      pattern: Validation.number(t)
+                    }}
+                  />
+                </Grid>
+              ) : null}
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={sendEmail}
+                      onChange={event =>
+                        setSendEmail(event.currentTarget.checked)
+                      }
+                      name="sendEmail"
+                      color="primary"
+                    />
+                  }
+                  label={t("payment.show.send.email", {
+                    term: t("legal.terms"),
+                    policy: t("legal.policy")
+                  })}
+                />
+              </Grid>
+              {sendEmail ? (
+                <Grid item xs={12}>
+                  <FormTextField
+                    control={control}
+                    name="email"
+                    size="medium"
+                    label={t("payment.show.email")}
+                    rules={{
+                      required: t("error.required"),
+                      pattern: Validation.email(t)
+                    }}
+                  />
+                </Grid>
+              ) : null}
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    );
+  };
+
   const renderUrlSection = () => {
     return (
       <Grid item xs={12}>
@@ -149,6 +258,21 @@ function PaymentShow(props) {
     );
   };
 
+  const renderBtn = () => {
+    return sendSMS || sendEmail ? (
+      <Button
+        variant="contained"
+        className="btn-full-width"
+        size="large"
+        color="primary"
+        style={{ marginTop: "2rem" }}
+        onClick={handleSubmit(submit)}
+      >
+        {t("payment.show.btn.next")}
+      </Button>
+    ) : null;
+  };
+
   return (
     <div>
       <Grid
@@ -166,126 +290,13 @@ function PaymentShow(props) {
           />
         </Grid>
 
-        {renderQrSection()}
-
-        <Grid item xs={12}>
-          <Grid container spacing={2} className="box-border-curved">
-            <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="body2"
-                    className="gray-label box-label-bold"
-                  >
-                    {t("payment.show.url")}:
-                  </Typography>
-                </Grid>
-
-                {renderUrlSection()}
-
-                <Grid item xs={12}>
-                  <ShareThis
-                    sharedUrl={shortUrl}
-                    className="gray-label box-label-bold"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={sendSMS}
-                        onChange={event =>
-                          setSendSMS(event.currentTarget.checked)
-                        }
-                        name="sendSMS"
-                        color="primary"
-                      />
-                    }
-                    label={t("payment.show.send.sms", {
-                      term: t("legal.terms"),
-                      policy: t("legal.policy")
-                    })}
-                  />
-                </Grid>
-                {sendSMS ? (
-                  <Grid item xs={12}>
-                    <FormSelect
-                      control={control}
-                      name="code"
-                      size="large"
-                      fullWidth
-                      label={t("payment.show.code")}
-                      placeholder={t("payment.show.code")}
-                      rules={{ required: t("error.required") }}
-                      options={getItems(countries)}
-                    />
-                  </Grid>
-                ) : null}
-                {sendSMS ? (
-                  <Grid item xs={12}>
-                    <FormTextField
-                      control={control}
-                      name="phone"
-                      size="large"
-                      label={t("payment.show.phone")}
-                      rules={{
-                        required: t("error.required"),
-                        pattern: Validation.number(t)
-                      }}
-                    />
-                  </Grid>
-                ) : null}
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={sendEmail}
-                        onChange={event =>
-                          setSendEmail(event.currentTarget.checked)
-                        }
-                        name="sendEmail"
-                        color="primary"
-                      />
-                    }
-                    label={t("payment.show.send.email", {
-                      term: t("legal.terms"),
-                      policy: t("legal.policy")
-                    })}
-                  />
-                </Grid>
-                {sendEmail ? (
-                  <Grid item xs={12}>
-                    <FormTextField
-                      control={control}
-                      name="email"
-                      size="medium"
-                      label={t("payment.show.email")}
-                      rules={{
-                        required: t("error.required"),
-                        pattern: Validation.email(t)
-                      }}
-                    />
-                  </Grid>
-                ) : null}
-              </Grid>
-            </Grid>
-          </Grid>
+        <Grid item xs={12} className="payment-show-box box-border-curved">
+          {renderQrSection()}
+          {renderOptionSection()}
         </Grid>
       </Grid>
 
-      {sendSMS || sendEmail ? (
-        <Button
-          variant="contained"
-          className="btn-full-width"
-          size="large"
-          color="primary"
-          style={{ marginTop: "2rem" }}
-          onClick={handleSubmit(submit)}
-        >
-          {t("payment.show.btn.next")}
-        </Button>
-      ) : null}
+      {renderBtn()}
 
       {message.render()}
     </div>
