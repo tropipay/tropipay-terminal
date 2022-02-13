@@ -52,7 +52,7 @@ export const Message = (props) => {
             vertical: 'bottom',
             horizontal: 'left',
         }}
-        open={(props && props.message && props.message !== "")}
+        open={(props && props.message && props.message !== "") ? true : false}
         autoHideDuration={hideTime}
         onClose={props.onClose}
         ContentProps={{ 'aria-describedby': 'message-id' }}

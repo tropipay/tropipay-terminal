@@ -87,7 +87,7 @@ function MenuPage() {
 
             <List className="page-padding ">
               {options.length > 1
-                ? options.map(item => <MenuItem model={item} className="box-padding" />)
+                ? options.map((item, i) => <MenuItem model={item} key={i} className="box-padding" />)
                 : null}
             </List>
           </div>
