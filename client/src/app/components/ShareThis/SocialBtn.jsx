@@ -3,13 +3,14 @@ import IconButton from "@material-ui/core/IconButton";
 import TwitterIcon from "mdi-react/TwitterIcon";
 import FacebookIcon from "mdi-react/FacebookIcon";
 import InstagramIcon from "mdi-react/InstagramIcon";
+import './SocialBtn.scss';
 
 function SocialBtn(props) {
   const { className } = props;
   const { t } = useTranslation();
 
   return (
-    <div className={"socials " + (className || '')}>
+    <div className={"social-btn-icon " + (className || '')}>
       <IconButton
         title={t("Footer.social.twitter")}
         href="https://twitter.com/tropipay"
