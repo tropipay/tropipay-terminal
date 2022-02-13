@@ -60,7 +60,7 @@ function PaymentPage(props) {
 
   // ... set components to stepper
   stepper.add(steps);
-  stepper.subscribe((step, dir) => console.log(">> PAGE #", step, dir));
+  //stepper.subscribe((step, dir) => console.log(">> PAGE #", step, dir));
 
   function getPageName(index) {
     switch (index) {

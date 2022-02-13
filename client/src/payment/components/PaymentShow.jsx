@@ -34,8 +34,6 @@ function PaymentShow(props) {
   const error = useSelector(srvPaylink.selector.error);
   const countries = useSelector(srvPaylink.selector.country);
 
-  console.log(countries);
-
   const [sendSMS, setSendSMS] = useState(false);
   const [sendEmail, setSendEmail] = useState(false);
   const message = Msg();

@@ -10,7 +10,6 @@ class Calculator {
      */
     getResume(payload) {
         const data = this.getAmountInDestination(payload);
-        console.log("getResume");
         const defaultValues = {
             'amount': 0,
             'currency': 'EUR'

@@ -52,7 +52,6 @@ export const load = () => (dispatch) => {
         }, dispatch)
         .then(data => dispatch(onUpdate(data)))
         .catch(error => {
-            console.log('profile-error', error);
             dispatch(onError(error.message))
         });
 };
