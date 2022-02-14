@@ -27,7 +27,7 @@
                 "namespace": "app.Logger"
             },
             "middleware.token": {
-                "type": "package",
+                "type": "dependency",
                 "name": "TokenRequire",
                 "module": "security",
                 "path": "middleware" 
