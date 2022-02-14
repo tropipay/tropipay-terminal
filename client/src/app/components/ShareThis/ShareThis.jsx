@@ -76,7 +76,7 @@ export default function ShareThis(props) {
             <div className={props.className}>
                 <div className="ShareLabel box-margin-bottom-1">
                     <Typography
-                        variant="body5"
+                        variant="body2"
                         className="text-left mt-1 gray-label box-label-bold"
                     >
                         {t("component.shareThis.label")}:

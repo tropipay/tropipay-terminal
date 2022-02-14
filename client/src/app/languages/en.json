@@ -1,17 +1,24 @@
-{    
+{
+    "menu": {
+        "home": "Home",
+        "comunity": "Comunidad",
+        "contact": "Contactenos",
+        "help": "Centro de Ayuda",
+        "logout": "Salir"
+    },
     "front": {
         "name": "Terminal",
-        "by": "by",
+        "by": "un servicio de",
         "company": "TropiPay",
         "title":"Cobra con terminal en tu tienda o comercio",
         "subtitle": "Terminal te permite crear tu propio proceso de compra para aceptar pagos en el mundo físico",
-        "connect": "Conéctate con TropiPay",
+        "connect": "Conéctate con TropiPay"
     },
     "home": {
         "name": "Terminal",
         "btn": {
-            "payment": "Payment",
-            "movement": "Movement"
+            "payment": "Cobrar",
+            "movement": "Operaciones"
         }
     },
     "legal": {
@@ -21,15 +28,153 @@
     },
     "security":{
         "login": {
-            "title": "Login"
+            "title": "Entrar"
         },
         "logout": {
-            "title": "Logout"
+            "title": "Salir"
         }
     },
     "component": {
         "shareThis": {
-            "label": "Share this"
+            "label": "Compartir"
         }
+    },
+    "payment":{
+        "form": {
+            "title": "Realiza un cobro",
+            "subtitle": "Introduce el monto y la moneda que deseas ingresar",
+            "advanced": "Ver opciones avanzadas",
+            "concept": {
+                "placeholder": "Concepto",
+                "label": "Concepto"
+            },
+            "amount": {
+                "placeholder": "Importe",
+                "label": "Importe"
+            },
+            "description": {
+                "placeholder": "Descripción",
+                "label": "Descripción"
+            },
+            "expirationDays": {
+                "placeholder": "Descripción",
+                "label": "Descripción"
+            },
+            "currency": {
+                "placeholder": "Moneda",
+                "label": "Moneda"
+            },
+            "reference": {
+                "placeholder": "Referencia de Cobro",
+                "label": "Referencia de Cobro"
+            },
+            "reason": {
+                "placeholder": "Motivo",
+                "label": "Motivo"
+            },
+            "lang": {
+                "placeholder": "Idioma",
+                "label": "Idioma"
+            },
+            "btn": {
+                "next": "Siguiente",
+                "back": "Cancelar"
+            }
+        },
+        "resume": {
+            "title": "Resumen de cobro",
+            "subtitle": "Se generará un enlace de pago a un cobro con las siguientes condiciones",
+            "accept1": "Acepto los",
+            "accept2": "y la",
+            "detail": "Detales de la operación",
+            "cost": "Coste del servicio",
+            "amount": "Importe",
+            "selloff": "A liquidar en TropiPay",
+            "btn": {
+                "next": "Generar enlace de pago",
+                "back": "Cancelar"
+            }
+        },
+        "show": {
+            "title": "Enlace de pago listo",
+            "subtitle": "a nombre de {{username}} para el cobro de servicios",
+            "url": "URL para el cobro", 
+            "share": "Compartir",
+            "phone": "Teléfono", 
+            "email": "Enviar vía email",
+            "code": "Código de país", 
+            "copyURL": "URL copiada",
+            "expireIn": "Expira en",
+            "send": {
+                "sms": "Enviar SMS costo adicional de 0.45 EUR",
+                "sms-note": "costo adicional de 0.45 EUR",
+                "email": "Enviar vía email",
+                "cost": "costo adicional {{value}}"
+            }, 
+            "btn": {
+                "next": "Enviar",
+                "back": "Ir a inicio"
+            }
+        }
+    },
+    "movement": {
+      "title": "Listado de movimientos",
+      "ko": "Algo ha ido mal ... revisa tu conección y vuelve a intentarlo.",
+      "search": "Buscar movimientos",
+      "noResults": "No hay coincidencias",
+      "showMore": "Mostrar más",
+      "text": "Con nosotros puedes realizar cobros desde cualquier lugar. Empieza ahora !!",
+      "btn": "Haz tu primer cobro",
+      "downloadOk": "Recibirás un email con el listado de tus cobros.",
+      "downloadKo": "Hubo un error descargando sus cobros. Por favor inténtalo de nuevo."
+    },
+    "error": {
+        "Unauthorized": "Usuario no autorizado o sesión caducada",
+        "required": "Este campo es obligatorio",
+        "email": "Este email no es válido",
+        "phone": "Introduce un teléfono válido",
+        "password": "Debe tener más de 8 caracteres con mayúsculas, minuscúlas y números",
+        "passwordMatch": "Las contraseñas no coinciden",
+        "amount": "Introduce un monto válido (ej. 344,50)",
+        "amountmin": "La cantidad especificada debe ser mayor que el mínimo definido para esta operación, que es ",
+        "minCryptoAmount": "Valor mínimo {{value}}",
+        "min": "El valor mínimo requerido es de {{value}}",
+        "adult": "Debe tener al menos 18 años",
+        "temporarilyDisabled": "Deshabilitado temporalmente",
+        "uniqueEmail": "Email en uso",
+        "invalidToken": "Código inválido",
+        "invalidSwift": "formato de SWIFT inválido",
+        "uniquePhone": "Teléfono en uso",
+        "connection": "La aplicación no responde, verifique su conexión a internet",
+        "internal": "Error interno del sistema, por favor contacte al administrador",
+        "numeric": "Debe ser un valor numérico",
+        "url": "URL incorrecta",
+        "isSameOrGreaterThanCurrentDate": "Debe ser igual o mayor que la fecha actual",
+        "regEx": "Entrada no válida",
+        "userNotFound": "Usuario no encontrado",
+        "voucherCode": "Código inválido",
+        "credentials": "El usuario y password introducidos no son válidos",
+        "unauthorized": "Usuario no autorizado",
+        "incompleteRegistration": "Registro no completado",
+        "incompleteOperation": "No se pudo completar la operación, inténtalo más tarde",
+        "invalidParameters": "Parámetros inválidos",
+        "maxStr": "La cantidad máxima de caracteres admitidas es de {{value}}",
+        "string": "Debe ser un valor de tipo texto",
+
+        "PC_001": "Error obteniendo el listado de Links de Pago",
+        "PC_002": "Error obteniendo el detalle del Link de Pago",
+        "PC_003": "Invalid Expiration Date",
+        "PC_004": "El link de Pago no existe",
+        "PC_005": "No se pudo notificar al cliente. Inténtelo de nuevo.",
+        "PC_006": "La fecha de servicio es inválida",
+        "PC_007": "Parámetros inválidos",
+        "AFR_001": "Lo sentimos, con este cobro sobrepasa la cantidad máxima permitida en el día .",
+        "AFR_002": "En estos momentos estamos experimentando una sobrecarga de procesamiento de cobros en la plataforma. Le recomendamos que lo intente de nuevo dentro de unas horas.",
+        "AFR_003": "Lo sentimos, ya ha procesado la cantidad máxima permitida al mes por usuario.",
+        "AFR_004": "En estos momentos estamos experimentando una sobrecarga de procesamiento de cobros en la plataforma. Le recomendamos que lo intente de nuevo dentro de unas horas.",
+        "PR_001": "[Estamos en Mantenimiento] En estos momentos no es posible realizar esta acción.",
+        "LPC_001": "Carta de pago cerrada",
+        "LPC_002": "La carta de pago no existe",
+        "LPC_003": "Error al obtener los detalles de la carta de pago"
     }
 }

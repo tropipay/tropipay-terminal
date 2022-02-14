@@ -122,9 +122,9 @@ function PaymentShow(props) {
   const renderOptionSection = () => {
     return (
       <Grid item xs={12}>
-        <Grid container spacing={2} className="box-border-curved-bottom">
+        <Grid container className="box-border-curved-bottom">
           <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
-            <Grid container spacing={2}>
+            <Grid container>
               <Grid item xs={12}>
                 <Typography
                   variant="body2"
@@ -136,7 +136,7 @@ function PaymentShow(props) {
 
               {renderUrlSection()}
 
-              <Grid item xs={12}>
+              <Grid item xs={12} className="payment-show-share">
                 <ShareThis
                   sharedUrl={shortUrl}
                   className="gray-label box-label-bold"
@@ -161,8 +161,9 @@ function PaymentShow(props) {
                   })}
                 />
               </Grid>
+
               {sendSMS ? (
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ marginTop: "0.5rem" }}>
                   <FormSelect
                     control={control}
                     name="code"
@@ -176,7 +177,11 @@ function PaymentShow(props) {
                 </Grid>
               ) : null}
               {sendSMS ? (
-                <Grid item xs={12}>
+                <Grid
+                  item
+                  xs={12}
+                  style={{ marginTop: "1rem", marginBottom: "0.5rem" }}
+                >
                   <FormTextField
                     control={control}
                     name="phone"
@@ -232,12 +237,12 @@ function PaymentShow(props) {
     return (
       <Grid item xs={12}>
         <Typography variant="subtitle1" noWrap className="text-left mt-1">
-          <span className="d-inline-block text-truncate mr-2">
+          <span className="d-inline-block text-truncate">
             <a
               target="_blank"
               rel="noreferrer"
               href={shortUrl}
-              className="link-blue"
+              className="btn-link"
             >
               {nakedUrl(shortUrl)}
             </a>
@@ -263,7 +268,6 @@ function PaymentShow(props) {
         className="btn-full-width"
         size="large"
         color="primary"
-        style={{ marginTop: "2rem" }}
         onClick={handleSubmit(submit)}
       >
         {t("payment.show.btn.next")}
@@ -275,7 +279,6 @@ function PaymentShow(props) {
     <div>
       <Grid
         container
-        spacing={2}
         style={{ width: "100%", marginLeft: "1px" }}
         className="box-margin-bottom-2"
       >
@@ -288,7 +291,12 @@ function PaymentShow(props) {
           />
         </Grid>
 
-        <Grid item xs={12} className="payment-show-box box-border-curved">
+        <Grid
+          item
+          xs={12}
+          className="payment-show-box box-border-curved"
+          style={{ marginTop: "1rem" }}
+        >
           {renderQrSection()}
           {renderOptionSection()}
         </Grid>

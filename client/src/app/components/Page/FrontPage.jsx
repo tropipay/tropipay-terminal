@@ -79,10 +79,10 @@ function FrontPage() {
               <Login />
             </div>
 
-            <div className="bottom">
+            <div className="front-page-btns">
               <MenuLink data={links} />
-              <CadsBtn />
-              <SocialBtn />
+              <CadsBtn  className="front-card-btn-icon"/>
+              <SocialBtn className="front-social-btn-icon"/>
             </div>
           </div>
         </Grid>
