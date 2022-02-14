@@ -1,13 +1,12 @@
 
 import React, { useEffect } from "react";
-import {Switch, Route, Redirect} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import srvAuth from "../../../security/services/AuthSlice";
 import srvProfile from "../../../profile/services/ProfileSlice";
 import ProvideAuth from '../../../security/components/provide.auth';
 import RoutePrivate from '../../../security/components/route.private';
 import MovementPage from '../../../movement/components/MovementPage';
 import PaymentPage from '../../../payment/components/PaymentPage';
-import MenuPage from '../Menu/MenuPage';
 import FrontPage from "./FrontPage.jsx";
 import HomePage from "./HomePage.jsx";
 import Page from "./Page.jsx";
@@ -30,10 +29,9 @@ export default function AppRoute() {
   return (
     <ProvideAuth>
         <Switch>
-            <RoutePrivate exact path="/home"> <Page>  <HomePage /> </Page> </RoutePrivate>
-            <Route exact path="/movement"> <Page> <MovementPage />  </Page> </Route>
-            <RoutePrivate exact path="/payment"> <Page> <PaymentPage /> </Page> </RoutePrivate>
-            <RoutePrivate exact path="/profile"> <MenuPage /> </RoutePrivate>
+            <RoutePrivate exact path="/home">     <Page> <HomePage />       </Page> </RoutePrivate>
+            <RoutePrivate exact path="/movement"> <Page> <MovementPage />   </Page> </RoutePrivate>
+            <RoutePrivate exact path="/payment">  <Page> <PaymentPage />    </Page> </RoutePrivate>
 
             <Route exact path='/' render={() => (<FrontPage />)}/>
             <Route path='*' exact={true} render={() => (<Redirect to="/"/>)}/>

@@ -42,8 +42,11 @@ class DefaultController extends KsMf.app.Controller {
             const token = await axios.post(oauth_token, param);
             const old = req.cookies.session ? (typeof (req.cookies.session) === 'string' ? JSON.parse(req.cookies.session) : req.cookies.session) : {};
             const ses = {
-                ...old,
-                ...token.data
+                //...old,
+                access_token: token.data.access_token,
+                refresh_token: token.data.refresh_token,
+                token_type: token.data.token_type,
+                expires_in: token.data.expires_in
             };
             res.cookie('session', JSON.stringify(ses), {
                 maxAge: 86400000
@@ -94,11 +97,6 @@ class DefaultController extends KsMf.app.Controller {
         res.json({
             url
         });
-    }
-
-
-    test(req, res) {
-        throw Error('AAAAAAAAAA');
     }
 
 }

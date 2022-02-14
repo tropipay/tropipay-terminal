@@ -70,6 +70,10 @@ const Service = {
         delete: onDelete,
         load
     },
+    destroy: () => {
+        session.del();
+        window.location.href = "/";
+    },
     selector: {
         data: (state) => state[name].data,
         url: (state) => {
@@ -81,4 +85,5 @@ const Service = {
         error: (state) => state[name].error
     }
 }
+
 export default Service;

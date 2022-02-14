@@ -8,6 +8,7 @@
  * */
 const KsMf = require('ksmf');
 const path = require('path');
+
 class AppModule extends KsMf.app.Module {
     async initApp() {
         const app = this.helper.get('app').web;

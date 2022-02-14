@@ -59,8 +59,7 @@ function MenuPage() {
       className: "out",
       icon: <LogoutIcon />,
       onClick: () => {
-        dispatch(srvProfile.action.delete);
-        window.location.href = "/";
+        srvProfile.destroy();
       }
     }
   ];

@@ -8,12 +8,14 @@
  * */
 const KsMf = require('ksmf');
 
-const TokenRequire = require('../security/middleware/TokenRequire');
 class PaymentModule extends KsMf.app.Module {
 
     initConfig() {
         const prefix = "/api/v1" + this.prefix;
-        this.middleware.global.push(TokenRequire);
+        const TokenRequire = this.helper.get('middleware.token');
+        if(TokenRequire) {
+            this.middleware.global.push(TokenRequire);
+        }
         this.routes = [{
             route: prefix + "/",
             controller: 'DefaultController',
@@ -42,6 +44,11 @@ class PaymentModule extends KsMf.app.Module {
             route: prefix + "/countrycode",
             controller: 'DefaultController',
             action: 'getCountryCode',
+            method: 'get'
+        }, {
+            route: prefix + "/test",
+            controller: 'DefaultController',
+            action: 'test',
             method: 'get'
         }];
     }
