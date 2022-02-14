@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@mui/material";
-import './PaymentResume.scss';
+import "./PaymentResume.scss";
 
 function PaymentResume(props) {
   const { t } = useTranslation();
@@ -25,15 +25,21 @@ function PaymentResume(props) {
     return (
       <span className="btn-link">
         {t("payment.resume.accept1")}
-        <a href={terms} className="" > {t("legal.terms")} </a>
+        <a href={terms} className="">
+          {" "}
+          {t("legal.terms")}{" "}
+        </a>
         {t("payment.resume.accept2")}
-        <a href={policy} className="" > {t("legal.policy")} </a>
+        <a href={policy} className="">
+          {" "}
+          {t("legal.policy")}{" "}
+        </a>
       </span>
     );
   }
 
   return (
-    <Grid container spacing={2}>
+    <Grid container>
       <Grid item xs={12}>
         <ContentHeader
           title={t("payment.resume.title")}
@@ -43,7 +49,7 @@ function PaymentResume(props) {
         />
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item xs={12} style={{marginTop: '1rem'}}>
         <div
           container
           spacing={2}
@@ -86,7 +92,11 @@ function PaymentResume(props) {
         </div>
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid
+        item
+        xs={12}
+        style={{ marginTop: "1rem", marginBottom: "1rem" }}
+      >
         <FormControlLabel
           control={
             <Checkbox
@@ -110,7 +120,7 @@ function PaymentResume(props) {
           className="btn-full-width"
           size="large"
           color="primary"
-          style={{ marginTop: "2rem" }}
+          style={{ marginTop: "1rem" }}
           disabled={!accept}
           onClick={() => exec(props.submit)}
         >

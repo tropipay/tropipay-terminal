@@ -453,3 +453,40 @@ a.telegram {
     margin-right: 0.3rem;
   }
 }
+
+.MuiButton-root {
+  font-weight: 700 !important;
+}
+
+.btn-link {
+  cursor: pointer;
+  text-decoration: none;
+  a {
+    outline: none;
+    text-decoration: none;
+  }
+  a:link {
+    color: $mainColor;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: $mainColor;
+    text-decoration: none;
+  }
+
+  a:focus {
+    color: $mainColor;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $mainColor;
+    text-decoration: none;
+  }
+
+  a:active {
+    color: $mainColor;
+    text-decoration: none;
+  }
+}
