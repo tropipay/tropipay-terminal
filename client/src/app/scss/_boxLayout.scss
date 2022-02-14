@@ -7,7 +7,8 @@
   flex-direction: row;
 }
 
-.box-vertical {
+.box-vertical,
+.MuiTypography-root.box-vertical {
   display: flex;
   flex-direction: column;
 }
@@ -153,6 +154,15 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.box-label-truncate-2 {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .box-label-bold,

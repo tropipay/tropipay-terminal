@@ -9,12 +9,66 @@ import { exec } from "../../app/services/util";
 import "./MovementItem.scss";
 
 function MovementItem(props) {
+  const { data } = props;
+
   function renderAvatar(item) {
     const id = item.provider !== null ? item.provider : 4;
     const icoLetter = item.isInternal ? "Tropipay" : providersTypeList[id];
     const nameStr =
       item.movementTypeId === movementTypes.exchange ? "C" : icoLetter;
-    return <AvatarName name={nameStr} textColor="auto" />;
+    return (
+      <div className="movement-margin-right movement-item-avatar">
+        <AvatarName name={nameStr} textColor="auto" />
+      </div>
+    );
+  }
+
+  function renderName(data) {
+    const cardNumber = getCard(data);
+    return (
+      <ListItemText
+        className="movement-name"
+        primary={getName(data)}
+        secondary={
+          <div className="box-vertical movement-item-subtitles">
+            {cardNumber ? (
+              <span className="movement-name-card">{cardNumber} </span>
+            ) : null}
+            <span className="movement-name-date">
+              {moment(data.createdAt).format("lll")}
+            </span>
+            {renderDescription(data)}
+          </div>
+        }
+      />
+    );
+  }
+
+  function renderAmount(data) {
+    return data.movementTypeId === movementTypes.transfer ? (
+      <ListItemText
+        className="box-label-right movement-item movement-item-amount"
+        primary={calc.fix(data.amount) + " " + data.currency}
+        secondary={getReference(data)}
+      />
+    ) : (
+      <ListItemText
+        className="box-label-right movement-item movement-item-amount"
+        primary={
+          calc.fix(data.destinationAmount) + " " + data.destinationCurrency
+        }
+        secondary={getReference(data)}
+      />
+    );
+  }
+
+  function renderDescription(data) {
+    const description = getDescription(data);
+    return description ? (
+      <span className="movement-item-des box-label-truncate-2">
+        {description}
+      </span>
+    ) : null;
   }
 
   function getName(item) {
@@ -38,8 +92,14 @@ function MovementItem(props) {
     return "****" + item.charges[0].cardPan;
   }
 
-  const { data } = props;
-  const cardNumber = getCard(data);
+  function getDescription(item) {
+    return item &&
+      item.paymentcard &&
+      item.paymentcard.description &&
+      item.paymentcard.description !== ""
+      ? data.paymentcard.description
+      : null;
+  }
 
   return (
     <ListItem
@@ -47,36 +107,9 @@ function MovementItem(props) {
       className="movement-list-item box-align-top"
       onClick={() => exec(props.onSelect, [data])}
     >
-      <div className="movement-margin-right movement-item-avatar">{renderAvatar(data)}</div>
-
-      <ListItemText
-        className="movement-name"
-        primary={getName(data)}
-        secondary={
-          <React.Fragment>
-            {cardNumber ? (
-              <span className=" ">{cardNumber}</span>
-            ) : null}
-            {moment(data.createdAt).format("ll")}
-          </React.Fragment>
-        }
-      />
-
-      {data.movementTypeId === movementTypes.transfer ? (
-        <ListItemText
-          className="box-label-right movement-item"
-          primary={calc.fix(data.amount) + " " + data.currency}
-          secondary={getReference(data)}
-        />
-      ) : (
-        <ListItemText
-          className="box-label-right movement-item"
-          primary={
-            calc.fix(data.destinationAmount) + " " + data.destinationCurrency
-          }
-          secondary={getReference(data)}
-        />
-      )}
+      {renderAvatar(data)}
+      {renderName(data)}
+      {renderAmount(data)}
     </ListItem>
   );
 }

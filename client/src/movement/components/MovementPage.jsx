@@ -160,7 +160,7 @@ function MovementPage() {
     <div className="page-margin page-padding">
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <ContentHeader title={moment().format("ll")} />
+          <ContentHeader title={moment().format("dddd") + ", " +   moment().format("LL")} />
         </Grid>
 
         <Grid item xs={12}>
