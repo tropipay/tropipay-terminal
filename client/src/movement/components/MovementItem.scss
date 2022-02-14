@@ -18,11 +18,19 @@
   color: $mainColor;
 }
 
-.movement-name span,
-.movement-name p span {
+.movement-item-amount,
+.MuiListItemText-root.movement-item-amount {
+  min-width: 6.5rem;
+}
+
+.movement-name-card {
   font-weight: 700;
 }
 
-.movement-item-avatar{
+.movement-item-avatar {
   margin-top: 10px;
+}
+
+.movement-item-subtitles span {
+  margin-top: 6px;
 }

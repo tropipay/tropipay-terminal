@@ -424,7 +424,10 @@ class TropiPay {
                             }
                         ],
                         "purchases": [],
-                        "consumedVoucher": null
+                        "consumedVoucher": null,
+                        "paymentcard": {
+                            "description": "es que yo necesito comprarme un carro pero no tengo el dinero, entonces a lo mejor usted puede mandarmelo para poder ayudar niños huerfanos que no tienen como ir a la escuela "
+                        }
                     }
                 }
             ]
