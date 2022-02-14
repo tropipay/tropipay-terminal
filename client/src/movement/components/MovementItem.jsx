@@ -35,7 +35,7 @@ function MovementItem(props) {
               <span className="movement-name-card">{cardNumber} </span>
             ) : null}
             <span className="movement-name-date">
-              {moment(data.createdAt).format("ll")}
+              {moment(data.createdAt).format("lll")}
             </span>
             {renderDescription(data)}
           </div>
@@ -65,7 +65,9 @@ function MovementItem(props) {
   function renderDescription(data) {
     const description = getDescription(data);
     return description ? (
-      <span className="movement-item-des box-label-truncate-2">{description}</span>
+      <span className="movement-item-des box-label-truncate-2">
+        {description}
+      </span>
     ) : null;
   }
 
