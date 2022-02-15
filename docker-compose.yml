@@ -1,17 +1,13 @@
 version: '3.7'
 
 services:
-
-  app:
-    container_name: app
+  webapp:
+    container_name: webapp
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - '.:/app'
-      - '/app/node_modules'
     ports:
-      - 3001:3000
+      - 3333:3005
     environment:
       - CHOKIDAR_USEPOLLING=true
       - OAUTH_CLIENT_ID=6c7748bd0ad3fbdff996e81581ad64d6
@@ -26,3 +22,4 @@ services:
       - URL_TROPIPAY=http://localhost:3001
       - URL_TERMINAL=http://localhost:3005
       - OAUTH_REDIRECT_URI=http://localhost:3005/api/v1/security/oauth/response
+    command: npm start
