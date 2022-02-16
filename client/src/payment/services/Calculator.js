@@ -36,13 +36,18 @@ class Calculator {
             'amount': data.destinationValue.toFixed(2),
             'currency': data.currencyToWork
         } : defaultValues;
-
+        //... min and max
+        const min = payload && payload.service && payload.service.min ? payload.service.min / 100 : null;
+        const max = payload && payload.service && payload.service.max ? payload.service.max / 100 : null;
+        //... resume
         return {
             rate, // Tipo de cambio aplicado
             cost, // costo del servicio
             current, // importe
             original, // importe original en caso de que no conincida la moneda con la base de operaciones (EUR)
-            delivery
+            delivery,
+            min,
+            max
         };
     }
 
