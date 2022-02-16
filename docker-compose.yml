@@ -19,8 +19,8 @@ services:
       - OAUTH_CODE_CHALLENGE_METHOD=S256
       - OAUTH_URL_TOKEN=/api/v2/access/token
       - OAUTH_URL_AUTHORIZE=/api/v2/access/authorize
-      - URL_TROPIPAY=https://tropipay-dev.herokuapp.com/
-      - URL_TERMINAL=http://localhost:3005
-      - OAUTH_REDIRECT_URI=http://localhost:3005/api/v1/security/oauth/response
+      - URL_TROPIPAY=https://tropipay-dev.herokuapp.com
+      - URL_TERMINAL=https://terminal-dev.tropipay.com
+      - OAUTH_REDIRECT_URI=https://terminal-dev.tropipay.com/api/v1/security/oauth/response
     restart: always
     command: npm start
