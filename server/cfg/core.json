@@ -47,17 +47,14 @@
         "log": 2,
         "module": {
             "load": [
+                "movement",
                 "security",
-                "movement"
+                "payment",
+                "app"
             ]
         },
         "event": {},
         "helper": {
-            "error": {
-                "name": "ksmf",
-                "type": "lib",
-                "namespace": "app.Error"
-            },
             "logger": {
                 "name": "ksmf",
                 "type": "lib",
@@ -67,6 +64,16 @@
                 "name": "ksmf",
                 "type": "package",
                 "namespace": "app.Logger"
+            },
+            "middleware.token": {
+                "type": "dependency",
+                "name": "TokenRequire",
+                "module": "security",
+                "path": "middleware" 
+            },
+            "TropiPay": {
+                "path": "service",
+                "module": "app"
             }
         }
     },
@@ -79,17 +86,14 @@
         "log": 2,
         "module": {
             "load": [
+                "movement",
                 "security",
-                "movement"
+                "payment",
+                "app"
             ]
         },
         "event": {},
         "helper": {
-            "error": {
-                "name": "ksmf",
-                "type": "lib",
-                "namespace": "app.Error"
-            },
             "logger": {
                 "name": "ksmf",
                 "type": "lib",
@@ -99,6 +103,16 @@
                 "name": "ksmf",
                 "type": "package",
                 "namespace": "app.Logger"
+            },
+            "middleware.token": {
+                "type": "dependency",
+                "name": "TokenRequire",
+                "module": "security",
+                "path": "middleware" 
+            },
+            "TropiPay": {
+                "path": "service",
+                "module": "app"
             }
         }
     }

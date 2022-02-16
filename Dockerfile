@@ -7,13 +7,15 @@ WORKDIR /app
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
+# install app dependencies --silent
+COPY package*.json ./
+RUN npm install 
 
 # copy all files
-COPY . ./
+COPY ./client/package*.json ./client/
+COPY ./client/src/ ./client/src/
+COPY ./client/public/ ./client/public/
+COPY ./server/  ./server/
 
 # server build
 RUN npm run build
