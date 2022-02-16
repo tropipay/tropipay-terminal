@@ -45,11 +45,6 @@ class PaymentModule extends KsMf.app.Module {
             controller: 'DefaultController',
             action: 'getCountryCode',
             method: 'get'
-        }, {
-            route: prefix + "/amountmin",
-            controller: 'DefaultController',
-            action: 'getServiceAmountMin',
-            method: 'get'
         }];
     }
 

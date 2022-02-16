@@ -94,8 +94,8 @@ class DefaultController extends KsMf.app.Controller {
         this.tropipay.set({
             token
         });
-        const fee = await this.tropipay.getFee();
         const srv = await this.tropipay.getService('CHARGE_EXTERNAL_CARDS');
+        const fee = await this.tropipay.getFee();
         if (fee.error || srv.error) {
             this.logger.prefix('Payment.DefaultController');
             this.logger.error("fee", fee.error);
@@ -111,7 +111,9 @@ class DefaultController extends KsMf.app.Controller {
                     "service_fee_percent": srv.data["service_fee_percent"],
                     "service_fee_fixed": srv.data["service_fee_fixed"],
                     "tp_fee_percent": srv.data["tp_fee_percent"],
-                    "tp_fee_fixed": srv.data["tp_fee_fixed"]
+                    "tp_fee_fixed": srv.data["tp_fee_fixed"],
+                    "min": srv.data["min"],
+                    "max": srv.data["max"]
                 }
             }
             res.json(result);
@@ -164,21 +166,5 @@ class DefaultController extends KsMf.app.Controller {
         }
 
     }
-
-    async getServiceAmountMin(req, res) {
-        const token = req.token;
-        this.tropipay.set({
-            token
-        });
-        const service = 'CHARGE_EXTERNAL_CARDS';
-        const amountmin = await this.tropipay.getServiceAmountMin(service);
-        res.json({
-            data: {
-                service,
-                amountmin
-            }
-        });
-    }
-
 }
 module.exports = DefaultController;

@@ -293,15 +293,6 @@ class TropiPay {
     }
 
     /**
-     * @description get service amount min
-     * @param {STRING} slug 
-     * @return {NUMBER} 
-     */
-    async getServiceAmountMin(slug = 'CHARGE_EXTERNAL_CARDS') {
-        return 16;
-    }
-
-    /**
      * @description get movements list 
      * @param {NUMBER} offset 
      * @param {NUMBER} limit 

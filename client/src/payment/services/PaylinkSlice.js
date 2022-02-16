@@ -31,7 +31,9 @@ export const slice = createSlice({
                 'tp_fee_fixed': 50,
                 'tp_fee_percent': 300,
                 'service_fee_fixed': 0,
-                'service_fee_percent': 45
+                'service_fee_percent': 45,
+                'min': 1600,
+                'max': null
             }
         },
         resume: {
@@ -51,11 +53,12 @@ export const slice = createSlice({
                 'amount': 0,
                 'currency': 'EUR'
             },
+            min: 16,
+            max: null,
             rate: 0
         },
         share: null,
-        country: null,
-        amountmin: 16
+        country: null
     },
     reducers: {
         onResume: (state, action) => {
@@ -111,9 +114,6 @@ export const slice = createSlice({
         },
         onCountry(state, action) {
             state.country = action.payload.data;
-        },
-        onAmountMin(state, action) {
-            state.amountmin = action.payload.data.amountmin;
         }
     }
 });
@@ -124,8 +124,7 @@ export const {
     onUpdate,
     onList,
     onFee,
-    onCountry,
-    onAmountMin
+    onCountry
 } = slice.actions;
 
 //... create a pyment links from server
@@ -162,13 +161,6 @@ export const onCountryConde = () => (dispatch) => {
         method: "GET"
     }, dispatch).then(data => dispatch(onCountry(data)));
 };
-//... load service amountmin 
-export const onLoadAmountMin = () => (dispatch) => {
-    httpReq({
-        url: "/api/v1/payment/amountmin",
-        method: "GET"
-    }, dispatch).then(data => dispatch(onAmountMin(data)));
-};
 //... Export the slice as a service
 const Service = {
     name,
@@ -177,7 +169,6 @@ const Service = {
         loadfee: onLoadFee,
         update: onUpdate,
         load: onLoad,
-        loadAmountMin: onLoadAmountMin,
         create: onCreate,
         share: onShare,
         loadCountryConde: onCountryConde
@@ -188,7 +179,10 @@ const Service = {
         fee: (state) => state[name].fee,
         list: (state) => state[name].list,
         resume: (state) => state[name].resume,
-        amountmin: (state) => state[name].amountmin,
+        amountmin: (state) => {
+            const resume = state[name].resume;
+            return resume && resume.min ? resume.min : 0;
+        },
         country: (state) => {
             const country = state[name].country;
             return country && country.rows ? country.rows : [];
