@@ -1,0 +1,14 @@
+node_modules
+build
+.dockerignore
+Dockerfile
+Dockerfile.prod
+.env.develop
+docker-compose.yml
+README.md
+LICENSE
+client/node_modules
+client/build
+client/.gitignore
+client/README.md
+client/LICENSE

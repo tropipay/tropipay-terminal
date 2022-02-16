@@ -54,7 +54,8 @@ export const slice = createSlice({
             rate: 0
         },
         share: null,
-        country: null
+        country: null,
+        amountmin: 16
     },
     reducers: {
         onResume: (state, action) => {
@@ -110,6 +111,9 @@ export const slice = createSlice({
         },
         onCountry(state, action) {
             state.country = action.payload.data;
+        },
+        onAmountMin(state, action) {
+            state.amountmin = action.payload.data.amountmin;
         }
     }
 });
@@ -120,7 +124,8 @@ export const {
     onUpdate,
     onList,
     onFee,
-    onCountry
+    onCountry,
+    onAmountMin
 } = slice.actions;
 
 //... create a pyment links from server
@@ -157,6 +162,13 @@ export const onCountryConde = () => (dispatch) => {
         method: "GET"
     }, dispatch).then(data => dispatch(onCountry(data)));
 };
+//... load service amountmin 
+export const onLoadAmountMin = () => (dispatch) => {
+    httpReq({
+        url: "/api/v1/payment/amountmin",
+        method: "GET"
+    }, dispatch).then(data => dispatch(onAmountMin(data)));
+};
 //... Export the slice as a service
 const Service = {
     name,
@@ -165,6 +177,7 @@ const Service = {
         loadfee: onLoadFee,
         update: onUpdate,
         load: onLoad,
+        loadAmountMin: onLoadAmountMin,
         create: onCreate,
         share: onShare,
         loadCountryConde: onCountryConde
@@ -175,6 +188,7 @@ const Service = {
         fee: (state) => state[name].fee,
         list: (state) => state[name].list,
         resume: (state) => state[name].resume,
+        amountmin: (state) => state[name].amountmin,
         country: (state) => {
             const country = state[name].country;
             return country && country.rows ? country.rows : [];

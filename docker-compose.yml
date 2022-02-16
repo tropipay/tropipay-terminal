@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  webapp:
+    container_name: webapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3333:3005
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - OAUTH_CLIENT_ID=5aca1638f7596bee9cb388e51d2ad58e
+      - OAUTH_CLIENT_SECRET=4a0150d3cec2036b9f24ec53f52e7c19
+      - OAUTH_SCOPE=ALLOW_GET_PROFILE_DATA ALLOW_GET_BALANCE ALLOW_EXTERNAL_CHARGE ALLOW_PAYMENT_IN ALLOW_EXTERNAL_CHARGE
+      - OAUTH_STATE=abcd-1234
+      - OAUTH_CODE_VERIFIER=1234-abcd-1234
+      - OAUTH_CODE_CHALLENGE=N2_wPQ7X9iP5bKXcw05rqHw1S7OwFuU4Nqi6ccr_LEs
+      - OAUTH_CODE_CHALLENGE_METHOD=S256
+      - OAUTH_URL_TOKEN=/api/v2/access/token
+      - OAUTH_URL_AUTHORIZE=/api/v2/access/authorize
+      - URL_TROPIPAY=https://tropipay-dev.herokuapp.com/
+      - URL_TERMINAL=http://localhost:3005
+      - OAUTH_REDIRECT_URI=http://localhost:3005/api/v1/security/oauth/response
+    restart: always
+    command: npm start

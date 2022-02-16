@@ -165,5 +165,20 @@ class DefaultController extends KsMf.app.Controller {
 
     }
 
+    async getServiceAmountMin(req, res) {
+        const token = req.token;
+        this.tropipay.set({
+            token
+        });
+        const service = 'CHARGE_EXTERNAL_CARDS';
+        const amountmin = await this.tropipay.getServiceAmountMin(service);
+        res.json({
+            data: {
+                service,
+                amountmin
+            }
+        });
+    }
+
 }
 module.exports = DefaultController;
