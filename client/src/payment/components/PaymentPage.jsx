@@ -26,6 +26,7 @@ function PaymentPage(props) {
   useEffect(() => {
     if (!fee.loaded) {
       dispatch(srvPaylink.action.loadfee());
+      dispatch(srvPaylink.action.loadAmountMin());
       dispatch(srvPaylink.action.loadCountryConde());
     }
   }, [fee, dispatch]);

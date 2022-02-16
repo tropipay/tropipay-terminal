@@ -19,6 +19,7 @@ import './PaymentFrom.scss';
 //... redux
 import { useDispatch, useSelector } from "react-redux";
 import srvReason from "../services/ReasonSlice";
+import srvPaylink from "../services/PaylinkSlice";
 
 //... component
 function PaymentFrom(props) {
@@ -31,7 +32,7 @@ function PaymentFrom(props) {
     dispatch(srvReason.action.onLoad());
   }
 
-  const amountMin = 16;
+  const amountMin = useSelector(srvPaylink.selector.amountmin); 
   const { handleSubmit, control } = useForm({
     defaultValues: {
       advanced: false,
