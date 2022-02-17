@@ -49,9 +49,10 @@ class DefaultController extends KsMf.app.Controller {
                 expires_in: token.data.expires_in
             };
             res.cookie('session', JSON.stringify(ses), {
-                maxAge: 86400000
+                maxAge: 864000000
             });
             this.logger.info('session', ses);
+            this.logger.info('redirect', process.env['URL_TERMINAL']);
             res.redirect(process.env['URL_TERMINAL']);
         } catch (error) {
             this.logger.error("Error", error);
