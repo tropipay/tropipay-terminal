@@ -27,7 +27,7 @@ function MenuLink(props) {
   const data = props.data && props.data instanceof Array ? props.data : [];
 
   return (
-    <ul className={`box ${align} ${className} lstMenu`}>
+    <ul className={`box ${align} ${className} menu-lst`}>
       {data.map((item, i) => (
         <li key={i} className="box-padding">
           <span

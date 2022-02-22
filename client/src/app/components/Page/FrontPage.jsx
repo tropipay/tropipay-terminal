@@ -80,8 +80,8 @@ function FrontPage() {
             </div>
 
             <div className="front-page-btns">
+              <CadsBtn   className="front-card-btn-icon"/>
               <MenuLink data={links} />
-              <CadsBtn  className="front-card-btn-icon"/>
               <SocialBtn className="front-social-btn-icon"/>
             </div>
           </div>
