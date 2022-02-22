@@ -16,6 +16,7 @@
 .movement-item span {
   font-weight: 700;
   color: $mainColor;
+  margin-bottom: 4px;
 }
 
 .movement-item-amount,
@@ -23,7 +24,15 @@
   min-width: 6.5rem;
 }
 
-.movement-name-card {
+.movement-name {
+  overflow: hidden;
+}
+
+.movement-name-title {
+  font-weight: 700;
+}
+
+.movement-name span.movement-name-card {
   font-weight: 700;
 }
 
@@ -32,5 +41,5 @@
 }
 
 .movement-item-subtitles span {
-  margin-top: 6px;
+  margin-top: 4px;
 }
