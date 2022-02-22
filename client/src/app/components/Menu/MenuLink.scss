@@ -4,3 +4,20 @@
   margin-top: 10px;
   cursor: pointer;
 }
+
+.menu-lst {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 ;
+  font-size: small;
+
+  li a {
+      text-decoration: none;
+      color: #8986A3;
+      padding-right: 2rem;
+
+      &:hover {
+          color: rgba(#8986A3, 0.4);
+      }
+  }
+}
