@@ -25,8 +25,8 @@ const AvatarName = props => {
   const bgColor =
     props.textColor !== "auto" ? props.bgColor || "avatar-name" : "";
 
-  const width = props.size ? props.size : props.width || 60;
-  const height = props.size ? props.size : props.height || 60;
+  const width = props.size ? props.size : props.width || 50;
+  const height = props.size ? props.size : props.height || 50;
 
   return (
     <Avatar

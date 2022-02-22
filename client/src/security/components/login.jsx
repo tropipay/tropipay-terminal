@@ -2,8 +2,8 @@ import Button from "@mui/material/Button";
 import React from 'react';
 
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom"; // useHistory, 
-import IconUrl from '../../app/images/favicon-96x96.png'
+import { useLocation } from "react-router-dom";
+import IconUrl from '../../app/images/terminal-boton.png';
 
 import session from "../services/Session";
 

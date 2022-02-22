@@ -18,7 +18,7 @@ function MovementItem(props) {
       item.movementTypeId === movementTypes.exchange ? "C" : icoLetter;
     return (
       <div className="movement-margin-right movement-item-avatar">
-        <AvatarName name={nameStr} textColor="auto" />
+        <AvatarName name={nameStr} textColor="auto" size="44px" />
       </div>
     );
   }
@@ -28,7 +28,7 @@ function MovementItem(props) {
     return (
       <ListItemText
         className="movement-name"
-        primary={getName(data)}
+        primary={<span className="movement-name-title">{getName(data)}</span>}
         secondary={
           <div className="box-vertical movement-item-subtitles">
             {cardNumber ? (
