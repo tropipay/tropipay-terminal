@@ -72,7 +72,7 @@ function FrontPage() {
                 {t("front.title")}
               </Typography>
 
-              <Typography variant="subtitle1" mt="1rem" mb="1rem">
+              <Typography variant="subtitle1" mt="1rem" mb="1rem"  className="page-front-sub">
                 {t("front.subtitle")}
               </Typography>
 

@@ -23,7 +23,7 @@ function PaymentResume(props) {
 
   function renderTermsAndPolicy(t, terms = "/", policy = "/") {
     return (
-      <span className="btn-link">
+      <span className="btn-link label-small">
         {t("payment.resume.accept1")}
         <a href={terms} className="">
           {" "}

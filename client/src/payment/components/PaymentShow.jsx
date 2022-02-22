@@ -102,8 +102,12 @@ function PaymentShow(props) {
         </Grid>
         <Grid item xs={6} className="box-label-right ">
           <Typography variant="body2" className="">
-            {moment(createdAt).format("LLL")}
+            {moment(createdAt).format("D MMM YYYY")}
           </Typography>
+          <Typography variant="body2" className="">
+            {moment(createdAt).format("HH:mm")}
+          </Typography>
+          
           {expirationDate ? (
             <div>
               <Typography variant="body2" className="">

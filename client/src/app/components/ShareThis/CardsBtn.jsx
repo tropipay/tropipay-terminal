@@ -3,6 +3,7 @@ import IMG_MASTERCARD from "../../images/icon_mastercard.png";
 import IMG_MAESTRO from "../../images/icon_maestro.png";
 import IMG_UNIONPLAY from "../../images/icon_unionplay.png";
 import IMG_DISCOVER from "../../images/icon_discover.png";
+import './CardsBtn.scss';
 
 function CardsBtn(props) {
   const { className } = props;
