@@ -97,7 +97,7 @@
         },
         "show": {
             "title": "Enlace de pago listo",
-            "subtitle": "a nombre de {{username}} para el cobro de servicios",
+            "subtitle": "a nombre de {{name}} para el cobro de servicios",
             "url": "URL para el cobro", 
             "share": "Compartir",
             "phone": "Teléfono", 

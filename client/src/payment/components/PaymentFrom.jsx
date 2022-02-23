@@ -32,19 +32,29 @@ function PaymentFrom(props) {
     dispatch(srvReason.action.onLoad());
   }
 
-  const amountMin = useSelector(srvPaylink.selector.amountmin); 
-  const { handleSubmit, control } = useForm({
+  const amountMin = useSelector(srvPaylink.selector.amountmin);
+  const { handleSubmit, control, watch } = useForm({
     defaultValues: {
-      advanced: false,
       description: "",
       amount: "",
-      currency: "",
+      currency: "EUR",
       concept: "",
-      lang: "",
-      reason: "",
+      lang: "es",
+      reason: 2,
       reference: ""
     }
   });
+  const watchFields = watch({"amount":"amount", "currency":"currency", "description":"description", "concept":"concept", "lang":"lang", "reason":"reason", "reference":"reference" });
+
+  function isValidForm(watchFields) {
+    const mandatory = watchFields.amount !== "" &&
+                      watchFields.concept !== "" &&
+                      watchFields.currency !== "" &&
+                      watchFields.description !== "" &&
+                      watchFields.lang !== "" &&
+                      watchFields.reason !== "";
+    return advanced ? mandatory && watchFields.reference !== "" : mandatory;
+  }
 
   const submit = data => {
     if (props.submit instanceof Function) {
@@ -81,6 +91,7 @@ function PaymentFrom(props) {
         <FormSelect
           control={control}
           name="currency"
+          defaultValue={watchFields.currency}
           size="medium"
           fullWidth
           label={t("payment.form.currency.label")}
@@ -105,13 +116,13 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox />}
-            className="payment-form-checkbox"
-            label={t("payment.form.advanced")}
-            value={advanced}
-            onChange={() => setAdvanced(!advanced)}
-          />
+        <FormControlLabel
+          control={<Checkbox />}
+          className="payment-form-checkbox"
+          label={t("payment.form.advanced")}
+          value={advanced}
+          onChange={() => setAdvanced(!advanced)}
+        />
       </Grid>
 
       {advanced ? (
@@ -133,6 +144,7 @@ function PaymentFrom(props) {
           size="medium"
           value="1"
           fullWidth
+          defaultValue={watchFields.reason}
           label={t("payment.form.reason.label")}
           placeholder={t("payment.form.reason.label")}
           rules={{ required: t("error.required") }}
@@ -145,6 +157,7 @@ function PaymentFrom(props) {
           control={control}
           name="lang"
           size="medium"
+          defaultValue={watchFields.lang}
           label={t("payment.form.lang.label")}
           placeholder={t("payment.form.lang.label")}
           keys={{ label: "label", value: "lang" }}
@@ -154,7 +167,7 @@ function PaymentFrom(props) {
       </Grid>
 
       <Grid item xs={12}>
-        <FormTextField  
+        <FormTextField
           control={control}
           name="description"
           multiline
@@ -165,13 +178,14 @@ function PaymentFrom(props) {
           rules={{ required: t("error.required") }}
         />
       </Grid>
-
+      
       <Grid item xs={12}>
         <Button
           variant="contained"
           className="btn-full-width"
           size="medium"
           color="primary"
+          disabled={!isValidForm(watchFields)}
           style={{ marginTop: "1rem" }}
           onClick={handleSubmit(submit)}
         >

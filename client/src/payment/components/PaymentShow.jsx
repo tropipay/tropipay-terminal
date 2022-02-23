@@ -22,12 +22,15 @@ import moment from "moment/moment";
 import "./PaymentShow.scss";
 
 import srvPaylink from "../services/PaylinkSlice";
+import srvProfile from "../../profile/services/ProfileSlice";
 import { useSelector } from "react-redux";
 import FormSelect from "../../app/components/FormControl/FormSelect";
 import Validation from "../../app/services/validation";
 
 function PaymentShow(props) {
   const { t } = useTranslation();
+
+  const profile = useSelector(srvProfile.selector.data);
   const { shortUrl, createdAt, expirationDate, id } = useSelector(
     srvPaylink.selector.data
   );
@@ -38,6 +41,10 @@ function PaymentShow(props) {
   const [sendEmail, setSendEmail] = useState(false);
   const message = Msg();
 
+  function fullname(profile) {
+    return profile ? profile.name + ' ' +  profile.surname : 'Gest';
+  }
+  
   function expireInHours(dIn, dEnd) {
     const dateIn = moment(dIn);
     const dateEnd = moment(dEnd);
@@ -107,7 +114,7 @@ function PaymentShow(props) {
           <Typography variant="body2" className="">
             {moment(createdAt).format("HH:mm")}
           </Typography>
-          
+
           {expirationDate ? (
             <div>
               <Typography variant="body2" className="">
@@ -131,7 +138,6 @@ function PaymentShow(props) {
             <Grid container>
               <Grid item xs={12}>
                 <Typography
-                  variant="body2"
                   className="gray-label box-label-bold"
                 >
                   {t("payment.show.url")}:
@@ -289,7 +295,7 @@ function PaymentShow(props) {
         <Grid item xs={12}>
           <ContentHeader
             title={t("payment.show.title")}
-            subtitle={t("payment.show.subtitle")}
+            subtitle={t("payment.show.subtitle", { name: fullname(profile) })}
             className="box-label-center box-margin-bottom-2"
             classNameTitle="box-label-bold"
           />
