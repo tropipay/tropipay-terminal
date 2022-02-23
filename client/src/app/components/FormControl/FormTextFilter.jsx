@@ -5,12 +5,10 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 import { exec } from "../../services/util";
-//import DownloadIcon from "mdi-react/DownloadIcon";
-//import ClearIcon from "mdi-react/ClearIcon";
 import "./FormTextFilter.scss";
 
 function FormTextFilter(props) {
-  const { placeholder, name, id, value } = props;
+  const { placeholder, name, id, value, onKeyPress } = props;
   const [text, setText] = useState(value || "");
 
   return (
@@ -23,6 +21,7 @@ function FormTextFilter(props) {
         type="text"
         placeholder={placeholder}
         value={text}
+        onKeyPress={onKeyPress}
         onChange={event => {
           setText(event.currentTarget.value);
           exec(props.onChange, [event.currentTarget.value]);
