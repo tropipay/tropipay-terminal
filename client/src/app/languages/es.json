@@ -86,7 +86,7 @@
             "subtitle": "Se generará un enlace de pago a un cobro con las siguientes condiciones",
             "accept1": "Acepto los",
             "accept2": "y la",
-            "detail": "Detales de la operación",
+            "detail": "Detalles de la operación",
             "cost": "Coste del servicio",
             "amount": "Importe",
             "selloff": "A liquidar en TropiPay",
@@ -119,7 +119,7 @@
     },
     "movement": {
       "title": "Listado de movimientos",
-      "ko": "Algo ha ido mal ... revisa tu conección y vuelve a intentarlo.",
+      "ko": "Algo ha ido mal ... revisa tu conexión y vuelve a intentarlo.",
       "search": "Buscar movimientos",
       "noResults": "No hay coincidencias",
       "showMore": "Mostrar más",
