@@ -14,7 +14,8 @@ const FormSelect = ({
   variant,
   type,
   size,
-  className
+  className,
+  defaultValue
 }) => {
   placeholder = placeholder || "";
   options = options || [];
@@ -23,6 +24,7 @@ const FormSelect = ({
     label: "label",
     value: "value"
   };
+  defaultValue = defaultValue || "outlined";
   variant = variant || "outlined";
   type = type || "text";
   size = size || "small";
@@ -59,6 +61,7 @@ const FormSelect = ({
           type={type}
           className={className}
           fullWidth
+          defaultValue={defaultValue}
           variant={variant}
         >
           {generateOptions(options)}

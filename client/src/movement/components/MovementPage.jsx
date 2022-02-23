@@ -37,7 +37,7 @@ function MovementPage() {
     }
   });
 
-  function onSelectItem(item) {}
+  function onSelectItem(item) { }
 
   function loadMore() {
     dispatch(
@@ -47,6 +47,9 @@ function MovementPage() {
 
   function onChangeFilter(value) {
     setFilter(value);
+    if (value === "") {
+      onClean();
+    }
   }
 
   function onSearch(text) {
@@ -79,7 +82,13 @@ function MovementPage() {
               onSearch={onSearch}
               onClean={onClean}
               onChange={onChangeFilter}
-              value={query}
+              value={query} 
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  onSearch(e.target.value);
+                  e.preventDefault();
+                }
+              }}
             />
           </Grid>
         ) : null}
@@ -160,7 +169,7 @@ function MovementPage() {
     <div className="page-margin page-padding">
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <ContentHeader title={moment().format("dddd") + ", " +   moment().format("LL")} />
+          <ContentHeader title={moment().format("dddd") + ", " + moment().format("LL")} />
         </Grid>
 
         <Grid item xs={12}>

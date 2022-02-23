@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router-dom";
 import MenuPage from "./MenuPage";
+import './Menu.scss';
 
 import { useTranslation } from "react-i18next";
 
@@ -19,7 +20,8 @@ export default function Menu() {
           <Typography
             variant="h6"
             component="div"
-            className="box-label-bold"
+            className="box-label-bold menu-btn"
+            style={{cursor: 'pointer'}}
             sx={{ flexGrow: 1 }}
             onClick={() => history.push("/home")}
           >

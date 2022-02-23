@@ -8,7 +8,7 @@ import Input from '@material-ui/core/Input';
 import EyeIcon from 'mdi-react/EyeIcon';
 import EyeOffIcon from 'mdi-react/EyeOffIcon';
 
-const FormTextField = ({ name, control, label, rules, placeholder, variant, type, size, className, decorator, multiline, minRows }) => {
+const FormTextField = ({ name, control, label, rules, placeholder, variant, type, size, className, decorator, multiline, rows }) => {
   placeholder = placeholder || '';
   rules = rules || {};
   variant = variant || "outlined";
@@ -17,6 +17,7 @@ const FormTextField = ({ name, control, label, rules, placeholder, variant, type
   className = className || "";
   decorator = decorator || "";
   multiline = multiline || false;
+  rows = rows  || (multiline ? 3 : 1)
 
   const [showpass, setShowpass] = useState(false);
 
@@ -47,7 +48,7 @@ const FormTextField = ({ name, control, label, rules, placeholder, variant, type
             value={value}
             className={className}
             fullWidth
-            minRows={minRows}
+            rows={rows}
             variant={variant}
             type={showpass ? 'text' : 'password'}
             endAdornment={
@@ -73,6 +74,7 @@ const FormTextField = ({ name, control, label, rules, placeholder, variant, type
             type={type}
             className={className}
             multiline={multiline}
+            rows={rows}
             fullWidth
             variant={variant}
           />
