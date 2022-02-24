@@ -37,7 +37,7 @@ function MovementPage() {
       dispatch(srvMovement.action.load());
     }
     if(inputRef && inputRef.current) {
-      inputRef.current.focus();
+      // inputRef.current.focus();
     }
   });
 
