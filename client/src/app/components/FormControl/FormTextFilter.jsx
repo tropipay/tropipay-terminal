@@ -8,7 +8,7 @@ import { exec } from "../../services/util";
 import "./FormTextFilter.scss";
 
 const FormTextFilter = React.forwardRef((props, ref) => {
-  const { placeholder, name, id, value, onKeyPress } = props;
+  const { placeholder, name, id, value, onKeyPress, autoFocus } = props;
   const [text, setText] = useState(value || "");
 
   return (
@@ -20,7 +20,7 @@ const FormTextFilter = React.forwardRef((props, ref) => {
         name={name}
         type="text"
         ref={ref}
-        autoFocus 
+        autoFocus={autoFocus} 
         placeholder={placeholder}
         value={text}
         onKeyPress={onKeyPress}
