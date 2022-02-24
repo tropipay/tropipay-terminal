@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
@@ -19,6 +19,7 @@ import "./MovementPage.scss";
 function MovementPage() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const inputRef = useRef();
 
   const movements = useSelector(srvMovement.selector.list);
   const completed = useSelector(srvMovement.selector.completed);
@@ -34,6 +35,9 @@ function MovementPage() {
   useEffect(() => {
     if (!data && !isLoading) {
       dispatch(srvMovement.action.load());
+    }
+    if(inputRef && inputRef.current) {
+      inputRef.current.focus();
     }
   });
 
@@ -82,6 +86,7 @@ function MovementPage() {
               onSearch={onSearch}
               onClean={onClean}
               onChange={onChangeFilter}
+              ref={inputRef}
               value={query} 
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {

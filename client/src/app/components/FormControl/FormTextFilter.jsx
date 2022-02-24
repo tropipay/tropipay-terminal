@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "mdi-react/SearchIcon";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
+import Input from '@material-ui/core/Input';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 import { exec } from "../../services/util";
 import "./FormTextFilter.scss";
 
-function FormTextFilter(props) {
+const FormTextFilter = React.forwardRef((props, ref) => {
   const { placeholder, name, id, value, onKeyPress } = props;
   const [text, setText] = useState(value || "");
 
   return (
     <FormControl fullWidth>
-      <OutlinedInput
+      <Input
         className="pr-1 from-filter-input"
         style={{ height: "3.024rem" }}
         id={id || name}
         name={name}
         type="text"
+        ref={ref}
+        autoFocus 
         placeholder={placeholder}
         value={text}
         onKeyPress={onKeyPress}
@@ -36,9 +38,8 @@ function FormTextFilter(props) {
             </IconButton>
           </InputAdornment>
         }
-        labelWidth={0}
       />
     </FormControl>
   );
-}
+});
 export default FormTextFilter;
