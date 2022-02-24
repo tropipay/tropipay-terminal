@@ -94,7 +94,7 @@ function MenuPage() {
           <MenuLink
             data={links.reverse()}
             align="vertical"
-            className="box-padding label-small"
+            className="box-padding label-small menu-page"
           />
         </div>
       </Drawer>
