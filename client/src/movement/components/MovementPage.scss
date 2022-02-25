@@ -1,3 +1,11 @@
 .movement-item {
     overflow: hidden;
 }
+
+div.MuiGrid-root.MuiGrid-item.movement-content{
+    margin: 0;
+}
+
+.MuiGrid-root.movement-data-filter {
+    margin-bottom: -16px;
+}

@@ -32,17 +32,6 @@ function MenuPage() {
   };
 
   const options = [
-    /*{
-      label: "menu.home",
-      to: "/home",
-      icon: <HomeIcon />
-    },
-    {
-      label: "menu.contact",
-      className: "",
-      to: "https://help.tropipay.com/contact",
-      icon: <LogoutIcon />
-    },*/
     {
       label: "menu.comunity",
       to: "https://t.me/joinchat/SeivjhsA4ekFEZc4aNR26Q",
@@ -94,7 +83,7 @@ function MenuPage() {
           <MenuLink
             data={links.reverse()}
             align="vertical"
-            className="box-padding label-small menu-page"
+            className="box-padding label-small menu-page-link"
           />
         </div>
       </Drawer>

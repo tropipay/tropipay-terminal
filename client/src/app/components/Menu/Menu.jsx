@@ -21,7 +21,6 @@ export default function Menu() {
             variant="h6"
             component="div"
             className="box-label-bold menu-btn"
-            style={{cursor: 'pointer'}}
             sx={{ flexGrow: 1 }}
             onClick={() => history.push("/home")}
           >

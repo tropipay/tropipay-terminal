@@ -130,7 +130,8 @@
       "text": "Con nosotros puedes realizar cobros desde cualquier lugar. Empieza ahora !!",
       "btn": "Haz tu primer cobro",
       "downloadOk": "Recibirás un email con el listado de tus cobros.",
-      "downloadKo": "Hubo un error descargando sus cobros. Por favor inténtalo de nuevo."
+      "downloadKo": "Hubo un error descargando sus cobros. Por favor inténtalo de nuevo.",
+      "nex": "de"
     },
     "error": {
         "Unauthorized": "Usuario no autorizado o sesión caducada",

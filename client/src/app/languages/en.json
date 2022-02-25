@@ -126,7 +126,8 @@
       "text": "With us you can make payments from anywhere. Start now !!",
       "btn": "Make your first payment",
       "downloadOk": "You will receive an email with the list of your payments.",
-      "downloadKo": "There was an error downloading your collections. Please try again."
+      "downloadKo": "There was an error downloading your collections. Please try again.",
+      "nex": ""
     },
     "error": {
         "Unauthorized": "User not authorized or session expired",
