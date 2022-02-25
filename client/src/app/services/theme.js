@@ -40,6 +40,7 @@ const theme = createTheme({
         fontWeightLight: 300,
         fontWeightRegular: 400,
         fontWeightMedium: 500,
+        fontFamily: 'Roboto',
         color: "#39365b",
         h1: {
             color: "#4a59d9",

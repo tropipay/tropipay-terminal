@@ -1,40 +1,23 @@
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
   display: none;
-}
-
-.page {
-  overflow: hidden;
-  height: 100vh;
-}
+}*/
 
 .page-container {
-  margin-left: 4rem;
-  margin-top: 1rem;
-  margin-right: 4rem;
-  height: 95vh;
+  margin-left: 6vw;
+  margin-top: 1vh;
+  margin-right: 6vw;
+}
+
+div.page-container {
+  width: inherit;
+  padding-left: 6vw;
+  padding-top: 1vh;
+  padding-right: 6vw;
 }
 
 .page-front-font,
 .MuiTypography-root.page-front-font {
   font-family: "Poppins";
-}
-
-.page-front-app-name,
-.MuiTypography-root.page-front-app-name {
-  font-size: 24px;
-}
-.page-front-app-by,
-.MuiTypography-root.page-front-app-by {
-  font-size: 10px;
-  align-self: end;
-  padding-bottom: 2px;
-  margin-right: 3px;
-  font-size: 10px;
-}
-.page-front-app-company,
-.MuiTypography-root.page-front-app-company {
-  font-size: 18px;
-  margin-right: 3px;
 }
 
 .page-front-title,
@@ -48,39 +31,43 @@
 .MuiTypography-root.page-front-subtitle {
   font-weight: 400;
   font-size: 21px;
-  line-height: 428px;
+  line-height: 28px;
   font-family: "Roboto";
 }
 
-.page-front-sub,
-.MuiTypography-root.page-front-sub {
-  font-size: 21px;
-  line-height: 28px;
+.page-front-logo {
+  min-width: 100%;
 }
 
-.front-company-logo,
-.front-company-logo img {
+.page-front-logo,
+.page-front-logo img {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 2vh;
   max-width: 214px;
 }
 
-.front-page-btns {
-  margin-left: -8px;
-  margin-top: 5px;
-  margin-top: 5px;
-  margin-bottom: 15px;
+div.page-front-btns {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2vh;
 }
 
-.front-social-btn-icon a {
-  margin-left: -3px;
-  /*margin-top: 0.5rem;*/
+.page-front-btns {
+  min-width: 100%;
 }
 
-.front-card-btn-icon {
-  margin-left: 4px;
+.page-front-btns ul {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 
-.front-page-menu-link {
-  margin-left: -8px;
+.page-front-content {
+  p {
+    margin-bottom: 3vh;
+  }
+  button {
+    margin-top: 2vh;
+  }
 }
+

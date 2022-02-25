@@ -11,7 +11,11 @@
         "by": "un servicio de",
         "company": "TropiPay",
         "title":"Cobra con terminal en tu tienda o comercio",
+        "title1":"Cobra con terminal",
+        "title2":"en tu tienda o comercio",
         "subtitle": "Terminal te permite crear tu propio proceso de compra para aceptar pagos en el mundo físico",
+        "subtitle1": "Terminal te permite crear tu propio proceso de compra",
+        "subtitle2": "para aceptar pagos en el mundo físico",
         "connect": "Conéctate con TropiPay"
     },
     "home": {
