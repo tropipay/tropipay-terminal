@@ -19,8 +19,8 @@ import "./MenuPage.scss";
 function MenuPage() {
   const dispatch = useDispatch();
   const profile = useSelector(srvProfile.selector.data);
-
   const [openDrawer, setDrawerMenu] = React.useState();
+  const [menuLinks, setMenuLinks] = React.useState([]);
   const toggleDrawer = open => event => {
     if (
       event.type === "keydown" &&
@@ -57,7 +57,10 @@ function MenuPage() {
     if (!profile) {
       dispatch(srvProfile.action.load());
     }
-  });
+    if(!menuLinks || menuLinks.length < 1) {
+      setMenuLinks(links.reverse());
+    }
+  }, [links]);
 
   return (
     <div>
@@ -81,7 +84,7 @@ function MenuPage() {
           </div>
 
           <MenuLink
-            data={links.reverse()}
+            data={menuLinks}
             align="vertical"
             className="box-padding label-small menu-page-link"
           />
