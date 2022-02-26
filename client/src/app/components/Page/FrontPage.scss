@@ -21,18 +21,32 @@ div.page-container {
 }
 
 .page-front-title,
+.page-front-title p,
 .MuiTypography-root.page-front-title {
   font-weight: 700;
   font-size: 40px;
   line-height: 48px;
 }
 
+.MuiTypography-root.page-front-title.page-front-label-sm {
+  margin-top: 3vh;
+}
+
+.page-front-title p.page-front-label-lg {
+  margin-bottom: 0;
+}
+
 .page-front-subtitle,
+.page-front-subtitle p,
 .MuiTypography-root.page-front-subtitle {
   font-weight: 400;
   font-size: 21px;
   line-height: 28px;
   font-family: "Roboto";
+}
+
+.page-front-subtitle p.page-front-label-lg {
+  margin-bottom: 0;
 }
 
 .page-front-logo {
@@ -51,6 +65,7 @@ div.page-front-btns {
   display: flex;
   flex-direction: column;
   padding-bottom: 4vh;
+  margin-top: 4vh;
 }
 
 .page-front-btns {
