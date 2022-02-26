@@ -26,6 +26,10 @@ const useStyles = makeStyles(theme => ({
   },
   layoutRight: {
     backgroundColor: "#4B59D3",
+    margin: "0"
+  },
+  layoutRightLG: {
+    backgroundColor: "#4B59D3",
     height: "100vh",
     margin: "0"
   }
@@ -74,7 +78,8 @@ function FrontPage() {
               <SocialBtn className="front-social-btn-icon" />
             </div>
         </Grid>
-        <Grid item sx={{ display: 'none' }} sm={12 * 1 / 3} className={cls.layoutRight}></Grid>
+        <Grid item sm={{ display: 'none' }} lg={12 * 1 / 3} className={cls.layoutRightLG}></Grid>
+        <Grid item xs={{ display: 'none' }} sm={12 * 1 / 3} lg={{ display: 'none' }} className={cls.layoutRight}></Grid>
       </Grid>
     </div>
   );

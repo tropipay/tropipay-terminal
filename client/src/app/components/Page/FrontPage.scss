@@ -50,16 +50,17 @@ div.page-front-btns {
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
-  padding-bottom: 2vh;
+  padding-bottom: 4vh;
 }
 
 .page-front-btns {
   min-width: 100%;
+  margin-top: 2vh;
 }
 
 .page-front-btns ul {
-  margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 
 .page-front-content {
