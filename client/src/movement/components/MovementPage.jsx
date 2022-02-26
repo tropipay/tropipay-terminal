@@ -175,8 +175,11 @@ function MovementPage() {
   return (
     <div className="page-margin page-padding">
       <Grid container >
-        <Grid item xs={12}>
-          <ContentHeader title={moment().format(`dddd, D [${t("movement.nex")}] MMMM`)} />
+        <Grid item xs={12} style={{ marginTop: '0.5rem'}}>
+          <ContentHeader 
+            title={moment().format(`dddd, D [${t("movement.nex")}] MMMM`)} 
+            classNameTitle="box-label-bold"
+          />
         </Grid>
 
         <Grid item xs={12} className="movement-content">
