@@ -29,20 +29,22 @@ function HomePage() {
   
   return (
     <div className="page-margin page-padding">
-      <Grid container spacing={2}>
+      <Grid container >
         <Grid item xs={12} className="box box-align-center">
           <AvatarName name={profile ? profile.name : "TS"} />
         </Grid>
 
-        <Grid item xs={12} className="box box-align-center">
+        <Grid item xs={12} className="box box-align-center page-home-name">
           <ContentHeader  
+            classNameTitle="box-label-bold"
+            classNameSubtitle="page-home-subtitle"
             title={profile ? profile.name : "Gest"}
             subtitle={profile ? profile.email : "gest@tropipay.com"}
           />
         </Grid>
         
         <Grid item xs={12} className="box box-align-center">
-          <div className="box box-align-center home-page-qr note-bg">
+          <div className="box box-align-center page-home-qr note-bg">
             <QRCode url={shortUrl} size={200} />
           </div>
         </Grid>
@@ -52,7 +54,7 @@ function HomePage() {
             variant="contained"
             className="btn-full-width"
             size="large"
-            style={{ marginTop: "2rem" }}
+            style={{ marginTop: "2.5rem" }}
             onClick={() => nav.push("/payment")}
             color="primary"
           >
@@ -65,7 +67,7 @@ function HomePage() {
             variant="contained"
             className="btn-full-width"
             size="large"
-            style={{ marginTop: "1rem" }}
+            style={{ marginTop: "2rem" }}
             onClick={() => nav.push("/movement")}
             color="secondary"
           >
