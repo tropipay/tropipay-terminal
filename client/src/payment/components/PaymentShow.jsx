@@ -173,7 +173,7 @@ function PaymentShow(props) {
               </Grid>
 
               {sendSMS ? (
-                <Grid item xs={12} style={{ marginTop: "1rem" }}>
+                <Grid item xs={12} style={{ marginTop: "1.3rem" }}>
                   <FormSelect
                     control={control}
                     name="code"

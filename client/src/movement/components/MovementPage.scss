@@ -7,5 +7,18 @@ div.MuiGrid-root.MuiGrid-item.movement-content{
 }
 
 .MuiGrid-root.movement-data-filter {
-    margin-bottom: -16px;
+    margin-bottom: -8px;
+}
+
+.page-movement-nodata {
+    margin-top: 1.3rem;
+}
+
+div.page-movement-empty{
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+    h6 {
+        width: 100%;
+    }
 }
