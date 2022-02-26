@@ -93,7 +93,7 @@ function PaymentPage(props) {
 
   // ... render componet
   return (
-    <div className="page-margin page-padding">
+    <div className="page-margin page-padding page-payment-content">
       {stepper.render()}
       {renderControls(t, history)}
     </div>

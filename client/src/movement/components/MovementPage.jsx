@@ -101,7 +101,7 @@ function MovementPage() {
         ) : null}
 
         {isEmpty && query ? (
-          <Grid item xs={12}>
+          <Grid item xs={12} className="page-movement-nodata">
             {t("movement.noResults")}
           </Grid>
         ) : null}
@@ -143,12 +143,12 @@ function MovementPage() {
   const renderNoData = () => {
     return (
       <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="subtitle1" className="text-center">
+        <Grid item xs={12} className="text-center page-movement-empty">
+          <Typography variant="subtitle1">
             {t("movement.text")}
           </Typography>
-        </Grid>
-
+        </Grid> 
+        
         <Grid item xs={12}>
           <Button
             component={Link}
@@ -175,8 +175,11 @@ function MovementPage() {
   return (
     <div className="page-margin page-padding">
       <Grid container >
-        <Grid item xs={12}>
-          <ContentHeader title={moment().format(`dddd, D [${t("movement.nex")}] MMMM`)} />
+        <Grid item xs={12} style={{ marginTop: '0.5rem'}}>
+          <ContentHeader 
+            title={moment().format(`dddd, D [${t("movement.nex")}] MMMM`)} 
+            classNameTitle="box-label-bold"
+          />
         </Grid>
 
         <Grid item xs={12} className="movement-content">
