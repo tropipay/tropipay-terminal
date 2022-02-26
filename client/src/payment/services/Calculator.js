@@ -81,7 +81,7 @@ class Calculator {
             return payload.currency === "USD" ? payload.rate : 1;
         };
 
-        const amountToChargeInEUR = () => (payload.currency === 'EUR' ? inCents : Math.floor(inCents / usd2eur));
+        const amountToChargeInEUR = () => (payload.currency === 'EUR' ? inCents : Math.floor(inCents * usd2eur));
 
         const destinationValue = () => {
             return Math.round(amountToChargeInEUR() - (amountToChargeInEUR() * (ourMargin + cardProviderFeePercent)) - (ourMarginFixed + cardProviderFeeFixed)) / 100;
