@@ -11,7 +11,11 @@
         "by": "un servicio de",
         "company": "TropiPay",
         "title":"Cobra con terminal en tu tienda o comercio",
+        "title1":"Cobra con terminal",
+        "title2":"en tu tienda o comercio",
         "subtitle": "Terminal te permite crear tu propio proceso de compra para aceptar pagos en el mundo físico",
+        "subtitle1": "Terminal te permite crear tu propio proceso de compra",
+        "subtitle2": "para aceptar pagos en el mundo físico",
         "connect": "Conéctate con TropiPay"
     },
     "home": {
@@ -126,7 +130,8 @@
       "text": "Con nosotros puedes realizar cobros desde cualquier lugar. Empieza ahora !!",
       "btn": "Haz tu primer cobro",
       "downloadOk": "Recibirás un email con el listado de tus cobros.",
-      "downloadKo": "Hubo un error descargando sus cobros. Por favor inténtalo de nuevo."
+      "downloadKo": "Hubo un error descargando sus cobros. Por favor inténtalo de nuevo.",
+      "nex": "de"
     },
     "error": {
         "Unauthorized": "Usuario no autorizado o sesión caducada",

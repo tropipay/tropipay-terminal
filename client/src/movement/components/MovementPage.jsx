@@ -13,6 +13,8 @@ import srvMovement from "../services/MovementSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment/moment";
+import "moment/locale/es";
+
 import ContentHeader from "../../app/components/Header/ContentHeader";
 import "./MovementPage.scss";
 
@@ -76,9 +78,9 @@ function MovementPage() {
 
   const renderData = () => {
     return (
-      <Grid container spacing={2}>
+      <Grid container className="movement-data">
         {!isLoading ? (
-          <Grid item xs={12}>
+          <Grid item xs={12} className="movement-data-filter">
             <FormTextFilter
               id="criteria"
               name="criteria"
@@ -140,9 +142,9 @@ function MovementPage() {
 
   const renderNoData = () => {
     return (
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid item xs={12}>
-          <Typography variant="subtitle1" className="text-center my-5">
+          <Typography variant="subtitle1" className="text-center">
             {t("movement.text")}
           </Typography>
         </Grid>
@@ -172,12 +174,12 @@ function MovementPage() {
 
   return (
     <div className="page-margin page-padding">
-      <Grid container spacing={2}>
+      <Grid container >
         <Grid item xs={12}>
-          <ContentHeader title={moment().format("dddd") + ", " + moment().format("LL")} />
+          <ContentHeader title={moment().format(`dddd, D [${t("movement.nex")}] MMMM`)} />
         </Grid>
 
-        <Grid item xs={12}>
+        <Grid item xs={12} className="movement-content">
           {isEmpty && (!query || query === "") ? renderNoData() : renderData()}
         </Grid>
       </Grid>

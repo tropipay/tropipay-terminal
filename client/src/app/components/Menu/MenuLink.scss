@@ -1,21 +1,17 @@
-.menuLinkItem {
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+.menu-link-item {
+  margin-right: 1rem;
   cursor: pointer;
 }
 
-.menu-lst {
+.menu-link {
   list-style: none;
   padding: 0;
-  margin: 0.3rem 0 ;
+  margin: 0;
   font-size: small;
 
   li a {
       text-decoration: none;
       color: #8986A3;
-      padding-right: 2rem;
-
       &:hover {
           color: rgba(#8986A3, 0.4);
       }

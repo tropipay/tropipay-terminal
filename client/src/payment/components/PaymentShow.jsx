@@ -108,10 +108,10 @@ function PaymentShow(props) {
           <QRCode url={shortUrl} size={200} />
         </Grid>
         <Grid item xs={6} className="box-label-right ">
-          <Typography variant="body2" className="">
+          <Typography variant="body2" className="payment-show-date">
             {moment(createdAt).format("D MMM YYYY")}
           </Typography>
-          <Typography variant="body2" className="">
+          <Typography variant="body2" className="payment-show-time">
             {moment(createdAt).format("HH:mm")}
           </Typography>
 

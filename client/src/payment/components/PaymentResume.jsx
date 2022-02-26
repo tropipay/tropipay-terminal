@@ -53,7 +53,7 @@ function PaymentResume(props) {
         <div
           container
           spacing={2}
-          className="note-bg note-border box-padding-1"
+          className="note-bg note-border box-padding-2"
         >
           <Typography
             variant="body2"
@@ -61,7 +61,7 @@ function PaymentResume(props) {
           >
             {t("payment.resume.detail")}
           </Typography>
-          <div className="box-horizontal box-align-between box-align-center box-margin-top">
+          <div className="box-horizontal box-align-between box-align-center box-margin-top-1">
             <Typography variant="body2">{t("payment.resume.cost")}</Typography>
 
             <Typography className="box-align-right">
@@ -69,7 +69,7 @@ function PaymentResume(props) {
               {getResume(resume, "cost", "currency")}
             </Typography>
           </div>
-          <div className="box-horizontal box-align-between box-align-center box-margin-top">
+          <div className="box-horizontal box-align-between box-align-center box-margin-top-1">
             <Typography variant="body2">
               {t("payment.resume.amount")}
             </Typography>
@@ -79,7 +79,7 @@ function PaymentResume(props) {
               {getResume(resume, "current", "currency")}
             </Typography>
           </div>
-          <div className="box-horizontal box-align-between box-align-center box-label-bold box-margin-top">
+          <div className="box-horizontal box-align-between box-align-center box-label-bold box-margin-top-1">
             <Typography variant="body2">
               {t("payment.resume.selloff")}
             </Typography>
@@ -95,7 +95,7 @@ function PaymentResume(props) {
       <Grid
         item
         xs={12}
-        style={{ marginTop: "1rem", marginBottom: "1rem" }}
+        style={{ marginTop: "2rem", marginBottom: "0.5rem" }}
       >
         <FormControlLabel
           control={

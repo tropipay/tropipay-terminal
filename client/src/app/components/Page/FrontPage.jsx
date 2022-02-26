@@ -18,13 +18,7 @@ import "./FrontPage.scss";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    width: "98%",
     margin: "0"
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary
   },
   layoutLeft: {
     height: "100vh",
@@ -32,7 +26,6 @@ const useStyles = makeStyles(theme => ({
   },
   layoutRight: {
     backgroundColor: "#4B59D3",
-    minHeight: "2rem",
     height: "100vh",
     margin: "0"
   }
@@ -47,8 +40,8 @@ function FrontPage() {
     if (session.isValid()) {
       const from =
         session.get().from &&
-        session.get().from.pathname &&
-        session.get().from.pathname !== "/"
+          session.get().from.pathname &&
+          session.get().from.pathname !== "/"
           ? session.get().from.pathname
           : "/home";
       nav.push(from);
@@ -58,35 +51,30 @@ function FrontPage() {
   return (
     <div className="home page">
       <Grid container>
-        <Grid item xs={12} sm={8}>
-          <div className="box box-vertical box-align-between page-container">
-            <div className="front-top">
-              <div className="front-company-logo">
-                <img src={TpvLogo} alt="TpvLogo" />
-              </div>
+        <Grid container item xs={12} sm={12 * 2 / 3} className="page-container">
+            <div xs={12} lg={12} className="page-front-logo">
+              <img src={TpvLogo} alt="TpvLogo" />
+            </div>
 
-              <Typography
-                mt="2rem"
-                className="page-front-title page-front-font"
-              >
+            <div xs={12} lg={12} className="page-front-content">
+              <Typography className="page-front-title page-front-font" >
                 {t("front.title")}
               </Typography>
 
-              <Typography variant="subtitle1" mt="1rem" mb="1rem"  className="page-front-sub">
+              <Typography className="page-front-subtitle">
                 {t("front.subtitle")}
               </Typography>
 
               <Login />
             </div>
 
-            <div className="front-page-btns">
-              <CadsBtn   className="front-card-btn-icon"/>
-              <MenuLink data={links} className="front-page-menu-link" />
-              <SocialBtn className="front-social-btn-icon"/>
+            <div xs={12} lg={12} className="page-front-btns">
+              <CadsBtn className="front-card-btn-icon" />
+              <MenuLink data={links} className="page-front-menu-link" />
+              <SocialBtn className="front-social-btn-icon" />
             </div>
-          </div>
         </Grid>
-        <Grid item xs={12} sm={4} className={cls.layoutRight}></Grid>
+        <Grid item sx={{ display: 'none' }} sm={12 * 1 / 3} className={cls.layoutRight}></Grid>
       </Grid>
     </div>
   );
