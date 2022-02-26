@@ -104,7 +104,7 @@ function PaymentShow(props) {
   const renderQrSection = () => {
     return (
       <Grid container spacing={2} className="payment-show-qr-section">
-        <Grid item xs={6} className="box-vertical box-align-left">
+        <Grid item xs={6} className="box-vertical box-align-left payment-show-qr">
           <QRCode url={shortUrl} size={200} />
         </Grid>
         <Grid item xs={6} className="box-label-right ">
@@ -173,7 +173,7 @@ function PaymentShow(props) {
               </Grid>
 
               {sendSMS ? (
-                <Grid item xs={12} style={{ marginTop: "0.5rem" }}>
+                <Grid item xs={12} style={{ marginTop: "1rem" }}>
                   <FormSelect
                     control={control}
                     name="code"
@@ -190,7 +190,7 @@ function PaymentShow(props) {
                 <Grid
                   item
                   xs={12}
-                  style={{ marginTop: "1rem", marginBottom: "0.5rem" }}
+                  style={{ marginTop: "2rem", marginBottom: "1rem" }}
                 >
                   <FormTextField
                     control={control}
@@ -204,7 +204,7 @@ function PaymentShow(props) {
                   />
                 </Grid>
               ) : null}
-              <Grid item xs={12}>
+              <Grid item xs={12} >
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -223,7 +223,7 @@ function PaymentShow(props) {
                 />
               </Grid>
               {sendEmail ? (
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ marginTop: "1rem" }}>
                   <FormTextField
                     control={control}
                     name="email"
@@ -245,8 +245,8 @@ function PaymentShow(props) {
 
   const renderUrlSection = () => {
     return (
-      <Grid item xs={12}>
-        <Typography variant="subtitle1" noWrap className="text-left mt-1">
+      <Grid item xs={12} className="payment-show-url">
+        <Typography variant="subtitle1" noWrap className="text-left payment-show-url-text">
           <span className="d-inline-block text-truncate">
             <a
               target="_blank"
