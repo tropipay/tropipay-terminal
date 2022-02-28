@@ -70,7 +70,9 @@
             },
             "reason": {
                 "placeholder": "Reason",
-                "label": "Reason"
+                "label": "Reason",
+                "default": "Product purchase",
+                "des": "Reason Description"
             },
             "lang": {
                 "placeholder": "Language",
