@@ -31,23 +31,27 @@ class DefaultController extends KsMf.app.Controller {
     }
 
     async insert(req, res) {
+        const reasonId = parseInt(req.body.reason || req.body.reasonId || 1);
         const data = {
             "reference": req.body.reference,
             "concept": req.body.concept,
             "description": req.body.description,
             "amount": parseFloat(req.body.amount) * 100,
             "lang": req.body.lang,
-            "reasonId": parseInt(req.body.reason || req.body.reasonId || 1),
-            "currency": "EUR", // req.body.currency [number cambair a slug]
+            "reasonId": reasonId,
+            "reasonDes":  reasonId !== 9 ? req.body.reasonDes : '',
+            "currency": req.body.currency,
             "directPayment": false,
             "favorite": false,
             "singleUse": false,
             "expirationDays": 1,
-            "serviceDate": "2021-08-20",
+            "serviceDate": "",
             "urlSuccess": "",
             "urlFailed": "",
             "urlNotification": ""
         };
+
+        console.log('insert >> ', data);
 
         const result = await this.tropipay.set({
             token: req.token

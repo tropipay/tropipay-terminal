@@ -60,7 +60,7 @@ function MenuPage() {
     if(!menuLinks || menuLinks.length < 1) {
       setMenuLinks(links.reverse());
     }
-  }, [links]);
+  }, [profile, menuLinks, dispatch]);
 
   return (
     <div>

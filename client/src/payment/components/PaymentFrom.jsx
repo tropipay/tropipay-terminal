@@ -35,24 +35,25 @@ function PaymentFrom(props) {
   const amountMin = useSelector(srvPaylink.selector.amountmin);
   const { handleSubmit, control, watch } = useForm({
     defaultValues: {
-      description: "",
       amount: "",
       currency: "EUR",
       concept: "",
       lang: "es",
-      reason: 2,
+      reason: 9,
+      description: t("payment.form.reason.default"),
+      reasonDes: t("payment.form.reason.default"),
       reference: ""
     }
   });
-  const watchFields = watch({"amount":"amount", "currency":"currency", "description":"description", "concept":"concept", "lang":"lang", "reason":"reason", "reference":"reference" });
+  const watchFields = watch({ "amount": "amount", "currency": "currency", "description": "description", "concept": "concept", "lang": "lang", "reason": "reason", "reference": "reference" });
 
   function isValidForm(watchFields) {
     const mandatory = watchFields.amount !== "" &&
-                      watchFields.concept !== "" &&
-                      watchFields.currency !== "" &&
-                      watchFields.description !== "" &&
-                      watchFields.lang !== "" &&
-                      watchFields.reason !== "";
+      watchFields.concept !== "" &&
+      watchFields.currency !== "" &&
+      watchFields.description !== "" &&
+      watchFields.lang !== "" &&
+      watchFields.reason !== "";
     return advanced ? mandatory && watchFields.reference !== "" : mandatory;
   }
 
@@ -137,7 +138,7 @@ function PaymentFrom(props) {
         </Grid>
       ) : null}
 
-      <Grid item xs={12}>
+      {advanced ? (<Grid item xs={12}>
         <FormSelect
           control={control}
           name="reason"
@@ -151,34 +152,51 @@ function PaymentFrom(props) {
           options={getItems(reasons)}
         />
       </Grid>
+      ) : null}
 
-      <Grid item xs={12}>
-        <FormSelect
-          control={control}
-          name="lang"
-          size="medium"
-          defaultValue={watchFields.lang}
-          label={t("payment.form.lang.label")}
-          placeholder={t("payment.form.lang.label")}
-          keys={{ label: "label", value: "lang" }}
-          rules={{ required: t("error.required") }}
-          options={Lang.getSupported()}
-        />
-      </Grid>
+      {advanced && watchFields.reason === 9 ? (
+        <Grid item xs={12}>
+          <FormTextField
+            control={control}
+            name="reasonDes"
+            size="medium"
+            label={t("payment.form.reason.des")}
+            rules={{ required: t("error.required") }}
+          />
+        </Grid>
+      ) : null}
 
-      <Grid item xs={12}>
-        <FormTextField
-          control={control}
-          name="description"
-          multiline
-          minRows="3"
-          size="medium"
-          label={t("payment.form.description.label")}
-          placeholder={t("payment.form.description.label")}
-          rules={{ required: t("error.required") }}
-        />
-      </Grid>
-      
+      {advanced ? (
+        <Grid item xs={12}>
+          <FormSelect
+            control={control}
+            name="lang"
+            size="medium"
+            defaultValue={watchFields.lang}
+            label={t("payment.form.lang.label")}
+            placeholder={t("payment.form.lang.label")}
+            keys={{ label: "label", value: "lang" }}
+            rules={{ required: t("error.required") }}
+            options={Lang.getSupported()}
+          />
+        </Grid>
+      ) : null}
+
+      {advanced ? (
+        <Grid item xs={12}>
+          <FormTextField
+            control={control}
+            name="description"
+            multiline
+            minRows="3"
+            size="medium"
+            label={t("payment.form.description.label")}
+            placeholder={t("payment.form.description.label")}
+            rules={{ required: t("error.required") }}
+          />
+        </Grid>
+      ) : null}
+
       <Grid item xs={12}>
         <Button
           variant="contained"

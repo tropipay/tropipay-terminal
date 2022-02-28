@@ -74,7 +74,9 @@
             },
             "reason": {
                 "placeholder": "Motivo",
-                "label": "Motivo"
+                "label": "Motivo",
+                "default": "Compra de producto",
+                "des": "Descripción del Motivo"
             },
             "lang": {
                 "placeholder": "Idioma",
