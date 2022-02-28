@@ -39,7 +39,7 @@ class DefaultController extends KsMf.app.Controller {
             "amount": parseFloat(req.body.amount) * 100,
             "lang": req.body.lang,
             "reasonId": reasonId,
-            "reasonDes":  reasonId !== 9 ? req.body.reasonDes : '',
+            "reasonDes":  reasonId === 9 ? req.body.reasonDes : '',
             "currency": req.body.currency,
             "directPayment": false,
             "favorite": false,
