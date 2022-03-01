@@ -71,6 +71,7 @@ function PaymentFrom(props) {
           subtitle={t("payment.form.subtitle")}
           className="box-label-center box-margin-bottom-2"
           classNameTitle="box-label-bold"
+          classNameSubtitle="label-size-md"
         />
       </Grid>
 

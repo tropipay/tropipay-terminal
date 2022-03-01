@@ -37,7 +37,7 @@ function HomePage() {
         <Grid item xs={12} className="box box-align-center page-home-name">
           <ContentHeader  
             classNameTitle="box-label-bold"
-            classNameSubtitle="page-home-subtitle"
+            classNameSubtitle="page-home-subtitle label-size-md"
             title={profile ? profile.name : "Gest"}
             subtitle={profile ? profile.email : "gest@tropipay.com"}
           />
@@ -45,7 +45,7 @@ function HomePage() {
         
         <Grid item xs={12} className="box box-align-center">
           <div className="box box-align-center page-home-qr note-bg">
-            <QRCode url={shortUrl} size={200} />
+            <QRCode url={shortUrl} size={200} colorBorder="#1b2a62" colorBg="#F0F3FA"/>
           </div>
         </Grid>
 

@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Button from "@material-ui/core/Button";
 
-
 function PaymentPage(props) {
   //... initialize state
   const { t } = useTranslation();
