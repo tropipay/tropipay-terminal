@@ -1,5 +1,6 @@
 const links = [
     {
+        hidden: 'xs',
         label: "legal.copyright",
         to: "#"
     },
