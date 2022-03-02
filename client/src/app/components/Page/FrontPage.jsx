@@ -13,7 +13,9 @@ import SocialBtn from "../ShareThis/SocialBtn";
 import CadsBtn from "../ShareThis/CardsBtn";
 
 import TpvLogo from "../../images/terminal-logo.png";
+import TpvFrontLogo from "../../images/terminal-img.png";
 import session from "../../../security/services/Session";
+import useMediaQuery from '../../services/CustomMediaQuery.js';
 import "./FrontPage.scss";
 
 const useStyles = makeStyles(theme => ({
@@ -40,6 +42,7 @@ function FrontPage() {
   const { t } = useTranslation();
   const cls = useStyles();
   const nav = useHistory();
+  const mq = useMediaQuery();
 
   useEffect(() => {
     if (session.isValid()) {
@@ -54,27 +57,25 @@ function FrontPage() {
   });
 
   return (
-    <div className="home page">
-      <Grid container>
-        <Grid container item xs={12} sm={12 * 2 / 3} className="page-container">
-          <div xs={12} lg={12} className="page-front-logo">
-            <img src={TpvLogo} alt="TpvLogo" />
-          </div>
-
-          <Box sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }} className="page-front-content">
-            <Typography className="page-front-title page-front-font page-front-label-sm" >
-              {t("front.title")}
-            </Typography>
-
-            <Typography className="page-front-subtitle">
-              {t("front.subtitle")}
-            </Typography>
-            <Login />
-          </Box>
+    <div className="box-horizontal page-front box-align-center">
+      <div className="page-container box-vertical box-align-between">
+        <div className="page-front-logo">
+          <img src={TpvLogo} alt="TpvLogo" />
+        </div>
 
 
-          <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} className="page-front-content">
+        <Box sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }} className="page-front-content">
+          <Typography className="page-front-title page-front-font page-front-label-sm" >
+            {t("front.title")}
+          </Typography>
+          <Typography className="page-front-subtitle">
+            {t("front.subtitle")}
+          </Typography>
+          <Login />
+        </Box>
 
+        <div className="box-horizontal page-front-content">
+          <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} className="">
             <div className="page-front-title page-front-font">
               <Typography className="page-front-label-lg">
                 {t("front.title1")}
@@ -83,7 +84,6 @@ function FrontPage() {
                 {t("front.title2")}
               </Typography>
             </div>
-
             <div className="page-front-subtitle">
               <Typography className="page-front-label-lg">
                 {t("front.subtitle1")}
@@ -92,19 +92,21 @@ function FrontPage() {
                 {t("front.subtitle2")}
               </Typography>
             </div>
-
             <Login />
           </Box>
 
-          <div className="page-front-btns">
-            <CadsBtn className="front-card-btn-icon" />
-            <MenuLink data={links} className="page-front-menu-link" allowHide/>
-            <SocialBtn className="front-social-btn-icon" />
+          <div hidden={mq.in(['xs', 'sm'])} className="" >
+            <img src={TpvFrontLogo} className="page-front-logoland" />
           </div>
-        </Grid>
-        <Grid item sm={{ display: 'none' }} lg={12 * 1 / 3} className={cls.layoutRightLG}></Grid>
-        <Grid item xs={{ display: 'none' }} sm={12 * 1 / 3} lg={{ display: 'none' }} className={cls.layoutRight}></Grid>
-      </Grid>
+        </div>
+
+        <div className="page-front-btns">
+          <CadsBtn className="front-card-btn-icon" />
+          <MenuLink data={links} className="page-front-menu-link" allowHide />
+          <SocialBtn className="front-social-btn-icon" />
+        </div>
+      </div>
+
     </div>
   );
 }
