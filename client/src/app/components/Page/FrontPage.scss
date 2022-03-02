@@ -10,7 +10,6 @@
 
 div.page-container {
   width: inherit;
-  padding-left: 6vw;
 }
 
 .page-front-font,
@@ -87,13 +86,16 @@ div.page-front-btns {
     margin-top: 2vh;
   }
 }
+.page-front-content-data{
+  margin-right: 2rem;
+}
 
 .page-front-logoland {
   width: 95%;
   max-width: 400px;
   min-width: 300px;
   margin-top: -2rem;
-  margin-left: 4rem;
+  margin-left: 2rem;
 }
 
 .page-front-right {

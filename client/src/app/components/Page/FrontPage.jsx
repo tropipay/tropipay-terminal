@@ -64,7 +64,7 @@ function FrontPage() {
         </div>
 
 
-        <Box sx={{ display: { xs: 'block', sm: 'block', md: 'none' } }} className="page-front-content">
+        <Box sx={{ display: { xs: 'block', sm: 'none', md: 'none' } }} className="page-front-content page-front-content-data">
           <Typography className="page-front-title page-front-font page-front-label-sm" >
             {t("front.title")}
           </Typography>
@@ -75,7 +75,7 @@ function FrontPage() {
         </Box>
 
         <div className="box-horizontal page-front-content">
-          <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} className="">
+          <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }} className="page-front-content-data">
             <div className="page-front-title page-front-font">
               <Typography className="page-front-label-lg">
                 {t("front.title1")}
