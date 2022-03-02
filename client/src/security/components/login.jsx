@@ -1,11 +1,12 @@
-import Button from "@mui/material/Button";
+
 import React from 'react';
 
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import IconUrl from '../../app/images/terminal-boton.png';
-
 import session from "../services/Session";
+import Button from "@mui/material/Button";
+import './login.scss';
 
 function Login() {
     const { t } = useTranslation();
@@ -23,7 +24,7 @@ function Login() {
             variant="contained"
             color="primary"
             size="large"
-            style={{ backgroundColor: '#232C53' }}
+            className='sec-btn'
             startIcon={<img src={IconUrl} style={{ width: "2rem" }} alt="" />}
         >
             {t("front.connect")}
