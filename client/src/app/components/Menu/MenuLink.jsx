@@ -1,13 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { exec, hasHTTP } from "../../services/util";
-import useMediaQueryIn from '../../services/useMediaQueryIn.js';
+import useCustomMediaQuery from '../../services/CustomMediaQuery.js';
 import "./MenuLink.scss";
 
 function MenuLink(props) {
   const nav = useHistory();
   const { t } = useTranslation();
-  const mqIn = useMediaQueryIn();
+  const mq = useCustomMediaQuery();
   const allowHide = props.allowHide || false;
 
   function handleClick(item) {
@@ -32,7 +32,7 @@ function MenuLink(props) {
   return (
     <ul className={`box ${align} ${className} menu-link`}>
       {data.map((item, i) => (
-        <li key={i} className="menu-link-item" hidden={allowHide && mqIn(item.hidden)} >
+        <li key={i} className="menu-link-item" hidden={allowHide && mq.in(item.hidden)} >
           <span
             className="menu-link-item-link gray-label"
             onClick={event => handleClick(item, event)}
