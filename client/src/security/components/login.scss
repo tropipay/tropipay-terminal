@@ -4,3 +4,8 @@ button.sec-btn {
     padding: 8px 22px;
     border-radius: 4px;
 }
+
+button.sec-btn:hover {
+    background-color: rgb(35, 44, 83);
+    color: white;
+}
