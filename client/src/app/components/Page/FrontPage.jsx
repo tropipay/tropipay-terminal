@@ -98,7 +98,7 @@ function FrontPage() {
 
           <div className="page-front-btns">
             <CadsBtn className="front-card-btn-icon" />
-            <MenuLink data={links} className="page-front-menu-link" />
+            <MenuLink data={links} className="page-front-menu-link" allowHide/>
             <SocialBtn className="front-social-btn-icon" />
           </div>
         </Grid>
