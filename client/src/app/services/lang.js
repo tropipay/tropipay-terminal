@@ -8,7 +8,7 @@ import translationEN from "../languages/es.json";
 class Lang {
   constructor(i18n) {
     this.i18n = i18n;
-    this.default = "en";
+    this.default = "es";
     this.configure();
   }
 
@@ -23,6 +23,7 @@ class Lang {
           escapeValue: false,
         },
         resources: this.getResources(),
+        react: { useSuspense: false },
       });
   }
 

@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@mui/material";
-import Grid from "@material-ui/core/Grid";
 import Box from '@mui/material/Box';
 
 import Login from "../../../security/components/login";
@@ -18,29 +16,8 @@ import session from "../../../security/services/Session";
 import useMediaQuery from '../../services/CustomMediaQuery.js';
 import "./FrontPage.scss";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    margin: "0"
-  },
-  layoutLeft: {
-    height: "100vh",
-    margin: "0"
-  },
-  layoutRight: {
-    backgroundColor: "#4B59D3",
-    margin: "0"
-  },
-  layoutRightLG: {
-    backgroundColor: "#4B59D3",
-    height: "100vh",
-    margin: "0"
-  }
-}));
-
 function FrontPage() {
   const { t } = useTranslation();
-  const cls = useStyles();
   const nav = useHistory();
   const mq = useMediaQuery();
 
@@ -96,7 +73,7 @@ function FrontPage() {
           </Box>
 
           <div hidden={mq.in(['xs', 'sm'])} className="" >
-            <img src={TpvFrontLogo} className="page-front-logoland" />
+            <img src={TpvFrontLogo} className="page-front-logoland" alt="TpvFrontLogo" />
           </div>
         </div>
 
