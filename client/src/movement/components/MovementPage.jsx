@@ -179,6 +179,7 @@ function MovementPage() {
           <ContentHeader 
             title={moment().format(`dddd, D [${t("movement.nex")}] MMMM`)} 
             classNameTitle="box-label-bold"
+            classNameSubtitle="label-size-md"
           />
         </Grid>
 

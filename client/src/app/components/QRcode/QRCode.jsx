@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from "react";
-import QrLogo from "./image/logo_qr.jpg";
+import QrLogo from "./image/logo_qr.png";
 import QRCodeStyling from "qr-code-styling";
 import "./QRCode.scss";
 
 function createQr(props) {
   //ref: https://qr-code-styling.com/
   const size = props.size || 100;
+  const colorBg = props && props.colorBg ? props.colorBg : '#F0F3FA';
+  const colorBorder = props && props.colorBorder ? props.colorBorder : "#1b2a62";
+  const type = props && props.type ? props.type : "square"; // rounded/square
+
   return new QRCodeStyling({
     width: size,
     height: size,
@@ -22,12 +26,12 @@ function createQr(props) {
       margin: 5
     },
     dotsOptions: {
-      type: "square",
-      color: "#1b2a62",
+      type: type, 
+      color: colorBorder, 
       gradient: null
     },
     backgroundOptions: {
-      color: "#ffffff"
+      color: colorBg
     },
     image: QrLogo,
     dotsOptionsHelper: {
@@ -38,14 +42,14 @@ function createQr(props) {
       gradient: {
         linear: true,
         radial: false,
-        color1: "#6a1a4c",
-        color2: "#6a1a4c",
+        color1: colorBorder, 
+        color2: colorBorder, // "#6a1a4c" no
         rotation: "0"
       }
     },
     cornersSquareOptions: {
-      type: "dot",
-      color: "#1b2a62"
+      type: "dot", //... corners figure color
+      color: colorBorder 
     },
     cornersSquareOptionsHelper: {
       colorType: {
@@ -55,14 +59,14 @@ function createQr(props) {
       gradient: {
         linear: true,
         radial: false,
-        color1: "#000000",
-        color2: "#000000",
+        color1: colorBorder,
+        color2: colorBorder,
         rotation: "0"
       }
     },
     cornersDotOptions: {
       type: "dot",
-      color: "#1b2a62"
+      color: colorBorder
     },
     cornersDotOptionsHelper: {
       colorType: {
@@ -72,8 +76,8 @@ function createQr(props) {
       gradient: {
         linear: true,
         radial: false,
-        color1: "#000000",
-        color2: "#000000",
+        color1: colorBorder,
+        color2: colorBorder,
         rotation: "0"
       }
     },
@@ -85,8 +89,8 @@ function createQr(props) {
       gradient: {
         linear: true,
         radial: false,
-        color1: "#ffffff",
-        color2: "#ffffff",
+        color1: colorBg,
+        color2: colorBg,
         rotation: "0"
       }
     }

@@ -105,17 +105,16 @@ function PaymentShow(props) {
     return (
       <Grid container spacing={2} className="payment-show-qr-section">
         <Grid item xs={6} className="box-vertical box-align-left payment-show-qr">
-          <QRCode url={shortUrl} size={200} />
+          <QRCode url={shortUrl} size={200} colorBorder="#1b2a62" colorBg="#FFFFFF" />
         </Grid>
-        <Grid item xs={6} className="box-label-right ">
-          <Typography variant="body2" className="payment-show-date">
+        <Grid item xs={6} className="box-label-right label-size-md">
+          <Typography variant="body2" className="payment-show-date ">
             {moment(createdAt).format("D MMM YYYY")}
           </Typography>
           <Typography variant="body2" className="payment-show-time">
             {moment(createdAt).format("HH:mm")}
           </Typography>
-
-          {expirationDate ? (
+          {expirationDate && false ? (
             <div>
               <Typography variant="body2" className="">
                 {t("payment.show.expireIn")}
@@ -298,6 +297,7 @@ function PaymentShow(props) {
             subtitle={t("payment.show.subtitle", { name: fullname(profile) })}
             className="box-label-center box-margin-bottom-2"
             classNameTitle="box-label-bold"
+            classNameSubtitle="label-size-md"
           />
         </Grid>
 
