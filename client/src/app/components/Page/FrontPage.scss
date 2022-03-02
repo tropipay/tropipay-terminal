@@ -62,13 +62,13 @@ div.page-front-btns {
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
-  padding-bottom: 4vh;
-  margin-top: 4vh;
+  padding-bottom: 2vh;
+  /*margin-top: 4vh;*/
 }
 
 .page-front-btns {
   min-width: 100%;
-  margin-top: 2vh;
+  margin-top: 1vh;
 }
 
 .page-front-btns ul {
@@ -77,8 +77,8 @@ div.page-front-btns {
 }
 
 .page-front-content {
-  margin-bottom: 6vh;
-  margin-top: 6vh;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
   p {
     margin-bottom: 3vh;
   }
