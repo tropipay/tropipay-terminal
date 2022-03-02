@@ -46,7 +46,7 @@ const {
 // ... Load movements from server
 const onLoad = (offset = 0, limit = 10, query = "") => (dispatch) => {
     dispatch(onLoading(true));
-    httpReq(`/api/v1/movement?offset=${offset}&limit=${limit}&criteria=${query}`, dispatch)
+    httpReq(`/api/v1/movement?offset=${offset}&limit=${limit}&criteria=${query}&type=deep`, dispatch)
         .then(data => dispatch(onUpdate({...data, query})));
 };
 
