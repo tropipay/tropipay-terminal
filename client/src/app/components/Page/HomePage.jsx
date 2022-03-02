@@ -36,10 +36,11 @@ function HomePage() {
 
         <Grid item xs={12} className="box box-align-center page-home-name">
           <ContentHeader  
-            classNameTitle="box-label-bold"
-            classNameSubtitle="page-home-subtitle label-size-md"
-            title={profile ? profile.name : "Gest"}
-            subtitle={profile ? profile.email : "gest@tropipay.com"}
+            className="page-home-content-header"
+            classNameTitle="box-label-bold box-label-center"
+            classNameSubtitle="page-home-subtitle label-size-md box-label-center"
+            title={profile ? profile.name + "TEST estosunaprueba deapellido largo": "Gest"}
+            subtitle={profile ? profile.email + "TEST estosunaprueba deapellido largo" : "gest@tropipay.com"}
           />
         </Grid>
         
