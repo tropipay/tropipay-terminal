@@ -47,6 +47,6 @@ export default CustomMediaQuery;
 
 /**
  * From: https://mui.com/customization/breakpoints/
- * Ex:  const mqIn = CustomMediaQuery();
- *      <span hidden={mqIn(['xs', 'lg'])}> VA </span>
+ * Ex:  const mq.in = CustomMediaQuery();
+ *      <span hidden={mq.in(['xs', 'lg'])}> VA </span>
  */
