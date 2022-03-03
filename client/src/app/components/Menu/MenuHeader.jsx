@@ -22,7 +22,7 @@ function MenuHeader(props) {
         <ContentHeader
           classNameTitle="box-label-bold box-label-center menu-header-name"
           classNameSubtitle="text-color-main-blue"
-          title={model ? model.name + " Estesuna pruebadeun textolargo": "Gest"}
+          title={model ? model.name : "Gest"}
           subtitle={model ? model.email : "gest@tropipay.com"}
         />
       </div>
