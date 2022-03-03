@@ -24,12 +24,13 @@ import srvPaylink from "../services/PaylinkSlice";
 //... component
 function PaymentFrom(props) {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const reasons = useSelector(srvReason.selector.data);
+  srvReason.setDependency(useDispatch, useSelector);
+  
+  const reasons = srvReason.selector.data(); 
   const [advanced, setAdvanced] = useState(false);
 
   if (!reasons || reasons.length < 1) {
-    dispatch(srvReason.action.onLoad());
+    srvReason.action.load();
   }
 
   const amountMin = useSelector(srvPaylink.selector.amountmin);

@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-//import session from "../../security/services/session";
 import httpReq from '../../app/services/HttpRequest';
 
 //... Define namespace
 const name = "reason";
+
+//... Define Dependencies Scope
+const dependencies = {};
+
 // ... Create Slice
 export const slice = createSlice({
     name,
@@ -28,18 +31,22 @@ const { onError, onUpdate } = slice.actions;
 const onLoad = () => (dispatch) => {
     httpReq("/api/v1/payment/reasons", dispatch).then(data => dispatch(onUpdate(data)));
 };
+
 //... Export the slice as a service
 const Service = {
     name,
     reducer: slice.reducer,
+    setDependency: (dispatch, useSelector) => {
+        dependencies.dispatch = dispatch instanceof Function ? dispatch() : dispatch;
+        dependencies.useSelector = useSelector;
+    },
     action: {
-        onError,
-        onUpdate,
-        onLoad
+        update: (data) => dependencies.dispatch(onUpdate(data)),
+        load: () => dependencies.dispatch(onLoad())
     },
     selector: {
-        data: (state) => state[name].data,
-        error: (state) => state[name].error
+        data:  () => dependencies.useSelector((state) => state[name].data),
+        error: () => dependencies.useSelector((state) => state[name].error)
     }
 }
 export default Service;
