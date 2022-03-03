@@ -51,10 +51,10 @@ function PaymentFrom(props) {
     const mandatory = watchFields.amount !== "" &&
       watchFields.concept !== "" &&
       watchFields.currency !== "" &&
-      watchFields.description !== "" &&
+      //watchFields.description !== "" &&
       watchFields.lang !== "" &&
       watchFields.reason !== "";
-    return advanced ? mandatory && watchFields.reference !== "" : mandatory;
+    return /*advanced ? mandatory && watchFields.reference !== "" :*/ mandatory;
   }
 
   const submit = data => {
@@ -120,7 +120,7 @@ function PaymentFrom(props) {
       <Grid item xs={12}>
         <FormControlLabel
           control={<Checkbox />}
-          className="payment-form-checkbox"
+          className="payment-form-checkbox text-color-main-blue"
           label={t("payment.form.advanced")}
           value={advanced}
           onChange={() => setAdvanced(!advanced)}
@@ -134,7 +134,7 @@ function PaymentFrom(props) {
             name="reference"
             size="medium"
             label={t("payment.form.reference.label")}
-            rules={{ required: t("error.required") }}
+            //rules={{ required: t("error.required") }}
           />
         </Grid>
       ) : null}
@@ -149,7 +149,7 @@ function PaymentFrom(props) {
           defaultValue={watchFields.reason}
           label={t("payment.form.reason.label")}
           placeholder={t("payment.form.reason.label")}
-          rules={{ required: t("error.required") }}
+          //rules={{ required: t("error.required") }}
           options={getItems(reasons)}
         />
       </Grid>
@@ -162,7 +162,7 @@ function PaymentFrom(props) {
             name="reasonDes"
             size="medium"
             label={t("payment.form.reason.des")}
-            rules={{ required: t("error.required") }}
+            //rules={{ required: t("error.required") }}
           />
         </Grid>
       ) : null}
@@ -177,7 +177,7 @@ function PaymentFrom(props) {
             label={t("payment.form.lang.label")}
             placeholder={t("payment.form.lang.label")}
             keys={{ label: "label", value: "lang" }}
-            rules={{ required: t("error.required") }}
+            //rules={{ required: t("error.required") }}
             options={Lang.getSupported()}
           />
         </Grid>
@@ -193,7 +193,7 @@ function PaymentFrom(props) {
             size="medium"
             label={t("payment.form.description.label")}
             placeholder={t("payment.form.description.label")}
-            rules={{ required: t("error.required") }}
+            //rules={{ required: t("error.required") }}
           />
         </Grid>
       ) : null}
