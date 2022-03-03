@@ -25,7 +25,7 @@ export const slice = createSlice({
 });
 
 // ... Actions  
-const { onError, onUpdate } = slice.actions;
+const { onUpdate } = slice.actions;
 
 //... Export the slice as a service
 const Service = {
