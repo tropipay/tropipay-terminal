@@ -81,7 +81,7 @@ export default function ShareThis(props) {
                         {t("component.shareThis.label")}:
                     </Typography>
                 </div>
-                <Typography variant="subtitle2" noWrap className="text-left mt-1">
+                <Typography variant="subtitle2" noWrap className="share-btn-lst text-left mt-1">
                     <TelegramShareButton
                         url={props.sharedUrl}
                         className="box-margin-right-1"
