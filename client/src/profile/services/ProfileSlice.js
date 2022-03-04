@@ -57,8 +57,8 @@ export const load = () => (dispatch) => {
 };
 
 function getPageURL(user) {
-    const urlBase = "https://tropipay.com/comercio/";
-    return user && user.shortId ? urlBase + user.shortId : urlBase;
+    const urlBase = "https://tropipay.com/business/";
+    return user && user.id ? urlBase + user.id : urlBase;
 }
 
 //... Export the slice as a service
