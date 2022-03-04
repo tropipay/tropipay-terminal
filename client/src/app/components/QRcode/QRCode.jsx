@@ -26,8 +26,8 @@ function createQr(props) {
       margin: 5
     },
     dotsOptions: {
-      type: type, 
-      color: colorBorder, 
+      type: type,
+      color: colorBorder,
       gradient: null
     },
     backgroundOptions: {
@@ -42,14 +42,14 @@ function createQr(props) {
       gradient: {
         linear: true,
         radial: false,
-        color1: colorBorder, 
+        color1: colorBorder,
         color2: colorBorder, // "#6a1a4c" no
         rotation: "0"
       }
     },
     cornersSquareOptions: {
       type: "dot", //... corners figure color
-      color: colorBorder 
+      color: colorBorder
     },
     cornersSquareOptionsHelper: {
       colorType: {
@@ -97,26 +97,25 @@ function createQr(props) {
   });
 }
 
+const cmp = {};
+
 export default function QRCode(props) {
-  //Calculating QR Dimension
+  const className = props && props.className ? props.className : " ";
+  const { url } = props;
   const ref = useRef(null);
 
   useEffect(() => {
     if (ref.current.childElementCount < 1) {
-      const qr = createQr(props);
-      qr.append(ref.current);
+      cmp.qr = createQr(props);
+      cmp.qr.append(ref.current);
     }
   }, [props]);
 
-  return (
-    <div
-      ref={ref}
-      id={"qrContainerTpp"}
-      className={
-        props.className
-          ? props.className + " qrContainerTpp "
-          : "qrContainerTpp"
-      }
-    />
-  );
+  useEffect(() => {
+    if(cmp.qr){
+      cmp.qr.update({ data: url });
+    }
+  }, [url]);
+
+  return (<div ref={ref} className={className + " qrcode "} > </div>);
 }

@@ -25,7 +25,7 @@ function HomePage() {
     if (!profile && !error) {
       dispatch(srvProfile.action.load());
     }
-  });
+  }, [dispatch, error, profile]);
   
   return (
     <div className="page-margin page-padding page-home-content">

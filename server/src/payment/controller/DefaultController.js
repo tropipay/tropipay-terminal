@@ -51,8 +51,6 @@ class DefaultController extends KsMf.app.Controller {
             "urlNotification": ""
         };
 
-        console.log('insert >> ', data);
-
         const result = await this.tropipay.set({
             token: req.token
         }).setPaylink(data);
