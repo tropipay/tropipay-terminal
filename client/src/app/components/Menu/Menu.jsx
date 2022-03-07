@@ -4,12 +4,10 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { useHistory } from "react-router-dom";
 import MenuPage from "./MenuPage";
+import { useTranslation } from "react-i18next";
 
 import TpvFrontLogo from "../../images/terminal-logo-menu.png";
 import './Menu.scss';
-
-
-import { useTranslation } from "react-i18next";
 
 export default function Menu() {
   const { t } = useTranslation();
