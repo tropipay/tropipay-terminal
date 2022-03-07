@@ -6,6 +6,7 @@ $baseTextColorDark: #0d0c15;
 $baseYellow: #f6d25a;
 $baseRed: #fa5061;
 $baseGray: #757588;
+$baseGrayLight: #f0f3f9;
 
 $color1: #c52887;
 $color2: #3d3991;
@@ -21,6 +22,11 @@ $color11: #7d1f93;
 $color12: #f4654a;
 
 /* ----------------------------- */
+.bg-color-gray-light, 
+.MuiAvatar-root.bg-color-gray-light {
+  background-color: $baseGrayLight;
+}
+
 .gray-label,
 .MuiTypography-root.gray-label {
   color: $baseGray;
