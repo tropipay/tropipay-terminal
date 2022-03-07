@@ -18,7 +18,7 @@ function MovementItem(props) {
       item.movementTypeId === movementTypes.exchange ? "C" : icoLetter;
     return (
       <div className="movement-margin-right movement-item-avatar">
-        <AvatarName name={nameStr} textColor="auto" size="40px" />
+        <AvatarName name={nameStr} textColor="auto" size="40px" className="bg-color-gray-light" />
       </div>
     );
   }

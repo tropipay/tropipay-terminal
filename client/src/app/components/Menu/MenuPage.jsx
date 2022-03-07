@@ -69,7 +69,7 @@ function MenuPage() {
         onClick={toggleDrawer(true)}
         color="inherit"
       >
-        <AccountCircleIcon />
+        <AccountCircleIcon className="menu-icon-user" />
       </IconButton>
       <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
         <div className="box box-vertical box-align-between menu-page-content">

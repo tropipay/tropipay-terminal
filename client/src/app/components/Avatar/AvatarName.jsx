@@ -30,7 +30,7 @@ const AvatarName = props => {
 
   return (
     <Avatar
-      className={`font-weight-bold ${bgColor} ${className} ${textColor}`}
+      className={`font-weight-bold ${className} ${bgColor} ${textColor}`}
       alt={props.alt || "AV"}
       style={{ width, height }}
     >
