@@ -11,12 +11,14 @@ import HelpIcon from "mdi-react/LifebuoyIcon";
 import LogoutIcon from "mdi-react/LogoutIcon";
 import SendIcon from "mdi-react/SendIcon";
 import AccountCircleIcon from "mdi-react/AccountCircleIcon";
+import useCustomMediaQuery from '../../services/CustomMediaQuery.js';
 import MenuLink from "./MenuLink";
 import MenuHeader from "./MenuHeader";
 import links from "../../models/menu.link";
 import "./MenuPage.scss";
 
 function MenuPage() {
+  const mq = useCustomMediaQuery();
   const dispatch = useDispatch();
   const profile = useSelector(srvProfile.selector.data);
   const [openDrawer, setDrawerMenu] = React.useState();
@@ -71,7 +73,9 @@ function MenuPage() {
       >
         <AccountCircleIcon className="menu-icon-user" />
       </IconButton>
-      <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
+      <Drawer anchor="right" open={openDrawer} 
+              onClose={toggleDrawer(false)} 
+              className={mq.in('xs', 'sm') ? "menu-page" : '' }>
         <div className="box box-vertical box-align-between menu-page-content">
           <div>
             <MenuHeader model={profile} onClose={toggleDrawer(false)} />
