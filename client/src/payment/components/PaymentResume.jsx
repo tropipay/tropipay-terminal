@@ -99,6 +99,7 @@ function PaymentResume(props) {
         style={{ marginTop: "2rem", marginBottom: "0.5rem" }}
       >
         <FormControlLabel
+          className="payment-resume-terms-privacy"
           control={
             <Checkbox
               checked={accept}
