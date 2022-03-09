@@ -121,6 +121,7 @@ function PaymentFrom(props) {
       <Grid item xs={12}>
         <FormControlLabel
           control={<Checkbox />}
+          style={{ marginTop: "1rem" }}
           className="payment-form-checkbox text-color-main-blue"
           label={t("payment.form.advanced")}
           value={advanced}
@@ -129,7 +130,7 @@ function PaymentFrom(props) {
       </Grid>
 
       {advanced ? (
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{ marginTop: "1.5rem" }}>
           <FormTextField
             control={control}
             name="reference"
@@ -202,7 +203,7 @@ function PaymentFrom(props) {
       <Grid item xs={12}>
         <Button
           variant="contained"
-          className="btn-full-width"
+          className="btn-full-width page-payment-btn-first-margin"
           size="medium"
           color="primary"
           disabled={!isValidForm(watchFields)}

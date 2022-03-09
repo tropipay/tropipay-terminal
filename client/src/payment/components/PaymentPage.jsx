@@ -11,6 +11,7 @@ import srvPaylink from "../services/PaylinkSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "@material-ui/core/Button";
+import './PaymentPage.scss';
 
 function PaymentPage(props) {
   //... initialize state
@@ -81,7 +82,6 @@ function PaymentPage(props) {
         variant="contained"
         className="btn-full-width"
         size="large"
-        style={{ marginTop: "2rem" }}
         onClick={() => history.push("/home")}
         color="secondary"
       >
