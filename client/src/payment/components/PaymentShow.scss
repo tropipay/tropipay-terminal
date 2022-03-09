@@ -1,6 +1,10 @@
 .payment-show-qr-section {
-  padding: 15px 15px;
+  padding-top: 1rem;
   width: 100%;
+  canvas {
+    padding-left: 3px;
+    margin-top: -7px;
+  }
 }
 
 .payment-show-box {
@@ -16,14 +20,27 @@
 }
 
 p.payment-show-date {
-  padding-top: 10px;
+  /*padding-top: 10px;*/
 }
 
 
 div.MuiGrid-root.box-label-right {
-  padding-right: 20px;
+  padding-right: 1rem;
 }
 
 div.payment-show-url.MuiGrid-root.MuiGrid-item{
   margin: 0;
+}
+
+.payment-show-options{
+  padding: 1rem;
+  padding-bottom: 2rem;
+}
+
+.payment-show-subtitle{
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  text-align: center;
+  text-justify: 'inter-palabra';
 }

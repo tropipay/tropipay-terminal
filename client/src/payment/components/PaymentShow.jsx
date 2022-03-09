@@ -103,7 +103,7 @@ function PaymentShow(props) {
 
   const renderQrSection = () => {
     return (
-      <Grid container spacing={2} className="payment-show-qr-section">
+      <Grid container className="payment-show-qr-section">
         <Grid item xs={6} className="box-vertical box-align-left payment-show-qr">
           <QRCode url={shortUrl} size={200} colorBorder="#1b2a62" colorBg="#FFFFFF" />
         </Grid>
@@ -133,7 +133,7 @@ function PaymentShow(props) {
     return (
       <Grid item xs={12}>
         <Grid container className="box-border-curved-bottom">
-          <Grid item xs={12} className="note-bg" style={{ padding: "2rem" }}>
+          <Grid item xs={12} className="note-bg payment-show-options" >
             <Grid container>
               <Grid item xs={12}>
                 <Typography
@@ -246,7 +246,7 @@ function PaymentShow(props) {
     return (
       <Grid item xs={12} className="payment-show-url">
         <Typography variant="subtitle1" noWrap className="text-left payment-show-url-text">
-          <span className="d-inline-block text-truncate">
+          <span className="d-inline-block text-truncate" style={{marginRight: '1rem'}}>
             <a
               target="_blank"
               rel="noreferrer"
@@ -274,7 +274,7 @@ function PaymentShow(props) {
     return sendSMS || sendEmail ? (
       <Button
         variant="contained"
-        className="btn-full-width"
+        className="btn-full-width page-payment-btn-first-margin"
         size="large"
         color="primary"
         onClick={handleSubmit(submit)}
@@ -297,7 +297,7 @@ function PaymentShow(props) {
             subtitle={t("payment.show.subtitle", { name: fullname(profile) })}
             className="box-label-center box-margin-bottom-2"
             classNameTitle="box-label-bold"
-            classNameSubtitle="label-size-md"
+            classNameSubtitle="label-size-md payment-show-subtitle"
           />
         </Grid>
 
@@ -305,7 +305,7 @@ function PaymentShow(props) {
           item
           xs={12}
           className="payment-show-box box-border-curved"
-          style={{ marginTop: "1rem" }}
+          style={{ marginTop: "1.5rem", paddingTop: "1rem" }}
         >
           {renderQrSection()}
           {renderOptionSection()}

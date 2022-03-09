@@ -46,7 +46,7 @@ function PaymentResume(props) {
           subtitle={t("payment.resume.subtitle")}
           className="box-label-center box-margin-bottom-2"
           classNameTitle="box-label-bold"
-          classNameSubtitle="label-size-md"
+          classNameSubtitle="label-size-md payment-resume-subtitle"
         />
       </Grid>
 
@@ -54,7 +54,7 @@ function PaymentResume(props) {
         <div
           container
           spacing={2}
-          className="note-bg note-border box-padding-2 label-size-md"
+          className="note-bg note-border label-size-md payment-resume-box"
         >
           <Typography
             variant="body2"
@@ -119,7 +119,7 @@ function PaymentResume(props) {
       <Grid item xs={12}>
         <Button
           variant="contained"
-          className="btn-full-width"
+          className="btn-full-width page-payment-btn-first-margin"
           size="large"
           color="primary"
           style={{ marginTop: "1rem" }}
